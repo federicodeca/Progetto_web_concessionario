@@ -20,14 +20,7 @@ class EPersona{
         $this->userName = $userName;
 
     }
-    {
-        $this->id = $id;
-        $this->nome = $nome;        
-        $this->cognome = $cognome;
-        $this->email = $email;
-        $this->telefono = $telefono;
-
-        }
+    
     public function getId()
     {
         return $this->id;
