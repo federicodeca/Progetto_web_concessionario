@@ -1,0 +1,11 @@
+<?php
+
+class Person{
+    private $id;
+    private $name;
+    private $email;
+    private $phone;
+    private $address;
+    private $city;
+                 
+        }

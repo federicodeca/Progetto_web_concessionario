@@ -1,0 +1,9 @@
+<?php
+
+$connectionParameters = [
+    'driver' => 'pdo_mysql',
+    'host' => 'localhost',
+    'dbname' => 'concessionaria',
+    'user' => 'root',
+    'password' => 'pippo']; 
+    
