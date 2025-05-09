@@ -8,6 +8,7 @@ private string $città;
 private string $cap;
 private string $indirizzo;
 
+
     public function __construct($nome, $cognome, $email, $telefono,$userName, $password, $città, $cap, $indirizzo)
     {
         parent::__construct($nome, $cognome, $email, $userName, $password);
