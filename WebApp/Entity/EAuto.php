@@ -9,8 +9,9 @@ class EAuto {
     private int $cavalli;
     private int $cilindrata;
     private int $posti;
+    private string $alimentazione;
 
-    public function __construct(int $idAuto, string $modello, string $marca, string $colore, int $cavalli, int $cilindrata, int $posti) {
+    public function __construct(int $idAuto, string $modello, string $marca, string $colore, int $cavalli, int $cilindrata, int $posti,string $alimentazione) {
 
         $this->idAuto = $idAuto;
         $this->modello = $modello;
@@ -19,6 +20,7 @@ class EAuto {
         $this->cavalli = $cavalli;
         $this->cilindrata = $cilindrata;
         $this->posti = $posti;
+        $this->alimentazione = $alimentazione;
     }
 
     public function getIdAuto(): int {

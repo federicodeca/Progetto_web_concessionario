@@ -2,18 +2,31 @@
 
 class EOrdine
 {
-    private int $id;
-    private string $data;
-    private string $ora;
+    private int $idOrdine;
+
+    private DateTime $data;
+
+    private DateTime $ora;
+
     private string $stato;
 
+    private ECartaDICredito $metodo;
 
-    public function __construct($id, $data, $ora, $stato)
+    private EAuto $auto;
+
+
+    public function __construct($data, $ora, $stato, ECartaDICredito $metodo, EAuto $auto)
     {
-        $this->id = $id;
+        
         $this->data = $data;
         $this->ora = $ora;
         $this->stato = $stato;
+        $this->metodo = $metodo;
+        $this->auto = $auto;
+
 
     }
+    
+ 
+    
 }
