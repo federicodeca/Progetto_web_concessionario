@@ -1,7 +1,14 @@
 <?php
+require_once 'EAuto.php';
+
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
+#[ORM\Table(name: 'auto_in_vendita')]
 
 class EAutoInVendita extends EAuto
 {
+    #[ORM\Column(type: 'integer')]
     private int $prezzo;
   
 
