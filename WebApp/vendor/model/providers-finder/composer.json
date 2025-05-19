@@ -1,0 +1,22 @@
+{
+    "name": "model/providers-finder",
+    "description": "Little internal utility to find providers between modules",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Domenico Giambra",
+            "email": "zorinik@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Model\\ProvidersFinder\\": "src/"}
+    },
+    "require": {
+        "composer-runtime-api": "^2.1",
+        "marcj/topsort": "^2.0",
+        "model/config": "^0.7.4"
+    },
+    "suggest": {
+        "model/cache": "To cache and speed up lookups"
+    }
+}

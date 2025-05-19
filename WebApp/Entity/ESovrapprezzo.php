@@ -25,7 +25,6 @@ class ESovrapprezzo
     
     #[ORM\ManyToOne(targetEntity: EAuto::class)]
     #[ORM\JoinColumn(name: 'auto_id', referencedColumnName: 'idAuto')]
-    
     private EAuto $auto;
 
 

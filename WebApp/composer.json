@@ -1,0 +1,11 @@
+{
+    "require": {
+        "doctrine/orm": "^3.3",
+        "doctrine/dbal": "^4.2",
+        "smarty/smarty": "^5.5",
+        "symfony/cache": "^7.2",
+        "model/cache": "^0.5.3"
+    }
+
+
+}

@@ -1,0 +1,23 @@
+{
+    "name": "model/config",
+    "description": "Configuration helper for ModEl Framework",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Domenico Giambra",
+            "email": "zorinik@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Model\\Config\\": "src/"}
+    },
+    "require": {
+        "php": "^8.0",
+        "composer-runtime-api": "^2.1",
+        "symfony/dotenv": "^7.0",
+        "model/providers-finder": "^0.3.0"
+    },
+    "suggest": {
+        "model/cache": "You can optionally cache your configs to redis via this library"
+    }
+}
