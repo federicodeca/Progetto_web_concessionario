@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
 {
     public static $files = array (
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
@@ -29,7 +29,6 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
             'Symfony\\Contracts\\Cache\\' => 24,
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\String\\' => 25,
-            'Symfony\\Component\\Dotenv\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
             'Smarty\\' => 7,
@@ -39,14 +38,6 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
-        ),
-        'M' => 
-        array (
-            'Model\\ProvidersFinder\\' => 22,
-            'Model\\Config\\' => 13,
-            'Model\\Cache\\' => 12,
-            'MJS\\TopSort\\Tests\\' => 18,
-            'MJS\\TopSort\\' => 12,
         ),
         'D' => 
         array (
@@ -99,10 +90,6 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
         ),
-        'Symfony\\Component\\Dotenv\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/dotenv',
-        ),
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
@@ -126,26 +113,6 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
-        ),
-        'Model\\ProvidersFinder\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/model/providers-finder/src',
-        ),
-        'Model\\Config\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/model/config/src',
-        ),
-        'Model\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/model/cache/src',
-        ),
-        'MJS\\TopSort\\Tests\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/marcj/topsort/tests/Tests',
-        ),
-        'MJS\\TopSort\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/marcj/topsort/src',
         ),
         'Doctrine\\Persistence\\' => 
         array (
