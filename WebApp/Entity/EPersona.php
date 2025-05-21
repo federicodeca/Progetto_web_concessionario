@@ -1,7 +1,7 @@
 <?php
 
 class EPersona{
-    private $id;
+    private $idPersona;
     private $nome;
     private $cognome;
     private $email;

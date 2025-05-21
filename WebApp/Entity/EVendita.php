@@ -1,12 +1,18 @@
 <?php
+namespace WebApp\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+
+#[ORM\Entity]
+#[ORM\Table(name: 'vendite')]
 
 class EVendita extends EOrdine
 {
     
-    
+    #[ORM\Column(type: 'float')]
     private float $prezzoTotale;
 
-    
+    #[ORM\]
     private Cliente $cliente;
 
    

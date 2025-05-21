@@ -9,6 +9,8 @@ class ECartaDiCredito {
     private string $nomeIntestatario;
     private string $cognomeIntestatario;
 
+    private Collection $vendite
+
     public function __construct($numeroCarta, $scadenza, $cvv, $nomeIntestatario, $cognomeIntestatario)
     {
         $this->numeroCarta = $numeroCarta;

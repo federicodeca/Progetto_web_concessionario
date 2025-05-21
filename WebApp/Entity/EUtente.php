@@ -1,4 +1,7 @@
 <?php
+namespace WebApp\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class EUtente extends Epersona {
 
@@ -7,6 +10,9 @@ private string $telefono;
 private string $città;
 private string $cap;
 private string $indirizzo;
+
+#[ORM\OnetoMany(targetEntity: ENoleggio::class, mappedBy: 'utente', cascade: ['persist', 'remove'])]
+private Collection $noleggi;
 
 
     public function __construct($nome, $cognome, $email, $telefono,$userName, $password, $città, $cap, $indirizzo)
