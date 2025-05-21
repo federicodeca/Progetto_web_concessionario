@@ -23,8 +23,8 @@ class ESovrapprezzo
     #[ORM\Column(type: 'float')]
     private float $prezzo;
     
-    #[ORM\ManyToOne(targetEntity: EAuto::class)]
-    #[ORM\JoinColumn(name: 'auto_id', referencedColumnName: 'idAuto')]
+    #[ORM\ManyToOne(targetEntity: EAuto::class,inversedBy: 'sovrapprezzi')]
+    #[ORM\JoinColumn(name: 'auto_id', referencedColumnName: 'idAuto',nullable: false)]
     private EAuto $auto;
 
 

@@ -1,36 +1,46 @@
 <?php
+namespace WebApp\Entity;
 use Doctrine\ORM\Mapping as ORM;
-
-class EAuto {
-
+use App\Repository\AutoRepository;
 
 
+#[ORM\Entity(repositoryClass: AutoRepository::class)]
+#[ORM\Table(name: 'auto')]
+#[ORM\InheritanceType("JOINED")]  //CTI joined table
+#[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
+#[ORM\DiscriminatorMap(["auto_in_vendita" => "EAutoInVendita", "auto_noleggio" => "EAutoNoleggio"])]
+
+
+
+
+
+abstract class EAuto {
 
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    private int $idAuto;
+    protected? int $idAuto;
 
     #[ORM\Column(type: 'string')]
-    private string $modello;
+    protected? string $modello;
 
     #[ORM\Column(type: 'string')]
-    private string $marca;
+    protected? string $marca;
 
     #[ORM\Column(type: 'string')]
-    private string $colore;
+    protected? string $colore;
 
     #[ORM\Column(type: 'integer')]
-    private int $cavalli;
+    protected? int $cavalli;
 
     #[ORM\Column(type: 'integer')]
-    private int $cilindrata;
+    protected? int $cilindrata;
 
     #[ORM\Column(type: 'integer')]
-    private int $posti;
+    protected? int $posti;
 
     #[ORM\Column(type: 'string')]
-    private string $alimentazione;
+    protected? string $alimentazione;
 
     public function __construct(int $idAuto, string $modello, string $marca, string $colore, int $cavalli, int $cilindrata, int $posti,string $alimentazione) {
 

@@ -7,3 +7,5 @@ require_once (__DIR__ . "install/Installation.php");
 
 Installation::install();
 
+//richiamo front controller
+

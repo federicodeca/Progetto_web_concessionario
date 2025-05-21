@@ -20,8 +20,8 @@ class EIndisponibilità {
     #[ORM\Column(type: 'boolean')]
     private bool $disponibilita = false;
 
-    #[ORM\ManyToOne(targetEntity: Auto::class)]
-    #[ORM\JoinColumn(name: 'auto_id', referencedColumnName: 'idAuto')]
+    #[ORM\ManyToOne(targetEntity: Auto::class,inversedBy: 'prenotazioni_registrate')]
+    #[ORM\JoinColumn(name: 'auto_id', referencedColumnName: 'idAuto',nullable: false)]
     private EAuto $auto;
 
     public function __construct(DateTime $inizio, DateTime $fine,EAuto $auto)

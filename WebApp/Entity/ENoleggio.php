@@ -8,6 +8,8 @@ private DateTime $dataFine;
 
 private float $prezzototale;
 
+#[ORM\ManyToOne(targetEntity: EAutoNoleggio::class, inversedBy: 'noleggi')] // 'noleggi' punta all'attributo in Auto
+#[ORM\JoinColumn(name: 'id_auto', referencedColumnName: 'idAuto', nullable: false)] // 'macchina_id' sarà la chiave esterna nella tabella 'noleggi'
 private EAutoNoleggio $auto;
 
 
