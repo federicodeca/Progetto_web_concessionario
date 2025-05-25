@@ -1,4 +1,5 @@
 <?php
+
 namespace WebApp\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,31 +19,41 @@ private DateTime $dataInizio;
 private DateTime $dataFine;
 
 #[ORM\Column(type: 'float')]
-private float $prezzototale;
+private float $prezzototale= 0.0;//cruciale!
 
-#[ORM\ManyToOne(targetEntity: EAutoNoleggio::class, inversedBy: 'noleggi')] // 'noleggi' punta all'attributo in Auto
-#[ORM\JoinColumn(name: 'id_auto', referencedColumnName: 'idAuto', nullable: false)] // 'macchina_id' sarà la chiave esterna nella tabella 'noleggi'
-private EAutoNoleggio $auto;
+#[ORM\ManyToOne(targetEntity: EAutoNoleggio::class)] 
+#[ORM\JoinColumn(name: 'id_auto', referencedColumnName: 'idAuto', nullable: false)] 
+private EAutoNoleggio $autoNol;
 
-#[ORM\ManyToOne(targetEntity: CartaDiCredito::class)]
-#[ORM\JoinColumn(name: 'carta_di_credito_id', referencedColumnName: 'idCarta', nullable: false)]
-private ECartaDiCredito $metodo;
-
-#[ORM\ManyToOne(targetEntity: EUtente::class)]
-#[ORM\JoinColumn(name: 'id_utente', referencedColumnName: 'idPersona', nullable: false)]
-private EUtente $utente;
+#
 
 
-
-    public function __construct(DateTime $dataInizio, DateTime $dataFine, $data, $ora, $stato, ECartaDiCredito $metodo, EAuto $auto)
+    public function __construct(DateTime $dataInizio, DateTime $dataFine, DateTime $dataOrdine, string $statoOrdine, ECartaDiCredito $metodo, EUtente $utente, EAutoNoleggio $autoNol)
     {
-        parent::__construct($data, $ora, $stato, $metodo, $auto);
+        parent::__construct($dataOrdine, $statoOrdine, $metodo, $utente);
         $this->dataInizio = $dataInizio;
         $this->dataFine = $dataFine;
-        $AmmontareNoleggio=$auto.getPrezzoPeriodo($dataInizio,$dataFine);
+        $this->autoNol= $autoNol;
 
-        $this->prezzoTotale = $AmmontareNoleggio;
+        
     
     }
+    public function getDataInizio(): DateTime
+    {
+        return $this->dataInizio;
+    }
+    public function setDataInizio(DateTime $dataInizio): void
+    {
+        $this->dataInizio = $dataInizio;
+    }
+    public function getDataFine(): DateTime
+    {
+        return $this->dataFine;
+    }
+    public function setDataFine(DateTime $dataFine): void
+    {
+        $this->dataFine = $dataFine;
+    }
+    
 
 }

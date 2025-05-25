@@ -9,21 +9,20 @@ use Doctrine\ORM\Mapping as ORM;
 class EVendita extends EOrdine
 {
     
-    #[ORM\Column(type: 'float')]
-    private float $prezzoTotale;
-
-    #[ORM\]
-    private Cliente $cliente;
-
-   
-    private EAutoInVendita $auto;
 
 
-    public function __construct( float $prezzoTotale , $data, $ora, $stato, ECartaDiCredito $metodo, EAuto $auto)
+    #[ORM\OneToOne (targetEntity: EAutoInVendita::class,inversedBy: 'OrdineVendita')]
+    #[ORM\JoinColumn(name: 'auto_id', referencedColumnName: 'idAuto', nullable: false)]
+    private EAutoInVendita $autoVendita;
+
+
+    public function __construct(DateTime $dataOrdine, string $statoOrdine, ECartaDiCredito $metodo, EUtente $utente, EAutoInVendita $autoVendita)
     {
-        parent::__construct($data, $ora, $stato,$metodo,$auto);
-       
-        $this->prezzoTotale = $prezzoTotale;
-       
+        parent::__construct($dataOrdine, $statoOrdine, $metodo, $utente);
+
+        $this->autoVendita= $autoVendita;
+
+        
+    
     }
 }

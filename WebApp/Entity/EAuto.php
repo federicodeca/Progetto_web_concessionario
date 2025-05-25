@@ -1,10 +1,10 @@
 <?php
 namespace WebApp\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\AutoRepository;
 
 
-#[ORM\Entity(repositoryClass: AutoRepository::class)]
+
+#[ORM\Entity]
 #[ORM\Table(name: 'auto')]
 #[ORM\InheritanceType("JOINED")]  //CTI joined table
 #[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
@@ -19,7 +19,7 @@ abstract class EAuto {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    protected? int $idAuto;
+    protected int $idAuto;
 
     #[ORM\Column(type: 'string')]
     protected? string $modello;
@@ -42,9 +42,9 @@ abstract class EAuto {
     #[ORM\Column(type: 'string')]
     protected? string $alimentazione;
 
-    public function __construct(int $idAuto, string $modello, string $marca, string $colore, int $cavalli, int $cilindrata, int $posti,string $alimentazione) {
+    public function __construct( string $modello, string $marca, string $colore, int $cavalli, int $cilindrata, int $posti,string $alimentazione) {
 
-        $this->idAuto = $idAuto;
+        
         $this->modello = $modello;
         $this->marca = $marca;
         $this->colore = $colore;
@@ -81,5 +81,30 @@ abstract class EAuto {
     public function getPosti(): int {
         return $this->posti;
     }
+    public function getAlimentazione(): string {
+        return $this->alimentazione;
+    }
+    public function setModello(string $modello): void {
+        $this->modello = $modello;
+    }
+    public function setMarca(string $marca): void {
+        $this->marca = $marca;
+    }
+    public function setColore(string $colore): void {
+        $this->colore = $colore;
+    }
+    public function setCavalli(int $cavalli): void {
+        $this->cavalli = $cavalli;
+    }
+    public function setCilindrata(int $cilindrata): void {
+        $this->cilindrata = $cilindrata;
+    }
+    public function setPosti(int $posti): void {
+        $this->posti = $posti;
+    }
+    public function setAlimentazione(string $alimentazione): void {
+        $this->alimentazione = $alimentazione;
+    }
+
 
 }

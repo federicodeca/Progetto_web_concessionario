@@ -1,25 +1,40 @@
 <?php
+
+
 namespace WebApp\Entity;
+require_once 'Epersona.php';
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
+#[ORM\Entity]
+#[ORM\Table(name: 'utenti')]
+
 class EUtente extends Epersona {
 
-private string $descrizione;
-private string $telefono;
-private string $città;
-private string $cap;
-private string $indirizzo;
 
-#[ORM\OnetoMany(targetEntity: ENoleggio::class, mappedBy: 'utente', cascade: ['persist', 'remove'])]
-private Collection $noleggi;
+protected string $descrizione="Utente";
+
+#[ORM\Column(type: 'string')]
+protected string $telefono;
+
+#[ORM\Column(type: 'string')]
+protected string $città;
+
+#[ORM\Column(type: 'integer')]
+protected int $cap;
+
+#[ORM\Column(type: 'string')]
+protected string $indirizzo;
 
 
-    public function __construct($nome, $cognome, $email, $telefono,$userName, $password, $città, $cap, $indirizzo)
+
+
+    public function __construct($nome, $cognome, $email, $telefono, $userName, $password, $città, $cap, $indirizzo)
     {
         parent::__construct($nome, $cognome, $email, $userName, $password);
-        $this->telefono = $telefono;
-        $this->descrizione = "Utente";
+        $this->telefono = $telefono;  
         $this->città = $città;
         $this->cap = $cap;
         $this->indirizzo = $indirizzo;
