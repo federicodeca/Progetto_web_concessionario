@@ -1,6 +1,6 @@
 <?php
 
-namespace WebApp\Entity;
+namespace Entity;
 
 require_once 'Eperson.php';
 

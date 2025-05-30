@@ -184,7 +184,7 @@ class FEntityManager {
     }
 
     /**
-     * INSERT/UPDATE
+     * INSERT/UPDATE(transaction)
      * save one object in the db (persistance of Entity)
      * This method uses a transaction to ensure that the object is saved correctly.
      * If an error occurs, the transaction is rolled back and an error message is displayed.
@@ -206,8 +206,9 @@ class FEntityManager {
     }
 
     /**
-     * DELETE
-     * delete an object from the db
+     * DELETE(transaction)
+     * delete an object from the db 
+     * This method uses a transaction to ensure that the object is deleted correctly.
      * @return boolean
      */
     public static function deleteObj($obj){

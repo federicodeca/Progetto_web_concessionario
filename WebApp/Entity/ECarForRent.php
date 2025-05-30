@@ -1,5 +1,5 @@
 <?php
-namespace WebApp\Entity;
+namespace Entity;
 
 require_once 'EAuto.php';
 use Doctrine\ORM\Mapping as ORM;
