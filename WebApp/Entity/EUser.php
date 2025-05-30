@@ -1,6 +1,7 @@
 <?php
 
 namespace WebApp\Entity;
+
 require_once 'Eperson.php';
 
 use Doctrine\ORM\Mapping as ORM;
