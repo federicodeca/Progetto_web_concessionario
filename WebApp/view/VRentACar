@@ -1,0 +1,19 @@
+<?php
+
+class VRentACar {
+    private $smarty;
+
+
+      public function __construct(){
+
+        $this->smarty = StartSmarty::configuration();
+
+    }
+
+    public function showCars($cars) {
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->display('rentacar.tpl');
+    }
+
+
+}
