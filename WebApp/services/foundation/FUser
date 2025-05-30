@@ -1,0 +1,11 @@
+<?php
+
+use WebApp\Entity\EUser;
+
+class FUser {
+
+    public static function getUserByUsername($username) {
+        $user = FEntityManager::getInstance()->retriveObjOnField(EUser::class, 'username', $username);
+        return $user;
+    }
+}

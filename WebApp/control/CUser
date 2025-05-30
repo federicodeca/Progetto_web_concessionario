@@ -1,0 +1,51 @@
+<?php
+// 
+// class CUser {
+//
+//     public static function isLogged(): bool {
+//
+//         $logged = false;
+//
+//         if(UCookie::isSet('PHPSESSID')){
+//             if (session_status() === PHP_SESSION_NONE) {
+//                 USession::getInstance();
+//             }
+//         }
+//         if(USession::isSetSession('user')) {
+//             $logged = true;
+//         }
+//
+//         if (!$logged){
+//             header('Location: /login.php'); // Redirect to login page if not logged in
+//             exit();
+//         }
+//
+//         return true;
+//     }
+//
+//
+//     public static function login(){
+//         if(UCookie::isSet('PHPSESSID')){
+//             if (session_status() === PHP_SESSION_NONE) {
+//                 USession::getInstance();
+//             }
+//         }
+//         if(USession::isSetSession('user')) { //user is logged direct to homepage
+//             header('Location: /WebApp/User/Home');
+//         }
+//         $view= new VUser();
+//         $view->showLoginForm();
+//
+//     }
+//     /**
+//      * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
+//      * @return void
+//      */
+//     public static function logout(){
+//         USession::getInstance();
+//         USession::unsetSession();
+//         USession::destroySession();
+//         header('Location: /login.php');
+//     }
+// }
+// 
