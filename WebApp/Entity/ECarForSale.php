@@ -15,7 +15,7 @@ class ECarForSale extends EAuto
     protected bool $available = true;
 
     #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale', nullable: true)]
-    protected ?ESale $saleOrder = null;
+    protected? ESale $saleOrder = null;
 
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, int $price)
     {

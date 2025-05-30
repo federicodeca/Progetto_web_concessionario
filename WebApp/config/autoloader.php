@@ -11,11 +11,11 @@ function my_autoloader($className) {
         $firstLetter = $className[0];
         switch ($firstLetter) {
             case 'E':
-                include_once(__DIR__ . '/../models/'. $className . '.php' );
+                include_once(__DIR__ . '/../entity/'. $className . '.php' );
                 break;
 
             case 'F':
-                include_once(__DIR__ . "/../services/TechnicalServiceLayer/foundation/" . $className . '.php' );
+                include_once(__DIR__ . "/../foundation/" . $className . '.php' );
                 break;
 
             case 'V':
@@ -27,7 +27,7 @@ function my_autoloader($className) {
                 break;
 
             case 'U':
-                include_once (__DIR__ . '/../services/TechnicalServiceLayer/utility/'. $className. '.php');
+                include_once (__DIR__ . '/../utility/'. $className. '.php');
                 break;
 
     }

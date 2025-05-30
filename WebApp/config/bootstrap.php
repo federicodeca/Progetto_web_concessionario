@@ -27,6 +27,7 @@ function getEntityManager(): EntityManager
         paths: [__DIR__."/../Entity"],
         isDevMode: true, // Set to false in production, true=let to modifiy entity schema
     );
+    $config->setAutoGenerateProxyClasses(true);
 
     // Create a connection with PDO MySQL
     $conn = DriverManager::getConnection($connectionParams,$config);
