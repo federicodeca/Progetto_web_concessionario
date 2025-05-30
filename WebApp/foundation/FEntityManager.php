@@ -11,7 +11,7 @@ class FEntityManager {
         global $entityManager;
         self::$entityManager = $entityManager;
     }
-
+    //singleton
     public static function getInstance(){
         if (!self::$instance) {
             self::$instance = new self();
@@ -41,6 +41,8 @@ class FEntityManager {
     /**
      * return an object finding it not on the id but on an attribute
      * findOneBy is a method of the repository, find one object by a specific field
+     * $class is the full name of the entity class (ex. App\Entity\User)
+     * @return object|null
      */
     public static function retriveObjOnField($class, $field, $value){
         try{
@@ -54,7 +56,7 @@ class FEntityManager {
 
     /**
      * $table contains the full name of the entity class (ex. App\Entity\User)
-     * return a list of objects
+     * return a list of objects of a specific table where the field value is equal to the id
      * @return array
      */
     public static function objectList($table, $field, $id)
@@ -153,7 +155,10 @@ class FEntityManager {
     }
 
     /**
-     * verify if exist an object
+     * CHECK IF EXISTS
+     * verify if exist an object in a table with a specific attribute
+     * @param string $fieldId is the id of the field to be returned, if you want to return the id of the object use 'id'
+     * @return boolean|null
      */
     public static function verifyAttributes($fieldId, $table, $field, $id){
         try{
@@ -174,7 +179,10 @@ class FEntityManager {
     }
 
     /**
+     * INSERT/UPDATE
      * save one object in the db (persistance of Entity)
+     * This method uses a transaction to ensure that the object is saved correctly.
+     * If an error occurs, the transaction is rolled back and an error message is displayed.
      * @return boolean
      */
     public static function saveObject($obj)
@@ -193,6 +201,7 @@ class FEntityManager {
     }
 
     /**
+     * DELETE
      * delete an object from the db
      * @return boolean
      */
