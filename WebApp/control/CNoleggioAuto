@@ -4,7 +4,7 @@
 class CRentACar {
     
     public static function showRentACarPage() {
-        $cars = FAuto::getAllCars('rents');
+        $cars = FAuto::getAllCars('cars_for_rent');
         return $cars;
         
         $view = new VRentACar();
