@@ -26,6 +26,9 @@ class EUser extends Eperson {
     #[ORM\Column(type: 'string')]
     protected string $address;
 
+    #[ORM\Column(type: 'boolean')]
+    protected boolean $isVerified ;
+
     public function __construct($name, $surname, $email, $phone, $userName, $password, $city, $zipCode, $address)
     {
         parent::__construct($name, $surname, $email, $userName, $password);
@@ -33,6 +36,8 @@ class EUser extends Eperson {
         $this->city = $city;
         $this->zipCode = $zipCode;
         $this->address = $address;
+        $this->$isVerified = false; // Default value
+        
     }
     public function getDescription()
     {
@@ -53,5 +58,13 @@ class EUser extends Eperson {
     public function getAddress()
     {
         return $this->address;
+    }
+    public function isVerified(): bool
+    {
+        return $this->isVerfied;
+    }
+    public function setVerified(bool $isVerified): void
+    {
+        $this->isVerfied = $isVerified;
     }
 }
