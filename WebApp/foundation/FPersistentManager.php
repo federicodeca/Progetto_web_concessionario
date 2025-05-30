@@ -97,6 +97,18 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * return all cars from a table
+     * @param string $table
+     * @return array
+     */
+    public static function retriveAllCars($table)
+    {
+        $result = FAuto::getAllCars($table);
+
+        return $result;
+    }
+
 
 
 
