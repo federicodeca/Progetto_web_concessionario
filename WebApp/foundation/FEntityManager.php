@@ -3,6 +3,7 @@
 require_once(__DIR__ . '/../config/bootstrap.php');
 
 class FEntityManager {
+
     private static $instance;
     private static $entityManager;
 
@@ -11,6 +12,7 @@ class FEntityManager {
         global $entityManager;
         self::$entityManager = $entityManager;
     }
+
     //singleton
     public static function getInstance(){
         if (!self::$instance) {
@@ -75,6 +77,7 @@ class FEntityManager {
     }
 
     /**
+     * OBJECT WITH NULL FIELD
      * return all the object of a specifyc table where the field value is null
      * @return array
      */
@@ -95,6 +98,7 @@ class FEntityManager {
     }
 
     /**
+     * FIND OBJECTS ON TWO ATTRIBUTES
      * return an object finding it not on the id but specifying 2 attributes
      */
     public static function getObjOnTwoAttributes($table, $field1, $value1, $field2, $value2)
@@ -137,6 +141,7 @@ class FEntityManager {
     }
 
     /**
+     * FIND OBJECTS BY ATTRIBUTE
      * return the number of objects in a list finding they on a specific attribute
      */
     public static function countObjectListAttribute($table, $field, $value)
