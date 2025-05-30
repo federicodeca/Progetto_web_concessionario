@@ -1,28 +1,25 @@
 <?php
-
 namespace WebApp\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table(name: 'persone')]
+#[ORM\Table(name: 'persons')]
 #[ORM\InheritanceType("JOINED")] // STI single table inheritance
-#[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
-#[ORM\DiscriminatorMap(["admin" => "EAdmin", "utente" => "EUtente"])]
+#[ORM\DiscriminatorColumn(name: "type", type: "string")]
+#[ORM\DiscriminatorMap(["admin" => "EAdmin", "user" => "EUser"])]
 
-
-
-class EPersona{
+class EPerson {
 
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    protected $idPersona;
+    protected $PersonId;
 
     #[ORM\Column(type: 'string')]
-    protected $nome;
+    protected $firstName;
 
     #[ORM\Column(type: 'string')]
-    protected $cognome;
+    protected $lastName;
 
     #[ORM\Column(type: 'string', unique: true)]
     protected $email;
@@ -30,25 +27,20 @@ class EPersona{
     #[ORM\Column(type: 'string')]
     protected $password;
 
-
     #[ORM\Column(type: 'string', unique: true)]
     protected $userName;
 
+    protected static $entity = EPerson::class;
 
-    protected static $entity=EPersona::class;
-    
-
-
-    public function __construct( $nome, $cognome, $email,$password,$userName)
+    public function __construct($firstName, $lastName, $email, $password, $userName)
     {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        
-        $this->nome = $nome;        
-        $this->cognome = $cognome;
+
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
         $this->email = $email;
         $this->password = $hashedPassword;
         $this->userName = $userName;
-
     }
 
     public function getPassword()
@@ -58,23 +50,23 @@ class EPersona{
     public function setPassword($password)
     {
         $this->password = password_hash($password, PASSWORD_DEFAULT);
-    }   
+    }
     public static function getEntity()
     {
         return self::$entity;
-    }   
-    
+    }
+
     public function getId()
     {
-        return $this->id;
+        return $this->PersonId;
     }
-    public function getNome()
+    public function getFirstName()
     {
-        return $this->nome;
+        return $this->firstName;
     }
-    public function getCognome()
+    public function getLastName()
     {
-        return $this->cognome;
+        return $this->lastName;
     }
     public function getEmail()
     {
@@ -84,8 +76,4 @@ class EPersona{
     {
         return $this->userName;
     }
-
-
-
-
 }

@@ -2,17 +2,11 @@
 namespace WebApp\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-
-
 #[ORM\Entity]
 #[ORM\Table(name: 'auto')]
 #[ORM\InheritanceType("JOINED")]  //CTI joined table
-#[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
-#[ORM\DiscriminatorMap(["auto_in_vendita" => "EAutoInVendita", "auto_noleggio" => "EAutoNoleggio"])]
-
-
-
-
+#[ORM\DiscriminatorColumn(name: "type", type: "string")]
+#[ORM\DiscriminatorMap(["car_for_sale" => "ECarForSale", "rental_car" => "ECarForRent" ])]
 
 abstract class EAuto {
 
@@ -22,89 +16,93 @@ abstract class EAuto {
     protected int $idAuto;
 
     #[ORM\Column(type: 'string')]
-    protected? string $modello;
+    protected? string $model;
 
     #[ORM\Column(type: 'string')]
-    protected? string $marca;
+    protected? string $brand;
 
     #[ORM\Column(type: 'string')]
-    protected? string $colore;
+    protected? string $color;
 
     #[ORM\Column(type: 'integer')]
-    protected? int $cavalli;
+    protected? int $horsepower;
 
     #[ORM\Column(type: 'integer')]
-    protected? int $cilindrata;
+    protected? int $displacement;
 
     #[ORM\Column(type: 'integer')]
-    protected? int $posti;
+    protected? int $seats;
 
     #[ORM\Column(type: 'string')]
-    protected? string $alimentazione;
+    protected? string $fuelType;
 
-    public function __construct( string $modello, string $marca, string $colore, int $cavalli, int $cilindrata, int $posti,string $alimentazione) {
-
-        
-        $this->modello = $modello;
-        $this->marca = $marca;
-        $this->colore = $colore;
-        $this->cavalli = $cavalli;
-        $this->cilindrata = $cilindrata;
-        $this->posti = $posti;
-        $this->alimentazione = $alimentazione;
+    public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, string $fuelType) {
+        $this->model = $model;
+        $this->brand = $brand;
+        $this->color = $color;
+        $this->horsepower = $horsepower;
+        $this->displacement = $displacement;
+        $this->seats = $seats;
+        $this->fuelType = $fuelType;
     }
 
     public function getIdAuto(): int {
         return $this->idAuto;
     }
 
-    public function getModello(): string {
-        return $this->modello;
+    public function getModel(): string {
+        return $this->model;
     }
 
-    public function getMarca(): string {
-        return $this->marca;
+    public function getBrand(): string {
+        return $this->brand;
     }
 
-    public function getColore(): string {
-        return $this->colore;
+    public function getColor(): string {
+        return $this->color;
     }
 
-    public function getCavalli(): int {
-        return $this->cavalli;
+    public function getHorsepower(): int {
+        return $this->horsepower;
     }
 
-    public function getCilindrata(): int {
-        return $this->cilindrata;
+    public function getDisplacement(): int {
+        return $this->displacement;
     }
 
-    public function getPosti(): int {
-        return $this->posti;
-    }
-    public function getAlimentazione(): string {
-        return $this->alimentazione;
-    }
-    public function setModello(string $modello): void {
-        $this->modello = $modello;
-    }
-    public function setMarca(string $marca): void {
-        $this->marca = $marca;
-    }
-    public function setColore(string $colore): void {
-        $this->colore = $colore;
-    }
-    public function setCavalli(int $cavalli): void {
-        $this->cavalli = $cavalli;
-    }
-    public function setCilindrata(int $cilindrata): void {
-        $this->cilindrata = $cilindrata;
-    }
-    public function setPosti(int $posti): void {
-        $this->posti = $posti;
-    }
-    public function setAlimentazione(string $alimentazione): void {
-        $this->alimentazione = $alimentazione;
+    public function getSeats(): int {
+        return $this->seats;
     }
 
+    public function getFuelType(): string {
+        return $this->fuelType;
+    }
 
+    public function setModel(string $model): void {
+        $this->model = $model;
+    }
+
+    public function setBrand(string $brand): void {
+        $this->brand = $brand;
+    }
+
+    public function setColor(string $color): void {
+        $this->color = $color;
+    }
+
+    public function setHorsepower(int $horsepower): void {
+        $this->horsepower = $horsepower;
+    }
+
+    public function setDisplacement(int $displacement): void {
+        $this->displacement = $displacement;
+    }
+
+    public function setSeats(int $seats): void {
+        $this->seats = $seats;
+    }
+
+    public function setFuelType(string $fuelType): void {
+        $this->fuelType = $fuelType;
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 
-class EAdmin extends EPersona {
+class EAdmin extends EPerson {
 
-private string $descrizione="Admin";
+private string $description ="Admin";
 
 }
