@@ -1,6 +1,6 @@
 <?php
 
-use WebApp\Entity\EAdmin;
+use Entity\EAdmin;
 
 class FAdmin {
 

@@ -56,7 +56,7 @@ class FPersistentManager {
 
 
 
-    //USER AND ADMIN
+    //         ----- USER AND ADMIN -----
     /**
      * return a User finding it not on the id but on it's username
      * @param string $username
@@ -78,13 +78,13 @@ class FPersistentManager {
      */
     public static function retriveAdmOnUsername($username)
     {
-        $result = FAdmin::getAdmByUsername($username);
+        $result = FAdmin::getAdminByUsername($username);
 
         return $result;
     }
 
 
-    //CAR
+    //            ----- CAR -----
     /**
      * return a car finding it on the id
      * @param int $id
