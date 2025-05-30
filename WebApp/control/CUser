@@ -22,6 +22,13 @@
 //
 //         return true;
 //     }
+
+//     public static function DocVerified($username): bool {
+//         return FPersistentManager::getInstance()->getUserByUsername($username)->getIsVerified();
+//     
+// 
+// 
+//                         
 //
 //
 //     public static function login(){

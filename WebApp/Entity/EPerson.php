@@ -32,7 +32,7 @@ class EPerson {
 
     protected static $entity = EPerson::class;
 
-    public function __construct($firstName, $lastName, $email, $password, $userName)
+    public function __construct($firstName, $lastName, $email, $password, $username)
     {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -40,7 +40,7 @@ class EPerson {
         $this->lastName = $lastName;
         $this->email = $email;
         $this->password = $hashedPassword;
-        $this->userName = $userName;
+        $this->userName = $username;
     }
 
     public function getPassword()
@@ -72,8 +72,8 @@ class EPerson {
     {
         return $this->email;
     }
-    public function getUserName()
+    public function getUsername()
     {
-        return $this->userName;
+        return $this->username;
     }
 }

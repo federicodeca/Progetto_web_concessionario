@@ -31,7 +31,7 @@ class EUser extends Eperson {
 
     public function __construct($name, $surname, $email, $phone, $userName, $password, $city, $zipCode, $address)
     {
-        parent::__construct($name, $surname, $email, $userName, $password);
+        parent::__construct($name, $surname, $email, $username, $password);
         $this->phone = $phone;  
         $this->city = $city;
         $this->zipCode = $zipCode;
