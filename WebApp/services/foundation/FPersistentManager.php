@@ -78,7 +78,7 @@ class FPersistentManager {
      */
     public static function retriveAdmOnUsername($username)
     {
-        $result = FAdmin::getAdmByUsername($username);
+        $result = FAdmin::getAdminByUsername($username);
 
         return $result;
     }
