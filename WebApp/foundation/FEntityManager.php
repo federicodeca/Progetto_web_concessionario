@@ -73,30 +73,7 @@ class FEntityManager {
     }
 
     /**
-     * return a list of object that are not banned (for ex. posts and comments not banned)
-     * @return array
-     */
-    public static function objectListNotRemoved($table, $field, $id)
-    {
-        try{
-            $dql = "SELECT e FROM " . $table . " e WHERE e." . $field . " = :creatorId AND e.removed = 0";
-            $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('creatorId', $id);
-            $result = $query->getResult();
-            if(count($result) > 0)
-            {
-                return $result;
-            }else{
-                return array();
-            }
-        }catch(Exception $e){
-            echo "ERROR " . $e->getMessage();
-            return array();
-        }
-    }
-
-    /**
-     * return all the object of a specifyc table where the field value is null(ex. all the report)
+     * return all the object of a specifyc table where the field value is null
      * @return array
      */
     public static function objectListUsingNull($table, $field){
@@ -118,13 +95,13 @@ class FEntityManager {
     /**
      * return an object finding it not on the id but specifying 2 attributes
      */
-    public static function getObjOnTwoAttributes($table, $field1, $id1, $field2, $id2)
+    public static function getObjOnTwoAttributes($table, $field1, $value1, $field2, $value2)
     {
         try{
-            $dql = "SELECT e FROM " . $table . " e WHERE e." . $field1 . " = :id1 AND e." . $field2 . " = :id2";
+            $dql = "SELECT e FROM " . $table . " e WHERE e." . $field1 . " = :value1 AND e." . $field2 . " = :value2";
             $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('id1', $id1);
-            $query->setParameter('id2', $id2);
+            $query->setParameter('value1', $value1);
+            $query->setParameter('value2', $value2);
             $result = $query->getOneOrNullResult();
             return $result;
 
@@ -135,9 +112,10 @@ class FEntityManager {
         }
     }
 
+
     /**
      * return a list of all the object that have the $str in the specified attribute
-     */
+    */
     public static function getSearchedItem($table, $field, $str)
     {
         try{
@@ -159,12 +137,12 @@ class FEntityManager {
     /**
      * return the number of objects in a list finding they on a specific attribute
      */
-    public static function countObjectListAttribute($table, $field, $id)
+    public static function countObjectListAttribute($table, $field, $value)
     {
         try{
             $dql = "SELECT COUNT(e) FROM " . $table . " e WHERE  e." .$field . " = :attribute";
             $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('attribute', $id);
+            $query->setParameter('attribute', $value);
 
             $result = $query->getSingleScalarResult();
             return $result;
@@ -202,10 +180,10 @@ class FEntityManager {
     public static function saveObject($obj)
     {
         try{
-            self::$entityManager->getConnection()->beginTransaction();
+            self::$entityManager->getConnection()->beginTransaction();  // begin transaction
             self::$entityManager->persist($obj);
             self::$entityManager->flush();
-            self::$entityManager->getConnection()->commit();
+            self::$entityManager->getConnection()->commit();     // commit transaction, object is saved correctly
             return true;
         }catch(Exception $e){
             self::$entityManager->getConnection();
@@ -233,7 +211,7 @@ class FEntityManager {
     }
 
     /**
-     * return an array of all elemnts of a table
+     * return an array of all elements of a table
      * @return array
      */
     public static function selectAll($table){
