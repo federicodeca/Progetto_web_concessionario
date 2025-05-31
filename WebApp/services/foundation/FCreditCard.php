@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 class FCreditCard {
 
     public static function getCreditCardByUserId($user) {

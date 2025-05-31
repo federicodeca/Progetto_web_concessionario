@@ -47,7 +47,7 @@ class CUser {
                 if(USession::getSessionStatus() === PHP_SESSION_NONE){
                     USession::getInstance();
                     USession::setElementInSession('user', $user->getId());
-                    header('Location: /WebApp/User/overview');
+                    header('Location: /WebApp/User/loginAndCreditRequirement');
                 }
 
             }else{
@@ -123,7 +123,7 @@ class CUser {
     }
 
 
-    public static function selectedDate() {
+        public static function loginAndCreditRequirement() {
 
         if (CUser::isLogged()) {
             if (CUser::DocVerified(USession::getElementFromSession('user'))) {
@@ -148,6 +148,55 @@ class CUser {
 
         }
     }
+
+    public static function showOverview() {
+
+        if (CUser::isLogged()) {
+            $userId = USession::getElementFromSession('user');
+            $CardName= UHTTPMethods::post('cardName');
+            $CardNumber= UHTTPMethods::post('cardName');
+            $CardExpiry= UHTTPMethods::post('cardExpiry');
+            $CardCVV= UHTTPMethods::post('cardCVV');
+            USession::setElementInSession('cardName', $CardName);
+            USession::setElementInSession('cardNumber', $CardNumber);
+            USession::setElementInSession('cardExpiry', $CardExpiry);
+            USession::setElementInSession('cardCVV', $CardCVV);
+            $card= new ECreditCard($CardName, $CardNumber, $CardExpiry, $CardCVV,$userId);
+            FPersistentManager::getInstance()->uploadObj($card); // Persist the credit card
+            $view = new VUser();
+            $view->showOverview($card); //button for confirm o to go back to the form
+        } else {
+            header('Location: /WebApp/User/Home');
+        }
+    }
+
+    public static function confirmRent() {
+
+        if (CUser::isLogged()) {
+            $start=USession::getElementFromSession('startDate');
+            $end=USession::getElementFromSession('endDate');
+            $idAuto=USession::getElementFromSession('idAuto');
+            $indisp= new EUnavailability($start, $end, $idAuto);
+            $auto= FPersistentManager::getInstance()->getObjectById(ECarForRent::class, $idAuto);
+            if ($auto->checkUnavailability($indisp)) {
+                FConnection::locktable('cars_for_rent'); // Lock the table to prevent concurrent modifications
+                FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
+                $auto->addUnavailability($indisp); // Add the unavailability to the car
+                FConnection::unlockTable('cars_for_rent'); // Unlock the table after the operation
+                $view = new VUser();
+                $view->showRentConfirmation();
+            }
+            else {
+                $view = new VUser();
+                $view->showErrorUnavailability(); // Show error message if the car is not available
+                exit();
+            }
+        }
+    }
+
+
+
+
 
 
 

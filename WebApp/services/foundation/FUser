@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 class FUser {
 
     public static function getUserByUsername($username) {

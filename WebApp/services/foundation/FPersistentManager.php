@@ -133,6 +133,14 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * TRANSACTION INSERT
+     */
+    public static function saveObject($obj) {
+        $result = FEntityManager::getInstance()->saveObject($obj);
+        return $result;
+    }
+
 
 
 
