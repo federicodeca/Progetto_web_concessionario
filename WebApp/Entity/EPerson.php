@@ -74,6 +74,6 @@ class EPerson {
     }
     public function getUsername()
     {
-        return $this->username;
+        return $this->userName;
     }
 }

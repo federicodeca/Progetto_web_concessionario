@@ -1,6 +1,7 @@
 <?php
 
 namespace Entity;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -64,7 +65,7 @@ class EUnavailability {
     }
     public function getCarId(): int
     {
-        return $this->car->getIdCar();
+        return $this->car->getCarId();
     }
     public function setCar(ECarForRent $car): void
     {
