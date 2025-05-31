@@ -1,0 +1,10 @@
+<?php
+
+class FCarForRent {
+
+    public static function getAllCarsForRent($table) {
+        $cars = FEntityManager::getInstance()->selectAll($table);
+        return $cars;
+    }
+
+}

@@ -29,7 +29,6 @@ class FPersistentManager {
         return $res;
     }
 
- 
 
     /**
      * return object by field
@@ -45,6 +44,7 @@ class FPersistentManager {
     }
 
     /**
+     * UPLOAD OBJECT
      * upload any Object in the database
      */
     public static function uploadObj($obj){
@@ -109,7 +109,21 @@ class FPersistentManager {
         return $result;
     }
 
+    /** 
+     * return all cars for rent from the table
+     */
+    public static function retriveAllRentCars($tabel) {
+        $result = FCarForRent::getAllCarsForRent($tabel);
+        return $result;
+    }
 
+    /**
+     * return all cars for sale from the table
+     */
+    public static function retriveAllSaleCars($table) {
+        $result = FCarForSale::getAllCarsForSale($table);
+        return $result;
+    }
 
 
 

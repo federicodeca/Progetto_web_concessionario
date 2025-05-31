@@ -1,6 +1,6 @@
 <?php
 
-
+use Entity\EUser;
 
 class FUser {
 
