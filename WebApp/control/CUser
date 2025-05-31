@@ -179,7 +179,7 @@ class CUser {
             $indisp= new EUnavailability($start, $end, $idAuto);
             $auto= FPersistentManager::getInstance()->getObjectById(ECarForRent::class, $idAuto);
             if ($auto->checkUnavailability($indisp)) {
-                FConnection::locktable('cars_for_rent'); // Lock the table to prevent concurrent modifications
+                FConnection::lockTable('cars_for_rent'); // Lock the table to prevent concurrent modifications
                 FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
                 $auto->addUnavailability($indisp); // Add the unavailability to the car
                 FConnection::unlockTable('cars_for_rent'); // Unlock the table after the operation
