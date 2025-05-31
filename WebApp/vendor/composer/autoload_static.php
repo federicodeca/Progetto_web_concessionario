@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
@@ -18,6 +18,10 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WebApp\\' => 7,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php84\\' => 23,
@@ -39,10 +43,6 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
-        'E' => 
-        array (
-            'Entity\\' => 7,
-        ),
         'D' => 
         array (
             'Doctrine\\Persistence\\' => 21,
@@ -58,6 +58,10 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
     );
 
     public static $prefixDirsPsr4 = array (
+        'WebApp\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/WebApp',
+        ),
         'Symfony\\Polyfill\\Php84\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php84',
@@ -117,10 +121,6 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
-        ),
-        'Entity\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Entity',
         ),
         'Doctrine\\Persistence\\' => 
         array (

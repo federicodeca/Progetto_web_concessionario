@@ -1,6 +1,6 @@
 <?php
-namespace Entity;
 
+use DateTime;
 require_once 'EAuto.php';
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -58,4 +58,28 @@ class ECarForRent extends EAuto
         $surcharge->setCar($this);
         $this->surcharges[] = $surcharge;
     }
+
+
+    public function getAllIndispDates(): array
+    {
+        $indispDates = [];
+        foreach ($this->unavailabilities as $unavailability) {
+            $indispDates[] = $unavailability->getDate();
+        }
+        return $indispDates;
+    }
+
+    public function checkAvailability(DateTime $start, DateTime $end): bool
+    {
+        foreach ($this->unavailabilities as $unavailability) {
+            if ($unavailability->getStart() <= $end && $unavailability->getEnd() >= $start) {
+                return false; // Overlapping dates found
+            }
+        }
+        return true; // No overlapping dates
+    }
+
+
+
+
 }

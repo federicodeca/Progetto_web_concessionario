@@ -1,5 +1,5 @@
 <?php
-namespace Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
@@ -84,6 +84,6 @@ abstract class EOrder
     }
     public function getUserId(): int
     {
-        return $this->user->getPersonId();
+        return $this->user->getId();
     }
 }

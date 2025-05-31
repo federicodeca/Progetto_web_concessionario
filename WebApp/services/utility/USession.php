@@ -20,6 +20,12 @@ class USession {
         }
         return self::$instance;
     }
+    /**
+     * get the session status
+     */
+    public static function getSessionStatus(): int {
+        return session_status();
+    }
 
     /**
      * get an element from the session

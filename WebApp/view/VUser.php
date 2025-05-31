@@ -1,6 +1,6 @@
 <?php
 
-class VRentACar {
+class VUser{
     private $smarty;
 
 

@@ -1,5 +1,4 @@
 <?php
-namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
@@ -75,6 +74,6 @@ class ESurcharge
     }
     public function getIdCar(): int
     {
-        return $this->car->getIdCar();
+        return $this->car->getIdAuto();
     }
 }

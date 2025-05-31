@@ -1,6 +1,6 @@
 <?php
 
-namespace Entity;
+
 
 require_once 'Eperson.php';
 
@@ -59,7 +59,7 @@ class EUser extends Eperson {
     {
         return $this->address;
     }
-    public function isVerified(): bool
+    public function GetIsVerified(): bool
     {
         return $this->isVerified;
     }

@@ -1,5 +1,5 @@
 <?php
-namespace Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 require_once 'EUser.php';
@@ -18,7 +18,7 @@ class ECreditCard {
     private string $cardNumber;
 
     #[ORM\Column(type: 'DateTime')]
-    private string $expirationDate;
+    private DateTime $expirationDate;
 
     #[ORM\Column(type: 'string')]
     private string $cvv;
@@ -35,7 +35,7 @@ class ECreditCard {
         $this->cvv = $cvv;
         $this->user = $user;
     }
-    public function getId(): int
+    public function getCardId(): int
     {
         return $this->CardId;
     }
@@ -73,6 +73,6 @@ class ECreditCard {
     }
     public function getUserId(): int
     {
-        return $this->user->getUserId();
+        return $this->user->getId();
     }
 }
