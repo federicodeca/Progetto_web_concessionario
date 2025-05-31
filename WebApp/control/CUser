@@ -1,58 +1,126 @@
 <?php
-// 
-// class CUser {
-//
-//     public static function isLogged(): bool {
-//
-//         $logged = false;
-//
-//         if(UCookie::isSet('PHPSESSID')){
-//             if (session_status() === PHP_SESSION_NONE) {
-//                 USession::getInstance();
-//             }
-//         }
-//         if(USession::isSetSession('user')) {
-//             $logged = true;
-//         }
-//
-//         if (!$logged){
-//             header('Location: /login.php'); // Redirect to login page if not logged in
-//             exit();
-//         }
-//
-//         return true;
-//     }
+class CUser {
 
-//     public static function DocVerified($username): bool {
-//         return FPersistentManager::getInstance()->getUserByUsername($username)->getIsVerified();
-//     }
-// 
-// 
-//                         
-//
-//
-//     public static function login(){
-//         if(UCookie::isSet('PHPSESSID')){
-//             if (session_status() === PHP_SESSION_NONE) {
-//                 USession::getInstance();
-//             }
-//         }
-//         if(USession::isSetSession('user')) { //user is logged direct to homepage
-//             header('Location: /WebApp/User/Home');
-//         }
-//         $view= new VUser();
-//         $view->showLoginForm();
-//
-//     }
-//     /**
-//      * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
-//      * @return void
-//      */
-//     public static function logout(){
-//         USession::getInstance();
-//         USession::unsetSession();
-//         USession::destroySession();
-//         header('Location: /login.php');
-//     }
-// }
-// 
+    /**
+     * this method is used to check if the user is logged in, if not it will redirect to the login page
+     * @return void
+     */
+
+    public static function isLogged(): bool {
+
+        
+        if (session_status() === PHP_SESSION_NONE) {
+            USession::getInstance(); //control PHPSESSID , eventually start session
+        }
+        
+        if(USession::isSetSessionElement('user')) {
+            return true; 
+        }
+
+        header('Location: /login.php'); // Redirect to login page if not logged in
+        exit();
+        
+        }
+
+        /**
+         * this method is used to check if the document is verified, if not it will return false
+         * @param object $user
+         * 
+         */
+    public static function DocVerified($user): bool {
+
+        return FPersistentManager::getInstance()->getUserByUsername($user->getUsername())->getIsVerified();
+    }
+
+
+
+    public static function login(){
+        
+        if (session_status() === PHP_SESSION_NONE) {
+            USession::getInstance();
+        }
+        
+        if(USession::isSetSessionElement('user')) { //user is logged direct to homepage
+            header('Location: /WebApp/User/Home');
+        }
+        $view= new VUser();
+        $view->showLoginForm();
+
+    }
+    /**
+     * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
+     * @return void
+     */
+    public static function logout(){
+        USession::getInstance();
+        USession::unsetSession();
+        USession::destroySession();
+        setcookie('PHPSESSID','',time()-42000); //??
+        header('Location: /WebApp/User/Home');
+    }
+
+    /**
+     * this method show an home page for the user, if the user is logged in
+     * @return void
+     */
+    public static function home() {
+        $view = new VUser();
+        $view->showHomePage();
+
+    }
+
+    /**
+     * this method is used to show all the cars for sale in the home page
+     */
+    public static function showCarsForRent() {
+
+        if (!self::isLogged()) {
+            header('Location: webApp/User/login'); // Redirect to login page if not logged in
+            exit();
+        }
+        if (!self::DocVerified(USession::getElementFromSession('user'))) {
+            header('Location: /WebApp/User/DocVerified'); // Redirect to verify document page if not verified
+            exit();
+        }
+        $cars=[];
+        $cars= FPersistentManager::getInstance()->retrieveAllRentCars('cars_for_rent');
+
+        $view = new VUser();
+        $view->showCarsForRent($cars);
+    }
+
+    /**
+     * this method is used to select a cars fot rent, it will redirect to the cars details page
+     * @param int $carId
+     */
+    public static function selectCarForRent() {
+        if (CUser::isLogged()){
+            $user= USession::getInstance()->getElementFromSession('user');
+            $idAuto= UHTTPMethods::post('idAuto');
+        
+        }
+
+        
+        $indisp= FPersistentManager::getInstance()->getObjbyId(ECarForRent::class, $carId)->getAllIndispDates();
+        $car= FPersistentManager::getInstance()->getObjbyId(ECarForRent::class, $carId);
+        $view = new VUser();
+        $view->showCarDetails($car,$indisp);
+    }
+
+
+    public static function selectDate(DateTime $start, DateTime $end, int $carId) {
+        $indisp= [];
+        $indisp= FPersistentManager::getInstance()->getObjbyId(ECarForRent::class, $carId)->getAllIndispDates();
+
+
+    }
+
+
+
+
+    }
+
+
+
+
+

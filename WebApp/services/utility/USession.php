@@ -60,6 +60,13 @@ class USession {
     public static function unsetAllElementsInSession(): void {
         session_unset(); // empty the $_SESSION array
     }
+    
+    /**
+     * check if an element is set in the session
+     */
+    public static function isSetSessionElement(string $key): bool {
+        return isset($_SESSION[$key]);
+    }
         
 }
     
