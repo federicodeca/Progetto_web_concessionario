@@ -1,8 +1,5 @@
 <?php
 
-use Entity\EUser;
-use Entity\ECreditCard;
-
 class FCreditCard {
 
     public static function getCreditCardByUserId($user) {

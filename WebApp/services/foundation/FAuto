@@ -1,7 +1,5 @@
 <?php
 
-use Entity\EAuto;
-
 class FAuto {
 
      public static function getCarById($id) {

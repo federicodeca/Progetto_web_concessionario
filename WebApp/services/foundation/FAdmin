@@ -1,7 +1,5 @@
 <?php
 
-use Entity\EAdmin;
-
 class FAdmin {
 
     public static function getAdminByUsername($username) {
