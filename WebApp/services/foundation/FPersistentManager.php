@@ -125,7 +125,13 @@ class FPersistentManager {
         return $result;
     }
 
-
+    /**
+     * return the credit card of a user
+     */
+    public static function retriveCreditCardOnUserId($userId) {
+        $result = FCreditCard::getCreditCardByUserId($userId);
+        return $result;
+    }
 
 
 
