@@ -29,7 +29,33 @@ class CUser {
          */
     public static function DocVerified($user): bool {
 
-        return FPersistentManager::getInstance()->getUserByUsername($user->getUsername())->getIsVerified();
+        return FPersistentManager::getInstance()->retrieveUserOnUsername($user->getUsername())->getIsVerified();
+    }
+
+        /**
+     * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
+     * the User is redirected in the homepage
+     */
+    public static function checkLogin(){
+        $view = new VUser();
+        $username = FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'));                                            
+        if($username){
+            $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
+            if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
+
+                if(USession::getSessionStatus() == PHP_SESSION_NONE){
+                    USession::getInstance();
+                    USession::setSessionElement('user', $user->getId());
+                    header('Location: /WebApp/User/home');
+                }
+
+            }else{
+                $view->loginError();
+            }
+
+        }else{
+            $view->loginError();
+        }
     }
 
 
@@ -101,8 +127,8 @@ class CUser {
         }
 
         
-        $indisp= FPersistentManager::getInstance()->getObjbyId(ECarForRent::class, $carId)->getAllIndispDates();
-        $car= FPersistentManager::getInstance()->getObjbyId(ECarForRent::class, $carId);
+        $indisp= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId)->getAllIndispDates();
+        $car= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
         $view = new VUser();
         $view->showCarDetails($car,$indisp);
     }

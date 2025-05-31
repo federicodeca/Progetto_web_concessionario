@@ -67,4 +67,9 @@ class EUser extends Eperson {
     {
         $this->isVerified = $isVerified;
     }
+
+    public function verifyUserUsername(string $username): bool
+    {
+        return $this->getUserName() === $username;
+    }
 }
