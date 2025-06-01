@@ -19,6 +19,11 @@ class ECarForRent extends EAuto
     #[ORM\OneToMany(targetEntity: ESurcharge::class, mappedBy: 'car', cascade: ['persist', 'remove'])]
     protected $surcharges;
 
+
+    #[ORM\OneToOne(targetEntity: EImage::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
+    protected $photo=null;
+
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, float $basePrice)
     {
         parent::__construct($model, $brand, $color, $horsepower, $displacement, $seats);
@@ -77,6 +82,18 @@ class ECarForRent extends EAuto
             }
         }
         return true; // No overlapping dates
+
+    }
+
+    public function setPhoto($photo): void
+    {
+        $this->photo = $photo;
+    }
+
+
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 
 

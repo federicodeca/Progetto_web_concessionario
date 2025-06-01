@@ -188,9 +188,13 @@ class CUser {
                 FPersistentManager::getInstance()::unlockTable('cars_for_rent');
                 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
                 $now->format('Y-m-d');
-                $method = USession::getElementFromSession('creditCard');
+                $idMethod = USession::getElementFromSession('creditCard');
+                $method = FPersistentManager::getInstance()->getObjectById(ECreditCard::class, $idMethod);
+                $idUser = USession::getElementFromSession('user');
+                $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+
                 $idUser= USession::getElementFromSession('user');
-                $rent= new ERent($now,$method,$idUser,$indisp->getIdUnav());// Unlock the table after the operation
+                $rent= new ERent($now,$method,$user,$indisp,$auto);// Unlock the table after the operation
                 FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
                  
                 $view = new VUser();

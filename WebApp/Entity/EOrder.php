@@ -2,6 +2,7 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
+use Doctrine\ORM\Query\Expr;
 
 require_once 'ECreditCard.php';
 require_once 'EUser.php';
@@ -27,18 +28,18 @@ abstract class EOrder
 
     #[ORM\ManyToOne(targetEntity: ECreditCard::class)]
     #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'CardId', nullable: false)]
-    private int $idMethod;
+    protected ECreditCard $method;
 
     #[ORM\ManyToOne(targetEntity: EUser::class)]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'PersonId', nullable: false)]
-    protected int  $idUser;
+    protected EUser $user;
 
-    public function __construct(DateTime $orderDate, string $orderStatus, int $method, int $user)
+    public function __construct(DateTime $orderDate, string $orderStatus, ECreditCard $method, EUser $user)
     {
         $this->orderDate = $orderDate;
         $this->orderStatus = $orderStatus;
-        $this->idMethod = $method;
-        $this->idUser = $user;
+        $this->method = $method;
+        $this->user = $user;
     }
     public function getOrderId(): int
     {
@@ -62,22 +63,23 @@ abstract class EOrder
         $this->orderStatus = $orderStatus;
     }
 
-    public function setMethod(int $method): void
+    public function setMethod(ECreditCard $method): void
     {
-        $this->idMethod = $method;
+        $this->method = $method;
     }
 
-    public function getMethod(): int
+    public function getMethod(): ECreditCard
     {
-        return $this->idMethod;
+        return $this->method;
     }
-    public function getIdUser(): int
+
+    public function getUser(): EUser
     {
-        return $this->idUser;
+        return $this->user;
     }
-    public function setUser(int $idUser): void
+    public function setUser(EUser $user): void
     {
-        $this->idUser = $idUser;
+        $this->$user = $user;
     }
 
 }

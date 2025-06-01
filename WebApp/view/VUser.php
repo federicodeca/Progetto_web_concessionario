@@ -30,6 +30,8 @@ class VUser{
     }
 
     public function showCarDetails($car) {
+
+        
         $this->smarty->assign('car', $car);
         $this->smarty->display('carDetails.tpl');
     }

@@ -74,119 +74,54 @@
       </nav>
     </header>
 
-    <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-content">
-              <h4>Lorem ipsum dolor sit amet</h4>
-              <h2>Offers</h2>
-            </div>
-          </div>
+ <!-- Page Content pagination (smarty side only)-->
+{assign var="perPage" value=6}                       <!-- Number of cars per page -->
+{assign var="page" value=$smarty.get.page|default:1} <!-- Current page, default to 1 if not set reda page=x-->
+{assign var="start" value=($page - 1) * $perPage}     <!-- Calculate the starting index for the current page -->
+{assign var="end" value=$start + $perPage}
+{assign var="totalPages" value=($cars|@count / $perPage)|ceil}  <!-- Calculate total pages based on the number of cars and perPage -->
+{assign var="index" value=0}    
+
+{foreach from=$cars item=car}
+  {if $index >= $start && $index < $end}
+    {if ($index - $start) % 3 == 0}<div class="row">{/if}
+
+    <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
+      <div class="product-item">
+        <img src="{$car->getPhoto()->getType()};base64, {$car->getPhoto()->getEncodedData}" loading= lazy alt="Img">
+        <div class="down-content">
+          <h4>{$car->getModello()}</h4>
+          <h6><small>from</small> {$car->getPrezzo()}€ <small>per weekend</small></h6>
+          <p>{$car->getDescrizione()}</p>
         </div>
       </div>
     </div>
 
-    <div class="products">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/offer-1-370x270.jpg" alt="">
+    {if ($index - $start) % 3 == 2 || $index == $end - 1 || $index == $cars|@count - 1}</div>{/if}
+  {/if}
+  {assign var="index" value=$index+1}
+{/foreach}
 
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
+{if $totalPages > 1}
+  <div class="col-md-12">
+    <ul class="pages">
+      {if $page > 1}
+        <li><a href="?page={$page-1}"><i class="fa fa-angle-double-left"></i></a></li>
+      {/if}
 
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
+      {section name=i loop=$totalPages}
+        {assign var="p" value=$smarty.section.i.index+1}
+        <li {if $p == $page} class="active"{/if}>
+          <a href="?page={$p}">{$p}</a>
+        </li>
+      {/section}
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/offer-2-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/offer-3-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/offer-4-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/offer-5-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/offer-6-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <ul class="pages">
-              <li><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+      {if $page < $totalPages}
+        <li><a href="?page={$page+1}"><i class="fa fa-angle-double-right"></i></a></li>
+      {/if}
+    </ul>
+  </div>
+{/if}
 
     <footer>
       <div class="container">

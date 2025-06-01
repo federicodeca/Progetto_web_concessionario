@@ -18,21 +18,23 @@ class ERent extends EOrder
 
     #[ORM\OneToOne(targetEntity: EUnavailability::class)]
     #[ORM\JoinColumn(name: 'id_unavailability', referencedColumnName: 'idUnavailability', nullable: false)]
-    protected int $idUnavailability;
+    protected EUnavailability $Unavailability;
 
     #[ORM\ManyToOne(targetEntity: ECarForRent::class)]
     #[ORM\JoinColumn(name: 'id_auto', referencedColumnName: 'idAuto', nullable: false)]
-    private int $idAuto;
+    private ECarForRent $car;
 
     public function __construct(
         DateTime $orderDate,
         int $method,
         int $user,
-        int $idUnavailability
+        EUnavailability $Unavailability,
+        ECarForRent $car
         
     ) {
         parent::__construct($orderDate, $method, $user);
-        $this->idUnavailability = $idUnavailability;
+        $this->Unavailability = $Unavailability;
+        $this->car= $car;
         
      
     }
@@ -45,21 +47,21 @@ class ERent extends EOrder
     {
         $this->totalPrice = $totalPrice;
     }
-    public function getIdUnavailability(): int
+    public function getIdUnavailability()
     {
-        return $this->idUnavailability;
+        return $this->Unavailability;
     }
-    public function setIdUnavailability(int $idUnavailability): void
+    public function setIdUnavailability(EUnavailability $Unavailability): void
     {
-        $this->idUnavailability = $idUnavailability;
+        $this->Unavailability = $Unavailability;
     }
-    public function getIdAuto(): int
+    public function getAuto(): ECarForRent
     {
-        return $this->idAuto;
+        return $this->car;
     }
-    public function setIdAuto(int $idAuto): void
+    public function setIdAuto(ECarForRent $Auto): void
     {
-        $this->idAuto = $idAuto;
+        $this->car = $Auto;
     }
 }
 
