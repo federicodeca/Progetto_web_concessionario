@@ -13,7 +13,7 @@ class Installation {
 
     public static function install(){
         try{
-            $db = new PDO("mysql:host=". DB_HOST, DB_USER, DB_PASS);
+            $db = new PDO("mysql:host=". DB_HOST, DB_USER, DB_PASSWORD);
 
             $stmt = $db->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" . DB_NAME ."'");
             $existingDatabase = $stmt->fetchColumn();// following  query takes the name of the database if it exists, otherwise returns false

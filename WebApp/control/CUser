@@ -194,7 +194,7 @@ class CUser {
                 FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
                  
                 $view = new VUser();
-                $view->showRentConfirmation();
+                $view->showCarRentConfirmation($rent, $indisp); // Show confirmation of the car rent
             }
             else {
                 $view = new VUser();
