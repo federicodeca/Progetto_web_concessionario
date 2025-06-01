@@ -141,6 +141,21 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * lock table
+     * @param string $table
+     */
+    public static function lockTable($table) {
+        FEntityManager::getInstance()->lockTable($table);
+    }
+    /**
+     * unlock table
+     * @param string $table
+     */
+    public static function unlockTable($table) {
+        FEntityManager::getInstance()->unlockTable($table);
+    }
+
 
 
 

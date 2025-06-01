@@ -1,6 +1,7 @@
 <?php
 
 class VUser{
+
     private $smarty;
 
 
@@ -12,7 +13,7 @@ class VUser{
 
     public function showCars($cars) {
         $this->smarty->assign('cars', $cars);
-        $this->smarty->display('rentacar.tpl');
+        $this->smarty->display('carList.tpl');
     }
 
 

@@ -161,7 +161,10 @@ class CUser {
             USession::setElementInSession('cardNumber', $CardNumber);
             USession::setElementInSession('cardExpiry', $CardExpiry);
             USession::setElementInSession('cardCVV', $CardCVV);
+            
             $card= new ECreditCard($CardName, $CardNumber, $CardExpiry, $CardCVV,$userId);
+
+            USession::setElementInSession('creditCard', $card->getCardId()); // Store the credit card in the session
             FPersistentManager::getInstance()->uploadObj($card); // Persist the credit card
             $view = new VUser();
             $view->showOverview($card); //button for confirm o to go back to the form
@@ -179,21 +182,24 @@ class CUser {
             $indisp= new EUnavailability($start, $end, $idAuto);
             $auto= FPersistentManager::getInstance()->getObjectById(ECarForRent::class, $idAuto);
             if ($auto->checkUnavailability($indisp)) {
-<<<<<<< Updated upstream
-                FConnection::lockTable('cars_for_rent'); // Lock the table to prevent concurrent modifications
-=======
-                FConnection::locktable('cars_for_rent'); // Lock the table to prevent concurrent modifications
->>>>>>> Stashed changes
+                FPersistentManager::getInstance()::lockTable('cars_for_rent'); // Lock the table to prevent concurrent modifications
                 FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
                 $auto->addUnavailability($indisp); // Add the unavailability to the car
-                FConnection::unlockTable('cars_for_rent'); // Unlock the table after the operation
+                FPersistentManager::getInstance()::unlockTable('cars_for_rent');
+                $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
+                $now->format('Y-m-d');
+                $method = USession::getElementFromSession('creditCard');
+                $idUser= USession::getElementFromSession('user');
+                $rent= new ERent($now,$method,$idUser,$indisp->getIdUnav());// Unlock the table after the operation
+                FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
+                 
                 $view = new VUser();
                 $view->showRentConfirmation();
             }
             else {
                 $view = new VUser();
                 $view->showErrorUnavailability(); // Show error message if the car is not available
-                exit();
+                
             }
         }
     }

@@ -1,26 +1,13 @@
 <?php
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
-=======
-=======
-
->>>>>>> Stashed changes
-
->>>>>>> Stashed changes
-
->>>>>>> Stashed changes
 
 
->>>>>>> Stashed changes
+
 class FUser {
 
     public static function getUserByUsername($username) {
         $user = FEntityManager::getInstance()->retriveObjOnField(EUser::class, 'username', $username);
         return $user;
     }
+
 }

@@ -27,18 +27,18 @@ abstract class EOrder
 
     #[ORM\ManyToOne(targetEntity: ECreditCard::class)]
     #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'CardId', nullable: false)]
-    private ECreditCard $method;
+    private int $idMethod;
 
     #[ORM\ManyToOne(targetEntity: EUser::class)]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'PersonId', nullable: false)]
-    protected EUser $user;
+    protected int  $idUser;
 
-    public function __construct(DateTime $orderDate, string $orderStatus, ECreditCard $method, EUser $user)
+    public function __construct(DateTime $orderDate, string $orderStatus, int $method, int $user)
     {
         $this->orderDate = $orderDate;
         $this->orderStatus = $orderStatus;
-        $this->method = $method;
-        $this->user = $user;
+        $this->idMethod = $method;
+        $this->idUser = $user;
     }
     public function getOrderId(): int
     {
@@ -61,29 +61,23 @@ abstract class EOrder
     {
         $this->orderStatus = $orderStatus;
     }
-    public function getMethod(): ECreditCard
+
+    public function setMethod(int $method): void
     {
-        return $this->method;
-    }
-    public function setMethod(ECreditCard $method): void
-    {
-        $this->method = $method;
+        $this->idMethod = $method;
     }
 
-    public function getMethodId(): int
+    public function getMethod(): int
     {
-        return $this->method->getCardId();
+        return $this->idMethod;
     }
-    public function getUser(): EUser
+    public function getIdUser(): int
     {
-        return $this->user;
+        return $this->idUser;
     }
-    public function setUser(EUser $user): void
+    public function setUser(int $idUser): void
     {
-        $this->user = $user;
+        $this->idUser = $idUser;
     }
-    public function getUserId(): int
-    {
-        return $this->user->getId();
-    }
+
 }

@@ -10,51 +10,58 @@ use DateTime;
 #[ORM\Table(name: 'rents')]
 class ERent extends EOrder
 {
-    #[ORM\Column(type: 'datetime')]
-    private DateTime $startDate;
+   
 
-    #[ORM\Column(type: 'datetime')]
-    private DateTime $endDate;
 
     #[ORM\Column(type: 'float')]
     private float $totalPrice = 0.0; // crucial!
 
+    #[ORM\OneToOne(targetEntity: EUnavailability::class)]
+    #[ORM\JoinColumn(name: 'id_unavailability', referencedColumnName: 'idUnavailability', nullable: false)]
+    protected int $idUnavailability;
+
     #[ORM\ManyToOne(targetEntity: ECarForRent::class)]
     #[ORM\JoinColumn(name: 'id_auto', referencedColumnName: 'idAuto', nullable: false)]
-    private ECarForRent $rentalCar;
+    private int $idAuto;
 
     public function __construct(
-        DateTime $startDate,
-        DateTime $endDate,
         DateTime $orderDate,
-        string $orderStatus,
-        ECreditCard $method,
-        EUser $user,
-        ECarForRent $rentalCar
+        int $method,
+        int $user,
+        int $idUnavailability
+        
     ) {
-        parent::__construct($orderDate, $orderStatus, $method, $user);
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
-        $this->rentalCar = $rentalCar;
+        parent::__construct($orderDate, $method, $user);
+        $this->idUnavailability = $idUnavailability;
+        
+     
     }
 
-    public function getStartDate(): DateTime
+    public function getTotalPrice(): float
     {
-        return $this->startDate;
+        return $this->totalPrice;
     }
-
-    public function setStartDate(DateTime $startDate): void
+    public function setTotalPrice(float $totalPrice): void
     {
-        $this->startDate = $startDate;
+        $this->totalPrice = $totalPrice;
     }
-
-    public function getEndDate(): DateTime
+    public function getIdUnavailability(): int
     {
-        return $this->endDate;
+        return $this->idUnavailability;
     }
-
-    public function setEndDate(DateTime $endDate): void
+    public function setIdUnavailability(int $idUnavailability): void
     {
-        $this->endDate = $endDate;
+        $this->idUnavailability = $idUnavailability;
+    }
+    public function getIdAuto(): int
+    {
+        return $this->idAuto;
+    }
+    public function setIdAuto(int $idAuto): void
+    {
+        $this->idAuto = $idAuto;
     }
 }
+
+  
+
