@@ -1,7 +1,6 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
 require_once 'ECaForRent.php';
 
 #[ORM\Entity]

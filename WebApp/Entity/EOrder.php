@@ -1,7 +1,6 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
 use Doctrine\ORM\Query\Expr;
 
 require_once 'ECreditCard.php';
