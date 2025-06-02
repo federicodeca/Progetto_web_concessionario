@@ -19,9 +19,7 @@ function getEntityManager(): EntityManagerInterface {
 
         // Configurazione Doctrine ORM 3.x con PHP attributes o annotations
         $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
-        // Se usi annotazioni:
-        // $config = ORMSetup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-
+       
         // Configurazione della connessione
         $connectionParams = [
             'dbname' => DB_NAME,

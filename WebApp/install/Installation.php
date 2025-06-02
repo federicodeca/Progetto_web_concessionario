@@ -18,12 +18,12 @@ class Installation{
         if(!$existingDatabase){
             $queryCreateDB = "CREATE DATABASE IF NOT EXISTS " . DB_NAME;
             $db->exec($queryCreateDB);
-            echo "Database creato.<br>";
+            
         } else {
-            echo "Database già esistente.<br>";
+            
         }
 
-        // Ora creiamo lo schema sempre
+       
         $entityManager = getEntityManager();
         if (!$entityManager) {
             throw new Exception("EntityManager non inizializzato.");
@@ -33,12 +33,12 @@ class Installation{
         $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
 
         if (empty($metadata)) {
-            echo "Nessuna entità trovata.<br>";
+          
             return;
         }
 
         $schemaTool->updateSchema($metadata, true);
-        echo "Tabelle create con successo.<br>";
+        
 
     }catch(PDOException $e){
         echo "ERROR: ". $e->getMessage();

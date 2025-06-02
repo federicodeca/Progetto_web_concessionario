@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   } else {
     box.innerHTML = `
-      <button id="show-login-form" class="btn btn-sm btn-outline-primary">Login</button>
+     <div class="d-flex gap-4 align-items-center">
+  <button id="show-login-form" class="btn btn-sm btn-outline-primary">Login</button>
+  <button id="back-to-login" class="btn btn-sm btn-outline-secondary" style="display: none;">Back</button>
+      </div>
       <form id="login-form" style="display: none; margin-top: 10px;">
         <input type="text" id="username" placeholder="Username" class="form-control mb-1" required>
         <input type="password" id="password" placeholder="Password" class="form-control mb-1" required>
@@ -26,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('show-login-form').addEventListener('click', () => {
       document.getElementById('login-form').style.display = 'block';
+      document.getElementById('back-to-login').style.display = 'block';
+    });
+    document.getElementById('back-to-login').addEventListener('click', () => {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('back-to-login').style.display = 'none';
     });
   }
 });

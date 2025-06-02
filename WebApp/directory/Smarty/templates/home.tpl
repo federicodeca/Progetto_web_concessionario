@@ -25,12 +25,14 @@
   </head>
 
   <body>
-    
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
     <script>
-      const isLogged = {$isLogged};
-      const username = {$username};
+    
+      const isLogged = {$isLogged|default:'false'};
+      const username = "{$username|escape:'javascript'|default:''}";
     </script>
+    
 
  
 
@@ -361,6 +363,6 @@
     <!-- Additional Scripts -->
     <script src="/Webapp/directory/Smarty/templates/assets/js/custom.js"></script>
     <script src="/Webapp/directory/Smarty/templates/assets/js/owl.js"></script>
-     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+     
   </body>
 </html>
