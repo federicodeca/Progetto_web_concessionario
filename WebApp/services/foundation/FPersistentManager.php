@@ -157,6 +157,15 @@ class FPersistentManager {
     }
 
 
+        
+    public static function verifyUserUsername($username){
+        $result = FPerson::verify('username', $username);
+
+        return $result;
+    }
+
+
+
 
 
 

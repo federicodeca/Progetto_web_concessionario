@@ -3,6 +3,8 @@
 
   <head>
 
+  
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -23,6 +25,10 @@
   </head>
 
   <body>
+    !-- Login Box -->
+    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
+    <!-- Contenuto inserito dinamicamente da JS -->
+    </div>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -35,6 +41,8 @@
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+ 
+<script src="js/auth.js"></script>
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -44,6 +52,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+             <div id="user-box" class="ml-auto d-flex align-items-center"></div>
+              </ul>
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home
                       <span class="sr-only">(current)</span>
@@ -319,6 +329,10 @@
       </div>
     </div>
 
+    <script>
+      
+    </script>
+
     
     <footer>
       <div class="container">
@@ -333,6 +347,8 @@
     </footer>
 
 
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -341,5 +357,6 @@
     <!-- Additional Scripts -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
+     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
   </body>
 </html>

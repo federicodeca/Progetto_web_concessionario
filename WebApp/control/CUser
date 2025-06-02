@@ -8,19 +8,27 @@ class CUser {
      * @return void
      */
 
+
+ 
+
     public static function isLogged(): bool {
 
+        $logged= false;
         
         if (session_status() === PHP_SESSION_NONE) {
             USession::getInstance(); //control PHPSESSID , eventually start session
         }
         
         if(USession::isSetSessionElement('user')) {
-            return true; 
+            $logged = true; // User is logged in
+            
         }
-
+        if(!$logged) {
+        
         header('Location: /login.php'); // Redirect to login page if not logged in
-        exit();
+        exit();}
+
+        return $logged;
         
     }
 
@@ -47,6 +55,7 @@ class CUser {
                 if(USession::getSessionStatus() === PHP_SESSION_NONE){
                     USession::getInstance();
                     USession::setElementInSession('user', $user->getId());
+                    USession::setElementInSession('user_name', $user->getNome());
                     header('Location: /WebApp/User/loginAndCreditRequirement');
                 }
 
@@ -58,6 +67,7 @@ class CUser {
             $view->loginError();
         }
     }
+
 
 
 
@@ -91,8 +101,13 @@ class CUser {
      * @return void
      */
     public static function home() {
-        $view = new VUser();
-        $view->showHomePage();
+
+   $infout=CUser::getUserStatus();
+
+    $view = new VUser();
+
+
+    $view->showHomePage($infout);
 
     }
 
@@ -101,12 +116,13 @@ class CUser {
      */
     public static function showCarsForRent() {
 
+        $infout=CUser::getUserStatus();
 
         $cars=[];
-        $cars= FPersistentManager::getInstance()->retrieveAllRentCars('cars_for_rent');
+        $cars= FPersistentManager::getInstance()->retriveAllRentCars('cars_for_rent');
 
         $view = new VUser();
-        $view->showCarsForRent($cars);
+        $view->showCarsForRent($cars,$infout);
     }
 
     /**
@@ -115,11 +131,14 @@ class CUser {
      */
     public static function selectCarForRent() {
 
+        $infout=CUser::getUserStatus();
+
+
         $idAuto= UHTTPMethods::post('idAuto');
         $indisp= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
         $car= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
         $view = new VUser();
-        $view->showCarDetails($car,$indisp);
+        $view->showCarDetails($car,$indisp,$infout);
     }
 
 
@@ -208,11 +227,49 @@ class CUser {
         }
     }
 
+    /**
+     * this method is used to show the user profile, if the user is logged in
+     * @return void
+     */
+    public static function getUserStatus(): array {
 
+    if (session_status() === PHP_SESSION_NONE) USession::getInstance();
 
+    $isLogged = USession::isSetSessionElement('user'); 
+    $username = $isLogged ? USession::getElementFromSession('username') : null;
 
+    return [
+        'isLogged' => $isLogged,
+        'username' => $username
+    ];
+}
 
+    public static function checkLoginAuto() {
+        $view = new VUser();
+        $actualMethod= UHTTPMethods::post('actualMethod');
+        $user=UHTTPMethods::post('username');
+        $password=UHTTPMethods::post('password');
+        $user = FPersistentManager::getInstance()->retriveUserOnUsername($user);
+        if($user && password_verify($password, $user->getPassword())) {
 
+            if (USession::getSessionStatus() === PHP_SESSION_NONE) {
+                USession::getInstance();
+            }
+            USession::setElementInSession('user', $user->getId());
+            USession::setElementInSession('username', $user->getNome());
+            
+            echo json_encode([
+                'success' => true,
+                'redirect' => 'WebApp/User/'.$actualMethod,     
+            ]);
+
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Invalid username or password'
+            ]);
+        }
+    }
 
 
 

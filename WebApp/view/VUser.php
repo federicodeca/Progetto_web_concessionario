@@ -11,45 +11,59 @@ class VUser{
 
     }
 
-    public function showCars($cars) {
+    public function showCars($cars,$infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+
         $this->smarty->assign('cars', $cars);
         $this->smarty->display('carList.tpl');
     }
 
+
     public function showLoginForm() {
         $this->smarty->display('loginForm.tpl');
     }
+    /**
+     * login not required
+     */
+    public function showHomePage($infout) { 
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
 
-    public function showHomePage() {
         $this->smarty->display('home.tpl');
     }
-
-    public function loginError() {
-        $this->smarty->assign('error', 'Invalid username or password');
-        $this->smarty->display('loginForm.tpl');
+        /**
+     * login not required
+     */
+    public function showCarsForRent($cars,$infout) {
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->display('carsForRent.tpl');
+       
     }
 
-    public function showCarDetails($car) {
+   
+    /**
+     * login not required
+     */
 
-        
+    public function showCarDetails($car,$infout) {
+
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('car', $car);
         $this->smarty->display('carDetails.tpl');
     }
 
-    public function showUserProfile($user) {
-        $this->smarty->assign('user', $user);
-        $this->smarty->display('userProfile.tpl');
+
+    
+     public function loginError() {
+        $this->smarty->assign('error', 'Invalid username or password');
+        $this->smarty->display('loginForm.tpl');
     }
 
-    public function showUserCars($cars) {
-        $this->smarty->assign('cars', $cars);
-        $this->smarty->display('userCars.tpl');
-    }
 
-    public function showUserSettings($user) {
-        $this->smarty->assign('user', $user);
-        $this->smarty->display('userSettings.tpl');
-    }
 
     public function showRegistrationForm() {
         $this->smarty->display('registrationForm.tpl');
@@ -68,11 +82,7 @@ class VUser{
     public function showCreditCardForm() {
         $this->smarty->display('creditCardForm.tpl');
     }
-    public function showCarsForRent($cars) {
-        $this->smarty->assign('cars', $cars);
-        $this->smarty->display('carsForRent.tpl');
-       
-    }
+
     public function showDocNotVerified() {
         $this->smarty->assign('error', 'Document not verified. Please verify your documents to proceed.');
         $this->smarty->display('error.tpl');

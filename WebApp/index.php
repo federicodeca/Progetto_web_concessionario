@@ -9,3 +9,6 @@ Installation::install();
 
 //richiamo front controller
 
+$frontController = new CFrontController();
+$frontController->run($_SERVER['REQUEST_URI']);
+
