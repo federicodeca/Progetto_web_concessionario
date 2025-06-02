@@ -3,8 +3,7 @@
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Query\Expr;
 
-require_once 'ECreditCard.php';
-require_once 'EUser.php';
+
 
 #[ORM\Entity]
 #[ORM\Table(name: 'orders')]

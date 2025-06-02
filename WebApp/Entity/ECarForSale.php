@@ -1,6 +1,6 @@
 <?php
 
-require_once 'EAuto.php';
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +15,7 @@ class ECarForSale extends EAuto
     #[ORM\Column(type: 'boolean')]
     protected bool $available = true;
 
-    #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale', nullable: true)]
+    #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale')]
     protected? ESale $saleOrder = null;
 
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, int $price)

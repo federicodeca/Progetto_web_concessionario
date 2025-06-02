@@ -1,7 +1,7 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
-require_once 'EUser.php';
+
 
 #[ORM\Entity]
 #[ORM\Table(name: 'credit_cards')]
@@ -16,7 +16,7 @@ class ECreditCard {
     #[ORM\Column(type: 'string')]
     private string $cardNumber;
 
-    #[ORM\Column(type: 'DateTime')]
+    #[ORM\Column(type: 'datetime')]
     private DateTime $expirationDate;
 
     #[ORM\Column(type: 'string')]

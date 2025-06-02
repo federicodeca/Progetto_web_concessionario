@@ -1,42 +1,42 @@
 <?php
 
-use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMSetup;
+use Doctrine\DBAL\DriverManager;
 
-require_once __DIR__ .'/../vendor/autoload.php';
-require_once __DIR__.'/autoloader.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/config.php';
 
+$entityManager = null;
 
+function getEntityManager(): EntityManagerInterface {
+    global $entityManager;
 
-function getEntityManager(): EntityManager
-{
- $entityManager=null;
     if ($entityManager === null) {
-        
+        $paths = [__DIR__ . '/../entity'];
+        $isDevMode = true;
 
-    $connectionParams = [
-        'dbname' => DB_NAME,
-        'user' => DB_USER,
-        'password' => DB_PASSWORD,
-        'host' => DB_HOST,
-        'driver' => DB_DRIVER
-    ];
+        // Configurazione Doctrine ORM 3.x con PHP attributes o annotations
+        $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
+        // Se usi annotazioni:
+        // $config = ORMSetup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 
-    $config = ORMSetup::createAttributeMetadataConfiguration(
-        paths: [__DIR__."/../entity"],
-        isDevMode: true, // Set to false in production, true=let to modifiy entity schema
-    );
-    $config->setAutoGenerateProxyClasses(true);
+        // Configurazione della connessione
+        $connectionParams = [
+            'dbname' => DB_NAME,
+            'user' => DB_USER,
+            'password' => DB_PASSWORD,
+            'host' => DB_HOST,
+            'driver' => 'pdo_mysql',
+        ];
 
-    // Create a connection with PDO MySQL
-    $conn = DriverManager::getConnection($connectionParams,$config);
+        // Crea la connessione DBAL
+        $connection = DriverManager::getConnection($connectionParams, $config);
 
-
-
-    // Create the EntityManager
-    $entityManager =new EntityManager($conn, $config);
+        // Crea l'EntityManager
+        $entityManager = new EntityManager($connection, $config);
     }
+
     return $entityManager;
 }
-

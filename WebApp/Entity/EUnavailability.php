@@ -4,7 +4,7 @@
 use Doctrine\ORM\Mapping as ORM;
 
 
-require_once 'ECarForRent.php';
+
 #[ORM\Entity]
 #[ORM\Table(name: 'unavailabilities')]
 
