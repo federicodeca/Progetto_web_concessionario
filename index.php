@@ -1,4 +1,3 @@
-
 <?php
 
 ini_set('display_errors', 1);
@@ -21,5 +20,3 @@ Installation::install();
 
 $frontController = new CFrontController();
 $frontController->run($_SERVER['REQUEST_URI']);
-
-

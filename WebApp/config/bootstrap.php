@@ -24,7 +24,7 @@ function getEntityManager(): EntityManager
     ];
 
     $config = ORMSetup::createAttributeMetadataConfiguration(
-        paths: [__DIR__."/../Entity"],
+        paths: [__DIR__."/../entity"],
         isDevMode: true, // Set to false in production, true=let to modifiy entity schema
     );
     $config->setAutoGenerateProxyClasses(true);
