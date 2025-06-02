@@ -1,42 +1,71 @@
 <?php
 class CFrontController{
-    
-    public function run($requestUri){
-        // Parse the request URI
-        // echo $requestUri;
+  
 
-        $requestUri = trim($requestUri, '/'); // Remove leading and trailing slashes
-        $uriParts = explode('/', $requestUri); // Split the URI into parts
+    public function runs($requestUri){
+        // Rimuove gli slash iniziali e finali dall'URI
+        $requestUri = trim($requestUri, '/');
 
-        array_shift($uriParts); // Remove the first part if it's empty (e.g., if the URI starts with a slash)
-        // var_dump($uriParts);
+        // Divide l'URI in parti usando lo slash come separatore
+        $uriParts = explode('/', $requestUri);
 
-        // Extract controller and method names
+        // Rimuove la prima parte se vuota (ad esempio, se l'URI inizia con uno slash)
+        array_shift($uriParts);
+
+        // Estrae il nome del controller (default: 'User')
         $controllerName = !empty($uriParts[0]) ? ucfirst($uriParts[0]) : 'User';
-        // var_dump($controllerName);
+
+        // Estrae il nome del metodo (default: 'home')
         $methodName = !empty($uriParts[1]) ? $uriParts[1] : 'home';
 
-        // Load the controller class
+        // Costruisce il nome della classe del controller (es: 'CUser')
         $controllerClass = 'C' . $controllerName;
-        // var_dump($controllerClass);
-        $controllerFile = __DIR__ . "/{$controllerClass}.php";
-        // var_dump($controllerFile);
 
+        // Costruisce il percorso del file del controller
+        $controllerFile = __DIR__ . "/{$controllerClass}.php";
+
+        // Verifica se il file del controller esiste
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
 
-            // Check if the method exists in the controller
+            // Verifica se il metodo esiste nella classe del controller
             if (method_exists($controllerClass, $methodName)) {
-                // Call the method
-                $params = array_slice($uriParts, 2); // Get optional parameters
-                call_user_func_array([$controllerClass, $methodName], $params);
-            } else {
-                // Method not found, handle appropriately (e.g., show 404 page)
-                header('Location: /WebApp/User/home');
-            }
         } else {
             // Controller not found, handle appropriately (e.g., show 404 page)
-            header('Location: WebApp/User/home');
+            header('Location: /WebApp/User/home');
         }
     }
+}
+public function run($requestUri){
+    echo "🔍 URI ricevuta: $requestUri<br>";
+
+    $requestUri = trim($requestUri, '/');
+    $uriParts = explode('/', $requestUri);
+    array_shift($uriParts);
+
+    $controllerName = !empty($uriParts[0]) ? ucfirst($uriParts[0]) : 'User';
+    $methodName = !empty($uriParts[1]) ? $uriParts[1] : 'home';
+
+    $controllerClass = 'C' . $controllerName;
+    $controllerFile = __DIR__ . '/' . $controllerClass . '.php';
+
+    echo "🔍 Controller: $controllerClass<br>";
+    echo "🔍 Metodo: $methodName<br>";
+    echo "🔍 File previsto: $controllerFile<br>";
+
+    if (file_exists($controllerFile)) {
+        require_once $controllerFile;
+
+        if (method_exists($controllerClass, $methodName)) {
+            echo "✅ Metodo trovato, lo eseguo<br>";
+            call_user_func_array([$controllerClass, $methodName], array_slice($uriParts, 2));
+        } else {
+            echo "❌ Metodo '$methodName' non trovato in classe '$controllerClass'<br>";
+        }
+    } else {
+        echo "❌ File controller non trovato: $controllerFile<br>";
+    }
+}
+
+
 }

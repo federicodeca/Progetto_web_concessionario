@@ -25,10 +25,14 @@
   </head>
 
   <body>
-    !-- Login Box -->
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
-    <!-- Contenuto inserito dinamicamente da JS -->
-    </div>
+    <body>
+    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
+    <script>
+      const isLogged = {$isLogged};
+      const username = {$username};
+    </script>
+
+ 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">

@@ -10,7 +10,7 @@
     <link rel="icon" href="assets/images/favicon.ico">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+   
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -24,10 +24,11 @@
   </head>
 
   <body>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
     <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
     <script>
-      const isLogged = {$isLogged|@json_encode};
-      const username = {$username@json_encode};
+      const isLogged = {$isLogged};
+      const username = {$username};
     </script>
 
     <!-- ***** Preloader Start ***** -->

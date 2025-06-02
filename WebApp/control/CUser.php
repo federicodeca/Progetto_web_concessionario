@@ -102,7 +102,7 @@ class CUser {
      */
     public static function home() {
 
-   $infout=CUser::getUserStatus();
+    $infout=CUser::getUserStatus();
 
     $view = new VUser();
 
