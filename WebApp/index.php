@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/control/CFrontController.php';
 
-echo "✅ INDEX.PHP CHIAMATO<br>";
+
 
 
 
@@ -21,5 +21,5 @@ Installation::install();
 
 $frontController = new CFrontController();
 $frontController->run($_SERVER['REQUEST_URI']);
-echo "✅ FINE INDEX.PHP<br>";
+
 

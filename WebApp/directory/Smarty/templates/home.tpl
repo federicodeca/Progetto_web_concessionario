@@ -9,23 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="icon" href="/Webapp/directory/Smarty/templates/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Webapp/directory/Smarty/templates/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/style.css">
+    <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/owl.css">
 
   </head>
 
   <body>
-    <body>
+    
     <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
     <script>
       const isLogged = {$isLogged};
@@ -46,7 +46,7 @@
 
     <!-- Header -->
  
-<script src="js/auth.js"></script>
+
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -124,7 +124,7 @@
           </div>
           <div class="col-md-4">
             <div class="product-item">
-              <a href="offers.html"><img src="assets/images/offer-1-370x270.jpg" alt=""></a>
+              <a href="offers.html"><img src="/Webapp/directory/Smarty/templates/assets/images/offer-1-370x270.jpg" alt=""></a>
               <div class="down-content">
                 <a href="offers.html"><h4>Lorem ipsum dolor sit amet, consectetur</h4></a>
                 <h6><small>from</small> $120 <small>per weekend</small></h6>
@@ -135,7 +135,7 @@
 
           <div class="col-md-4">
             <div class="product-item">
-              <a href="offers.html"><img src="assets/images/offer-2-370x270.jpg" alt=""></a>
+              <a href="offers.html"><img src="/Webapp/directory/Smarty/templates/assets/images/offer-2-370x270.jpg" alt=""></a>
               <div class="down-content">
                 <a href="offers.html"><h4>Estorum aspernatur officiis accusamus </h4></a>
                 <h6><small>from</small> $150 <small>per weekend</small></h6>
@@ -146,7 +146,7 @@
 
           <div class="col-md-4">
             <div class="product-item">
-              <a href="offers.html"><img src="assets/images/offer-3-370x270.jpg" alt=""></a>
+              <a href="offers.html"><img src="/Webapp/directory/Smarty/templates/assets/images/offer-3-370x270.jpg" alt=""></a>
               <div class="down-content">
                 <a href="offers.html"><h4>Reiciendis ullam culpa optio providen</h4></a>
                 <h6><small>from</small> $150 <small>per weekend</small></h6>
@@ -180,14 +180,14 @@
           </div>
           <div class="col-md-6">
             <div class="right-image">
-              <img src="assets/images/about-1-570x350.jpg" alt="">
+              <img src="/Webapp/directory/Smarty/templates/assets/images/about-1-570x350.jpg" alt="">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="services" style="background-image: url(assets/images/other-image-fullscren-1-1920x900.jpg);" >
+    <div class="services" style="background-image: url(/Webapp/directory/Smarty/templates/assets/images/other-image-fullscren-1-1920x900.jpg);" >
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -200,7 +200,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
-              <a href="#" class="services-item-image"><img src="assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
+              <a href="#" class="services-item-image"><img src="/Webapp/directory/Smarty/templates/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
@@ -211,7 +211,7 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
-              <a href="#" class="services-item-image"><img src="assets/images/blog-2-370x270.jpg" class="img-fluid" alt=""></a>
+              <a href="#" class="services-item-image"><img src="/Webapp/directory/Smarty/templates/assets/images/blog-2-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
@@ -222,7 +222,7 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
-              <a href="#" class="services-item-image"><img src="assets/images/blog-3-370x270.jpg" class="img-fluid" alt=""></a>
+              <a href="#" class="services-item-image"><img src="/Webapp/directory/Smarty/templates/assets/images/blog-3-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
@@ -354,13 +354,13 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/Webapp/directory/Smarty/templates/vendor/jquery/jquery.min.js"></script>
+    <script src="/Webapp/directory/Smarty/templates/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
+    <script src="/Webapp/directory/Smarty/templates/assets/js/custom.js"></script>
+    <script src="/Webapp/directory/Smarty/templates/assets/js/owl.js"></script>
      <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
   </body>
 </html>
