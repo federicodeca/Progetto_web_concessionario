@@ -15,19 +15,19 @@ function my_autoloader($className) {
                 break;
 
             case 'F':
-                include_once(__DIR__ . "/../foundation/" . $className . '.php' );
+                include_once(__DIR__ . "/../services/foundation/" . $className . '.php' );
                 break;
 
             case 'V':
-                include_once(__DIR__ . '/../views/'. $className . '.php' );
+                include_once(__DIR__ . '/../view/'. $className . '.php' );
                 break;
 
             case 'C':
-                include_once(__DIR__ . '/../controllers/'. $className . '.php' );
+                include_once(__DIR__ . '/../control/'. $className . '.php' );
                 break;
 
             case 'U':
-                include_once (__DIR__ . '/../utility/'. $className. '.php');
+                include_once (__DIR__ . '/../services/utility/'. $className. '.php');
                 break;
 
     }

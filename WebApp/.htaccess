@@ -1,18 +1,10 @@
-<IfModule mod_rewrite.c>
+
     RewriteEngine On
     RewriteBase /WebApp
 
-    <IfModule mod_headers.c>
-        Header set Access-Control-Allow-Origin "*"
-        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
-        Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
-    </IfModule>
-    
-    RewriteCond %{REQUEST_URI} !^/public/index\.php
+    # Se il file o la cartella esistono, non riscrivere l'URL
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php [QSA,L]
-    RewriteCond %{HTTPS} off
-    RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
+
+    # Reindirizza tutto verso index.php
+    RewriteRule ^ index.php [QSA,L]
