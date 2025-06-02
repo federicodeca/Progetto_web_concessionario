@@ -1,41 +1,42 @@
 <?php
 class CFrontController{
-  
-
+    
     public function run($requestUri){
-        // Rimuove gli slash iniziali e finali dall'URI
-        $requestUri = trim($requestUri, '/');
+        // Parse the request URI
+        // echo $requestUri;
 
-        // Divide l'URI in parti usando lo slash come separatore
+        $requestUri = trim($requestUri, '/');
         $uriParts = explode('/', $requestUri);
 
-        // Rimuove la prima parte se vuota (ad esempio, se l'URI inizia con uno slash)
         array_shift($uriParts);
+        // var_dump($uriParts);
 
-        // Estrae il nome del controller (default: 'User')
+        // Extract controller and method names
         $controllerName = !empty($uriParts[0]) ? ucfirst($uriParts[0]) : 'User';
-
-        // Estrae il nome del metodo (default: 'home')
+        // var_dump($controllerName);
         $methodName = !empty($uriParts[1]) ? $uriParts[1] : 'home';
 
-        // Costruisce il nome della classe del controller (es: 'CUser')
+        // Load the controller class
         $controllerClass = 'C' . $controllerName;
-
-        // Costruisce il percorso del file del controller
+        // var_dump($controllerClass);
         $controllerFile = __DIR__ . "/{$controllerClass}.php";
+        // var_dump($controllerFile);
 
-        // Verifica se il file del controller esiste
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
 
-            // Verifica se il metodo esiste nella classe del controller
+            // Check if the method exists in the controller
             if (method_exists($controllerClass, $methodName)) {
+                // Call the method
+                $params = array_slice($uriParts, 2); // Get optional parameters
+                call_user_func_array([$controllerClass, $methodName], $params);
+            } else {
+                // Method not found, handle appropriately (e.g., show 404 page)
+                header('Location: /WebApp/User/home');
+            }
         } else {
             // Controller not found, handle appropriately (e.g., show 404 page)
             header('Location: /WebApp/User/home');
         }
     }
-}
-
-
 }

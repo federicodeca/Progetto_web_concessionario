@@ -37,7 +37,7 @@ class Installation{
             return;
         }
 
-        $schemaTool->createSchema($metadata);
+        $schemaTool->updateSchema($metadata, true);
         echo "Tabelle create con successo.<br>";
 
     }catch(PDOException $e){
