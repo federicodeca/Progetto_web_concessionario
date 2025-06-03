@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-03 15:23:24
+/* Smarty version 5.5.1, created on 2025-06-03 15:29:25
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_683ef74cbddda5_59178149',
+  'unifunc' => 'content_683ef8b50d7a35_24711098',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '58a883a7e823e49932a03b9e3f0e7aea44e5aa0f' => 
     array (
       0 => 'home.tpl',
-      1 => 1748957001,
+      1 => 1748957268,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_683ef74cbddda5_59178149 (\Smarty\Template $_smarty_tpl) {
+function content_683ef8b50d7a35_24711098 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
