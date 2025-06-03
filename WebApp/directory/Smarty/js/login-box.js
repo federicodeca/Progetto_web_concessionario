@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     box.innerHTML = `
      <div class="d-flex gap-4 align-items-center">
-  <button id="show-login-form" class="btn btn-sm btn-outline-primary">Login</button>
+  <button id="show-login-form" class="btn btn-sm btn-outline-primary" style="margin-right: 30px;">Login</button>
   <button id="back-to-login" class="btn btn-sm btn-outline-secondary" style="display: none;">Back</button>
       </div>
       <form id="login-form" style="display: none; margin-top: 10px;">
