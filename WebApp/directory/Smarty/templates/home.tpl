@@ -95,7 +95,7 @@
       <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
           <div class="text-content">
-            <h4>Find your car today!</h4>
+            <h4>vediamo se funziona</h4>
             <h2>Lorem ipsum dolor sit amet</h2>
           </div>
         </div>
