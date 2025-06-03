@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-03 17:08:22
+/* Smarty version 5.5.1, created on 2025-06-03 17:49:40
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_683f0fe62a2bc9_25267170',
+  'unifunc' => 'content_683f19941e1683_06082749',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '58a883a7e823e49932a03b9e3f0e7aea44e5aa0f' => 
     array (
       0 => 'home.tpl',
-      1 => 1748963299,
+      1 => 1748965760,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_683f0fe62a2bc9_25267170 (\Smarty\Template $_smarty_tpl) {
+function content_683f19941e1683_06082749 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -99,7 +99,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 </li> 
 
                 <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
-                <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/WebApp/index.php/User/showCarsForRent">Noleggia</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
