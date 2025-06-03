@@ -41,7 +41,7 @@ class VUser{
         $this->smarty->assign('cars', $cars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
-        $this->smarty->display('carsForRent.tpl');
+        $this->smarty->display('carsForRentlist.tpl');
        
     }
 
