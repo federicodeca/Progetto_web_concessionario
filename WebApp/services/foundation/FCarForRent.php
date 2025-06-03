@@ -12,7 +12,7 @@ class FCarForRent {
     public static function getAllCarsForRent($table) {
         $cars = FEntityManager::getInstance()->selectAll($table);
         if (empty($cars)) {
-            throw new Exception("No cars available for rent.");
+            return [];
         }
         return $cars;
     }

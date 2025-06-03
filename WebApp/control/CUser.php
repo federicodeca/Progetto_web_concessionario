@@ -119,7 +119,7 @@ class CUser {
         $infout=CUser::getUserStatus();
 
         $cars=[];
-        $cars= FPersistentManager::getInstance()->retriveAllRentCars('cars_for_rent');
+        $cars= FPersistentManager::getInstance()->retriveAllRentCars(ECarForRent::class);
 
         $view = new VUser();
         $view->showCarsForRent($cars,$infout);

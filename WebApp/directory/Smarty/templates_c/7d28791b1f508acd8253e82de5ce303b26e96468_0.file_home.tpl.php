@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-03 16:14:22
+/* Smarty version 5.5.1, created on 2025-06-03 18:21:58
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_683f033e821884_78780531',
+  'unifunc' => 'content_683f2126e1bee2_29986264',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7d28791b1f508acd8253e82de5ce303b26e96468' => 
     array (
       0 => 'home.tpl',
-      1 => 1748958508,
+      1 => 1748967712,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_683f033e821884_78780531 (\Smarty\Template $_smarty_tpl) {
+function content_683f2126e1bee2_29986264 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Users/federico/Documents/GitHub/Progetto_web_concessionario/WebApp/directory/Smarty/templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -49,11 +49,7 @@ $_smarty_current_dir = '/Users/federico/Documents/GitHub/Progetto_web_concession
   </head>
 
   <body>
-    <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
-    <?php echo '<script'; ?>
+     <?php echo '<script'; ?>
 >
     
       const isLogged = <?php echo (($tmp = $_smarty_tpl->getValue('isLogged') ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
@@ -64,6 +60,11 @@ $_smarty_current_dir = '/Users/federico/Documents/GitHub/Progetto_web_concession
 ";
     <?php echo '</script'; ?>
 >
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
+    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
+
     
 
  
@@ -92,29 +93,26 @@ $_smarty_current_dir = '/Users/federico/Documents/GitHub/Progetto_web_concession
             <ul class="navbar-nav ml-auto">
              <div id="user-box" class="ml-auto d-flex align-items-center"></div>
               </ul>
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                </li> 
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+            </li> 
+            <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+            <li class="nav-item"><a class="nav-link" href='/WebApp/User/showCarsForRent/'>Noleggia</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="blog.html">Blog</a>
+                  <a class="dropdown-item" href="team.html">Team</a>
+                  <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                  <a class="dropdown-item" href="terms.html">Terms</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
-                <li class="nav-item"><a class="nav-link" href="carsForRentlist.html">Noleggia</a></li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
-                    
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="blog.html">Blog</a>
-                      <a class="dropdown-item" href="team.html">Team</a>
-                      <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                      <a class="dropdown-item" href="terms.html">Terms</a>
-                    </div>
-                </li>
-
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+               
             </ul>
           </div>
         </div>

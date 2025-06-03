@@ -25,13 +25,14 @@
   </head>
 
   <body>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
-    <script>
+     <script>
     
       const isLogged = {$isLogged|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
     </script>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
+
     
 
  
@@ -60,12 +61,26 @@
             <ul class="navbar-nav ml-auto">
              <div id="user-box" class="ml-auto d-flex align-items-center"></div>
               </ul>
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                </li> 
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+            </li> 
+            <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+            <li class="nav-item"><a class="nav-link" href='/WebApp/User/showCarsForRent/'>Noleggia</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="blog.html">Blog</a>
+                  <a class="dropdown-item" href="team.html">Team</a>
+                  <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                  <a class="dropdown-item" href="terms.html">Terms</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
+<<<<<<< Updated upstream
                 <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
                 <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent">Noleggia</a></li>
 
@@ -83,6 +98,9 @@
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+=======
+               
+>>>>>>> Stashed changes
             </ul>
           </div>
         </div>
