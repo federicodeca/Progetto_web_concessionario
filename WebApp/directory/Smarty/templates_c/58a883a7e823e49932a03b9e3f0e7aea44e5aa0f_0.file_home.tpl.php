@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-03 15:23:24
+  from 'file:home.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_683ef74cbddda5_59178149',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '58a883a7e823e49932a03b9e3f0e7aea44e5aa0f' => 
+    array (
+      0 => 'home.tpl',
+      1 => 1748957001,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_683ef74cbddda5_59178149 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -25,13 +49,21 @@
   </head>
 
   <body>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
     <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
-    <script>
+    <?php echo '<script'; ?>
+>
     
-      const isLogged = {$isLogged|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-    </script>
+      const isLogged = <?php echo (($tmp = $_smarty_tpl->getValue('isLogged') ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+    <?php echo '</script'; ?>
+>
     
 
  
@@ -335,9 +367,11 @@
       </div>
     </div>
 
-    <script>
+    <?php echo '<script'; ?>
+>
       
-    </script>
+    <?php echo '</script'; ?>
+>
 
     
     <footer>
@@ -356,13 +390,22 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/Webapp/directory/Smarty/templates/vendor/jquery/jquery.min.js"></script>
-    <script src="/Webapp/directory/Smarty/templates/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/Webapp/directory/Smarty/templates/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/Webapp/directory/Smarty/templates/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/Webapp/directory/Smarty/templates/assets/js/custom.js"></script>
-    <script src="/Webapp/directory/Smarty/templates/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/Webapp/directory/Smarty/templates/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/Webapp/directory/Smarty/templates/assets/js/owl.js"><?php echo '</script'; ?>
+>
      
   </body>
-</html>
+</html><?php }
+}
