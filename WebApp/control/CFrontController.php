@@ -22,6 +22,7 @@ class CFrontController{
         $controllerFile = __DIR__ . "/{$controllerClass}.php";
         // var_dump($controllerFile);
 
+        //var_dump($controllerClass, $controllerFile, $methodName, $uriParts); exit;
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
 
