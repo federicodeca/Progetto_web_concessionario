@@ -80,7 +80,6 @@
             <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-<<<<<<< Updated upstream
                 <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
                 <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent">Noleggia</a></li>
 
@@ -98,9 +97,6 @@
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-=======
-               
->>>>>>> Stashed changes
             </ul>
           </div>
         </div>
