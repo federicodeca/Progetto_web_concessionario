@@ -19,6 +19,9 @@ function getEntityManager(): EntityManagerInterface {
 
         // Configurazione Doctrine ORM 3.x con PHP attributes o annotations
         $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
+        $config->setProxyDir(__DIR__ . '/../cache/proxies');  // esempio
+        $config->setAutoGenerateProxyClasses(true); // o
+        
        
         // Configurazione della connessione
         $connectionParams = [
@@ -29,11 +32,15 @@ function getEntityManager(): EntityManagerInterface {
             'driver' => 'pdo_mysql',
         ];
 
+
         // Crea la connessione DBAL
         $connection = DriverManager::getConnection($connectionParams, $config);
 
         // Crea l'EntityManager
         $entityManager = new EntityManager($connection, $config);
+
+  
+        
     }
 
     return $entityManager;
