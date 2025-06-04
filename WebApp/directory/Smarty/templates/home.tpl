@@ -59,44 +59,32 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-             <div id="user-box" class="ml-auto d-flex align-items-center"></div>
-              </ul>
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
                 </a>
-            </li> 
-            <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
-            <li class="nav-item"><a class="nav-link" href='/WebApp/User/showCarsForRent/'>Noleggia</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
                   <a class="dropdown-item" href="blog.html">Blog</a>
                   <a class="dropdown-item" href="team.html">Team</a>
                   <a class="dropdown-item" href="testimonials.html">Testimonials</a>
                   <a class="dropdown-item" href="terms.html">Terms</a>
                 </div>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+              </li>
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
-                <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
-                    
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="blog.html">Blog</a>
-                      <a class="dropdown-item" href="team.html">Team</a>
-                      <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                      <a class="dropdown-item" href="terms.html">Terms</a>
-                    </div>
-                </li>
-
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
             </ul>
           </div>
         </div>
