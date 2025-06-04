@@ -18,6 +18,9 @@ class ECarForRent extends EAuto
     #[ORM\OneToMany(targetEntity: ESurcharge::class, mappedBy: 'car', cascade: ['persist', 'remove'])]
     protected $surcharges;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    protected $description;
+
 
     #[ORM\OneToOne(targetEntity: EImage::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
@@ -62,6 +65,11 @@ class ECarForRent extends EAuto
         $surcharge->setCar($this);
         $this->surcharges[] = $surcharge;
     }
+    
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
 
 
     public function getAllIndispDates(): array
@@ -94,6 +102,7 @@ class ECarForRent extends EAuto
     {
         return $this->photo;
     }
+
 
 
 

@@ -83,72 +83,96 @@
     </header>
 
  <!-- Page Content pagination (smarty side only)-->
+
+     <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/templates/assets/images/heading-6-1920x500.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>Lorem ipsum dolor sit amet</h4>
+              <h2>Fleet</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 {assign var="perPage" value=6}                       <!-- Number of cars per page -->
 {assign var="page" value=$smarty.get.page|default:1} <!-- Current page, default to 1 if not set reda page=x-->
 {assign var="start" value=($page - 1) * $perPage}     <!-- Calculate the starting index for the current page -->
 {assign var="end" value=$start + $perPage}
 {math assign="totalPages" equation="ceil(x / y)" x=$cars|@count y=$perPage}  <!-- Calculate total pages based on the number of cars and perPage -->
-{assign var="index" value=0}    
+{assign var="index" value=0}  
+    <div class="products">
+      <div class="container">
+
 {if $cars|@count > 0}
-    {foreach $cars as $car}
+   
         <!-- mostra auto -->
     
 
 {foreach from=$cars item=car}
   {if $index >= $start && $index < $end}
     {if ($index - $start) % 3 == 0}<div class="row">{/if}
-
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
-      <div class="product-item">
-        <img src="{$car->getPhoto()->getType()};base64, {$car->getPhoto()->getEncodedData}" loading= lazy alt="Img">
+    <a href='/WebApp/User/selectCarForRent/{$car->getIdAuto()}'>
+      <div class="product-item" >
+       <img src="data:{$car->getPhoto()->getType()};base64,{$car->getPhoto()->getEncodedData()}" loading="lazy" alt="Img">
         <div class="down-content">
-          <h4>{$car->getModello()}</h4>
-          <h6><small>from</small> {$car->getPrezzo()}€ <small>per weekend</small></h6>
-          <p>{$car->getDescrizione()}</p>
+          <h4>{$car->getModel()}</h4>
+          <h6><small>from</small> {$car->getBasePrice()}€ <small>per weekend</small></h6>
+          <p>{$car->getDescription()}</p>
         </div>
+        </a>
       </div>
     </div>
 
     {if ($index - $start) % 3 == 2 || $index == $end - 1 || $index == $cars|@count - 1}</div>{/if}
   {/if}
   {assign var="index" value=$index+1}
+
 {/foreach}
 
-{if $totalPages > 1}
-  <div class="col-md-12">
-    <ul class="pages">
-      {if $page > 1}
-        <li><a href="?page={$page-1}"><i class="fa fa-angle-double-left"></i></a></li>
-      {/if}
 
-      {section name=i loop=$totalPages}
-        {assign var="p" value=$smarty.section.i.index+1}
-        <li {if $p == $page} class="active"{/if}>
-          <a href="?page={$p}">{$p}</a>
-        </li>
-      {/section}
-
-      {if $page < $totalPages}
-        <li><a href="?page={$page+1}"><i class="fa fa-angle-double-right"></i></a></li>
-      {/if}
-    </ul>
-  </div>
-{/if}
     
-{/foreach}
+
 {else}
  <div class="banner-item-03">
   <b class="text-content">  Non ci sono auto disponibili</b>
 </div>
 {/if}
+</div>
+</div>
 
-
-    <footer>
-      <div class="container">
+<footer>
+   <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+{if $totalPages > 1}
+  
+    <ul class="pages d-flex justify-content-center list-unstyled" style="gap:12px">
+      {if $page > 1}
+ 
+        <li><a href="?page={$page-1}"><i class="fa fa-angle-double-left"></i></a></li>
+      {/if}
+ 
+    
+      {section name=i loop=$totalPages}
+        {assign var="p" value=$smarty.section.i.index+1}
+        <li {if $p == $page} class="active"{/if}>
+          <a href="?page={$p}">{$p}</a>
+        </li>
+
+      {/section}
+
+      {if $page < $totalPages}
+        
+        <li><a href="?page={$page+1}"><i class="fa fa-angle-double-right"></i></a></li>
+       
+      {/if}
+    </ul>
+  
+{/if} 
             </div>
           </div>
         </div>

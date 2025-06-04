@@ -81,6 +81,8 @@ abstract class EAuto {
     public function setModel(string $model): void {
         $this->model = $model;
     }
+    
+
 
     public function setBrand(string $brand): void {
         $this->brand = $brand;

@@ -37,7 +37,8 @@ class Installation{
             return;
         }
 
-        $schemaTool->updateSchema($metadata, true);
+        
+        $schemaTool->updateSchema($metadata);
         
 
     }catch(PDOException $e){

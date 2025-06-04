@@ -129,12 +129,12 @@ class CUser {
      * this method is used to select a cars fot rent, it will redirect to the cars details page
      * @param int $carId
      */
-    public static function selectCarForRent() {
+    public static function selectCarForRent($idAuto) {
 
         $infout=CUser::getUserStatus();
 
 
-        $idAuto= UHTTPMethods::post('idAuto');
+         // Get the car ID from the request, if not set, it will be null
         $indisp= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
         $car= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
         $view = new VUser();
