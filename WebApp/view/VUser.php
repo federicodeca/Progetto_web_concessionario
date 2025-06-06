@@ -50,12 +50,12 @@ class VUser{
      * login not required
      */
 
-    public function showCarDetails($car,$infout) {
-
+    public function showCarDetails($car,$indisp,$infout) {
+        $this->smarty->assign('indisp', $indisp);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('car', $car);
-        $this->smarty->display('carDetails.tpl');
+        $this->smarty->display('tryDetails.tpl');
     }
 
 

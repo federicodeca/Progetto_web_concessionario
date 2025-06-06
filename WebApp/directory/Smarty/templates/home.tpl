@@ -22,18 +22,17 @@
     <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/style.css">
     <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/owl.css">
 
-  </head>
-
-  <body>
-     <script>
-    
-      const isLogged = {$isLogged|default:'false'};
+    <!--dati per login-->
+    <script>
+      const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
 
-    
+  </head>
+
+  <body>
+   
 
  
 
@@ -53,7 +52,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Piselloni<em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -85,6 +84,9 @@
               <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
 
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+
+              <li class="nav-item"> <div id="login-box" ></div> </li>
+
             </ul>
           </div>
         </div>

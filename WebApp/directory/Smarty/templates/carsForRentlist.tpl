@@ -21,17 +21,17 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/templates/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/templates/assets/css/owl.css">
 
-  </head>
-
-  <body>
-      <script>
-    
+    <!--dati per login-->
+    <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index:  99999;"></div>
 
+  </head>
+
+  <body>
+ 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -44,10 +44,12 @@
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+
+
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car Rental <em>Website</em></h2></a>
+          <a class="navbar-brand"   href="index.html"><h2>Piselloni<em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -76,6 +78,10 @@
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+
+                <li class="nav-item"> <div id="login-box" ></div> </li>
+                  
+
             </ul>
           </div>
         </div>
@@ -257,6 +263,10 @@
     <script src="/WebApp/directory/Smarty/templates/assets/js/custom.js"></script>
     <script src="/WebApp/directory/Smarty/templates/assets/js/owl.js"></script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <!-- Popper.js (necessario per Bootstrap dropdown) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   </body>
 
 </html>
