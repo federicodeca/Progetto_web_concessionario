@@ -5,29 +5,29 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const box = document.getElementById('login-box');
+  const box = document.getElementById('login-box');  //cerca nel tpl e gli passa il cotenuto
 
-  if (isLogged) {
+if (isLogged) {
     box.innerHTML = `
       <span class="mr-2">Benvenuto, <strong>${username}</strong></span>
       <a href="/WebApp/User/logout" class="btn btn-sm btn-outline-danger">Logout</a>
     `;
-  } else {
-box.innerHTML = `
 
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Login
-    </a>
-    <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
-      <form id="login-form">
-        <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
-        <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
-        <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
-        <div id="login-message" class="text-danger mt-2"></div>
-      </form>
-    </div>
-  </li>
+  } else {
+    box.innerHTML = `
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login
+        </a>
+        <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+          <form id="login-form">
+            <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
+            <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
+            <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
+            <div id="login-message" class="text-danger mt-2"></div>
+          </form>
+        </div>
+      </li>
 `;
   }
 });
