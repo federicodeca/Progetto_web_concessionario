@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/Webapp/directory/Smarty/templates/assets/images/favicon.ico">
+    <link rel="icon" href="/Webapp/directory/Smarty/assets/images/favicon.ico">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/WebApp/directory/Smarty/templates/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/WebApp/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/WebApp/directory/Smarty/templates/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/WebApp/directory/Smarty/templates/assets/css/style.css">
-    <link rel="stylesheet" href="/WebApp/directory/Smarty/templates/assets/css/owl.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
     <script>
@@ -90,7 +90,7 @@
 
  <!-- Page Content pagination (smarty side only)-->
 
-     <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/templates/assets/images/heading-6-1920x500.jpg);">
+     <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/assets/images/heading-6-1920x500.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -255,13 +255,13 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script   src="/WebApp/directory/Smarty/templates/vendor/jquery/jquery.min.js"></script>
-    <script src= "/WebApp/directory/Smarty/templates/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script   src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
+    <script src= "/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Additional Scripts -->
-    <script src="/WebApp/directory/Smarty/templates/assets/js/custom.js"></script>
-    <script src="/WebApp/directory/Smarty/templates/assets/js/owl.js"></script>
+    <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
+    <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
     <!-- Popper.js (necessario per Bootstrap dropdown) -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>

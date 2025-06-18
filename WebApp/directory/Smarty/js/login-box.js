@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (isLogged) {
     box.innerHTML = `
       <span class="mr-2">Benvenuto, <strong>${username}</strong></span>
-      <a href="/WebApp/User/logout" class="btn btn-sm btn-outline-danger">Logout</a>
+      <a href="/WebApp/User/logout" class="btn btn-sm btn-outline-danger">Logouto</a>
     `;
 
   } else {
@@ -24,6 +24,7 @@ if (isLogged) {
             <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
             <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
             <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
+            <button type="button" onclick='window.location.href="/WebApp/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
             <div id="login-message" class="text-danger mt-2"></div>
           </form>
         </div>

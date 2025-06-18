@@ -28,8 +28,8 @@ class VUser{
      */
     public function showHomePage($infout) { 
        
-    $this->smarty->assign('isLogged', $infout['isLogged'] ? 'true' : 'false'); // ← FORZA JS booleano
-    $this->smarty->assign('username', $infout['username'] ?? '');
+    $this->smarty->assign('isLogged', $infout['isLogged']);  
+    $this->smarty->assign('username', $infout['username']);
     $this->smarty->display('home.tpl');
 
 
@@ -104,6 +104,10 @@ class VUser{
     public function showErrorUnavailability(){
         $this->smarty->assign('error', 'The car is not available for the selected dates.');
         $this->smarty->display('error.tpl');
+    }
+
+    public function showRegistration() {
+        $this->smarty->display('registrationForm.tpl');
     }
 
 

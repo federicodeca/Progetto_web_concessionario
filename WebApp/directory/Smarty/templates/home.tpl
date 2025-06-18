@@ -9,18 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/Webapp/directory/Smarty/templates/assets/images/favicon.ico">
+    <link rel="icon" href="/WebApp/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/Webapp/directory/Smarty/templates/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/WebApp/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/style.css">
-    <link rel="stylesheet" href="/Webapp/directory/Smarty/templates/assets/css/owl.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
     <script>
@@ -62,7 +62,7 @@
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="WebApp/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
               <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
@@ -130,7 +130,7 @@
           </div>
           <div class="col-md-4">
             <div class="product-item">
-              <a href="offers.html"><img src="/Webapp/directory/Smarty/templates/assets/images/offer-1-370x270.jpg" alt=""></a>
+              <a href="offers.html"><img src="/WebApp/directory/Smarty/assets/images/offer-1-370x270.jpg" alt=""></a>
               <div class="down-content">
                 <a href="offers.html"><h4>Lorem ipsum dolor sit amet, consectetur</h4></a>
                 <h6><small>from</small> $120 <small>per weekend</small></h6>
@@ -141,7 +141,7 @@
 
           <div class="col-md-4">
             <div class="product-item">
-              <a href="offers.html"><img src="/Webapp/directory/Smarty/templates/assets/images/offer-2-370x270.jpg" alt=""></a>
+              <a href="offers.html"><img src="/WebApp/directory/Smarty/assets/images/offer-2-370x270.jpg" alt=""></a>
               <div class="down-content">
                 <a href="offers.html"><h4>Estorum aspernatur officiis accusamus </h4></a>
                 <h6><small>from</small> $150 <small>per weekend</small></h6>
@@ -152,7 +152,7 @@
 
           <div class="col-md-4">
             <div class="product-item">
-              <a href="offers.html"><img src="/Webapp/directory/Smarty/templates/assets/images/offer-3-370x270.jpg" alt=""></a>
+              <a href="offers.html"><img src="/WebApp/directory/Smarty/assets/images/offer-3-370x270.jpg" alt=""></a>
               <div class="down-content">
                 <a href="offers.html"><h4>Reiciendis ullam culpa optio providen</h4></a>
                 <h6><small>from</small> $150 <small>per weekend</small></h6>
@@ -186,14 +186,14 @@
           </div>
           <div class="col-md-6">
             <div class="right-image">
-              <img src="/Webapp/directory/Smarty/templates/assets/images/about-1-570x350.jpg" alt="">
+              <img src="/WebApp/directory/Smarty/assets/images/about-1-570x350.jpg" alt="">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="services" style="background-image: url(/Webapp/directory/Smarty/templates/assets/images/other-image-fullscren-1-1920x900.jpg);" >
+    <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);" >
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -206,7 +206,7 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
-              <a href="#" class="services-item-image"><img src="/Webapp/directory/Smarty/templates/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
+              <a href="#" class="services-item-image"><img src="/WebApp/directory/Smarty/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
@@ -217,7 +217,7 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
-              <a href="#" class="services-item-image"><img src="/Webapp/directory/Smarty/templates/assets/images/blog-2-370x270.jpg" class="img-fluid" alt=""></a>
+              <a href="#" class="services-item-image"><img src="/WebApp/directory/Smarty/assets/images/blog-2-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
@@ -228,7 +228,7 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
-              <a href="#" class="services-item-image"><img src="/Webapp/directory/Smarty/templates/assets/images/blog-3-370x270.jpg" class="img-fluid" alt=""></a>
+              <a href="#" class="services-item-image"><img src="/WebApp/directory/Smarty/assets/images/blog-3-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
@@ -339,9 +339,7 @@
       </div>
     </div>
 
-    <script>
-      
-    </script>
+
 
     
     <footer>
@@ -360,13 +358,13 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/Webapp/directory/Smarty/templates/vendor/jquery/jquery.min.js"></script>
-    <script src="/Webapp/directory/Smarty/templates/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
+    <script src="/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Additional Scripts -->
-    <script src="/Webapp/directory/Smarty/templates/assets/js/custom.js"></script>
-    <script src="/Webapp/directory/Smarty/templates/assets/js/owl.js"></script>
+    <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
+    <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
      
   </body>
 </html>

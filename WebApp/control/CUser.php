@@ -84,6 +84,7 @@ class CUser {
         $view->showLoginForm();
 
     }
+    
     /**
      * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
      * @return void
@@ -269,6 +270,11 @@ class CUser {
                 'message' => 'Invalid username or password'
             ]);
         }
+    }
+    
+    public static function showRegistrationForm() {
+        $view = new VUser();
+        $view->showRegistration();
     }
 
 
