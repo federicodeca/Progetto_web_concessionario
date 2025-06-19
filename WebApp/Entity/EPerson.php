@@ -13,13 +13,13 @@ class EPerson {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    protected $PersonId;
+    protected $idUser;
 
     #[ORM\Column(type: 'string')]
-    protected $firstName;
+    protected $firstname;
 
     #[ORM\Column(type: 'string')]
-    protected $lastName;
+    protected $surname;
 
     #[ORM\Column(type: 'string', unique: true)]
     protected $email;
@@ -28,19 +28,19 @@ class EPerson {
     protected $password;
 
     #[ORM\Column(type: 'string', unique: true)]
-    protected $userName;
+    protected $username;
 
     protected static $entity = EPerson::class;
 
-    public function __construct($firstName, $lastName, $email, $password, $username)
+    public function __construct($firstname, $surname, $email, $password, $username)
     {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
+        $this->firstname = $firstname;
+        $this->surname = $surname;
         $this->email = $email;
         $this->password = $hashedPassword;
-        $this->userName = $username;
+        $this->username = $username;
     }
 
     public function getPassword()
@@ -58,15 +58,15 @@ class EPerson {
 
     public function getId()
     {
-        return $this->PersonId;
+        return $this->IdUser;
     }
-    public function getFirstName()
+    public function getFirstname()
     {
-        return $this->firstName;
+        return $this->firstname;
     }
-    public function getLastName()
+    public function getLastname()
     {
-        return $this->lastName;
+        return $this->surname;
     }
     public function getEmail()
     {
@@ -74,6 +74,6 @@ class EPerson {
     }
     public function getUsername()
     {
-        return $this->userName;
+        return $this->username;
     }
 }

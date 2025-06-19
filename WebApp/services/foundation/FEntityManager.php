@@ -158,16 +158,12 @@ class FEntityManager {
             return [];
         }
     }
-
     /**
-     * CHECK IF EXISTS
-     * verify if exist an object in a table with a specific attribute
-     * @param string $fieldId is the id of the field to be returned, if you want to return the id of the object use 'id'
-     * @return boolean|null
+     * verify if exist an object
      */
     public static function verifyAttributes($fieldId, $table, $field, $id){
         try{
-            $dql = "SELECT u.id, u." .$fieldId. " FROM " . $table . " u WHERE u." . $field . " = :attribute";
+            $dql = "SELECT u.id".$fieldId. " FROM " . $table . " u WHERE u." . $field . " = :attribute";
             $query = self::$entityManager->createQuery($dql);
             $query->setParameter('attribute', $id);
 

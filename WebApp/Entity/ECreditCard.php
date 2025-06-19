@@ -11,7 +11,7 @@ class ECreditCard {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    private int $CardId;
+    private int $idCard;
 
     #[ORM\Column(type: 'string')]
     private string $cardNumber;
@@ -24,7 +24,7 @@ class ECreditCard {
     
 
     #[ORM\ManyToOne(targetEntity: EUser::class)]
-    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'PersonId', nullable: false)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: false)]
     protected int $IdUser;
 
 
@@ -38,7 +38,7 @@ class ECreditCard {
     }
     public function getCardId(): int
     {
-        return $this->CardId;
+        return $this->idCard;
     }
     public function getCardNumber(): string
     {

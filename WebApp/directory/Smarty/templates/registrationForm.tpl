@@ -54,14 +54,14 @@
 
                 <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
 
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
                     
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="blog.html">Blog</a>
                       <a class="dropdown-item" href="team.html">Team</a>
                       <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                      <a class="dropdown-item active" href="terms.html">Terms</a>
+                      <a class="dropdown-item" href="terms.html">Terms</a>
                     </div>
                 </li>
 
@@ -79,35 +79,54 @@
 
     <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
       <div class="container" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form class="row g-3">
-            <div class="col-md-6">
+           <form class="row g-3" method="post" action="/WebApp/User/registration">
+              <div class="col-md-6">
+              <label for="inputName" class="form-label" style="color:aliceblue"> Name </label>
+              <input type="text" class="form-control" id="inputName" name="name">
+            </div>
+             <div class="col-md-6">
+              <label for="inputName" class="form-label" style="color:aliceblue"> Surname </label>
+              <input type="text" class="form-control" id="inputSurname" name="surname">
+            </div>
+            
+            <div class="col-md-6" style="margin-top: 20px;">
               <label for="inputEmail4" class="form-label" style="color:aliceblue"> Email </label>
-              <input type="email" class="form-control" id="inputEmail4">
+              <input type="email" class="form-control" id="inputEmail4" name="email">
             </div>
-            <div class="col-md-6">
+
+             <div class="col-md-6" style="margin-top: 20px;" >
+              <label for="inputAddress" class="form-label" style="color:aliceblue" >Username</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="pippo" name="username">
+            </div>
+
+            <div class="col-md-6" style="margin-top: 20px;">
+              <label for="inputPhone" class="form-label" style="color:aliceblue"> Phone </label>
+              <input type="text" class="form-control" id="namePhone" name="phone">
+            </div>
+
+            
+            <div class="col-md-6" style="margin-top: 20px;">
               <label for="inputPassword4" class="form-label" style="color:aliceblue">Password</label>
-              <input type="password" class="form-control" id="inputPassword4">
+              <input type="password" class="form-control" id="inputPassword4" name="password">
             </div>
-            <div class="col-12" style="margin-top: 20px;" >
-              <label for="inputAddress" class="form-label" style="color:aliceblue" >Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
+
 
             <div class="col-md-6" style="margin-top: 20px;" >
               <label for="inputCity" class="form-label" style="color:aliceblue" >City</label>
-              <input type="text" class="form-control" id="inputCity">
+              <input type="text" class="form-control" id="inputCity"  name="city">
             </div>
-            <div class="col-md-4" style="margin-top: 20px;" >
-              <label for="inputState" class="form-label" style="color:aliceblue">State</label>
-              <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
+ 
+            
             <div class="col-md-2" style="margin-top: 20px;" >
               <label for="inputZip" class="form-label" style="color:aliceblue">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
+              <input type="text" class="form-control" id="inputZip" name="zip">
             </div>
+
+             <div class="col-12" style="margin-top: 20px;" >
+              <label for="inputAddress" class="form-label" style="color:aliceblue" >Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="pippo" name="address">
+            </div>
+
             <div class="col-12" style="margin-top: 20px;" >
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="gridCheck">

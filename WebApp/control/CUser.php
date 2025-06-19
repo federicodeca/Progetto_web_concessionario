@@ -97,6 +97,22 @@ class CUser {
         header('Location: /WebApp/User/Home');
     }
 
+
+    public static function registration()
+    {
+        $view = new VUser();
+        if(FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) == false && FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username')) == false){
+                $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), UHTTPMethods::post('phone'),UHTTPMethods::post('username'), UHTTPMethods::post('password'),UHTTPMethods::post('city'),UHTTPMethods::post('zip'),UHTTPMethods::post('address'));
+                $check = FPersistentManager::getInstance()->uploadObj($user);
+                if($check){
+                    $view->showSuccessReg();
+                }
+        }else{
+                $view->registrationError();
+            }
+    }
+
+
     /**
      * this method show an home page for the user, if the user is logged in
      * @return void

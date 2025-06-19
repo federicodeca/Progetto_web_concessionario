@@ -16,7 +16,7 @@ class ERent extends EOrder
     private float $totalPrice = 0.0; // crucial!
 
     #[ORM\OneToOne(targetEntity: EUnavailability::class)]
-    #[ORM\JoinColumn(name: 'id_unavailability', referencedColumnName: 'idUnav', nullable: false)]
+    #[ORM\JoinColumn(name: 'id_unavailability', referencedColumnName: 'idUnavailability', nullable: false)]
     protected EUnavailability $Unavailability;
 
     #[ORM\ManyToOne(targetEntity: ECarForRent::class)]

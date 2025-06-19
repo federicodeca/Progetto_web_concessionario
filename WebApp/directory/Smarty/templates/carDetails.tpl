@@ -8,29 +8,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="icon" href="/WebApp/directory/Smarty/assets/images/favicon.ico">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
    
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/WebApp/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    
+   
+    <script>
+      const isLogged = {$isLogged|@json_encode|default:'false'};
+      const username = "{$username|escape:'javascript'|default:''}";
+    </script>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
 
   </head>
 
   <body>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
-    <div id="login-box" style="position: fixed; top: 10px; right: 10px; z-index: 9999;"></div>
-    <script>
-      const isLogged = {$isLogged};
-      const username = {$username};
-    </script>
+    
+
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -58,14 +66,15 @@
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Fleet</a></li>
-                <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+              <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
 
-                <li class="nav-item dropdown active">
+              <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
                     
                     <div class="dropdown-menu">
-                      <a class="dropdown-item active" href="blog.html">Blog</a>
+                      <a class="dropdown-item" href="blog.html">Blog</a>
                       <a class="dropdown-item" href="team.html">Team</a>
                       <a class="dropdown-item" href="testimonials.html">Testimonials</a>
                       <a class="dropdown-item" href="terms.html">Terms</a>
@@ -75,6 +84,10 @@
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+
+                <li class="nav-item"> <div id="login-box" ></div> </li>
+
+
             </ul>
           </div>
         </div>
@@ -82,7 +95,7 @@
     </header>
 
     <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+    <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/assets/images/heading-6-1920x500.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -139,7 +152,7 @@
         <br>
         
         <div>
-          <img src="assets/images/blog-image-fullscren-1-1920x700.jpg" class="img-fluid" alt="">
+          <img src="/WebApp/directory/Smarty/assets/images/blog-image-fullscren-1-1920x700.jpg" class="img-fluid" alt="">
         </div>
       </div>
     </div>
@@ -149,34 +162,36 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Leave a Comment</h2>
+              <h2>Prenota ora </h2>
             </div>
           </div>
           <div class="col-md-8">
             <div class="contact-form">
-              <form id="contact" action="" method="post">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <fieldset>
-                      <input name="email" type="text" class="form-control" id="email" placeholder="E-Mail Address" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12">
-                    <fieldset>
-                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-12">
+
+              <form id="contact-form" action="WebApp/User/...!" method="post">
+
+                <input type="text" id="date-range" name="dateRange" class="form-control" placeholder="Seleziona intervallo date" />
+                <input type="hidden" id="startDate" name="startDate" />
+                <input type="hidden" id="endDate" name="endDate" />
+
+            
+                                
+
+          
+
+
+
+                <div class="col-lg-12">
                     <fieldset>
                       <button type="submit" id="form-submit" class="filled-button">Submit</button>
                     </fieldset>
                   </div>
-                </div>
+                
+                              
+
+                  
+
+
               </form>
             </div>
           </div>
@@ -200,6 +215,9 @@
       </div>
     </div>
 
+
+  
+ 
     <footer>
       <div class="container">
         <div class="row">
@@ -224,7 +242,7 @@
           </div>
           <div class="modal-body">
             <div class="contact-form">
-              <form action="#" id="contact">
+              <form action="#" id="modal-contact">
                   <div class="row">
                        <div class="col-md-6">
                           <fieldset>
@@ -282,14 +300,39 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+    
+   
 
     <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
-    
+    <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
+    <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('#date-range').daterangepicker({
+          locale: { format: 'YYYY-MM-DD' },
+          startDate: moment().startOf('month'),
+          endDate: moment().endOf('month')
+        }, function(start, end) {
+          $('#startDate').val(start.format('YYYY-MM-DD'));
+          $('#endDate').val(end.format('YYYY-MM-DD'));
+        });
+
+        // Inizializza i campi hidden con i valori iniziali
+        var picker = $('#date-range').data('daterangepicker');
+        if (picker) {
+          $('#startDate').val(picker.startDate.format('YYYY-MM-DD'));
+          $('#endDate').val(picker.endDate.format('YYYY-MM-DD'));
+        }
+      });
+    </script>
+
 
   </body>
 

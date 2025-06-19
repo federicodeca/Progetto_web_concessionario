@@ -16,7 +16,7 @@ abstract class EOrder
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    private int $orderId;
+    private int $idOrder;
 
     #[ORM\Column(type: 'datetime')]
     private DateTime $orderDate;
@@ -25,11 +25,11 @@ abstract class EOrder
     private string $orderStatus;
 
     #[ORM\ManyToOne(targetEntity: ECreditCard::class)]
-    #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'CardId', nullable: false)]
+    #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'idCard', nullable: false)]
     protected ECreditCard $method;
 
     #[ORM\ManyToOne(targetEntity: EUser::class)]
-    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'PersonId', nullable: false)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: false)]
     protected EUser $user;
 
     public function __construct(DateTime $orderDate, string $orderStatus, ECreditCard $method, EUser $user)
@@ -41,7 +41,7 @@ abstract class EOrder
     }
     public function getOrderId(): int
     {
-        return $this->orderId;
+        return $this->idOrder;
     }
     public function getOrderDate(): DateTime
     {

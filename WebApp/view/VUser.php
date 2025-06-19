@@ -55,7 +55,7 @@ class VUser{
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('car', $car);
-        $this->smarty->display('tryDetails.tpl');
+        $this->smarty->display('CarDetails.tpl');
     }
 
 
@@ -108,6 +108,14 @@ class VUser{
 
     public function showRegistration() {
         $this->smarty->display('registrationForm.tpl');
+    }
+    public function showSuccessReg() {
+        $this->smarty->display('registrationSuccess.tpl');
+    }
+    
+    public function registrationError(){
+
+        $this->smarty->display('registrationError.tpl');
     }
 
 

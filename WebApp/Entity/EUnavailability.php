@@ -13,7 +13,7 @@ class EUnavailability {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    private int $idUnav;
+    private int $idUnavailability;
 
     #[ORM\Column(type: 'datetime')]
     private DateTime $start;
@@ -36,7 +36,7 @@ class EUnavailability {
     }
     public function getIdUnav(): int
     {
-        return $this->idUnav;
+        return $this->idUnavailability;
     }
     public function getStart(): DateTime
     {
