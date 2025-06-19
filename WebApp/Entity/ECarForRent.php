@@ -76,7 +76,7 @@ class ECarForRent extends EAuto
     {
         $indispDates = [];
         foreach ($this->unavailabilities as $unavailability) {
-            $indispDates[] = $unavailability->getDate();
+            $indispDates[] = $unavailability;
         }
         return $indispDates;
     }

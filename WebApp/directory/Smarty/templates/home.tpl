@@ -26,10 +26,12 @@
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
+      
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
 
   </head>
+  <input type="hidden" id="actualMethod" value="home">
 
   <body>
    

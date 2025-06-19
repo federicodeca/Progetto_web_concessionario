@@ -152,7 +152,14 @@ class CUser {
 
 
          // Get the car ID from the request, if not set, it will be null
-        $indisp= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
+        $indisponibility= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
+        $indisp=[];
+        foreach($indisponibility as $ind) {
+            $indisp[] = [
+                'start' => $ind->getStart()->format(DateTime::ATOM),
+                'end' => $ind->getEnd()->format(DateTime::ATOM)
+            ];
+        }
         $car= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
         $view = new VUser();
         $view->showCarDetails($car,$indisp,$infout);
@@ -273,7 +280,7 @@ class CUser {
                 USession::getInstance();
             }
             USession::setElementInSession('user', $user->getId());
-            USession::setElementInSession('username', $user->getNome());
+            USession::setElementInSession('username', $user->getUsername());
             
             echo json_encode([
                 'success' => true,

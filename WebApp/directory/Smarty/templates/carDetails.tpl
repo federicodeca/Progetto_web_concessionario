@@ -32,11 +32,20 @@
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
     </script>
+      <script>
+    const indisp = {$indisp|json_encode|raw};
+    </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+   
 
   </head>
 
   <body>
+
+  <input type="hidden" id="actualMethod" value="selectCarForRent">
+ 
+
+  
     
 
 
@@ -54,7 +63,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Piselloni <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -100,64 +109,14 @@
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4><i class="fa fa-user"></i>John Doe  &nbsp;&nbsp;&nbsp;&nbsp;  <i class="fa fa-calendar"></i> 12/06/2020 10:30   &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i> 114</h4>
-              <h2>Lorem ipsum dolor sit amet, consectetur adipisicing</h2>
+             
+              <h2>{$car->getBrand()} {$car->getModel()}</h2>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="products">
-      <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-              <div class="section-heading">
-                <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
-              </div>
-            </div>
-
-            <div class="col-md-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, sed. Ex, id autem cum assumenda, quisquam cupiditate amet dolorem atque ipsam pariatur sequi voluptatem est nesciunt eum, aspernatur, tenetur rem. <br>
-
-                <br>
-
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, consequatur, magnam. Dolorum vitae a vel quisquam. Fuga quia suscipit id veritatis sint earum impedit corporis quidem eum consectetur ipsam ex sequi ad, distinctio enim tenetur eveniet eligendi. Laborum, sapiente, magnam.</p>
-
-                <br>
-
-                <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, modi.</h5>
-
-                <br>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam officia in adipisci. Corporis rem beatae cupiditate neque consequuntur necessitatibus expedita laudantium temporibus quam ex quidem, aut non blanditiis soluta deserunt dolores mollitia repudiandae voluptatibus perspiciatis dolor quos distinctio! Atque, magnam. <br>
-
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolore ducimus, ad itaque reprehenderit repellat dignissimos, qui velit dolores voluptas.</p>
-            </div>
-
-            <div class="col-md-4">
-              <div class="left-content">
-                <h4>Lorem ipsum dolor sit amet.</h4>
-
-                <br>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.</p>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, minus?</p>
-              </div>
-            </div>
-        </div>
-
-        <br>
-        
-        <div>
-          <img src="/WebApp/directory/Smarty/assets/images/blog-image-fullscren-1-1920x700.jpg" class="img-fluid" alt="">
-        </div>
-      </div>
-    </div>
-
-    <div class="send-message">
+     <div class="send-message">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -168,29 +127,17 @@
           <div class="col-md-8">
             <div class="contact-form">
 
-              <form id="contact-form" action="WebApp/User/...!" method="post">
+              <form id="contact-form" action="/WebApp/User/logicAndCreditRequirement" method="post">
 
-                <input type="text" id="date-range" name="dateRange" class="form-control" placeholder="Seleziona intervallo date" />
+                <input type="text" id="date-range" name="dateRange" class="form-control w-50" placeholder="Seleziona intervallo date" style="length: 20px" />
                 <input type="hidden" id="startDate" name="startDate" />
                 <input type="hidden" id="endDate" name="endDate" />
 
-            
-                                
-
-          
-
-
-
                 <div class="col-lg-12">
                     <fieldset>
-                      <button type="submit" id="form-submit" class="filled-button">Submit</button>
+                      <button type="submit" id="form-submit"  class="filled-button">Submit</button>
                     </fieldset>
                   </div>
-                
-                              
-
-                  
-
 
               </form>
             </div>
@@ -199,7 +146,7 @@
           <div class="col-md-4">
               <div class="left-content">
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur. Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.</p>
+                <p>seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
 
                 <br> 
 
@@ -214,6 +161,76 @@
         </div>
       </div>
     </div>
+
+    <div style="margin-top:100px"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <img 
+            src="data:{$car->getPhoto()->getType()};base64,{$car->getPhoto()->getEncodedData()}" 
+            style="max-width: 100%; height: auto;" 
+            loading="lazy" 
+            alt="Img">
+        </div>
+      </div>
+    </div>
+   
+      
+    
+    
+
+    <div class="products">
+      <div class="container" >
+        <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>Informazioni</h2>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+                <h5>Marca: {$car->getBrand()}</h5>
+
+                <br>
+
+                <h5> Modello: {$car->getModel()}</h5>
+
+                <br>
+
+                <h5>Cavalli: {$car->getHorsePower()}</h5>
+
+                <br>
+
+               <h5>Cilindrata: {$car->getDisplacement()}</h5>
+
+                <br>
+                <h5>Numero Posti: {$car->getSeats()}</h5>
+
+                <br>
+                <h5>Alimentazione: {$car->getFuelType()}</h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="left-content">
+                <h5>Regole di contratto</h5>
+
+                <br>
+                
+                <p>Noleggiando un nostro veicolo si acconsente al trattamento dei propri dati </p>
+                
+                <p>Si ricorda che per procedere con il noleggio di un veicolo si necessita la verifica di possesso di patente europea valida. Procedi al login per inserire il tuo documento. Leggere attentatmente le condizoni di noleggio, in caso di mancato rispetto delle regole verrà trattenuta una mora in percentuale variabile</p>
+              </div>
+            </div>
+        </div>
+
+        
+                
+ 
+      </div>
+    </div>
+
+   
 
 
   
@@ -242,7 +259,7 @@
           </div>
           <div class="modal-body">
             <div class="contact-form">
-              <form action="#" id="modal-contact">
+              <form action="WebApp/User/loginAndCreditRequirement" id="modal-contact">
                   <div class="row">
                        <div class="col-md-6">
                           <fieldset>
@@ -312,26 +329,8 @@
     <!-- Additional Scripts -->
     <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
     <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
-
-    <script>
-      $(document).ready(function() {
-        $('#date-range').daterangepicker({
-          locale: { format: 'YYYY-MM-DD' },
-          startDate: moment().startOf('month'),
-          endDate: moment().endOf('month')
-        }, function(start, end) {
-          $('#startDate').val(start.format('YYYY-MM-DD'));
-          $('#endDate').val(end.format('YYYY-MM-DD'));
-        });
-
-        // Inizializza i campi hidden con i valori iniziali
-        var picker = $('#date-range').data('daterangepicker');
-        if (picker) {
-          $('#startDate').val(picker.startDate.format('YYYY-MM-DD'));
-          $('#endDate').val(picker.endDate.format('YYYY-MM-DD'));
-        }
-      });
-    </script>
+    <script src="/WebApp/directory/Smarty/js/calendar.js"></script>
+ 
 
 
   </body>

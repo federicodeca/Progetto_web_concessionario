@@ -58,7 +58,7 @@ class EPerson {
 
     public function getId()
     {
-        return $this->IdUser;
+        return $this->idUser;
     }
     public function getFirstname()
     {

@@ -7,10 +7,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   const box = document.getElementById('login-box');  //cerca nel tpl e gli passa il cotenuto
 
+
 if (isLogged) {
-    box.innerHTML = `
-      <span class="mr-2">Benvenuto, <strong>${username}</strong></span>
-      <a href="/WebApp/User/logout" class="btn btn-sm btn-outline-danger">Logouto</a>
+    box.innerHTML = ` <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                benvenuto ${username} <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                  <a class="dropdown-item" href="team.html">Patente</a>
+                  <a class="dropdown-item" href="/WebApp/User/logout">Esci</a>
+                </div>
+              </li>
+     
     `;
 
   } else {
@@ -36,21 +44,26 @@ if (isLogged) {
 function submitLogin() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-
-  fetch('/WebApp/User/checkLoginAuto.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      window.location.href = data.redirect || '/WebApp/User/home';
-    } else {
-      document.getElementById('login-message').innerText = data.message || 'Login fallito.';
-    }
-  })
-  .catch(() => {
-    document.getElementById('login-message').innerText = 'Errore di connessione.';
-  });
+  const actualMethod = document.getElementById('actualMethod').value;
+ console.log('actualMethod:', actualMethod);
+  fetch('/WebApp/User/checkLoginAuto', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&actualMethod=${encodeURIComponent(actualMethod)}`
+})
+.then(response => {
+  if (!response.ok) throw new Error('Network response was not ok');
+  return response.json();
+})
+.then(data => {
+  if (data.success) {
+    window.location.href = '/' + data.redirect;
+  } else {
+    document.getElementById('login-message').innerText = data.message;
+  }
+})
+.catch(error => {
+  console.error('Fetch error:', error);
+  document.getElementById('login-message').innerText = 'Errore di connessione o risposta non valida.';
+});
 }

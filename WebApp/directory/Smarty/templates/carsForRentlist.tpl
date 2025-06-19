@@ -31,6 +31,8 @@
   </head>
 
   <body>
+
+  <input type="hidden" id="actualMethod" value="showCarsForRent">
  
 
     <!-- ***** Preloader Start ***** -->
