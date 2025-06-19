@@ -81,6 +81,16 @@ class ECarForRent extends EAuto
         return $indispDates;
     }
 
+    public function getAllSurcharges(): array
+    {
+        $surchargesPeriod = [];
+        foreach ($this->surcharges as $sur) {
+            $surchargesPeriod[] = $sur;
+        }
+        return $surchargesPeriod;
+    }
+
+
     public function checkAvailability(DateTime $start, DateTime $end): bool
     {
         foreach ($this->unavailabilities as $unavailability) {
@@ -101,6 +111,32 @@ class ECarForRent extends EAuto
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+
+
+    public function getTotalPrice($start,$end) {
+    $endD=clone $end;
+    $endD->modify('+1 day'); // Per includere l'ultimo giorno
+    $interval = new DateInterval('P1D');
+    $period = new DatePeriod($start, $interval, $endD);
+
+   
+    $totalPrice=0;
+   
+
+    foreach($period as $day) {
+        $actualPrice=$this->basePrice;
+        foreach($this->surcharges as $sur) {
+            if ($day>=$sur->getStart()&& $day<=$sur->getEnd()){
+                    $actualPrice=$sur->getPrice();
+            }
+        }
+
+        $totalPrice=$totalPrice+$actualPrice;
+    }
+
+    return $totalPrice;   
     }
 
 

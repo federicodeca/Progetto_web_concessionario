@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/calendar-custom.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
@@ -34,6 +35,8 @@
     </script>
       <script>
     const indisp = {$indisp|json_encode|raw};
+    const surcharges = {$surcharges|json_encode|raw};
+    const basePrice={$basePrice|default:50};
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
    
@@ -70,7 +73,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home
+                    <a class="nav-link" href="/WebApp/User/home">Home
                       <span class="sr-only">(current)</span>
                     </a>
                 </li> 
@@ -126,14 +129,22 @@
           </div>
           <div class="col-md-8">
             <div class="contact-form">
-
-              <form id="contact-form" action="/WebApp/User/logicAndCreditRequirement" method="post">
-
+              
+              <form id="contact-form" action="/WebApp/User/loginAndCreditRequirement" method="post">
+                <input type="hidden" id="idAuto" name="idAuto" value="{$car->getIdAuto()}">
                 <input type="text" id="date-range" name="dateRange" class="form-control w-50" placeholder="Seleziona intervallo date" style="length: 20px" />
                 <input type="hidden" id="startDate" name="startDate" />
                 <input type="hidden" id="endDate" name="endDate" />
 
                 <div class="col-lg-12">
+                    <fieldset>
+                      
+                      <div>Prezzo totale: <span id="totalPriceDisplay">0</span> €</div>
+                      
+                    </fieldset>
+                  </div>
+
+                <div class="col-lg-12" style= "margin-top: 20px">
                     <fieldset>
                       <button type="submit" id="form-submit"  class="filled-button">Submit</button>
                     </fieldset>
@@ -240,6 +251,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
+            <p>Id auto: {$car->getIdAuto()}</p>
               <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
             </div>
           </div>

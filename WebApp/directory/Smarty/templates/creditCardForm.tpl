@@ -76,74 +76,86 @@
 
     <!-- Page Content -->
  
-
-    <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-      <div class="container" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form class="row g-3" method="post" action="/WebApp/User/registration">
-              <div class="col-md-6">
-              <label for="inputName" class="form-label" style="color:aliceblue"> Name </label>
-              <input type="text" class="form-control" id="inputName" name="name">
-            </div>
-             <div class="col-md-6">
-              <label for="inputName" class="form-label" style="color:aliceblue"> Surname </label>
-              <input type="text" class="form-control" id="inputSurname" name="surname">
-            </div>
-            
-            <div class="col-md-6" style="margin-top: 20px;">
-              <label for="inputEmail4" class="form-label" style="color:aliceblue"> Email </label>
-              <input type="email" class="form-control" id="inputEmail4" name="email">
-            </div>
-
-             <div class="col-md-6" style="margin-top: 20px;" >
-              <label for="inputAddress" class="form-label" style="color:aliceblue" >Username</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="pippo" name="username">
-            </div>
-
-            <div class="col-md-6" style="margin-top: 20px;">
-              <label for="inputPhone" class="form-label" style="color:aliceblue"> Phone </label>
-              <input type="text" class="form-control" id="namePhone" name="phone">
-            </div>
-
-            
-            <div class="col-md-6" style="margin-top: 20px;">
-              <label for="inputPassword4" class="form-label" style="color:aliceblue">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" name="password">
-            </div>
-
-
-            <div class="col-md-6" style="margin-top: 20px;" >
-              <label for="inputCity" class="form-label" style="color:aliceblue" >City</label>
-              <input type="text" class="form-control" id="inputCity"  name="city">
-            </div>
- 
-            
-            <div class="col-md-2" style="margin-top: 20px;" >
-              <label for="inputZip" class="form-label" style="color:aliceblue">Zip</label>
-              <input type="text" class="form-control" id="inputZip" name="zip">
-            </div>
-
-             <div class="col-12" style="margin-top: 20px;" >
-              <label for="inputAddress" class="form-label" style="color:aliceblue" >Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="pippo" name="address">
-            </div>
-
-            <div class="col-12" style="margin-top: 20px;" >
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck" style="color:aliceblue">
-                  Check me out
-                </label>
+      <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
+        <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header"><h5>Riepilogo</h5></div>
+              <div class="card-body">
+                <h7>Dal: {$start}</h7><br>
+                <h7>Al:   {$end}</h7><br>
+                <h7>Prezzo totale: {$amount}</h7>
+                
               </div>
             </div>
-            <div class="col-12" style="margin-top: 20px;" >
-              <button type="submit" class="btn btn-primary" style="color:aliceblue">Sign in</button>
+          </div>
+          <div class="col-md-6">
+           <div class="card">
+              <h5 class="card-header">Pagamento</h5>
+                <form class="needs-validation" novalidate=""  method="post" action="/WebApp/User/registration">
+                  
+            <div class="card-body ">
+            <div class="d-block  pl-0 pr-0">
+              <div class="custom-control custom-radio" >
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                <label class="custom-control-label" for="credit">Credit card</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                <label class="custom-control-label" for="debit">Debit card</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                <label class="custom-control-label" for="paypal">Paypal</label>
+              </div>
             </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name" style="margin-top: 10px">Name on card</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number" style="margin-top: 10px">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+           
           </form>
-        </div>
-      </div>
+        </div> <!-- chiusura col-md-6 per il form -->
+      </div> <!-- chiusura row -->
+    </div> <!-- chiusura container -->
+  </div>
+  </div>
+</div>
 
-
-         <div class="best-features">
+     
+   <div class="best-features">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -171,6 +183,7 @@
         </div>
       </div>
     </div>
+    
 
 
       <footer>

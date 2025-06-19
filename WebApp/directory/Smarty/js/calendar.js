@@ -14,10 +14,41 @@ $(document).ready(function() {
       return false;
     },
 
+    
+
     startDate: moment().startOf('month'),
     endDate: moment().endOf('month'),
 
-  }, function(start, end) { // Callback dopo selezione range controllo se date start e end si sovrappongono con le date non disponibili
+    isCustomDate: function(date) {
+      
+      for (const period of surcharges) {
+        const startSurcharge = moment(period.start, 'YYYY-MM-DD');
+        const endSurcharge = moment(period.end, 'YYYY-MM-DD');
+
+        if(date.isBetween(startSurcharge, endSurcharge, null, '[]'))  {
+         
+          if (period.price >basePrice){
+
+            return 'high-price'; // Data personalizzata con sovrapprezzo
+          }
+          else if(period.price <basePrice) {
+          
+            return 'low-price'; 
+          }
+
+          else {return 'normal-price';
+
+          }
+
+        }
+
+      } 
+    return '';
+    },
+
+      
+  }, function(start, end) { //le callback vengono lanciate
+    totalPrice(start,end);  // Callback dopo selezione range controllo se date start e end si sovrappongono con le date non disponibili
     let isInvalidRange = false;
     let i= 0;
     while (!isInvalidRange && i<indisp.length) {
@@ -48,5 +79,33 @@ $(document).ready(function() {
   if (picker) {
     $('#startDate').val(picker.startDate.format('YYYY-MM-DD'));
     $('#endDate').val(picker.endDate.format('YYYY-MM-DD'));
+  }
+
+  function totalPrice(start, end) {
+    let dates = [];
+    let currentDate = start.clone();
+
+    while (currentDate.isSameOrBefore(end)) {
+      dates.push(currentDate.clone());  
+      currentDate.add(1, 'days');       
+    }
+
+    let totalPrice = 0;
+
+    for (const date of dates) {
+      let prezzoData = basePrice;
+      for (const period of surcharges) {
+        const startSurcharge = moment(period.start, 'YYYY-MM-DD');
+        const endSurcharge = moment(period.end, 'YYYY-MM-DD');
+        if (date.isBetween(startSurcharge, endSurcharge, null, '[]')) {
+          prezzoData = period.price;
+          break;
+        }
+      }
+      totalPrice += prezzoData;
+    }
+
+    $('#totalPriceDisplay').text(totalPrice);
+    
   }
 });

@@ -50,11 +50,13 @@ class VUser{
      * login not required
      */
 
-    public function showCarDetails($car,$indisp,$infout) {
+    public function showCarDetails($car,$indisp,$infout,$surcharges,$basePrice) {
         $this->smarty->assign('indisp', $indisp);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('car', $car);
+        $this->smarty->assign('surcharges', $surcharges);
+        $this->smarty->assign('basePrice', $basePrice);
         $this->smarty->display('CarDetails.tpl');
     }
 
@@ -81,7 +83,10 @@ class VUser{
         $this->smarty->display('error.tpl');
     }
 
-    public function showCreditCardForm() {
+    public function showCreditCardForm($amount,$start,$end) {
+        $this->smarty->assign('amount',$amount);
+        $this->smarty->assign('start',$start);
+        $this->smarty->assign('end',$end);
         $this->smarty->display('creditCardForm.tpl');
     }
 

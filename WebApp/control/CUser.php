@@ -153,16 +153,27 @@ class CUser {
 
          // Get the car ID from the request, if not set, it will be null
         $indisponibility= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
+        $surchar= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllSurcharges();
         $indisp=[];
+        $surcharges=[];
+        $basePrice= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getBasePrice();
+        
         foreach($indisponibility as $ind) {
             $indisp[] = [
                 'start' => $ind->getStart()->format(DateTime::ATOM),
                 'end' => $ind->getEnd()->format(DateTime::ATOM)
             ];
         }
+        foreach($surchar as $surcharge) {
+            $surcharges[] = [
+                'start' => $surcharge->getStart()->format(DateTime::ATOM),
+                'end' => $surcharge->getEnd()->format(DateTime::ATOM),
+                'price' => $surcharge->getPrice()
+            ];
+        }
         $car= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
         $view = new VUser();
-        $view->showCarDetails($car,$indisp,$infout);
+        $view->showCarDetails($car,$indisp,$infout,$surcharges,$basePrice);
     }
 
 
@@ -172,17 +183,27 @@ class CUser {
             if (CUser::DocVerified(USession::getElementFromSession('user'))) {
  
                 $idAuto= UHTTPMethods::post('idAuto');
+                $start=UHTTPMethods::post("startDate");
+                $startD=new DateTime($start);
 
-                $startDateData =UHTTPMethods::post('startDate');
-                $startDate = new DateTime($startDateData);
+                $end=UHTTPMethods::post("endDate");
+                $endD=new DateTime($end);
 
-                $endDateData = UHTTPMethods::post('endDate');
-                $endDate = new DateTime($endDateData);
-                USession::setElementInSession('startDate', $startDate->format(DateTime::ATOM));
-                USession::setElementInSession('endDate', $endDate->format(DateTime::ATOM));
+                $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
+
+                $amount=$car->getTotalPrice($startD,$endD);
+                
+
+
+                USession::setElementInSession('startDate', $startD->format(DateTime::ATOM));
+                USession::setElementInSession('endDate', $endD->format(DateTime::ATOM));
                 USession::setElementInSession('idAuto', $idAuto);
+
+                $start=$startD->format('d-m-Y');
+                $end=$endD->format('d-m-Y');
+
                 $view = new VUser();
-                $view->showCreditCardForm();
+                $view->showCreditCardForm($amount,$start,$end);
 
             } else {
                 $view = new VUser();
@@ -195,15 +216,15 @@ class CUser {
     public static function showOverview() {
 
         if (CUser::isLogged()) {
+
+
+
             $userId = USession::getElementFromSession('user');
             $CardName= UHTTPMethods::post('cardName');
             $CardNumber= UHTTPMethods::post('cardName');
             $CardExpiry= UHTTPMethods::post('cardExpiry');
             $CardCVV= UHTTPMethods::post('cardCVV');
-            USession::setElementInSession('cardName', $CardName);
-            USession::setElementInSession('cardNumber', $CardNumber);
-            USession::setElementInSession('cardExpiry', $CardExpiry);
-            USession::setElementInSession('cardCVV', $CardCVV);
+            
             
             $card= new ECreditCard($CardName, $CardNumber, $CardExpiry, $CardCVV,$userId);
 
