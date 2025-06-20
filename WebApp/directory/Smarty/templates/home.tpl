@@ -121,7 +121,7 @@
     </div>
     <!-- Banner Ends Here -->
 
-    <div class="latest-products">
+    <div class="Offerte">
       <div class="container">
         <div class="row">
           <div class="col-md-12">

@@ -194,7 +194,7 @@ class CUser {
                 $amount=$car->getTotalPrice($startD,$endD);
                 
 
-
+                USession::setElementInSession('amount', $amount);
                 USession::setElementInSession('startDate', $startD->format(DateTime::ATOM));
                 USession::setElementInSession('endDate', $endD->format(DateTime::ATOM));
                 USession::setElementInSession('idAuto', $idAuto);
@@ -227,11 +227,14 @@ class CUser {
             
             
             $card= new ECreditCard($CardName, $CardNumber, $CardExpiry, $CardCVV,$userId);
+            $idAuto=USession::getElementFromSession('idAuto');
+            $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
+            $amount=USession::getElementFromSession('amount');
 
             USession::setElementInSession('creditCard', $card->getCardId()); // Store the credit card in the session
             FPersistentManager::getInstance()->uploadObj($card); // Persist the credit card
             $view = new VUser();
-            $view->showOverview($card); //button for confirm o to go back to the form
+            $view->showOverview($start,$end,$amount,$car); //button for confirm o to go back to the form
         } else {
             header('Location: /WebApp/User/Home');
         }

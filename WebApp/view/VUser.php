@@ -95,8 +95,12 @@ class VUser{
         $this->smarty->display('error.tpl');
     }
 
-    public function showOverview($card  ) {
-        $this->smarty->assign('card', $card);
+    public function showOverview($start,$end,$amount,$car) {
+        $this->smarty->assign('car', $car);
+        $this->smarty->assign('start', $start);
+        $this->smarty->assign('end', $end);
+        $this->smarty->assign('amount', $amount);
+
         $this->smarty->display('overview.tpl');
         
     }

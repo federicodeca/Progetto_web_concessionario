@@ -93,7 +93,7 @@
           <div class="col-md-6">
            <div class="card">
               <h5 class="card-header">Pagamento</h5>
-                <form class="needs-validation" novalidate=""  method="post" action="/WebApp/User/registration">
+                <form class="needs-validation"  method="post" action="/WebApp/User/registration">
                   
             <div class="card-body ">
             <div class="d-block  pl-0 pr-0">
