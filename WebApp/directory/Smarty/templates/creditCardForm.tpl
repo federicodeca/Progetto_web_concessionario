@@ -110,6 +110,7 @@
                 <label class="custom-control-label" for="paypal">Paypal</label>
               </div>
             </div>
+            <div id="credit-fields">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="cc-name" style="margin-top: 10px">Name on card</label>
@@ -121,7 +122,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number" style="margin-top: 10px">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                <input type="text" class="form-control" id="cc-number" name="cc-number" placeholder="" pattern="[0-9]&12313,16&125">
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
@@ -130,16 +131,29 @@
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                <input type="text" class="form-control" id="cc-expiration" name="cc-expiration" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&1232&125" title="Formato MM/YY">
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <input type="text" class="form-control" id="cc-cvv" name="cc-cvv" placeholder="123" required="" pattern="[0-9]&1233,4&125" t>
                 <div class="invalid-feedback">
                   Security code required
+                </div>
+              </div>
+            </div>
+            </div>
+            <div id="paypal-fields" style="display: none;">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="paypal-email">PayPal Email</label>
+                  <input type="email" class="form-control" id="paypal-email" name="paypal-email" placeholder="email@paypal.com">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="paypal-password">PayPal Password</label>
+                  <input type="password" class="form-control" id="paypal-password" name="paypal-password" placeholder="••••••••">
                 </div>
               </div>
             </div>
@@ -207,6 +221,28 @@
     <!-- Additional Scripts -->
     <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
     <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const creditFields = document.getElementById("credit-fields");
+        const paypalFields = document.getElementById("paypal-fields");
+        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
+
+        function togglePaymentFields() {
+          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
+          if (selected === "paypal") {
+            creditFields.style.display = "none";
+            paypalFields.style.display = "block";
+          } else {
+            creditFields.style.display = "block";
+            paypalFields.style.display = "none";
+          }
+        }
+
+        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
+        togglePaymentFields();
+      });
+    </script>
 
   </body>
 
