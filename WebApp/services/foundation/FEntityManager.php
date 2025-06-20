@@ -238,33 +238,32 @@ class FEntityManager {
     }
 
 
-    /**
-     * lock a table 
-     * @param string $tableName
-     * @return void
-     */
-    public static function lockTable(string $tableName): void {
-        try {
-            $conn = self::$entityManager->getConnection();
-            $conn->executeQuery("LOCK TABLES $tableName WRITE");
-        } catch (Exception $e) {
-            echo "ERROR: " . $e->getMessage();
-        }
+  public static function lockTable(string $tableName): void {
+    try {
+        $conn = self::$entityManager->getConnection();
+       
+        $conn->executeQuery("LOCK TABLES `$tableName` WRITE");
+       
+    } catch (Exception $e) {
+        
+       
+        echo "ERROR: " . $e->getMessage();
     }
+}
 
-    /**
-     * unlock a table
-     * @param string $tableName
-     * @return void
-     */
-    public static function unlockTable(string $tableName): void {
-        try {
-            $conn = self::$entityManager->getConnection();
-            $conn->executeQuery("UNLOCK TABLES $tableName WRITE");
-        } catch (Exception $e) {
-            echo "ERROR: " . $e->getMessage();
-        }
+
+   public static function unlockTable(): void {
+    try {
+        $conn = self::$entityManager->getConnection();
+        
+        $conn->executeQuery("UNLOCK TABLES");
+       
+       
+    } catch (Exception $e) {
+       
+        echo "ERROR: " . $e->getMessage();
     }
+}
     
 
 }

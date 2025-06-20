@@ -152,8 +152,8 @@ class FPersistentManager {
      * unlock table
      * @param string $table
      */
-    public static function unlockTable($table) {
-        FEntityManager::getInstance()->unlockTable($table);
+    public static function unlockTable() {
+        FEntityManager::getInstance()->unlockTable();
     }
 
 

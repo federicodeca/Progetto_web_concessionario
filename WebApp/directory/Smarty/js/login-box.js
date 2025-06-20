@@ -48,6 +48,7 @@ function submitLogin() {
  console.log('actualMethod:', actualMethod);
   fetch('/WebApp/User/checkLoginAuto', {
   method: 'POST',
+  credentials: 'include',
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&actualMethod=${encodeURIComponent(actualMethod)}`
 })

@@ -181,6 +181,8 @@ class CUser {
 
         if (CUser::isLogged()) {
             if (CUser::DocVerified(USession::getElementFromSession('user'))) {
+
+                $infout=CUser::getUserStatus();
  
                 $idAuto= UHTTPMethods::post('idAuto');
                 $start=UHTTPMethods::post("startDate");
@@ -203,7 +205,7 @@ class CUser {
                 $end=$endD->format('d-m-Y');
 
                 $view = new VUser();
-                $view->showCreditCardForm($amount,$start,$end);
+                $view->showCreditCardForm($amount,$start,$end,$infout);
 
             } else {
                 $view = new VUser();
@@ -219,7 +221,9 @@ class CUser {
 
 
 
-            $userId = USession::getElementFromSession('user');
+            $idUser = USession::getElementFromSession('user');
+            $user=FPersistentManager::getInstance()->getObjectbyId(EUser::class, $idUser);
+
             $cardName= UHTTPMethods::post('cardName');
             $cardNumber= UHTTPMethods::post('cardNumber');
             $cardExpiry= UHTTPMethods::post('cardExpiry');
@@ -227,15 +231,21 @@ class CUser {
             $cardDate=explode("/",$cardExpiry);
             $cardMonth=$cardDate[0];
             $cardYear="20".$cardDate[1];
-            $CardExp= new DateTime("$cardYear-$cardMonth-01");
-            
-            $card= new ECreditCard( $CardNumber, $CardExp, $CardCVV,$userId);
+            $cardExp= new DateTime("$cardYear-$cardMonth-01");  
+            $card= new ECreditCard( $cardNumber, $cardExp, $cardCVV, $user);
+
             $idAuto=USession::getElementFromSession('idAuto');
             $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
-            $amount=USession::getElementFromSession('amount');
 
-            USession::setElementInSession('creditCard', $card->getCardId()); // Store the credit card in the session
-            FPersistentManager::getInstance()->uploadObj($card); // Persist the credit card
+            $amount=USession::getElementFromSession('amount');
+            $startD=USession::getElementFromSession('startDate');
+            $endD=USession::getElementFromSession('endDate');
+            $start=(new DateTime($startD))->format(DateTime::ATOM);
+            $end=(new DateTime($endD))->format(DateTime::ATOM);
+
+            // Store the credit card in the session
+            FPersistentManager::getInstance()->uploadObj($card);
+            USession::setElementInSession('creditCard', $card->getCardId()); // Persist the credit card
             $view = new VUser();
             $view->showOverview($start,$end,$amount,$car); //button for confirm o to go back to the form
         } else {
@@ -246,25 +256,32 @@ class CUser {
     public static function confirmRent() {
 
         if (CUser::isLogged()) {
-            $start=USession::getElementFromSession('startDate');
-            $end=USession::getElementFromSession('endDate');
+
+            $startD=USession::getElementFromSession('startDate');
+            $endD=USession::getElementFromSession('endDate');
+            $start=new DateTime($startD);
+            $end=new DateTime($endD);
+
             $idAuto=USession::getElementFromSession('idAuto');
-            $indisp= new EUnavailability($start, $end, $idAuto);
-            $auto= FPersistentManager::getInstance()->getObjectById(ECarForRent::class, $idAuto);
-            if ($auto->checkUnavailability($indisp)) {
+            
+            $car= FPersistentManager::getInstance()->getObjectById(ECarForRent::class, $idAuto);
+            $indisp= new EUnavailability($start, $end, $car);
+
+            if ($car->checkAvailability($start,$end)) { //metodo clu
                 FPersistentManager::getInstance()::lockTable('cars_for_rent'); // Lock the table to prevent concurrent modifications
                 FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
-                $auto->addUnavailability($indisp); // Add the unavailability to the car
-                FPersistentManager::getInstance()::unlockTable('cars_for_rent');
+                $car->addUnavailability($indisp); // Add the unavailability to the car
+                FPersistentManager::getInstance()::unlockTable();
                 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
-                $now->format('Y-m-d');
+                
                 $idMethod = USession::getElementFromSession('creditCard');
                 $method = FPersistentManager::getInstance()->getObjectById(ECreditCard::class, $idMethod);
                 $idUser = USession::getElementFromSession('user');
                 $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
-
+                $amount=USession::getElementFromSession('amount');
                 $idUser= USession::getElementFromSession('user');
-                $rent= new ERent($now,$method,$user,$indisp,$auto);// Unlock the table after the operation
+                $rent= new ERent($now,$method,$user,$indisp,$car);
+                $rent->setTotalPrice($amount);
                 FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
                  
                 $view = new VUser();
@@ -276,7 +293,9 @@ class CUser {
                 
             }
         }
+
     }
+
 
     /**
      * this method is used to show the user profile, if the user is logged in

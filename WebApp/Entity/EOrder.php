@@ -21,8 +21,6 @@ abstract class EOrder
     #[ORM\Column(type: 'datetime')]
     private DateTime $orderDate;
 
-    #[ORM\Column(type: 'string')]
-    private string $orderStatus;
 
     #[ORM\ManyToOne(targetEntity: ECreditCard::class)]
     #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'idCard', nullable: false)]
@@ -32,10 +30,10 @@ abstract class EOrder
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: false)]
     protected EUser $user;
 
-    public function __construct(DateTime $orderDate, string $orderStatus, ECreditCard $method, EUser $user)
+    public function __construct(DateTime $orderDate,  ECreditCard $method, EUser $user)
     {
         $this->orderDate = $orderDate;
-        $this->orderStatus = $orderStatus;
+        
         $this->method = $method;
         $this->user = $user;
     }
@@ -52,14 +50,7 @@ abstract class EOrder
         $this->orderDate = $orderDate;
     }
 
-    public function getOrderStatus(): string
-    {
-        return $this->orderStatus;
-    }
-    public function setOrderStatus(string $orderStatus): void
-    {
-        $this->orderStatus = $orderStatus;
-    }
+
 
     public function setMethod(ECreditCard $method): void
     {

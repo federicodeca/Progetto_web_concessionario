@@ -25,16 +25,16 @@ class ECreditCard {
 
     #[ORM\ManyToOne(targetEntity: EUser::class)]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: false)]
-    protected int $IdUser;
+    protected EUser $user;
 
 
 
-    public function __construct(string $cardNumber, DateTime $expirationDate, string $cvv, int $user)
+    public function __construct(string $cardNumber, DateTime $expirationDate, string $cvv, EUser $user)
     {
         $this->cardNumber = $cardNumber;
         $this->expirationDate = $expirationDate;
         $this->cvv = $cvv;
-        $this->IdUser = $user;
+        $this->user = $user;
     }
     public function getCardId(): int
     {
@@ -66,14 +66,11 @@ class ECreditCard {
     }
     public function getUser(): int
     {
-        return $this->IdUser;
+        return $this->user;
     }
-    public function setIdUser(int $IdUser): void
+    public function setIdUser( EUser $user): void
     {
-        $this->IdUser = $IdUser;
+        $this->user = $user;
     }
-    public function getUserId(): int
-    {
-        return $this->IdUser;
-    }
+    
 }

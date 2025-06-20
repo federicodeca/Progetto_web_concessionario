@@ -75,10 +75,15 @@
     </header>
 
     <!-- Page Content -->
+    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar" style="width: 75%"></div>
+</div>
  
       <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
         <div class="container">
+
         <div class="row">
+
           <div class="col-md-6">
             <div class="card">
               <div class="card-header"><h5>Riepilogo ordine</h5></div>
@@ -86,80 +91,83 @@
                 <h7>Dal: {$start}</h7><br>
                 <h7>Al:   {$end}</h7><br>
               </div>
-            </div>
+            </div> <!--fine card-->
           </div>
+
+
           <div class="col-md-6">
            <div class="card">
               <h5 class="card-header">Dettagli auto</h5>
-                
-                  
-            <div class="card-body ">
-            <div class="col-md-4 order-md-2 mb-4">
-          
-          <ul class="list-group mb-3 p-4"> 
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Marca:</h6>
-                    </div>
-                    <span class="text-muted">{$car->getBrand()}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Modello:</h6>
-                    </div>
-                    <span class="text-muted">{$car->getModel()}</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Colore: </h6>
-                    </div>
-                    <span class="text-muted">{$car->getColor()}</span>
-                </li>
-                
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Potenza: </h6>
-                    </div>
-                    <span class="text-muted">{$car->getHorsepower()}</span>
-                </li>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <ul class="list-group mb-3 p-4"> 
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Marca:</h6>
+                              </div>
+                              <span class="text-muted">{$car->getBrand()}</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Modello:</h6>
+                              </div>
+                              <span class="text-muted">{$car->getModel()}</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Colore: </h6>
+                              </div>
+                              <span class="text-muted">{$car->getColor()}</span>
+                          </li>
+                          
+                          <li class="list-group-item d-flex justify-content-between ">
+                              <div>
+                                  <h6 class="my-0">Potenza: </h6>
+                              </div>
+                              <span class="text-muted">{$car->getHorsepower()}</span>
+                          </li>
 
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Cilindrata: </h6>
-                    </div>
-                    <span class="text-muted">{$car->getDisplacement()}</span>
-                </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Cilindrata: </h6>
+                              </div>
+                              <span class="text-muted">{$car->getDisplacement()}</span>
+                          </li>
 
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Posti: </h6>
-                    </div>
-                    <span class="text-muted">{$car->getSeats()}</span>
-                </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Posti: </h6>
+                              </div>
+                              <span class="text-muted">{$car->getSeats()}</span>
+                          </li>
 
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Alimentazione: </h6>
-                    </div>
-                    <span class="text-muted">{$car->getFuelType()}</span>
-                </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Alimentazione: </h6>
+                              </div>
+                              <span class="text-muted">{$car->getFuelType()}</span>
+                          </li>
 
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (EUR)</span>
-                    <strong>Totale: {$amount}</strong>
-                </li>
-            </ul>
-              
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" value="WebApp/User/confirmRent">Acquista</button>
-           
-          </form>
-        </div> <!-- chiusura col-md-6 per il form -->
-      </div> <!-- chiusura row -->
-    </div> <!-- chiusura container -->
+                          <li class="list-group-item d-flex justify-content-between">
+                              <span>Total (EUR)</span>
+                              <strong>Totale: {$amount} </strong>
+                          </li>
+                      </ul>
+                        
+                      <hr class="mb-4">
+                      <a href="/WebApp/User/confirmRent" class="btn btn-primary btn-lg btn-block">Acquista</a>
+                     
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- chiusura col-md-6 per il form -->
+        </div> <!-- chiusura row -->
+      </div> <!-- chiusura container -->
+    </div>
   </div>
-  </div>
-</div>
+
 
      
    <div class="best-features">

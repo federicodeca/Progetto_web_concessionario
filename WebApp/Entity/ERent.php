@@ -25,8 +25,8 @@ class ERent extends EOrder
 
     public function __construct(
         DateTime $orderDate,
-        int $method,
-        int $user,
+        ECreditCard $method,
+        EUser $user,
         EUnavailability $Unavailability,
         ECarForRent $car
         

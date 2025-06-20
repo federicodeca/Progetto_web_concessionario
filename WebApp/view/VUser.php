@@ -83,10 +83,12 @@ class VUser{
         $this->smarty->display('error.tpl');
     }
 
-    public function showCreditCardForm($amount,$start,$end) {
+    public function showCreditCardForm($amount,$start,$end,$infout) {
         $this->smarty->assign('amount',$amount);
         $this->smarty->assign('start',$start);
         $this->smarty->assign('end',$end);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
         $this->smarty->display('creditCardForm.tpl');
     }
 
@@ -108,7 +110,7 @@ class VUser{
     public function showCarRentConfirmation($rent, $indisp) {
         $this->smarty->assign('rent', $rent);
         $this->smarty->assign('indisp', $indisp);
-        $this->smarty->display('carForRentDetails.tpl');
+        $this->smarty->display('confirmRent.tpl');
     }
     public function showErrorUnavailability(){
         $this->smarty->assign('error', 'The car is not available for the selected dates.');

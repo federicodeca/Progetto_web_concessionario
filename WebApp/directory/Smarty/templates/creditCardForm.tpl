@@ -20,7 +20,17 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
+        <!--dati per login-->
+    <script>
+      const isLogged = {$isLogged|@json_encode|default:'false'};
+      const username = "{$username|escape:'javascript'|default:''}";
+      
+    </script>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+
   </head>
+  <input type="hidden" id="actualMethod" value="home">
+
 
   <body>
 
@@ -68,6 +78,8 @@
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+
+                <li class="nav-item"> <div id="login-box" ></div> </li>
             </ul>
           </div>
         </div>
@@ -75,11 +87,15 @@
     </header>
 
     <!-- Page Content -->
- 
+
+      <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 50%"></div>
+  </div>
+  
       <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
         <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 mb-5">
             <div class="card">
               <div class="card-header"><h5>Riepilogo</h5></div>
               <div class="card-body">
@@ -90,7 +106,11 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+
+          
+
+
+          <div class="col-md-6 ">
            <div class="card">
               <h5 class="card-header">Pagamento</h5>
                 <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
