@@ -81,84 +81,73 @@
         <div class="row">
           <div class="col-md-6">
             <div class="card">
-              <div class="card-header"><h5>Riepilogo</h5></div>
+              <div class="card-header"><h5>Riepilogo ordine</h5></div>
               <div class="card-body">
                 <h7>Dal: {$start}</h7><br>
                 <h7>Al:   {$end}</h7><br>
-                <h7>Prezzo totale: {$amount}</h7>
+                <h7>Totale: {$amount}</h7>
                 
               </div>
             </div>
           </div>
           <div class="col-md-6">
            <div class="card">
-              <h5 class="card-header">Pagamento</h5>
-                <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
+              <h5 class="card-header">Auto</h5>
+                
                   
             <div class="card-body ">
-            <div class="d-block  pl-0 pr-0">
-              <div class="custom-control custom-radio" >
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                <label class="custom-control-label" for="credit">Credit card</label>
+            <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Product name</h6>
+                <small class="text-muted">Brief description</small>
               </div>
-              <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="debit">Debit card</label>
+              <span class="text-muted">$12</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Second product</h6>
+                <small class="text-muted">Brief description</small>
               </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="paypal">Paypal</label>
+              <span class="text-muted">$8</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Third item</h6>
+                <small class="text-muted">Brief description</small>
               </div>
-            </div>
-            <div id="credit-fields">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="cc-name" style="margin-top: 10px">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required="" name="cardName">
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
-                </div>
+              <span class="text-muted">$5</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small>EXAMPLECODE</small>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="cc-number" style="margin-top: 10px">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" name="cardNumber" placeholder="" pattern="[0-9]&#123;13,16&#125;">
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&#123;2&#125;" title="Formato MM/YY">
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" name="cardCVV" placeholder="123" required="" pattern="[0-9]&#123;3,4&#125;" t>
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
-              </div>
-            </div>
-            </div>
-            <div id="paypal-fields" style="display: none;">
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="paypal-email">PayPal Email</label>
-                  <input type="email" class="form-control" id="paypal-email" name="paypal-email" placeholder="email@paypal.com">
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="paypal-password">PayPal Password</label>
-                  <input type="password" class="form-control" id="paypal-password" name="paypal-password" placeholder="••••••••">
-                </div>
+              <span class="text-success">-$5</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (USD)</span>
+              <strong>$20</strong>
+            </li>
+          </ul>
+
+          <form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Promo code">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary">Redeem</button>
               </div>
             </div>
+          </form>
+        </div>   
+            
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" value="WebApp/User/confirmRent">Continue to checkout</button>
            
           </form>
         </div> <!-- chiusura col-md-6 per il form -->
@@ -221,28 +210,6 @@
     <!-- Additional Scripts -->
     <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
     <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const creditFields = document.getElementById("credit-fields");
-        const paypalFields = document.getElementById("paypal-fields");
-        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
-
-        function togglePaymentFields() {
-          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
-          if (selected === "paypal") {
-            creditFields.style.display = "none";
-            paypalFields.style.display = "block";
-          } else {
-            creditFields.style.display = "block";
-            paypalFields.style.display = "none";
-          }
-        }
-
-        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
-        togglePaymentFields();
-      });
-    </script>
 
   </body>
 

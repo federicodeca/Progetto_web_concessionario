@@ -220,13 +220,16 @@ class CUser {
 
 
             $userId = USession::getElementFromSession('user');
-            $CardName= UHTTPMethods::post('cardName');
-            $CardNumber= UHTTPMethods::post('cardName');
-            $CardExpiry= UHTTPMethods::post('cardExpiry');
-            $CardCVV= UHTTPMethods::post('cardCVV');
+            $cardName= UHTTPMethods::post('cardName');
+            $cardNumber= UHTTPMethods::post('cardNumber');
+            $cardExpiry= UHTTPMethods::post('cardExpiry');
+            $cardCVV= UHTTPMethods::post('cardCVV');
+            $cardDate=explode("/",$cardExpiry);
+            $cardMonth=$cardDate[0];
+            $cardYear="20".$cardDate[1];
+            $CardExp= new DateTime("$cardYear-$cardMonth-01");
             
-            
-            $card= new ECreditCard($CardName, $CardNumber, $CardExpiry, $CardCVV,$userId);
+            $card= new ECreditCard( $CardNumber, $CardExp, $CardCVV,$userId);
             $idAuto=USession::getElementFromSession('idAuto');
             $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
             $amount=USession::getElementFromSession('amount');
