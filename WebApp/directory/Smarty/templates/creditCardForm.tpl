@@ -93,7 +93,7 @@
           <div class="col-md-6">
            <div class="card">
               <h5 class="card-header">Pagamento</h5>
-                <form class="needs-validation"  method="post" action="/WebApp/User/registration">
+                <form class="needs-validation"  method="post" action="/WebApp/User/overview">
                   
             <div class="card-body ">
             <div class="d-block  pl-0 pr-0">
@@ -122,7 +122,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number" style="margin-top: 10px">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" name="cc-number" placeholder="" pattern="[0-9]&12313,16&125">
+                <input type="text" class="form-control" id="cc-number" name="cc-number" placeholder="" pattern="[0-9]&#123;13,16&#125;">
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
@@ -131,14 +131,14 @@
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" name="cc-expiration" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&1232&125" title="Formato MM/YY">
+                <input type="text" class="form-control" id="cc-expiration" name="cc-expiration" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&#123;2&#125;" title="Formato MM/YY">
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" name="cc-cvv" placeholder="123" required="" pattern="[0-9]&1233,4&125" t>
+                <input type="text" class="form-control" id="cc-cvv" name="cc-cvv" placeholder="123" required="" pattern="[0-9]&#123;3,4&#125;" t>
                 <div class="invalid-feedback">
                   Security code required
                 </div>
