@@ -128,7 +128,12 @@ class VUser{
 
         $this->smarty->display('registrationError.tpl');
     }
+    public function showLicenseForm($infout){
 
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->display('licenseForm.tpl');
+    }
 
 
 }

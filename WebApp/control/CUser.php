@@ -280,6 +280,7 @@ class CUser {
                 $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
                 $amount=USession::getElementFromSession('amount');
                 $idUser= USession::getElementFromSession('user');
+
                 $rent= new ERent($now,$method,$user,$indisp,$car);
                 $rent->setTotalPrice($amount);
                 FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
@@ -344,6 +345,20 @@ class CUser {
     public static function showRegistrationForm() {
         $view = new VUser();
         $view->showRegistration();
+    }
+
+    public static function insertLicense(){
+
+        $infout=CUser::getUserStatus();
+        $idUser=USESSION::getElementFromSession('user');
+        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        $view =new VUser();
+        $view->showLicenseForm($infout);
+
+
+
+
+
     }
 
 

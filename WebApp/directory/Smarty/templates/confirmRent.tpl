@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
-        <!--dati per login-->
+    <!--dati per login-->
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
@@ -49,7 +49,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Piselloni<em>Topgear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -89,10 +89,11 @@
 
     <!-- Page Content -->
  
-<!--   <div class="call-to-action">
+  <!--<div class="call-to-action">
+
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 mt-5">
             <div class="inner-content">
               <div class="row">
                 <div class="col-md-8">
@@ -107,89 +108,101 @@
           </div>
         </div>
       </div>
-    </div>      -->
+    </div> -->
+    
+   <div class="call-to-action">
+     
+        <div class="row">
+          <div class="col-md-12 my-5">    
 
 
-  <table border="0" cellpadding="0" cellspacing="0" width="100%" >
-      <tr>
-          <td align="center" style="background-color: #eeeeee;" bgcolor="#eeeeee">
-          
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-              
-              <tr>
-                  <td align="center" style="padding: 35px 35px 20px 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                      <tr>
-                          <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
-                              <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" style="padding: 20px"/><br>
-                              <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
-                                  Thank You For Your Order!
-                              </h2>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
-                              <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium iste ipsa numquam odio dolores, nam.
-                              </p>
-                          </td>
-                      </tr>
-                  </table>
-                  
-                  </td>
-              </tr>
-              <tr>
-                  <td align="center" height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;">
-                      <tr>
-                          <td align="center" valign="top" style="font-size:0;">
-                              <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" >
+                <tr>
+                    <td align="center" style="background-color: #eeeeee;" bgcolor="#eeeeee">
+                    
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                        
+                        <tr>
+                            <td align="center" style="padding: 35px 35px 20px 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                <tr>
+                                    <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
+                                        <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" style="padding: 20px"/><br>
+                                        <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
+                                            Thank You For Your Order!
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
+                                        <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium iste ipsa numquam odio dolores, nam.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" height="100%" valign="top" width="100%" style="padding: 0 35px 35px 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;">
+                                <tr>
+                                    <td align="center" valign="top" style="font-size:0;">
+                                        <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
 
-                                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                      <tr>
-                                          <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                              <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
-                                              <p>Concessionario boh<br>Via Roma, 10<br>L'Aquila</p>
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                                                <tr>
+                                                    <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+                                                        <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
+                                                        <p>Concessionario boh<br>Via Roma, 10<br>L'Aquila</p>
 
-                                          </td>
-                                      </tr>
-                                  </table>
-                              </div>
-                          </td>
-                      </tr>
-                  </table>
-                  </td>
-              </tr>
-              <tr>
-                  <td align="center" style=" padding: 35px; background-color: #ff7361;" bgcolor="#1b9ba3">
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                      <tr>
-                          <td align="center" style="padding: 25px 0 15px 0;">
-                              <table border="0" cellspacing="0" cellpadding="0">
-                                  <tr>
-                                      <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                        <a href="/WebApp/User/home" class="btn btn-primary btn-lg btn-block" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Torna alla home</a>
-                                      </td>
-                                  </tr>
-                              </table>
-                          </td>
-                      </tr>
-                  </table>
-                  </td>
-              </tr>
-              <tr>
-                  <td align="center" style="padding: 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                  </table>
-                  </td>
-              </tr>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style=" padding: 35px; background-color: red" bgcolor="#1b9ba3">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                <tr>
+                                    <td align="center" style="padding: 25px 0 15px 0;">
+                                        <table border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="center" style="border-radius: 5px;" bgcolor="#1b9ba3">
+                                                  <a href="/WebApp/User/home" class="btn btn-primary btn-lg btn-block" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Torna alla home</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style=" background-color: #ffffff;" bgcolor="#ffffff">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                            </table>
+                            </td>
+                        </tr>
 
 
 
-          </table>
-          </td>
-      </tr>
-  </table>   
+                    </table>
+                    </td>
+                </tr>
+            </table>  
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+
+    
+    
 
     
 <!-- fine contenuto -->

@@ -14,7 +14,7 @@ if (isLogged) {
                 benvenuto ${username} <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                  <a class="dropdown-item" href="team.html">Patente</a>
+                  <a class="dropdown-item" href="/WebApp/User/insertLicense">Patente</a>
                   <a class="dropdown-item" href="/WebApp/User/logout">Esci</a>
                 </div>
               </li>
