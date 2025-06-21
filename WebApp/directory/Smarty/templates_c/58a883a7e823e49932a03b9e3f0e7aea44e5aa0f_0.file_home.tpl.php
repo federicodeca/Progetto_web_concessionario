@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-19 19:22:19
+/* Smarty version 5.5.1, created on 2025-06-21 09:10:41
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6854474b6cd877_13635680',
+  'unifunc' => 'content_68565af133c6a8_64309719',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '58a883a7e823e49932a03b9e3f0e7aea44e5aa0f' => 
     array (
       0 => 'home.tpl',
-      1 => 1750353709,
+      1 => 1750489628,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6854474b6cd877_13635680 (\Smarty\Template $_smarty_tpl) {
+function content_68565af133c6a8_64309719 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -134,7 +134,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         <div class="banner-item-01">
           <div class="text-content">
             <h4>prova scritta</h4>
-            <h2>Lorem ipsum dolor sit amet</h2>
+            <h2>Le migliori auto al miglior prezzo!</h2>
           </div>
         </div>
         <div class="banner-item-02">
@@ -153,12 +153,14 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </div>
     <!-- Banner Ends Here -->
 
-    <div class="latest-products">
+    <div class="mt-3"></div>
+
+    <div class="offers">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Offers</h2>
+              <h2>Occasioni</h2>
               <a href="offers.html">view more <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
@@ -198,34 +200,24 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       </div>
     </div>
 
-    <div class="best-features">
+    <div class="find-us">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Us</h2>
-            </div>
+              <div class="section-heading">
+                <h2>Vienici a trovare</h2>
+              </div>
           </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-              </ul>
-              <a href="about-us.html" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="/WebApp/directory/Smarty/assets/images/about-1-570x350.jpg" alt="">
+          <div class="col-md-12">
+            <div id="map">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11793.047504139136!2d13.385407245971683!3d42.35825798648915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit!4v1750455923682!5m2!1sit!2sit" width="1200" height="400" style="border:0; cursor: pointer;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div>  
+
+    <div class="mt-3"></div>
 
     <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);" >
       <div class="container">

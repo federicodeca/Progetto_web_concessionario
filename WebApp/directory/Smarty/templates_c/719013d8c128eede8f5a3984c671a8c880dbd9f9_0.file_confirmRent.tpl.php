@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-21 10:33:19
+  from 'file:confirmRent.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_68566e4fce8626_99675867',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '719013d8c128eede8f5a3984c671a8c880dbd9f9' => 
+    array (
+      0 => 'confirmRent.tpl',
+      1 => 1750494714,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68566e4fce8626_99675867 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -21,12 +45,20 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
         <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
-    </script>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -208,16 +240,26 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
    
 
   </body>
 
 </html>
+<?php }
+}

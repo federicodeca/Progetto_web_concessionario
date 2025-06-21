@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 09:11:30
-  from 'file:creditCardForm.tpl' */
+/* Smarty version 5.5.1, created on 2025-06-21 09:15:03
+  from 'file:overview.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68565b22b6cb79_10312760',
+  'unifunc' => 'content_68565bf714ca18_39372117',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '61f5dd274f6dc12a07fefbf32faf04a7991c8d81' => 
+    '77a2f506d7de8f2843039f5e4928ba02eec7a2a1' => 
     array (
-      0 => 'creditCardForm.tpl',
+      0 => 'overview.tpl',
       1 => 1750489628,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68565b22b6cb79_10312760 (\Smarty\Template $_smarty_tpl) {
+function content_68565bf714ca18_39372117 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -44,25 +44,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
-        <!--dati per login-->
-    <?php echo '<script'; ?>
->
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
-;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      
-    <?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
-
   </head>
-  <input type="hidden" id="actualMethod" value="home">
-
 
   <body>
 
@@ -110,8 +92,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-
-                <li class="nav-item"> <div id="login-box" ></div> </li>
             </ul>
           </div>
         </div>
@@ -119,109 +99,109 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </header>
 
     <!-- Page Content -->
-
-      <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-    <div class="progress-bar" style="width: 50%"></div>
-  </div>
-  
+    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar" style="width: 75%"></div>
+</div>
+ 
       <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
         <div class="container">
+
         <div class="row">
-          <div class="col-md-6 mb-5">
+
+          <div class="col-md-6">
             <div class="card">
-              <div class="card-header"><h5>Riepilogo</h5></div>
+              <div class="card-header"><h5>Riepilogo ordine</h5></div>
               <div class="card-body">
                 <h7>Dal: <?php echo $_smarty_tpl->getValue('start');?>
 </h7><br>
                 <h7>Al:   <?php echo $_smarty_tpl->getValue('end');?>
 </h7><br>
-                <h7>Prezzo totale: <?php echo $_smarty_tpl->getValue('amount');?>
-</h7>
-                
               </div>
-            </div>
+            </div> <!--fine card-->
           </div>
 
-          
 
-
-          <div class="col-md-6 ">
+          <div class="col-md-6">
            <div class="card">
-              <h5 class="card-header">Pagamento</h5>
-                <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
-                  
-            <div class="card-body ">
-            <div class="d-block  pl-0 pr-0">
-              <div class="custom-control custom-radio" >
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                <label class="custom-control-label" for="credit">Credit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="debit">Debit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="paypal">Paypal</label>
+              <h5 class="card-header">Dettagli auto</h5>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <ul class="list-group mb-3 p-4"> 
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Marca:</h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
+</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Modello:</h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getModel();?>
+</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Colore: </h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getColor();?>
+</span>
+                          </li>
+                          
+                          <li class="list-group-item d-flex justify-content-between ">
+                              <div>
+                                  <h6 class="my-0">Potenza: </h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getHorsepower();?>
+</span>
+                          </li>
+
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Cilindrata: </h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getDisplacement();?>
+</span>
+                          </li>
+
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Posti: </h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getSeats();?>
+</span>
+                          </li>
+
+                          <li class="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                  <h6 class="my-0">Alimentazione: </h6>
+                              </div>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getFuelType();?>
+</span>
+                          </li>
+
+                          <li class="list-group-item d-flex justify-content-between">
+                              <span>Total (EUR)</span>
+                              <strong>Totale: <?php echo $_smarty_tpl->getValue('amount');?>
+ </strong>
+                          </li>
+                      </ul>
+                        
+                      <hr class="mb-4">
+                      <a href="/WebApp/User/confirmRent" class="btn btn-primary btn-lg btn-block">Acquista</a>
+                     
+                    </div>
+                </div>
               </div>
             </div>
-            <div id="credit-fields">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="cc-name" style="margin-top: 10px">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required="" name="cardName">
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="cc-number" style="margin-top: 10px">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" name="cardNumber" placeholder="" pattern="[0-9]&#123;13,16&#125;">
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&#123;2&#125;" title="Formato MM/YY">
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" name="cardCVV" placeholder="123" required="" pattern="[0-9]&#123;3,4&#125;" t>
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
-              </div>
-            </div>
-            </div>
-            <div id="paypal-fields" style="display: none;">
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="paypal-email">PayPal Email</label>
-                  <input type="email" class="form-control" id="paypal-email" name="paypal-email" placeholder="email@paypal.com">
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="paypal-password">PayPal Password</label>
-                  <input type="password" class="form-control" id="paypal-password" name="paypal-password" placeholder="••••••••">
-                </div>
-              </div>
-            </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-           
-          </form>
-        </div> <!-- chiusura col-md-6 per il form -->
-      </div> <!-- chiusura row -->
-    </div> <!-- chiusura container -->
+          </div> <!-- chiusura col-md-6 per il form -->
+        </div> <!-- chiusura row -->
+      </div> <!-- chiusura container -->
+    </div>
   </div>
-  </div>
-</div>
+
 
      
    <div class="best-features">
@@ -283,30 +263,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 >
     <?php echo '<script'; ?>
  src="/WebApp/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
->
-
-    <?php echo '<script'; ?>
->
-      document.addEventListener("DOMContentLoaded", function () {
-        const creditFields = document.getElementById("credit-fields");
-        const paypalFields = document.getElementById("paypal-fields");
-        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
-
-        function togglePaymentFields() {
-          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
-          if (selected === "paypal") {
-            creditFields.style.display = "none";
-            paypalFields.style.display = "block";
-          } else {
-            creditFields.style.display = "block";
-            paypalFields.style.display = "none";
-          }
-        }
-
-        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
-        togglePaymentFields();
-      });
-    <?php echo '</script'; ?>
 >
 
   </body>
