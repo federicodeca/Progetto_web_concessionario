@@ -151,7 +151,7 @@ class CUser {
     }
 
     /**
-     * this method is used to select a cars fot rent, it will redirect to the cars details page
+     * this method is used to select a cars for rent, it will redirect to the cars details page
      * @param int $carId
      */
     public static function selectCarForRent($idAuto) {
