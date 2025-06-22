@@ -20,13 +20,19 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
-        <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      
-    </script>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+   <!--dati per login-->
+  <script>
+    const isLogged = {$isLogged|@json_encode|default:'false'};
+    const username = "{$username|escape:'javascript'|default:''}";
+    
+  </script>
+  <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+  <script src="/WebApp/directory/Smarty/js/license-calendar.js"></script>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -113,9 +119,8 @@
             </div>
 
             <div class="col-md-12 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="YYYY-MM-DD" required="" pattern="^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$">
-                  Expiration date required  
+                <input type="text" id ="exp" name="exp" placeholder="10/24/1984" required="" />
+
             </div>
 
             <div class="col-md-4">
@@ -149,7 +154,6 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
     <script src="/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
@@ -157,27 +161,7 @@
     <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
     <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const creditFields = document.getElementById("credit-fields");
-        const paypalFields = document.getElementById("paypal-fields");
-        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
-
-        function togglePaymentFields() {
-          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
-          if (selected === "paypal") {
-            creditFields.style.display = "none";
-            paypalFields.style.display = "block";
-          } else {
-            creditFields.style.display = "block";
-            paypalFields.style.display = "none";
-          }
-        }
-
-        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
-        togglePaymentFields();
-      });
-    </script>
+   
 
   </body>
 

@@ -25,7 +25,7 @@ class CUser {
         }
         if(!$logged) {
         
-        header('Location: /login.php'); // Redirect to login page if not logged in
+        header('Location: /WebApp/User/login'); // Redirect to login page if not logged in
         exit();}
 
         return $logged;
@@ -37,8 +37,16 @@ class CUser {
          * @param object $user
          * 
          */
-    public static function DocVerified($idUser): bool {
-        return FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser)->getIsVerified();
+    public static function DocVerified(): bool {
+        
+        $idUser= USession::getElementFromSession('user');
+        $user=FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        $license = FPersistentManager::getInstance()->getObjectByField(ELicense::class,'user_id',$idUser);
+        if($user->GetIsVerified() && $license->checkExpiration()) {
+            return true; // Document is verified
+        }  
+        return false; // Document is not verified 
+
     }
 
         /**
@@ -180,7 +188,7 @@ class CUser {
         public static function loginAndCreditRequirement() {
 
         if (CUser::isLogged()) {
-            if (CUser::DocVerified(USession::getElementFromSession('user'))) {
+            if (CUser::DocVerified(USession::getElementFromSession('user'))) { // Check if the user has a verified document
 
                 $infout=CUser::getUserStatus();
  

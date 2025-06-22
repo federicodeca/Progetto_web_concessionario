@@ -29,6 +29,8 @@ class EUser extends Eperson {
     #[ORM\Column(type: 'boolean')]
     protected bool $isVerified ;
 
+    
+
     public function __construct($name, $surname, $email, $phone, $userName, $password, $city, $zipCode, $address)
     {
         parent::__construct($name, $surname, $email, $userName, $password);

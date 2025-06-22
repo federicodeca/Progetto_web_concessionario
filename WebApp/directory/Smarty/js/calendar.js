@@ -1,6 +1,11 @@
 $(document).ready(function() {
+
+
   $('#date-range').daterangepicker({
     locale: { format: 'YYYY-MM-DD' },
+    minDate: moment().startOf('day'),
+    
+    
     
     isInvalidDate: function(date) {
       // Disabilita singoli giorni che sono dentro gli intervalli bloccati
@@ -107,5 +112,6 @@ $(document).ready(function() {
 
     $('#totalPriceDisplay').text(totalPrice);
     
-  }
+    }
+
 });

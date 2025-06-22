@@ -27,6 +27,8 @@ use Doctrine\Common\Collections\ArrayCollection;
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: true)]
     protected EUser $user;
 
+    
+    protected bool $verified = false;
 
 
     public function __construct(DateTime $date, EImage $image, EUser $user){
@@ -40,7 +42,7 @@ use Doctrine\Common\Collections\ArrayCollection;
         $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
 
         if ($this->exp>$now) return true;
-        $user->setVerified(true);
+        $this->user->setVerified(true);
         return false;
 
 
