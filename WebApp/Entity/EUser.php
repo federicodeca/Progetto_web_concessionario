@@ -61,7 +61,7 @@ class EUser extends Eperson {
     {
         return $this->address;
     }
-    public function GetIsVerified(): bool
+    public function getIsVerified(): bool
     {
         return $this->isVerified;
     }

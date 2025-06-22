@@ -356,11 +356,16 @@ class CUser {
 
     public static function insertLicense(){
 
+
+
         $infout=CUser::getUserStatus();
         $idUser=USESSION::getElementFromSession('user');
+        
         $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        $licenseInserted=$user->getIsVerified(); // Check if the user has already inserted a license
+// Check if the user is already verified
         $view =new VUser();
-        $view->showLicenseForm($infout);
+        $view->showLicenseForm($infout,$licenseInserted); // Show the license form if not verified or if the user has not inserted a license yet
 
     }
 

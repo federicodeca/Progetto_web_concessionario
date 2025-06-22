@@ -101,36 +101,38 @@
       <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
         <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-5">
-            <div class="card">
+          <div class="col-md-6 mb-5">
+            <div class="custom-license-card">
             <div class="card-header">
-            <h2>License</h2>
+            <h2 style="color:white">License</h2>
             </div> 
 
-            
-          <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
- 
+                  {if !$licenseInserted}
+                  <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
+                    <div class="col-md-12 my-5">
+                      <div class="mb-5">
+                        <label for="formFile" class="form-label">Carica la patente</label>
+                        <input class="form-control" type="file" id="photo" name="photo" required>
+                      </div>
+                    </div>
 
-            <div class="col-md-12 my-5">
-              <div class="mb-5">
-                <label for="formFile" class="form-label">Default file input example</label>
-                <input class="form-control" type="file" id="photo" name="photo">
-              </div>
-            </div>
+                    <div class="col-md-12 mb-3">
+                      <input type="text" id="exp" name="exp" placeholder="YYYY-MM-DD" required>
+                    </div>
 
-            <div class="col-md-12 mb-3">
-                <input type="text" id ="exp" name="exp" placeholder="10/24/1984" required="" />
-
-            </div>
-
-            <div class="col-md-4">
-              <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit" >Invia</button>
-            </div>  
-
-                
-
-           </form>
-               
+                    <div class="col-md-4">
+                      <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit">Invia</button>
+                    </div>  
+                  </form>
+                {else}
+                  <div class="card-body">
+                  <br>
+                  <h5 style="color:white">Patente già verificata</h5><br>
+                  <h7 style="color:white">Gentile cliente ha gia fornito una patente valida.<br> Torni alla home</h7>
+                  <div class="col-md-12 my-5 ">
+                  <a class="btn btn-primary" href="WebApp/User/home">Vai alla Home</a>
+                  </div>
+                {/if}
               
             </div>
           </div>

@@ -79,7 +79,10 @@
 
     <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
       <div class="container" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form class="row g-3" method="post" action="/WebApp/User/registration">
+           <form  method="post" action="/WebApp/User/registration">
+            <div class="custom-license-card">
+
+            <div class="form-row">
               <div class="col-md-6">
               <label for="inputName" class="form-label" style="color:aliceblue"> Name </label>
               <input type="text" class="form-control" id="inputName" name="name">
@@ -88,7 +91,9 @@
               <label for="inputName" class="form-label" style="color:aliceblue"> Surname </label>
               <input type="text" class="form-control" id="inputSurname" name="surname">
             </div>
+           </div> 
             
+          <div class="form-row">
             <div class="col-md-6" style="margin-top: 20px;">
               <label for="inputEmail4" class="form-label" style="color:aliceblue"> Email </label>
               <input type="email" class="form-control" id="inputEmail4" name="email">
@@ -98,7 +103,9 @@
               <label for="inputAddress" class="form-label" style="color:aliceblue" >Username</label>
               <input type="text" class="form-control" id="inputAddress" placeholder="pippo" name="username">
             </div>
+          </div>  
 
+          <div class="form-row">
             <div class="col-md-6" style="margin-top: 20px;">
               <label for="inputPhone" class="form-label" style="color:aliceblue"> Phone </label>
               <input type="text" class="form-control" id="namePhone" name="phone">
@@ -109,8 +116,9 @@
               <label for="inputPassword4" class="form-label" style="color:aliceblue">Password</label>
               <input type="password" class="form-control" id="inputPassword4" name="password">
             </div>
+          </div>  
 
-
+          <div class="form-row">
             <div class="col-md-6" style="margin-top: 20px;" >
               <label for="inputCity" class="form-label" style="color:aliceblue" >City</label>
               <input type="text" class="form-control" id="inputCity"  name="city">
@@ -121,6 +129,7 @@
               <label for="inputZip" class="form-label" style="color:aliceblue">Zip</label>
               <input type="text" class="form-control" id="inputZip" name="zip">
             </div>
+          </div> 
 
              <div class="col-12" style="margin-top: 20px;" >
               <label for="inputAddress" class="form-label" style="color:aliceblue" >Address</label>
@@ -141,6 +150,7 @@
           </form>
         </div>
       </div>
+    </div>  
 
 
          <div class="best-features">
