@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-22 14:02:46
+/* Smarty version 5.5.1, created on 2025-06-22 16:47:24
   from 'file:success.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6857f0e682e6b2_42904382',
+  'unifunc' => 'content_6858177cdf7eb7_21856664',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3650ebb769daf341a29c124c5d5fbea75ae50243' => 
     array (
       0 => 'success.tpl',
-      1 => 1750593654,
+      1 => 1750602891,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6857f0e682e6b2_42904382 (\Smarty\Template $_smarty_tpl) {
+function content_6858177cdf7eb7_21856664 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -35,20 +35,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
+    <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
     <style>
-    .congratulation-wrapper {
-        max-width: 550px;
-        margin-inline: auto;
-        -webkit-box-shadow: 0 0 20px #f3f3f3;
-        box-shadow: 0 0 20px #f3f3f3;
-        padding: 30px 20px;
-        background-color: #fff;
-        border-radius: 10px;
-    }
-
-    .congratulation-contents.center-text .congratulation-contents-icon {
-        margin-inline: auto;
-    }
+    
     .congratulation-contents-icon {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -61,27 +53,15 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         justify-content: center;
         height: 100px;
         width: 100px;
-        background-color: #65c18c;
+        background-color: #40c75b;
         color: #fff;
         font-size: 50px;
         border-radius: 50%;
         margin-bottom: 30px;
     }
-    .congratulation-contents-title {
-        font-size: 32px;
-        line-height: 36px;
-        margin: -6px 0 0;
-    }
-    .congratulation-contents-para {
-        font-size: 16px;
-        line-height: 24px;
-        margin-top: 15px;
-    }
-    .btn-wrapper {
-        display: block;
-    }
+    
     .cmn-btn.btn-bg-1 {
-        background: #6176f6;
+        background: #5464ce;
         color: #fff;
         border: 2px solid transparent;
         border-radius:3px;
@@ -100,7 +80,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     <div class="congratulation-contents-icon">
                         <i class="fas fa-check"></i>
                     </div>
-                    <h4 class="congratulation-contents-title"> Congratulations! </h4>
+                    <h4 class="congratulation-contents-title"> Ottimo! </h4>
                     <p class="congratulation-contents-para"> Il tuo account è pronto per l'uso. </p>
                     <div class="btn-wrapper mt-4">
                         <a href="/WebApp/User/home" class="cmn-btn btn-bg-1"> Torna alla Home </a>

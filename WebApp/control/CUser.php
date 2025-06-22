@@ -44,8 +44,7 @@ class CUser {
         $license = FPersistentManager::getInstance()->getObjectByField(ELicense::class,'user_id',$idUser);
         if($user->GetIsVerified() && $license->checkExpiration()) {
             return true; // Document is verified
-        }  
-        return false; // Document is not verified 
+        } else {return false; } // Document is not verified 
 
     }
 

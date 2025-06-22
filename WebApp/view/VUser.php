@@ -139,5 +139,9 @@ class VUser{
 
     }
 
+    public function showNeedLogin() {
+        $this->smarty->display('needLogin.tpl');
+    }
+
 
 }

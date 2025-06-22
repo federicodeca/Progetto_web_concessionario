@@ -25,7 +25,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
     #[ORM\OneToOne(targetEntity: EUSer::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: true)]
-    protected EUser $user;
+    protected EUser $user_id;
 
     #[ORM\Column(type: 'boolean')]
     protected bool $checked = false;
@@ -34,15 +34,15 @@ use Doctrine\Common\Collections\ArrayCollection;
     public function __construct(DateTime $date, EImage $image, EUser $user){
         $this->exp = $date;
         $this->photo = $image;
-        $this->user = $user;
+        $this->user_id = $user;
     }
 
     public function checkExpiration():bool {
-        $user = $this->user;
+        $user = $this->user_id;
         $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
 
-        if ($this->exp>$now) return true;
-        $this->user->setVerified(true);
+        if (($this->exp) > $now) return true;
+        $this->user_id->setVerified(true);
         return false;
 
 
