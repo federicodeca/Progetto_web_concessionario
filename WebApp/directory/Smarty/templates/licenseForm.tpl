@@ -102,30 +102,31 @@
             </div> 
 
             
-  \   <form method="POST" action="...">
+          <form method="POST" action="...">
  
 
             <div class="col-md-12 my-5">
-                <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02">
-                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+              <div class="mb-5">
+                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                <input class="form-control" type="file" id="formFileMultiple" multiple>
               </div>
             </div>
 
             <div class="col-md-12 mb-3">
                 <label for="cc-expiration">Expiration</label>
                 <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="YYYY-MM-DD" required="" pattern="^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$">
-                  Expiration date required
-                </div>
-              </div>
+                  Expiration date required  
+            </div>
 
-                <button type="submit">Invia</button>
-              </form>
+            <div class="col-md-4">
+              <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit" >Invia</button>
+            </div>  
 
+                
 
-
+           </form>
                
-              </div>
+              
             </div>
           </div>
         </div>
