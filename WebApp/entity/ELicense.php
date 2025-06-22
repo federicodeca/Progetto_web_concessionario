@@ -27,8 +27,8 @@ use Doctrine\Common\Collections\ArrayCollection;
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: true)]
     protected EUser $user;
 
-    
-    protected bool $verified = false;
+    #[ORM\Column(type: 'boolean')]
+    protected bool $checked = false;
 
 
     public function __construct(DateTime $date, EImage $image, EUser $user){
@@ -47,4 +47,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 
     }
+    public function setChecked(bool $checked): void {
+        $this->checked = $checked;
+    }
+
 }

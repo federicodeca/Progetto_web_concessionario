@@ -363,13 +363,33 @@ class CUser {
         $view =new VUser();
         $view->showLicenseForm($infout);
 
-
-
-
-
     }
 
+    public static function uploadLicense() {
 
+
+        $infout=CUser::getUserStatus();
+        
+        $expirationDate = UHTTPMethods::post('exp');
+        $expiration= new DateTime($expirationDate, new DateTimeZone("Europe/Rome"));
+
+        $photo= UHTTPMethods::files('photo');
+        $blobFile=file_get_contents($photo['tmp_name']);
+        $image = new EImage($photo['name'], $photo['type'], $photo['size'],$blobFile);
+        FPersistentManager::getInstance()->uploadObj($image);
+
+       
+        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, USession::getElementFromSession('user'));
+        $user->setVerified(true); // Set the user as verified
+        FPersistentManager::getInstance()->uploadObj($user); // Save the user object
+        $license= New ELicense($expiration,$image,$user); // Save the image object
+        $license->setChecked(true); // !!!!!!!!!!! DA MODIFICARE QUANDO FACCIAMO ADMIN QUESTO é IL CAMPO DI VERIFICA
+        FPersistentManager::getInstance()->uploadObj($license); // Save the license object
+
+
+        $view = new VUser();
+        $view->showLicenseConfirm(); // Show success message after uploading the license
+    }
 
 }
 

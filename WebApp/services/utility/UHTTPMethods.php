@@ -21,6 +21,12 @@ class UHTTPMethods{
         else if (count($param) == 2) return $_FILES[$param[0]][$param[1]];
         else if (count($param) == 3) return $_FILES[$param[0]][$param[1]][$param[2]];
         else if (count($param) == 4) return $_FILES[$param[0]][$param[1]][$param[2]][$param[3]];
-        else return $_FILES[$param[0]][$param[1]][$param[2]][$param[3]][$param[4]];
+        else if (count($param) == 5) return $_FILES[$param[0]][$param[1]][$param[2]][$param[3]][$param[4]];
+        else return $_FILES[$param[0]][$param[1]][$param[2]][$param[3]][$param[4]][$param[5]];
     }
-}
+
+    public static function getBinaryFile($File){
+        $fileData = file_get_contents($$File['$name']['tmp_name']);
+        return $fileData; 
+    }  
+} 

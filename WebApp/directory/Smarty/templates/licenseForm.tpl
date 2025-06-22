@@ -29,8 +29,8 @@
   <script>
     const isLogged = {$isLogged|@json_encode|default:'false'};
     const username = "{$username|escape:'javascript'|default:''}";
-    
   </script>
+
   <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
   <script src="/WebApp/directory/Smarty/js/license-calendar.js"></script>
 
@@ -108,13 +108,13 @@
             </div> 
 
             
-          <form method="POST" action="...">
+          <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
  
 
             <div class="col-md-12 my-5">
               <div class="mb-5">
-                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                <label for="formFile" class="form-label">Default file input example</label>
+                <input class="form-control" type="file" id="photo" name="photo">
               </div>
             </div>
 

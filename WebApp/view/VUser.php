@@ -121,7 +121,7 @@ class VUser{
         $this->smarty->display('registrationForm.tpl');
     }
     public function showSuccessReg() {
-        $this->smarty->display('registrationSuccess.tpl');
+        $this->smarty->display('success.tpl');
     }
     
     public function registrationError(){
@@ -133,6 +133,10 @@ class VUser{
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->display('licenseForm.tpl');
+    }
+    public function showLicenseConfirm(){
+        $this->smarty->display('success.tpl');
+
     }
 
 
