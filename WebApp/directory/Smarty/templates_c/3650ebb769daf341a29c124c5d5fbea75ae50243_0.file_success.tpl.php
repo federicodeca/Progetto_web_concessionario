@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-22 14:02:46
+  from 'file:success.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6857f0e682e6b2_42904382',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '3650ebb769daf341a29c124c5d5fbea75ae50243' => 
+    array (
+      0 => 'success.tpl',
+      1 => 1750593654,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6857f0e682e6b2_42904382 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -88,6 +112,9 @@
     <!-- Congratulations area end -->
 
 <!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 </body>
-</html>
+</html><?php }
+}
