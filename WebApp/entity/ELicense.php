@@ -21,7 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
     #[ORM\OneToOne(targetEntity: EImage::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
-    protected EImages $photo;
+    protected EImage $photo;
 
     #[ORM\OneToOne(targetEntity: EUSer::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: true)]
@@ -36,17 +36,13 @@ use Doctrine\Common\Collections\ArrayCollection;
     }
 
     public function checkExpiration():bool {
-
+        $user = $this->user;
         $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
 
         if ($this->exp>$now) return true;
-        $user->setIsValidate(true);
+        $user->setVerified(true);
         return false;
 
 
     }
-
-
-
-
 }

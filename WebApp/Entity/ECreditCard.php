@@ -64,7 +64,7 @@ class ECreditCard {
     {
         $this->cvv = $cvv;
     }
-    public function getUser(): int
+    public function getUser(): EUser
     {
         return $this->user;
     }
