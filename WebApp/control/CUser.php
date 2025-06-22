@@ -7,10 +7,6 @@ class CUser {
      * this method is used to check if the user is logged in, if not it will redirect to the login page
      * @return void
      */
-
-
- 
-
     public static function isLogged(): bool {
 
         $logged= false;
@@ -32,25 +28,35 @@ class CUser {
         
     }
 
-        /**
-         * this method is used to check if the document is verified, if not it will return false
-         * @param object $user
-         * 
-         */
+    /**
+     * this method is used to check if the document is verified, if not it will return false
+     * @return bool
+     */
     public static function DocVerified(): bool {
-        
-        $idUser= USession::getElementFromSession('user');
-        $user=FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
-        $license = FPersistentManager::getInstance()->getObjectByField(ELicense::class,'user_id',$idUser);
-        if($user->GetIsVerified() && $license->checkExpiration()) {
-            return true; // Document is verified
-        } else {return false; } // Document is not verified 
 
+        $idUser = USession::getElementFromSession('user');
+        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        $license = FPersistentManager::getInstance()->getObjectByField(ELicense::class, 'user_id', $idUser);
+
+        if ($license === null || $user === null) {
+            return false;
+        }
+
+        if (!$license->checkExpiration()) {
+            $user->setVerified(false);
+            FPersistentManager::getInstance()->caricaObj($user);
+            // Patente scaduta: eliminiamola e resettiamo lo stato dell’utente
+            FPersistentManager::getInstance()->removeObject($license);
+            
+            return false;
+        }
+
+        return $user->getIsVerified();
     }
 
         /**
          * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
-         * the User is redirected in the homepage
+         * the User is redirected in the carDetails page 
          */
     public static function checkLoginRent(){
         $view = new VUser();
@@ -61,13 +67,13 @@ class CUser {
 
                 if(USession::getSessionStatus() === PHP_SESSION_NONE){
                     USession::getInstance();
-                    USession::setElementInSession('user', $user->getId());
-                    USession::setElementInSession('user_name', $user->getUsername());
-                    $idAuto=USession::getElementFromSession('idAuto');
 
-                    $url = "/WebApp/User/selectCarForRent/" . $idAuto;
-                    header('Location: ' . $url); // Redirect to the cars for rent page
                 }
+                USession::setElementInSession('user', $user->getId());
+                USession::setElementInSession('username', $user->getUsername());
+                $idAuto=USession::getElementFromSession('idAuto');
+                $url = "/WebApp/User/selectCarForRent/" . $idAuto;
+                header('Location: ' . $url); // Redirect to the cars for rent page
 
             }else{
                 $view->loginError();
@@ -224,8 +230,9 @@ class CUser {
                 $view->showCreditCardForm($amount,$start,$end,$infout,$cards);
 
             } else {
+
                 $view = new VUser();
-                $view->showDocNotVerified(); ///da implementare!!!!
+                $view->showLicenseRequest(); ///da implementare!!!!
             }
 
         }
@@ -379,9 +386,10 @@ class CUser {
 
 
         $infout=CUser::getUserStatus();
-        $idUser=USESSION::getElementFromSession('user');
-        
+        $idUser=USession::getElementFromSession('user');
+       
         $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        
         $licenseInserted=$user->getIsVerified(); // Check if the user has already inserted a license
 // Check if the user is already verified
         $view =new VUser();

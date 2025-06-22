@@ -118,6 +118,10 @@ class FEntityManager {
         }
     }
 
+    public static function caricaObj($obj) {
+        $merged = self::$entityManager->persist($obj);
+        self::$entityManager->flush();
+    }
 
     /**
      * return a list of all the object that have the $str in the specified attribute

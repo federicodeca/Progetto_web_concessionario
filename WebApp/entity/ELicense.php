@@ -23,7 +23,7 @@ use Doctrine\Common\Collections\ArrayCollection;
     #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
     protected EImage $photo;
 
-    #[ORM\OneToOne(targetEntity: EUSer::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: EUSer::class)]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: true)]
     protected EUser $user_id;
 
@@ -42,7 +42,7 @@ use Doctrine\Common\Collections\ArrayCollection;
         $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
 
         if (($this->exp) > $now) return true;
-        $this->user_id->setVerified(true);
+        
         return false;
 
 
@@ -51,4 +51,8 @@ use Doctrine\Common\Collections\ArrayCollection;
         $this->checked = $checked;
     }
 
+    public function getIdLicense(): int {
+
+        return $this->idLicense;
+    }
 }

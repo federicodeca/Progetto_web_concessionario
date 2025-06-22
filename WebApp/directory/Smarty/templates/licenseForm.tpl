@@ -105,7 +105,10 @@
             <div class="custom-license-card">
             <div class="card-header">
             <h2 style="color:white">License</h2>
-            </div> 
+            </div>
+            <script>
+  console.log("licenseInserted =", {$licenseInserted|@json_encode});
+</script> 
 
                   {if !$licenseInserted}
                   <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">

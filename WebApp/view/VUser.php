@@ -148,5 +148,11 @@ class VUser{
         $this->smarty->display('loginForm.tpl');
     }
 
+    public function showLicenseRequest() {
+
+        $this->smarty->display('needLicense.tpl');
+    }
+
+
 
 }
