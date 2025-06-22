@@ -20,9 +20,7 @@ class VUser{
     }
 
 
-    public function showLoginForm() {
-        $this->smarty->display('loginForm.tpl');
-    }
+
     /**
      * login not required
      */
@@ -83,12 +81,14 @@ class VUser{
         $this->smarty->display('error.tpl');
     }
 
-    public function showCreditCardForm($amount,$start,$end,$infout) {
+    public function showCreditCardForm($amount,$start,$end,$infout,$cards) {
         $this->smarty->assign('amount',$amount);
         $this->smarty->assign('start',$start);
         $this->smarty->assign('end',$end);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('cards', $cards);
+    
         $this->smarty->display('creditCardForm.tpl');
     }
 
@@ -97,19 +97,23 @@ class VUser{
         $this->smarty->display('error.tpl');
     }
 
-    public function showOverview($start,$end,$amount,$car) {
+    public function showOverview($start,$end,$amount,$car,$infout) {
         $this->smarty->assign('car', $car);
         $this->smarty->assign('start', $start);
         $this->smarty->assign('end', $end);
         $this->smarty->assign('amount', $amount);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
 
         $this->smarty->display('overview.tpl');
         
     }
 
-    public function showCarRentConfirmation($rent, $indisp) {
+    public function showCarRentConfirmation($rent, $indisp,$infout) {
         $this->smarty->assign('rent', $rent);
         $this->smarty->assign('indisp', $indisp);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
         $this->smarty->display('confirmRent.tpl');
     }
     public function showErrorUnavailability(){
@@ -140,8 +144,8 @@ class VUser{
 
     }
 
-    public function showNeedLogin() {
-        $this->smarty->display('needLogin.tpl');
+    public function showLoginForm() {
+        $this->smarty->display('loginForm.tpl');
     }
 
 

@@ -62,8 +62,11 @@ class CUser {
                 if(USession::getSessionStatus() === PHP_SESSION_NONE){
                     USession::getInstance();
                     USession::setElementInSession('user', $user->getId());
-                    USession::setElementInSession('user_name', $user->getNome());
-                    header('Location: /WebApp/User/loginAndCreditRequirement');
+                    USession::setElementInSession('user_name', $user->getUsername());
+                    $idAuto=USession::getElementFromSession('idAuto');
+
+                    $url = "/WebApp/User/selectCarForRent/" . $idAuto;
+                    header('Location: ' . $url); // Redirect to the cars for rent page
                 }
 
             }else{
@@ -79,13 +82,14 @@ class CUser {
 
 
     public static function login(){
+
         
         if (session_status() === PHP_SESSION_NONE) {
             USession::getInstance();
         }
         
         if(USession::isSetSessionElement('user')) { //user is logged direct to homepage
-            header('Location: /WebApp/User/Home');
+            header('Location: /WebApp/User/home');
         }
         $view= new VUser();
         $view->showLoginForm();
@@ -157,7 +161,7 @@ class CUser {
 
         $infout=CUser::getUserStatus();
 
-
+        USession::setElementInSession('idAuto', $idAuto); // Store the car ID in the session
          // Get the car ID from the request, if not set, it will be null
         $indisponibility= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
         $surchar= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllSurcharges();
@@ -210,9 +214,14 @@ class CUser {
 
                 $start=$startD->format('d-m-Y');
                 $end=$endD->format('d-m-Y');
+                $cardList= FPersistentManager::getInstance()->getAllCreditCardsByUser(USession::getElementFromSession('user'));
+                $cards=[]; // Array to store card numbers
+                foreach($cardList as $card) {
+                    $cards[] = $card->getCardNumber();}
+
 
                 $view = new VUser();
-                $view->showCreditCardForm($amount,$start,$end,$infout);
+                $view->showCreditCardForm($amount,$start,$end,$infout,$cards);
 
             } else {
                 $view = new VUser();
@@ -226,21 +235,29 @@ class CUser {
 
         if (CUser::isLogged()) {
 
-
-
+            $infout=CUser::getUserStatus();
+            
             $idUser = USession::getElementFromSession('user');
             $user=FPersistentManager::getInstance()->getObjectbyId(EUser::class, $idUser);
-
-            $cardName= UHTTPMethods::post('cardName');
+            
+            
             $cardNumber= UHTTPMethods::post('cardNumber');
-            $cardExpiry= UHTTPMethods::post('cardExpiry');
-            $cardCVV= UHTTPMethods::post('cardCVV');
-            $cardDate=explode("/",$cardExpiry);
-            $cardMonth=$cardDate[0];
-            $cardYear="20".$cardDate[1];
-            $cardExp= new DateTime("$cardYear-$cardMonth-01");  
-            $card= new ECreditCard( $cardNumber, $cardExp, $cardCVV, $user);
 
+            $existingMethod=FPersistentManager::getInstance()->verifyCardNumber($cardNumber);
+            if (!$existingMethod) {
+                $cardName= UHTTPMethods::post('cardName');
+                $cardExpiry= UHTTPMethods::post('cardExpiry');
+                $cardCVV= UHTTPMethods::post('cardCVV');
+                $cardDate=explode("/",$cardExpiry);
+                $cardMonth=$cardDate[0];
+                $cardYear="20".$cardDate[1];
+                $cardExp= new DateTime("$cardYear-$cardMonth-01");  
+                $card= new ECreditCard( $cardNumber, $cardExp, $cardCVV, $user);
+
+            }
+            else {
+                $card=FPersistentManager::getInstance()->retrieveObjectByfield(ECreditCard::class,'cardNumber',$cardNumber);
+            }
             $idAuto=USession::getElementFromSession('idAuto');
             $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
 
@@ -250,11 +267,12 @@ class CUser {
             $start=(new DateTime($startD))->format(DateTime::ATOM);
             $end=(new DateTime($endD))->format(DateTime::ATOM);
 
-            // Store the credit card in the session
+                // Store the credit card in the session
             FPersistentManager::getInstance()->uploadObj($card);
             USession::setElementInSession('creditCard', $card->getCardId()); // Persist the credit card
             $view = new VUser();
-            $view->showOverview($start,$end,$amount,$car); //button for confirm o to go back to the form
+            $view->showOverview($start,$end,$amount,$car,$infout); //button for confirm o to go back to the form
+
         } else {
             header('Location: /WebApp/User/Home');
         }
@@ -263,6 +281,8 @@ class CUser {
     public static function confirmRent() {
 
         if (CUser::isLogged()) {
+
+            $infout=CUser::getUserStatus();
 
             $startD=USession::getElementFromSession('startDate');
             $endD=USession::getElementFromSession('endDate');
@@ -293,7 +313,7 @@ class CUser {
                 FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
                  
                 $view = new VUser();
-                $view->showCarRentConfirmation($rent, $indisp); // Show confirmation of the car rent
+                $view->showCarRentConfirmation($rent, $indisp,$infout); // Show confirmation of the car rent
             }
             else {
                 $view = new VUser();
@@ -379,7 +399,7 @@ class CUser {
 
         $photo= UHTTPMethods::files('photo');
         $blobFile=file_get_contents($photo['tmp_name']);
-        $image = new EImage($photo['name'], $photo['type'], $photo['size'],$blobFile);
+        $image = new EImage($photo['name'],$photo['size'], $photo['type'],$blobFile);
         FPersistentManager::getInstance()->uploadObj($image);
 
        

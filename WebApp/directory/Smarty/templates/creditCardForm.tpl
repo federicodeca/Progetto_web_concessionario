@@ -92,42 +92,69 @@
     <div class="progress-bar" style="width: 50%"></div>
   </div>
   
-      <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-        <div class="container">
-        <div class="row">
-          <div class="col-md-6 mb-5">
-            <div class="card">
-              <div class="card-header"><h5>Riepilogo</h5></div>
+  <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-5">
+          <div class="custom-license-card">
+          <div class="card-header"><h5 style="color:white">Riepilogo</h5></div>
               <div class="card-body">
-                <h7>Dal: {$start}</h7><br>
-                <h7>Al:   {$end}</h7><br>
-                <h7>Prezzo totale: {$amount}</h7>
+                <h7  style="color:white"> Dal: {$start}</h7><br>
+                <h7  style="color:white"> Al:   {$end}</h7><br>
+                <h7  style="color:white"> Prezzo totale: {$amount}</h7>
                 
               </div>
-            </div>
           </div>
 
-          
+          <div class="custom-license-card mt-4">
+            
+          <div class="card-header">
+            <h5 style="color:white"> le tue carte </h5>
+          </div>
+
+            <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
+                  
+            <div class="card-body">        
+              <div class="form-group ">
+                <label style="color:white" for="card-select">Seleziona una carta salvata (opzionale)</label>
+                  <select class="form-control" name="cardNumber" id="card-select" onchange="toggleManualFields(this)"
+                    {if !$cards || $cards|count == 0}disabled{/if}>
+                    <option value="">-- <p style="color:white">Seleziona una carta</p> --</option>
+                      {foreach from=$cards item=card}
+                        <option value="{$card}">
+                          Carta: **** **** **** {$card|substr:-4}
+                    </option>
+                    {/foreach}
+                  </select>
+              </div>
 
 
+              <hr class="md-6 mb-3">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+           </div>
+            </form>        
+        </div>
+        </div>
+
+         
           <div class="col-md-6 ">
-           <div class="card">
-              <h5 class="card-header">Pagamento</h5>
+           <div class="custom-license-card">
+              <h5  style="color:white" class="card-header">Pagamento</h5>
                 <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
                   
             <div class="card-body ">
             <div class="d-block  pl-0 pr-0">
               <div class="custom-control custom-radio" >
                 <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                <label class="custom-control-label" for="credit">Credit card</label>
+                <label class="custom-control-label" for="credit"  style="color:white" >Credit card</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="debit">Debit card</label>
+                <label class="custom-control-label" for="debit"  style="color:white" >Debit card</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="paypal">Paypal</label>
+                <label class="custom-control-label" for="paypal"  style="color:white" >Paypal</label>
               </div>
             </div>
             <div id="credit-fields">
@@ -137,20 +164,20 @@
                 <input type="text" class="form-control" id="cc-name" placeholder="" required="" name="cardName">
                 <small class="text-muted">Full name as displayed on card</small>
                 <div class="invalid-feedback">
-                  Name on card is required
+                Name on card is required
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number" style="margin-top: 10px">Credit card number</label>
                 <input type="text" class="form-control" id="cc-number" name="cardNumber" placeholder="" pattern="[0-9]&#123;13,16&#125;">
                 <div class="invalid-feedback">
-                  Credit card number is required
+                Credit card number is required
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
+                <label for="cc-expiration"  style="color:white" >Expiration</label>
                 <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&#123;2&#125;" title="Formato MM/YY">
                 <div class="invalid-feedback">
                   Expiration date required
@@ -261,9 +288,23 @@
 
         paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
         togglePaymentFields();
+
+        // Controllo iniziale per i campi manuali carta
+        if (document.getElementById('card-select')) {
+          toggleManualFields(document.getElementById('card-select'));
+        }
       });
+
+      function toggleManualFields(select) {
+        const disabled = select.value !== "";
+        document.getElementById('cc-name').disabled = disabled;
+        document.getElementById('cc-number').disabled = disabled;
+        document.getElementById('cc-expiration').disabled = disabled;
+        document.getElementById('cc-cvv').disabled = disabled;
+      }
     </script>
 
   </body>
+
 
 </html>

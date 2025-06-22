@@ -170,7 +170,22 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function verifyCardNumber($cardNumber){
+        $result = FCreditCard::verify('cardNumber', $cardNumber);
 
+        return $result;
+    }
+
+public static function getAllCreditCardsByUser($idUser) {
+    $user = FEntityManager::getInstance()->retriveObj(EUser::class, $idUser);
+    $result = FEntityManager::getInstance()->objectList(ECreditCard::class, 'user', $user);
+    return $result;
+}
+
+
+public static function retrieveObjectByField($className, $field, $value) {
+    $result = FEntityManager::getInstance()->retriveObjOnField($className, $field, $value);
+    return $result;}
 
 
 
