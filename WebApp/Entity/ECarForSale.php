@@ -18,6 +18,9 @@ class ECarForSale extends EAuto
     #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale')]
     protected? ESale $saleOrder = null;
 
+    #[ORM\Column(type: 'boolean')]
+    protected bool $saled = false;
+
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, int $price)
     {
         parent::__construct($model, $brand, $color, $horsepower, $engineDisplacement, $seats);
@@ -48,4 +51,10 @@ class ECarForSale extends EAuto
     {
         $this->saleOrder = $saleOrder;
     }
+    public function getSaled(): bool{
+        return $this->saled;}
+    
+    public function setSaled(bool $saled): void
+    {
+        $this->saled = $saled;}
 }

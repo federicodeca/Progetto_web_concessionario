@@ -33,6 +33,8 @@
 
   <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
   <script src="/WebApp/directory/Smarty/js/license-calendar.js"></script>
+  <script src="/WebApp/directory/Smarty/js/size-image.js"></script>
+
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -111,7 +113,7 @@
 </script> 
 
                   {if !$licenseInserted}
-                  <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
+                  <form id="uploadForm" method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
                     <div class="col-md-12 my-5">
                       <div class="mb-5">
                         <label for="formFile" class="form-label">Carica la patente</label>
