@@ -98,7 +98,7 @@
             </div>
              <div class="col-md-12">
               <label for="inputName" class="form-label" style="color:aliceblue"> password</label>
-              <input type="text" class="form-control" id="inputSurname" name="password">
+              <input type="password" class="form-control" id="inputSurname" name="password">
             </div>
            
             <div class="col-md-12" style="margin-top: 20px;" >
