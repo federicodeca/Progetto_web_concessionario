@@ -10,6 +10,18 @@ class FCarForSale {
         return $cars;
     }
 
-   
+   public static function getAllAvailableCarsForSale($table) {
+        $cars = FEntityManager::getInstance()->selectAll($table);
+        if (!$cars) {
+            return [];
+        }
+        $availableCars = [];
+        foreach ($cars as $car) {
+            if ($car->isAvailable()) {
+                $availableCars[] = $car;
+            }
+        }
+        return $availableCars;
+    }
 
 }

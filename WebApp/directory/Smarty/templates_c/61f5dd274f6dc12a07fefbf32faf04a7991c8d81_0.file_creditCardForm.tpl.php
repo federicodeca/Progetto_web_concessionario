@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-21 09:11:30
+/* Smarty version 5.5.1, created on 2025-06-23 12:17:38
   from 'file:creditCardForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68565b22b6cb79_10312760',
+  'unifunc' => 'content_685929c237c215_10684220',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '61f5dd274f6dc12a07fefbf32faf04a7991c8d81' => 
     array (
       0 => 'creditCardForm.tpl',
-      1 => 1750489628,
+      1 => 1750669865,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68565b22b6cb79_10312760 (\Smarty\Template $_smarty_tpl) {
+function content_685929c237c215_10684220 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -124,45 +124,81 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <div class="progress-bar" style="width: 50%"></div>
   </div>
   
-      <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-        <div class="container">
-        <div class="row">
-          <div class="col-md-6 mb-5">
-            <div class="card">
-              <div class="card-header"><h5>Riepilogo</h5></div>
+  <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-5">
+          <div class="custom-license-card">
+          <div class="card-header"><h5 style="color:white">Riepilogo</h5></div>
               <div class="card-body">
-                <h7>Dal: <?php echo $_smarty_tpl->getValue('start');?>
+                <h7  style="color:white"> Dal: <?php echo $_smarty_tpl->getValue('start');?>
 </h7><br>
-                <h7>Al:   <?php echo $_smarty_tpl->getValue('end');?>
+                <h7  style="color:white"> Al:   <?php echo $_smarty_tpl->getValue('end');?>
 </h7><br>
-                <h7>Prezzo totale: <?php echo $_smarty_tpl->getValue('amount');?>
+                <h7  style="color:white"> Prezzo totale: <?php echo $_smarty_tpl->getValue('amount');?>
 </h7>
                 
               </div>
-            </div>
           </div>
 
-          
+          <div class="custom-license-card mt-4">
+            
+          <div class="card-header">
+            <h5 style="color:white"> le tue carte </h5>
+          </div>
+
+            <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
+                  
+            <div class="card-body">        
+              <div class="form-group ">
+                <label style="color:white" for="card-select">Seleziona una carta salvata (opzionale)</label>
+                  <select class="form-control" name="cardNumber" id="card-select" onchange="toggleManualFields(this)"
+                    <?php if (!$_smarty_tpl->getValue('cards') || $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cards')) == 0) {?>disabled<?php }?>>
+                    <option value="">-- <p style="color:white">Seleziona una carta</p> --</option>
+                      <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cards'), 'card');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('card')->value) {
+$foreach0DoElse = false;
+?>
+                        <option value="<?php echo $_smarty_tpl->getValue('card');?>
+">
+                          Carta: **** **** **** <?php echo substr((string) $_smarty_tpl->getValue('card'), (int) -4);?>
+
+                    </option>
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                  </select>
+              </div>
 
 
+              <hr class="md-6 mb-3">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+           </div>
+            </form>        
+        </div>
+        </div>
+
+         
           <div class="col-md-6 ">
-           <div class="card">
-              <h5 class="card-header">Pagamento</h5>
+           <div class="custom-license-card">
+              <h5  style="color:white" class="card-header">Pagamento</h5>
                 <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
                   
             <div class="card-body ">
             <div class="d-block  pl-0 pr-0">
               <div class="custom-control custom-radio" >
                 <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                <label class="custom-control-label" for="credit">Credit card</label>
+                <label class="custom-control-label" for="credit"  style="color:white" >Credit card</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="debit">Debit card</label>
+                <label class="custom-control-label" for="debit"  style="color:white" >Debit card</label>
               </div>
               <div class="custom-control custom-radio">
                 <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="paypal">Paypal</label>
+                <label class="custom-control-label" for="paypal"  style="color:white" >Paypal</label>
               </div>
             </div>
             <div id="credit-fields">
@@ -172,20 +208,20 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <input type="text" class="form-control" id="cc-name" placeholder="" required="" name="cardName">
                 <small class="text-muted">Full name as displayed on card</small>
                 <div class="invalid-feedback">
-                  Name on card is required
+                Name on card is required
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number" style="margin-top: 10px">Credit card number</label>
                 <input type="text" class="form-control" id="cc-number" name="cardNumber" placeholder="" pattern="[0-9]&#123;13,16&#125;">
                 <div class="invalid-feedback">
-                  Credit card number is required
+                Credit card number is required
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
+                <label for="cc-expiration"  style="color:white" >Expiration</label>
                 <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="MM/YY" required="" pattern="(0[1-9]|1[0-2])/[0-9]&#123;2&#125;" title="Formato MM/YY">
                 <div class="invalid-feedback">
                   Expiration date required
@@ -305,11 +341,25 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
         paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
         togglePaymentFields();
+
+        // Controllo iniziale per i campi manuali carta
+        if (document.getElementById('card-select')) {
+          toggleManualFields(document.getElementById('card-select'));
+        }
       });
+
+      function toggleManualFields(select) {
+        const disabled = select.value !== "";
+        document.getElementById('cc-name').disabled = disabled;
+        document.getElementById('cc-number').disabled = disabled;
+        document.getElementById('cc-expiration').disabled = disabled;
+        document.getElementById('cc-cvv').disabled = disabled;
+      }
     <?php echo '</script'; ?>
 >
 
   </body>
+
 
 </html>
 <?php }

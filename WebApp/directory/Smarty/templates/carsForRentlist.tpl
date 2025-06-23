@@ -63,7 +63,7 @@
                     </a>
                 </li> 
 
-              <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForRent/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 

@@ -1,28 +1,4 @@
-<?php
-/* Smarty version 5.5.1, created on 2025-06-23 18:59:48
-  from 'file:carsForRentlist.tpl' */
-
-/* @var \Smarty\Template $_smarty_tpl */
-if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
-  'version' => '5.5.1',
-  'unifunc' => 'content_685988048f40f7_85994376',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '78bcc1e41409a9943832038bd77fbd1c3485bfdd' => 
-    array (
-      0 => 'carsForRentlist.tpl',
-      1 => 1750697985,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-))) {
-function content_685988048f40f7_85994376 (\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -46,25 +22,17 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
-    <?php echo '<script'; ?>
->
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
-;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-    <?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
+    <script>
+      const isLogged = {$isLogged|@json_encode|default:'false'};
+      const username = "{$username|escape:'javascript'|default:''}";
+    </script>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
 
   </head>
 
   <body>
 
-  <input type="hidden" id="actualMethod" value="showCarsForRent">
+  <input type="hidden" id="actualMethod" value="showCarsForSale">
  
 
     <!-- ***** Preloader Start ***** -->
@@ -83,7 +51,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Piselloni<em>TopGear</em></h2></a>
+          <a class="navbar-brand"   href="index.html"><h2>Concessionario<em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -95,7 +63,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForRent/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForSale/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
@@ -137,64 +105,49 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         </div>
       </div>
     </div>
-<?php $_smarty_tpl->assign('perPage', 6, false, NULL);?>                       <!-- Number of cars per page -->
-<?php $_smarty_tpl->assign('page', (($tmp = $_GET['page'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp), false, NULL);?> <!-- Current page, default to 1 if not set reda page=x-->
-<?php $_smarty_tpl->assign('start', ($_smarty_tpl->getValue('page')-1)*$_smarty_tpl->getValue('perPage'), false, NULL);?>     <!-- Calculate the starting index for the current page -->
-<?php $_smarty_tpl->assign('end', $_smarty_tpl->getValue('start')+$_smarty_tpl->getValue('perPage'), false, NULL);
-echo $_smarty_tpl->getSmarty()->getFunctionHandler('math')->handle(array('assign'=>"totalPages",'equation'=>"ceil(x / y)",'x'=>$_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')),'y'=>$_smarty_tpl->getValue('perPage')), $_smarty_tpl);?>
-  <!-- Calculate total pages based on the number of cars and perPage -->
-<?php $_smarty_tpl->assign('index', 0, false, NULL);?>  
+{assign var="perPage" value=6}                       <!-- Number of cars per page -->
+{assign var="page" value=$smarty.get.page|default:1} <!-- Current page, default to 1 if not set reda page=x-->
+{assign var="start" value=($page - 1) * $perPage}     <!-- Calculate the starting index for the current page -->
+{assign var="end" value=$start + $perPage}
+{math assign="totalPages" equation="ceil(x / y)" x=$cars|@count y=$perPage}  <!-- Calculate total pages based on the number of cars and perPage -->
+{assign var="index" value=0}  
     <div class="products">
       <div class="container">
 
-<?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')) > 0) {?>
+{if $cars|@count > 0}
    
         <!-- mostra auto -->
     
 
-<?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cars'), 'car');
-$foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('car')->value) {
-$foreach0DoElse = false;
-?>
-  <?php if ($_smarty_tpl->getValue('index') >= $_smarty_tpl->getValue('start') && $_smarty_tpl->getValue('index') < $_smarty_tpl->getValue('end')) {?>
-    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 0) {?><div class="row"><?php }?>
+{foreach from=$cars item=car}
+  {if $index >= $start && $index < $end}
+    {if ($index - $start) % 3 == 0}<div class="row">{/if}
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
-    <a href='/WebApp/User/selectCarForRent/<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
-'>
+    <a href='/WebApp/CarSale/selectCarForSale/{$car->getIdAuto()}'>
       <div class="product-item" >
-       <img src="data:<?php echo $_smarty_tpl->getValue('car')->getPhoto()->getType();?>
-;base64,<?php echo $_smarty_tpl->getValue('car')->getPhoto()->getEncodedData();?>
-" loading="lazy" alt="Img">
+       
         <div class="down-content">
-          <h4><?php echo $_smarty_tpl->getValue('car')->getModel();?>
-</h4>
-          <h6><small>from</small> <?php echo $_smarty_tpl->getValue('car')->getBasePrice();?>
-€ <small>per weekend</small></h6>
-          <p><?php echo $_smarty_tpl->getValue('car')->getDescription();?>
-</p>
+          <h4>{$car->getBrand()} {$car->getModel()}</h4>
+          <h6><small>Prezzo: </small> {$car->getPrice()}€</h6>
         </div>
         </a>
       </div>
     </div>
 
-    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 2 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getValue('end')-1 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars'))-1) {?></div><?php }?>
-  <?php }?>
-  <?php $_smarty_tpl->assign('index', $_smarty_tpl->getValue('index')+1, false, NULL);?>
+    {if ($index - $start) % 3 == 2 || $index == $end - 1 || $index == $cars|@count - 1}</div>{/if}
+  {/if}
+  {assign var="index" value=$index+1}
 
-<?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+{/foreach}
 
 
     
 
-<?php } else { ?>
+{else}
  <div class="banner-item-03">
   <b class="text-content">  Non ci sono auto disponibili</b>
 </div>
-<?php }?>
+{/if}
 </div>
 </div>
 
@@ -203,44 +156,31 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-<?php if ($_smarty_tpl->getValue('totalPages') > 1) {?>
+{if $totalPages > 1}
   
     <ul class="pages d-flex justify-content-center list-unstyled" style="gap:12px">
-      <?php if ($_smarty_tpl->getValue('page') > 1) {?>
+      {if $page > 1}
  
-        <li><a href="?page=<?php echo $_smarty_tpl->getValue('page')-1;?>
-"><i class="fa fa-angle-double-left"></i></a></li>
-      <?php }?>
+        <li><a href="?page={$page-1}"><i class="fa fa-angle-double-left"></i></a></li>
+      {/if}
  
     
-      <?php
-$__section_i_0_loop = (is_array(@$_loop=$_smarty_tpl->getValue('totalPages')) ? count($_loop) : max(0, (int) $_loop));
-$__section_i_0_total = $__section_i_0_loop;
-$_smarty_tpl->tpl_vars['__smarty_section_i'] = new \Smarty\Variable(array());
-if ($__section_i_0_total !== 0) {
-for ($__section_i_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] = 0; $__section_i_0_iteration <= $__section_i_0_total; $__section_i_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']++){
-?>
-        <?php $_smarty_tpl->assign('p', ($_smarty_tpl->getValue('__smarty_section_i')['index'] ?? null)+1, false, NULL);?>
-        <li <?php if ($_smarty_tpl->getValue('p') == $_smarty_tpl->getValue('page')) {?> class="active"<?php }?>>
-          <a href="?page=<?php echo $_smarty_tpl->getValue('p');?>
-"><?php echo $_smarty_tpl->getValue('p');?>
-</a>
+      {section name=i loop=$totalPages}
+        {assign var="p" value=$smarty.section.i.index+1}
+        <li {if $p == $page} class="active"{/if}>
+          <a href="?page={$p}">{$p}</a>
         </li>
 
-      <?php
-}
-}
-?>
+      {/section}
 
-      <?php if ($_smarty_tpl->getValue('page') < $_smarty_tpl->getValue('totalPages')) {?>
+      {if $page < $totalPages}
         
-        <li><a href="?page=<?php echo $_smarty_tpl->getValue('page')+1;?>
-"><i class="fa fa-angle-double-right"></i></a></li>
+        <li><a href="?page={$page+1}"><i class="fa fa-angle-double-right"></i></a></li>
        
-      <?php }?>
+      {/if}
     </ul>
   
-<?php }?> 
+{/if} 
             </div>
           </div>
         </div>
@@ -317,34 +257,18 @@ for ($__section_i_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_i']-
 
 
     <!-- Bootstrap core JavaScript -->
-    <?php echo '<script'; ?>
-   src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src= "/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
->
+    <script   src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
+    <script src= "/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Additional Scripts -->
-    <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
+    <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
+    <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
+    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
     <!-- Popper.js (necessario per Bootstrap dropdown) -->
-    <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"><?php echo '</script'; ?>
->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
-    <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"><?php echo '</script'; ?>
->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   </body>
 
 </html>
-<?php }
-}

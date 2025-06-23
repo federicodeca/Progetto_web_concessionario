@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-22 11:13:17
+/* Smarty version 5.5.1, created on 2025-06-23 12:14:34
   from 'file:licenseForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6857c92d3dd047_27924767',
+  'unifunc' => 'content_6859290a3859f4_79378749',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6cad865f672ba300454da34c2ed569ddf69170c3' => 
     array (
       0 => 'licenseForm.tpl',
-      1 => 1750583560,
+      1 => 1750673569,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6857c92d3dd047_27924767 (\Smarty\Template $_smarty_tpl) {
+function content_6859290a3859f4_79378749 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -44,20 +44,34 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
-        <!--dati per login-->
     <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"><?php echo '</script'; ?>
 >
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+   <!--dati per login-->
+  <?php echo '<script'; ?>
+>
+    const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+    const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-      
-    <?php echo '</script'; ?>
+  <?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
+
+  <?php echo '<script'; ?>
  src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
 >
 
   </head>
@@ -127,38 +141,44 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
         <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-5">
-            <div class="card">
+          <div class="col-md-6 mb-5">
+            <div class="custom-license-card">
             <div class="card-header">
-            <h2>License</h2>
-            </div> 
-
-            
-          <form method="POST" action="...">
- 
-
-            <div class="col-md-12 my-5">
-              <div class="mb-5">
-                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
-              </div>
+            <h2 style="color:white">License</h2>
             </div>
+            <?php echo '<script'; ?>
+>
+  console.log("licenseInserted =", <?php echo json_encode($_smarty_tpl->getValue('licenseInserted'));?>
+);
+<?php echo '</script'; ?>
+> 
 
-            <div class="col-md-12 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" name="cardExpiry" placeholder="YYYY-MM-DD" required="" pattern="^\d<?php echo 4;?>
--(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$">
-                  Expiration date required  
-            </div>
+                  <?php if (!$_smarty_tpl->getValue('licenseInserted')) {?>
+                  <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
+                    <div class="col-md-12 my-5">
+                      <div class="mb-5">
+                        <label for="formFile" class="form-label">Carica la patente</label>
+                        <input class="form-control" type="file" id="photo" name="photo" required>
+                      </div>
+                    </div>
 
-            <div class="col-md-4">
-              <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit" >Invia</button>
-            </div>  
+                    <div class="col-md-12 mb-3">
+                      <input type="text" id="exp" name="exp" placeholder="YYYY-MM-DD" required>
+                    </div>
 
-                
-
-           </form>
-               
+                    <div class="col-md-4">
+                      <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit">Invia</button>
+                    </div>  
+                  </form>
+                <?php } else { ?>
+                  <div class="card-body">
+                  <br>
+                  <h5 style="color:white">Patente già verificata</h5><br>
+                  <h7 style="color:white">Gentile cliente ha gia fornito una patente valida.<br> Torni alla home</h7>
+                  <div class="col-md-12 my-5 ">
+                  <a class="btn btn-primary" href="WebApp/User/home">Vai alla Home</a>
+                  </div>
+                <?php }?>
               
             </div>
           </div>
@@ -183,9 +203,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
     <!-- Bootstrap core JavaScript -->
     <?php echo '<script'; ?>
- src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
  src="/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
 
@@ -198,29 +215,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
  src="/WebApp/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
 
-    <?php echo '<script'; ?>
->
-      document.addEventListener("DOMContentLoaded", function () {
-        const creditFields = document.getElementById("credit-fields");
-        const paypalFields = document.getElementById("paypal-fields");
-        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
-
-        function togglePaymentFields() {
-          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
-          if (selected === "paypal") {
-            creditFields.style.display = "none";
-            paypalFields.style.display = "block";
-          } else {
-            creditFields.style.display = "block";
-            paypalFields.style.display = "none";
-          }
-        }
-
-        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
-        togglePaymentFields();
-      });
-    <?php echo '</script'; ?>
->
+   
 
   </body>
 

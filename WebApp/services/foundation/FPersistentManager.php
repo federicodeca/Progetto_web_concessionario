@@ -129,6 +129,15 @@ class FPersistentManager {
     }
 
     /**
+     * return all cars for sale from the table
+     */
+    public static function retriveAllAvailableSaleCars($table) {
+        $result = FCarForSale::getAllAvailableCarsForSale($table);
+        return $result;
+    }
+    
+
+    /**
      * return the credit card of a user
      */
     public static function retriveCreditCardOnUserId($userId) {

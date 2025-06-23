@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 12:18:03
-  from 'file:overview.tpl' */
+/* Smarty version 5.5.1, created on 2025-06-23 12:24:49
+  from 'file:loginForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685929db4fd2f0_73783883',
+  'unifunc' => 'content_68592b71b5ec60_09392385',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '77a2f506d7de8f2843039f5e4928ba02eec7a2a1' => 
+    '5f9435c8a368fc21ea19af1257e65cfb16aa8929' => 
     array (
-      0 => 'overview.tpl',
-      1 => 1750669865,
+      0 => 'loginForm.tpl',
+      1 => 1750674271,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685929db4fd2f0_73783883 (\Smarty\Template $_smarty_tpl) {
+function content_68592b71b5ec60_09392385 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -43,10 +43,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
-
-    
-
-         <?php echo '<script'; ?>
+  
+        <?php echo '<script'; ?>
 >
       const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
@@ -56,6 +54,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 ";
     <?php echo '</script'; ?>
 >
+
   </head>
 
   <body>
@@ -108,7 +107,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-
+                
                 <li class="nav-item"> <div id="login-box" ></div> </li>
             </ul>
           </div>
@@ -117,112 +116,34 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </header>
 
     <!-- Page Content -->
-    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style="width: 75%"></div>
-</div>
  
-      <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-        <div class="container">
 
-        <div class="row">
+    <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
+      <div class="container col-md-6" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
+           <form  method="post" action="/WebApp/User/checkLoginRent">
 
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header"><h5>Riepilogo ordine</h5></div>
-              <div class="card-body">
-                <h7>Dal: <?php echo $_smarty_tpl->getValue('start');?>
-</h7><br>
-                <h7>Al:   <?php echo $_smarty_tpl->getValue('end');?>
-</h7><br>
-              </div>
-            </div> <!--fine card-->
-          </div>
-
-
-          <div class="col-md-6">
-           <div class="card">
-              <h5 class="card-header">Dettagli auto</h5>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <ul class="list-group mb-3 p-4"> 
-                      <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Marca:</h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
-</span>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Modello:</h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getModel();?>
-</span>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Colore: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getColor();?>
-</span>
-                          </li>
-                          
-                          <li class="list-group-item d-flex justify-content-between ">
-                              <div>
-                                  <h6 class="my-0">Potenza: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getHorsepower();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Cilindrata: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getDisplacement();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Posti: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getSeats();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Alimentazione: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getFuelType();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between">
-                              <span>Total (EUR)</span>
-                              <strong>Totale: <?php echo $_smarty_tpl->getValue('amount');?>
- </strong>
-                          </li>
-                      </ul>
-                        
-                      <hr class="mb-4">
-                      <a href="/WebApp/User/confirmRent" class="btn btn-primary btn-lg btn-block">Acquista</a>
-                     
-                    </div>
-                </div>
-              </div>
+            <div class="custom-license-card">
+  
+              <div class="col-md-12">
+              <label for="inputName" class="form-label" style="color:aliceblue"> username </label>
+              <input type="text" class="form-control" id="inputName" name="username">
             </div>
-          </div> <!-- chiusura col-md-6 per il form -->
-        </div> <!-- chiusura row -->
-      </div> <!-- chiusura container -->
-    </div>
-  </div>
+             <div class="col-md-12">
+              <label for="inputName" class="form-label" style="color:aliceblue"> password</label>
+              <input type="password" class="form-control" id="inputSurname" name="password">
+            </div>
+           
+            <div class="col-md-12" style="margin-top: 20px;" >
+              <button type="submit" class="btn btn-primary" style="color:aliceblue">Sign in</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>  
 
 
-     
-   <div class="best-features">
+         <div class="best-features">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -250,7 +171,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         </div>
       </div>
     </div>
-    
 
 
       <footer>

@@ -153,6 +153,24 @@ class VUser{
         $this->smarty->display('needLicense.tpl');
     }
 
+// ======================== CAR SALE ========================
 
+    public function showCarsForSale($cars, $infout) {
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->display('carsForSaleList.tpl');
+    }
 
+    /**
+     * login not required
+     */
+
+    public function showCarSaleDetails($car,$infout,$price) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('car', $car);
+        $this->smarty->assign('price', $price);
+        $this->smarty->display('saleCarDetails.tpl');
+    }
 }

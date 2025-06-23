@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 18:59:48
-  from 'file:carsForRentlist.tpl' */
+/* Smarty version 5.5.1, created on 2025-06-23 18:57:49
+  from 'file:carsForSaleList.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685988048f40f7_85994376',
+  'unifunc' => 'content_6859878d7ac2e2_30958155',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '78bcc1e41409a9943832038bd77fbd1c3485bfdd' => 
+    '0ef63910b24f509380104f69836ee3ac7681d63c' => 
     array (
-      0 => 'carsForRentlist.tpl',
-      1 => 1750697985,
+      0 => 'carsForSaleList.tpl',
+      1 => 1750697858,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685988048f40f7_85994376 (\Smarty\Template $_smarty_tpl) {
+function content_6859878d7ac2e2_30958155 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -64,7 +64,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
   <body>
 
-  <input type="hidden" id="actualMethod" value="showCarsForRent">
+  <input type="hidden" id="actualMethod" value="showCarsForSale">
  
 
     <!-- ***** Preloader Start ***** -->
@@ -83,7 +83,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Piselloni<em>TopGear</em></h2></a>
+          <a class="navbar-brand"   href="index.html"><h2>Concessionario<em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -95,7 +95,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForRent/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForSale/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
@@ -161,19 +161,16 @@ $foreach0DoElse = false;
   <?php if ($_smarty_tpl->getValue('index') >= $_smarty_tpl->getValue('start') && $_smarty_tpl->getValue('index') < $_smarty_tpl->getValue('end')) {?>
     <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 0) {?><div class="row"><?php }?>
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
-    <a href='/WebApp/User/selectCarForRent/<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
+    <a href='/WebApp/CarSale/selectCarForSale/<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
 '>
       <div class="product-item" >
-       <img src="data:<?php echo $_smarty_tpl->getValue('car')->getPhoto()->getType();?>
-;base64,<?php echo $_smarty_tpl->getValue('car')->getPhoto()->getEncodedData();?>
-" loading="lazy" alt="Img">
+       
         <div class="down-content">
-          <h4><?php echo $_smarty_tpl->getValue('car')->getModel();?>
+          <h4><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('car')->getModel();?>
 </h4>
-          <h6><small>from</small> <?php echo $_smarty_tpl->getValue('car')->getBasePrice();?>
-€ <small>per weekend</small></h6>
-          <p><?php echo $_smarty_tpl->getValue('car')->getDescription();?>
-</p>
+          <h6><small>Prezzo: </small> <?php echo $_smarty_tpl->getValue('car')->getPrice();?>
+€</h6>
         </div>
         </a>
       </div>
