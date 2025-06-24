@@ -268,6 +268,18 @@ class FEntityManager {
         echo "ERROR: " . $e->getMessage();
     }
 }
-    
+
+    public static function executeQuery($sql, $params = []){
+        try {
+            $conn = self::$entityManager->getConnection();
+            $stmt = $conn->prepare($sql);
+            $result=$stmt->executeQuery($params);
+            return $result->fetchAllAssociative();
+        } catch (Exception $e) {
+            echo "ERROR: " . $e->getMessage();
+            return [];
+        }
+    }
+        
 
 }

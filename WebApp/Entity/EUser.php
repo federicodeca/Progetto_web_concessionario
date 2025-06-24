@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
 
-class EUser extends Eperson {
+class EUser extends EPerson {
 
     protected string $description = "User";
 

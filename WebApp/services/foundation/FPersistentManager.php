@@ -168,7 +168,7 @@ class FPersistentManager {
         FEntityManager::getInstance()->unlockTable();
     }
 
-
+    //LOGIN AND REGISTRATION
         
     public static function verifyUserUsername($username){
         $result = FPerson::verify('username', $username);
@@ -182,6 +182,9 @@ class FPersistentManager {
         return $result;
     }
 
+
+    //NOLEGGIO AUTO
+
     public static function verifyCardNumber($cardNumber){
         $result = FCreditCard::verify('cardNumber', $cardNumber);
 
@@ -193,18 +196,47 @@ class FPersistentManager {
         $result = FEntityManager::getInstance()->objectList(ECreditCard::class, 'user', $user);
         return $result;
 
-        }
+    }
 
 
     public static function retrieveObjectByField($className, $field, $value) {
         $result = FEntityManager::getInstance()->retriveObjOnField($className, $field, $value);
         return $result;
-        }
+    }
 
 
     public static function removeObject($obj):void {
         FEntityManager::getInstance()->deleteObj($obj);
-        }   
+    } 
+
+
+
+    //ACQUISTO AUTO    
+
+    public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {  
+        $result = FCarForSale::searchCarsForSale($brand, $model, $offset, $limit);
+        return $result;
+    } 
+
+
+    
+    public static function countSearchedCars($brand = null, $model = null) {
+        $result = FCarForSale::countSearchedCars($brand, $model);
+        return $result;
+    }
+
+    public static function getAllBrands() {
+        $result = FCarForSale::getAllBrands();
+        return $result;
+    }
+
+    public static function getAllModels($brand) {
+        $result = FCarForSale::getAllModels($brand);
+        return $result;
+    }
+        
+        
+        
         
 
 }

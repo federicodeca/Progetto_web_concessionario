@@ -62,7 +62,7 @@
                       <span class="sr-only">(current)</span>
                     </a>
                 </li> 
-
+    
               <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForSale/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
@@ -91,101 +91,249 @@
       </nav>
     </header>
 
- <!-- Page Content pagination (smarty side only)-->
-
-     <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/assets/images/heading-6-1920x500.jpg);">
+     <!-- Page Content -->
+    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="text-content">
-              <h4>Lorem ipsum dolor sit amet</h4>
-              <h2>Fleet</h2>
+            <div class="custom-license-card">
+              <form method="post" action="carsForSaleList/0"
+            <h4> Che auto cerchi?</h4>
+            
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                <input type="text" class="form-control" name="brand" aria-label="Text input with dropdown button">
+
+              </div><div class="input-group mb-3">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+                <input type="text" class="form-control" name="model" aria-label="Text input with dropdown button">
+
+                <button type="submit" class="btn btn-primary" style="color:aliceblue">Sign in</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-{assign var="perPage" value=6}                       <!-- Number of cars per page -->
-{assign var="page" value=$smarty.get.page|default:1} <!-- Current page, default to 1 if not set reda page=x-->
-{assign var="start" value=($page - 1) * $perPage}     <!-- Calculate the starting index for the current page -->
-{assign var="end" value=$start + $perPage}
-{math assign="totalPages" equation="ceil(x / y)" x=$cars|@count y=$perPage}  <!-- Calculate total pages based on the number of cars and perPage -->
-{assign var="index" value=0}  
+
     <div class="products">
       <div class="container">
-
-{if $cars|@count > 0}
-   
-        <!-- mostra auto -->
-    
-
-{foreach from=$cars item=car}
-  {if $index >= $start && $index < $end}
-    {if ($index - $start) % 3 == 0}<div class="row">{/if}
-    <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
-    <a href='/WebApp/CarSale/selectCarForSale/{$car->getIdAuto()}'>
-      <div class="product-item" >
-       
-        <div class="down-content">
-          <h4>{$car->getBrand()} {$car->getModel()}</h4>
-          <h6><small>Prezzo: </small> {$car->getPrice()}€</h6>
-        </div>
-        </a>
-      </div>
-    </div>
-
-    {if ($index - $start) % 3 == 2 || $index == $end - 1 || $index == $cars|@count - 1}</div>{/if}
-  {/if}
-  {assign var="index" value=$index+1}
-
-{/foreach}
-
-
-    
-
-{else}
- <div class="banner-item-03">
-  <b class="text-content">  Non ci sono auto disponibili</b>
-</div>
-{/if}
-</div>
-</div>
-
-<footer>
-   <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-{if $totalPages > 1}
-  
-    <ul class="pages d-flex justify-content-center list-unstyled" style="gap:12px">
-      {if $page > 1}
- 
-        <li><a href="?page={$page-1}"><i class="fa fa-angle-double-left"></i></a></li>
-      {/if}
- 
-    
-      {section name=i loop=$totalPages}
-        {assign var="p" value=$smarty.section.i.index+1}
-        <li {if $p == $page} class="active"{/if}>
-          <a href="?page={$p}">{$p}</a>
-        </li>
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="assets/images/product-1-370x270.jpg" alt="">
 
-      {/section}
+              <div class="down-content">
+                <h4>Large: Premium</h4>
 
-      {if $page < $totalPages}
-        
-        <li><a href="?page={$page+1}"><i class="fa fa-angle-double-right"></i></a></li>
-       
-      {/if}
-    </ul>
-  
-{/if} 
+                <h6><small>from</small> $99 <small>per weekend</small></h6>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+
+                <small>
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
+                </small>
+
+                <span>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                </span>
+              </div>
             </div>
           </div>
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="assets/images/product-2-370x270.jpg" alt="">
+
+              <div class="down-content">
+                <h4>Large: Premium</h4>
+
+                <h6><small>from</small> $99 <small>per weekend</small></h6>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+
+                <small>
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
+                </small>
+
+                <span>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="assets/images/product-3-370x270.jpg" alt="">
+
+              <div class="down-content">
+                <h4>Large: Premium</h4>
+
+                <h6><small>from</small> $99 <small>per weekend</small></h6>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+
+                <small>
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
+                </small>
+
+                <span>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="assets/images/product-4-370x270.jpg" alt="">
+
+              <div class="down-content">
+                <h4>Large: Premium</h4>
+
+                <h6><small>from</small> $99 <small>per weekend</small></h6>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+
+                <small>
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
+                </small>
+
+                <span>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="assets/images/product-5-370x270.jpg" alt="">
+
+              <div class="down-content">
+                <h4>Large: Premium</h4>
+
+                <h6><small>from</small> $99 <small>per weekend</small></h6>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+
+                <small>
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
+                </small>
+
+                <span>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-item">
+              <img src="assets/images/product-6-370x270.jpg" alt="">
+
+              <div class="down-content">
+                <h4>Large: Premium</h4>
+
+                <h6><small>from</small> $99 <small>per weekend</small></h6>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
+
+                <small>
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
+                </small>
+
+                <span>
+                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <nav aria-label="Pagination">
+            <ul class="pagination">
+              
+              {* Previous Page *}
+              {if $currentPage > 1}
+                <li class="page-item">
+                  <a class="page-link" href="/WebApp/CarSale/CarList/{$currentPage - 1}">Previous</a>
+                </li>
+              {else}
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+              {/if}
+
+              {* Page Numbers: only previous, current, next *}
+              {assign var="prevPage" value=$currentPage - 1}
+              {assign var="nextPage" value=$currentPage + 1}
+
+              {if $prevPage >= 1}
+                <li class="page-item">
+                  <a class="page-link" href="/WebApp/CarSale/CarList/{$prevPage}">{$prevPage}</a>
+                </li>
+              {/if}
+
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">{$currentPage}</a>
+              </li>
+
+              {if $nextPage <= $totalPages}
+                <li class="page-item">
+                  <a class="page-link" href="/WebApp/CarSale/CarList/{$nextPage}">{$nextPage}</a>
+                </li>
+              {/if}
+
+              {* Next Page *}
+              {if $currentPage < $totalPages}
+                <li class="page-item">
+                  <a class="page-link" href="/WebApp/CarSale/CarList/{$currentPage + 1}">Next</a>
+                </li>
+              {else}
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                </li>
+              {/if}
+
+            </ul>
+          </nav>
         </div>
       </div>
-    </footer>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
