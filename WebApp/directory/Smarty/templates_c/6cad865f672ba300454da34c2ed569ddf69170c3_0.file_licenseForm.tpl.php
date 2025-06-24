@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-23 12:14:34
+/* Smarty version 5.5.1, created on 2025-06-23 21:43:55
   from 'file:licenseForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6859290a3859f4_79378749',
+  'unifunc' => 'content_6859ae7bbfa0d1_99841986',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6cad865f672ba300454da34c2ed569ddf69170c3' => 
     array (
       0 => 'licenseForm.tpl',
-      1 => 1750673569,
+      1 => 1750687052,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6859290a3859f4_79378749 (\Smarty\Template $_smarty_tpl) {
+function content_6859ae7bbfa0d1_99841986 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -73,6 +73,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
   <?php echo '<script'; ?>
  src="/WebApp/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
 >
+  <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/size-image.js"><?php echo '</script'; ?>
+>
+
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -154,7 +158,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 > 
 
                   <?php if (!$_smarty_tpl->getValue('licenseInserted')) {?>
-                  <form method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
+                  <form id="uploadForm" method="POST" action="/WebApp/User/uploadLicense" enctype="multipart/form-data">
                     <div class="col-md-12 my-5">
                       <div class="mb-5">
                         <label for="formFile" class="form-label">Carica la patente</label>
