@@ -66,6 +66,8 @@ class CUser {
             if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
 
                 if ($user->getRole()=='admin') {
+                USession::setElementInSession('admin', $user->getId());
+                USession::setElementInSession('username', $user->getUsername());
                     header('Location: WebApp/Admin/home');
                     exit;
                 }    
@@ -367,7 +369,10 @@ class CUser {
             if (USession::getSessionStatus() === PHP_SESSION_NONE) {
                 USession::getInstance();
             }
-            USession::setElementInSession('user', $user->getId());
+            else{
+                USession::setElementInSession('user', $user->getId());
+            }
+            
             USession::setElementInSession('username', $user->getUsername());
 
             if ($user->getRole()=='admin') {
