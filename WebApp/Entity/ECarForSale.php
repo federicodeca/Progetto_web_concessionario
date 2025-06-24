@@ -17,14 +17,21 @@ class ECarForSale extends EAuto
 
     #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale')]
     protected? ESale $saleOrder = null;
+    
+    #[ORM\OneToOne(targetEntity: EImage::class)]
+    #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
+    protected $photo=null;
 
     #[ORM\Column(type: 'boolean')]
     protected bool $saled = false;
+
+
 
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, int $price)
     {
         parent::__construct($model, $brand, $color, $horsepower, $engineDisplacement, $seats);
         $this->price = $price;
+        $this->photo = null; // Initialize photo to null
     }
 
     public function getPrice(): int
@@ -57,4 +64,15 @@ class ECarForSale extends EAuto
     public function setSaled(bool $saled): void
     {
         $this->saled = $saled;}
+
+    public function getPhoto(): EImage
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(EImage $photo): void
+    {
+        $this->photo = $photo;
+    }
+
 }

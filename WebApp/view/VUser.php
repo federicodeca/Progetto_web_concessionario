@@ -155,12 +155,12 @@ class VUser{
 
 // ======================== CAR SALE ========================
 
-    public function showCarsForSale($cars, $infout,$totalPages, $currentPage) {
-        $this->smarty->assign('cars', $cars);
+    public function showCarsForSale($filteredCars, $infout,$totalPages, $currentPage) {
+        $this->smarty->assign('filteredCars', $filteredCars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
-        $smarty->assign('currentPage', $currentPage);
-        $smarty->assign('totalPages', $totalPages);
+        $this->smarty->assign('currentPage', $currentPage);
+        $this->smarty->assign('totalPages', $totalPages);
         $this->smarty->display('carsForSaleList.tpl');
     }
 

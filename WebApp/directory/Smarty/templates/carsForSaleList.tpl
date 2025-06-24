@@ -92,197 +92,72 @@
     </header>
 
      <!-- Page Content -->
-    <div class="page-heading about-heading header-text" style="background-image: url(assets/images/heading-6-1920x500.jpg);">
+   <div class="page-heading about-heading header-text"  style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="custom-license-card">
-              <form method="post" action="carsForSaleList/0"
-            <h4> Che auto cerchi?</h4>
-            
-              <div class="input-group mb-3">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-                <input type="text" class="form-control" name="brand" aria-label="Text input with dropdown button">
-
-              </div><div class="input-group mb-3">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Separated link</a></li>
-                </ul>
-                <input type="text" class="form-control" name="model" aria-label="Text input with dropdown button">
-
-                <button type="submit" class="btn btn-primary" style="color:aliceblue">Sign in</button>
-                </form>
-              </div>
+              <form method="post" action="carsForSaleList/0">
+                <div class="card-header">
+                  <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="input-group mb-3">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                      <ul class="dropdown-menu">
+                        {foreach $models as $brand => $modelList}
+                          <li><a class="dropdown-item" href="#" onclick="selectBrand('{$brand}')">{$brand}</a></li>
+                        {/foreach}
+                      </ul>
+                      <input type="text" class="form-control" name="brand" readonly id="brandInput" aria-label="Text input with dropdown button" placeholder="brand">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="input-group mb-3">
+                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                      <ul class="dropdown-menu" disabled="" id="modelDropdown">
+                        {foreach $models as $brand => $modelList}
+                          {foreach $modelList as $model}
+                            <li class="dropdown-model-item" data-brand="{$brand}">
+                              <a class="dropdown-item" href="#" onclick="selectModel('{$model}')">{$model}</a>
+                            </li>
+                          {/foreach}
+                        {/foreach}
+                      </ul>
+                      <input type="text" class="form-control" name="model" readonly id="modelInput" aria-label="Text input with dropdown button" placeholder="model" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <button type="submit" class="btn btn-primary mb-3 " style="color:aliceblue">Cerca</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    
     <div class="products">
       <div class="container">
         <div class="row">
+        {foreach $filteredCars as $car}
           <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/product-1-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Large: Premium</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-
-                <small>
-                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
-                </small>
-
-                <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
-                </span>
+             <div class="product-item" >
+                <img src="data:{$car->getPhoto()->getType()};base64,{$car->getPhoto()->getEncodedData()}" loading="lazy" alt="Img">
+                  <div class="down-content">
+                    <h4>{$car->getModel()}</h4>
+                    <h6><small>from</small> {$car->getBasePrice()}€ <small>per weekend</small></h6>
+                    <p>{$car->getDescription()}</p>
+                  </div>
               </div>
-            </div>
+            </div> 
           </div>
+          {/foreach}    
+            
 
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/product-2-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Large: Premium</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-
-                <small>
-                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
-                </small>
-
-                <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/product-3-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Large: Premium</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-
-                <small>
-                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
-                </small>
-
-                <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/product-4-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Large: Premium</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-
-                <small>
-                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
-                </small>
-
-                <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/product-5-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Large: Premium</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-
-                <small>
-                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
-                </small>
-
-                <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="product-item">
-              <img src="assets/images/product-6-370x270.jpg" alt="">
-
-              <div class="down-content">
-                <h4>Large: Premium</h4>
-
-                <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-
-                <small>
-                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong title="transmission"><i class="fa fa-cog"></i> A</strong>
-                </small>
-
-                <span>
-                  <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
-                </span>
-              </div>
-            </div>
-          </div>
+          
 
           <nav aria-label="Pagination">
             <ul class="pagination">

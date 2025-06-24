@@ -24,9 +24,11 @@ class FCarForSale {
         return $availableCars;
     }
 
-    public function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
+    public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
     $sql = "SELECT *  FROM cars_for_sale WHERE available = 1";
     $params = [];
+    $offset = (int)$offset;
+    $limit = (int)$limit;
 
     if (!empty($brand)) {
             $sql .= " AND brand = '$brand'";
@@ -38,16 +40,19 @@ class FCarForSale {
             
         }
 
-    $sql .= " LIMIT = '$limit' OFFSET '$offset'";
+   $sql .= " LIMIT " . intval($limit) . " OFFSET " . intval($offset);
  
     // Usa PDO o mysqli con prepared statements per eseguire la query in sicurezza
-    return FEntityManager::getInstance()->executeQuery($sql);
+    $result= FEntityManager::getInstance()->executeQuery($sql);
+    
+    return $result;  
+
 
 
     }
     
 
-    public function countSearchedCars($brand = null, $model = null) {
+    public static function countSearchedCars($brand = null, $model = null) {
     $sql = "SELECT COUNT(*) FROM cars_for_sale WHERE available = 1";
     $params = [];
 
@@ -62,7 +67,8 @@ class FCarForSale {
     }
 
     // Esegui la query e restituisci il numero
-    return FEntityManager::getInstance()->executeQuery($sql, $params);
+    $result = FEntityManager::getInstance()->executeQuery($sql, $params);
+    return $result[0]['COUNT(*)'] ?? 0;
   
     }
 

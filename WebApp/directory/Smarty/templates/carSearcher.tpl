@@ -98,7 +98,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="custom-license-card">
-              <form method="post" action="carsForSaleList/0">
+              <form method="post" action="/WebApp/CarSale/showCarsForSale/1">
                 <div class="card-header">
                   <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
                 </div>
