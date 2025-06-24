@@ -30,6 +30,9 @@ class EPerson {
     #[ORM\Column(type: 'string', unique: true)]
     protected $username;
 
+    #[ORM\Column(type: 'string')]
+    protected $role;
+
     protected static $entity = EPerson::class;
 
     public function __construct($firstname, $surname, $email, $password, $username)
@@ -41,6 +44,7 @@ class EPerson {
         $this->email = $email;
         $this->password = $hashedPassword;
         $this->username = $username;
+        $this->role = 'user'; // Default type, can be overridden in subclasses
     }
 
     public function getPassword()
@@ -75,5 +79,9 @@ class EPerson {
     public function getUsername()
     {
         return $this->username;
+    }
+    public function getRole()
+    {
+        return $this->role;
     }
 }

@@ -26,7 +26,7 @@ class CAdmin {
         USession::unsetAllElementsInSession();// Unset all session elements
         USession::killSession();
         setcookie('PHPSESSID','',time()-42000); //??
-        header('Location: /WebApp/User/Home');
+        header('Location: /WebApp/User/home');
     }
 
     /**

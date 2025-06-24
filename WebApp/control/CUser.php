@@ -65,6 +65,11 @@ class CUser {
             $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
             if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
 
+                if ($user->getRole()=='admin') {
+                    header('Location: WebApp/Admin/home');
+                    exit;
+                }    
+
                 if(USession::getSessionStatus() === PHP_SESSION_NONE){
                     USession::getInstance();
 
@@ -357,16 +362,27 @@ class CUser {
         $user = FPersistentManager::getInstance()->retriveUserOnUsername($user);
         if($user && password_verify($password, $user->getPassword())) {
 
+
+
             if (USession::getSessionStatus() === PHP_SESSION_NONE) {
                 USession::getInstance();
             }
             USession::setElementInSession('user', $user->getId());
             USession::setElementInSession('username', $user->getUsername());
+
+            if ($user->getRole()=='admin') {
+                echo json_encode([
+                    'success' => true,
+                    'redirect' => 'WebApp/Admin/home',    
+                    ]); 
+            }
             
-            echo json_encode([
-                'success' => true,
-                'redirect' => 'WebApp/User/'.$actualMethod,     
-            ]);
+            else{ 
+                echo json_encode([
+                    'success' => true,
+                    'redirect' => 'WebApp/User/'.$actualMethod,     
+                ]);
+            }    
 
         } else {
             echo json_encode([

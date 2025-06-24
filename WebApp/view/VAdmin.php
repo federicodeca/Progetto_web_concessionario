@@ -15,7 +15,7 @@ class VAdmin{
         
         $this->smarty->assign('isLogged', $infout['isLogged']);  
         $this->smarty->assign('username', $infout['username']);
-        $this->smarty->display('home.tpl');
+        $this->smarty->display('addCarForm.tpl');
 
     }
 

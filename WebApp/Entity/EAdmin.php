@@ -9,7 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
   
 class EAdmin extends EPerson {
 
-#[ORM\Column(type: 'string')]
-private string $description ="Admin";
+    #[ORM\Column(type: 'string')]
+    private string $description ="Admin";
+
+
+    public function __construct($firstname, $surname, $email, $password, $username)
+    {
+        parent::__construct($firstname, $surname, $email, $password, $username);
+        $this->role = 'admin'; // Ensure role is set to admin
+
+    }   
 
 }
