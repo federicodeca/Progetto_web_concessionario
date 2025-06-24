@@ -26,7 +26,6 @@ class FCarForSale {
 
     public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
     $sql = "SELECT *  FROM cars_for_sale WHERE available = 1";
-    $params = [];
     $offset = (int)$offset;
     $limit = (int)$limit;
 

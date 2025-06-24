@@ -67,7 +67,7 @@
                 <a class="nav-link" href="WebApp/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/carSearcher">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 

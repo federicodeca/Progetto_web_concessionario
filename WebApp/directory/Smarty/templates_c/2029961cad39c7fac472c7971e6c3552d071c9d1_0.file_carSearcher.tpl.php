@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-24 22:39:42
+  from 'file:carSearcher.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_685b0d0e1fc6d3_87418869',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2029961cad39c7fac472c7971e6c3552d071c9d1' => 
+    array (
+      0 => 'carSearcher.tpl',
+      1 => 1750797467,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_685b0d0e1fc6d3_87418869 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -22,12 +46,22 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-    </script>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
-    <script src="/WebApp/directory/Smarty/js/select-car.js"></script>
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+    <?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/select-car.js"><?php echo '</script'; ?>
+>
 
   </head>
 
@@ -107,9 +141,18 @@
                     <div class="input-group mb-3">
                       <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
                       <ul class="dropdown-menu">
-                        {foreach $models as $brand => $modelList}
-                          <li><a class="dropdown-item" href="#" onclick="selectBrand('{$brand}')">{$brand}</a></li>
-                        {/foreach}
+                        <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
+$foreach0DoElse = false;
+?>
+                          <li><a class="dropdown-item" href="#" onclick="selectBrand('<?php echo $_smarty_tpl->getValue('brand');?>
+')"><?php echo $_smarty_tpl->getValue('brand');?>
+</a></li>
+                        <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                       </ul>
                       <input type="text" class="form-control" name="brand" readonly id="brandInput" aria-label="Text input with dropdown button" placeholder="brand">
                     </div>
@@ -118,13 +161,30 @@
                     <div class="input-group mb-3">
                       <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
                       <ul class="dropdown-menu" disabled="" id="modelDropdown">
-                        {foreach $models as $brand => $modelList}
-                          {foreach $modelList as $model}
-                            <li class="dropdown-model-item" data-brand="{$brand}">
-                              <a class="dropdown-item" href="#" onclick="selectModel('{$model}')">{$model}</a>
+                        <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
+$foreach1DoElse = false;
+?>
+                          <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('modelList'), 'model');
+$foreach2DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('model')->value) {
+$foreach2DoElse = false;
+?>
+                            <li class="dropdown-model-item" data-brand="<?php echo $_smarty_tpl->getValue('brand');?>
+">
+                              <a class="dropdown-item" href="#" onclick="selectModel('<?php echo $_smarty_tpl->getValue('model');?>
+')"><?php echo $_smarty_tpl->getValue('model');?>
+</a>
                             </li>
-                          {/foreach}
-                        {/foreach}
+                          <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                        <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                       </ul>
                       <input type="text" class="form-control" name="model" readonly id="modelInput" aria-label="Text input with dropdown button" placeholder="model" disabled>
                     </div>
@@ -161,22 +221,38 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script   src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src= "/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+   src="/WebApp/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src= "/WebApp/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/WebApp/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/WebApp/directory/Smarty/assets/js/owl.js"></script>
-    <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/WebApp/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
 
     <!-- Popper.js (necessario per Bootstrap dropdown) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"><?php echo '</script'; ?>
+>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
 
 
   </body>
 
 </html>
+<?php }
+}
