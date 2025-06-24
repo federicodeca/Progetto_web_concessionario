@@ -22,16 +22,15 @@ class ECarForRent extends EAuto
     protected $description;
 
 
-    #[ORM\OneToOne(targetEntity: EImage::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
-    protected $photo=null;
-
+  
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, float $basePrice)
     {
         parent::__construct($model, $brand, $color, $horsepower, $displacement, $seats);
         $this->basePrice = $basePrice;
         $this->unavailabilities = new ArrayCollection();
         $this->surcharges = new ArrayCollection();
+        
+     // Initialize photo to null
     }
 
     public function getBasePrice(): float
@@ -102,16 +101,7 @@ class ECarForRent extends EAuto
 
     }
 
-    public function setPhoto($photo): void
-    {
-        $this->photo = $photo;
-    }
 
-
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
 
 
 

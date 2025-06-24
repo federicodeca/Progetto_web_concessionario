@@ -92,6 +92,8 @@
     </header>
 
  <!-- Page Content pagination (smarty side only)-->
+ 
+
 
      <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/assets/images/heading-6-1920x500.jpg);">
       <div class="container">
@@ -100,6 +102,7 @@
             <div class="text-content">
               <h4>Lorem ipsum dolor sit amet</h4>
               <h2>Fleet</h2>
+     
             </div>
           </div>
         </div>
@@ -125,7 +128,7 @@
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
     <a href='/WebApp/User/selectCarForRent/{$car->getIdAuto()}'>
       <div class="product-item" >
-       <img src="data:{$car->getPhoto()->getType()};base64,{$car->getPhoto()->getEncodedData()}" loading="lazy" alt="Img">
+       <img src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
         <div class="down-content">
           <h4>{$car->getModel()}</h4>
           <h6><small>from</small> {$car->getBasePrice()}€ <small>per weekend</small></h6>
@@ -140,6 +143,7 @@
   {assign var="index" value=$index+1}
 
 {/foreach}
+
 
 
     

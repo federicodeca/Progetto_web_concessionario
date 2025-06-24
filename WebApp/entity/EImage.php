@@ -23,6 +23,10 @@ use Doctrine\ORM\Mapping as ORM;
     #[ORM\Column(type: 'blob')]
     private $imageData;
 
+    #[ORM\ManyToOne(targetEntity: EAuto::class, inversedBy: 'photo')]
+    #[ORM\JoinColumn(name: 'Auto_id', referencedColumnName: 'idAuto', nullable: true)]
+    private $car;
+
 
     private static $entity = EImage::class;
 
@@ -32,6 +36,7 @@ use Doctrine\ORM\Mapping as ORM;
         $this->size = $size;
         $this->types = $type;
         $this->imageData = $imageData;
+        $this->carForRent = null; // Initialize carForRent to null
     }
 
     public static function getEntity(): string
@@ -65,14 +70,15 @@ use Doctrine\ORM\Mapping as ORM;
         return $this->imageData;
     }
 
-    public function getEncodedData(){
-        if(is_resource($this->imageData)){
-            $data = stream_get_contents($this->imageData); //blob returned by doctrine is a resource, so we need to convert it to string
-            return base64_encode($data);
-        }else{
-            return base64_encode($this->imageData);
-        }
-        
+public function getEncodedData() {
+    if (is_resource($this->imageData)) {
+        rewind($this->imageData);
+        $data = stream_get_contents($this->imageData);
+        return base64_encode($data);
+    } else {
+        return base64_encode($this->imageData);
     }
+}
+
 
 }

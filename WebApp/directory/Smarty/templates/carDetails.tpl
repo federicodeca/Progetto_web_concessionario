@@ -158,6 +158,9 @@
               <div class="left-content">
 
                 <p>seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
+                                 {foreach from=$car->getPhoto() item=photo name=foto}
+          <p>Foto {$smarty.foreach.foto.iteration} - Type: {$photo->getType()} - Encoded: {$photo->getEncodedData()|strlen}</p>
+        {/foreach}
 
                 <br> 
 
@@ -174,19 +177,10 @@
     </div>
 
     <div style="margin-top:100px"></div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <img 
-            src="data:{$car->getPhoto()->getType()};base64,{$car->getPhoto()->getEncodedData()}" 
-            style="max-width: 100%; height: auto;" 
-            loading="lazy" 
-            alt="Img">
-        </div>
-      </div>
-    </div>
+  
    
+
+
       
     
     
@@ -251,8 +245,26 @@
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-            <p>Id auto: {$car->getIdAuto()}</p>
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  {foreach from=$car->getPhoto() item=photo name=carosello}
+                    <div class="carousel-item {if $smarty.foreach.carosello.first}active{/if}">
+                      <img src="data:{$photo->getType()};base64,{$photo->getEncodedData()}" class="d-block w-100" alt="Immagine {$smarty.foreach.carosello.iteration}">
+                    </div>
+                  {/foreach}
+                </div>
+                  <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>

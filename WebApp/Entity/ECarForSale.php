@@ -18,9 +18,6 @@ class ECarForSale extends EAuto
     #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale')]
     protected? ESale $saleOrder = null;
     
-    #[ORM\OneToOne(targetEntity: EImage::class)]
-    #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
-    protected $photo=null;
 
     #[ORM\Column(type: 'boolean')]
     protected bool $saled = false;
@@ -65,14 +62,5 @@ class ECarForSale extends EAuto
     {
         $this->saled = $saled;}
 
-    public function getPhoto(): EImage
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(EImage $photo): void
-    {
-        $this->photo = $photo;
-    }
 
 }

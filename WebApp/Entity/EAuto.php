@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'auto')]
@@ -36,6 +37,13 @@ abstract class EAuto {
     #[ORM\Column(type: 'string')]
     protected? string $fuelType;
 
+    #[ORM\OneToMany(targetEntity: EImage::class, mappedBy: 'car')]
+    protected $photo;
+
+
+
+
+
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, string $fuelType) {
         $this->model = $model;
         $this->brand = $brand;
@@ -44,6 +52,7 @@ abstract class EAuto {
         $this->displacement = $displacement;
         $this->seats = $seats;
         $this->fuelType = $fuelType;
+        $this->photo = new ArrayCollection(); // Initialize photo to an empty collection
     }
 
     public function getIdAuto(): int {
@@ -106,5 +115,25 @@ abstract class EAuto {
 
     public function setFuelType(string $fuelType): void {
         $this->fuelType = $fuelType;
+    }
+
+    public function getPhoto(): Collection
+    {
+        return $this->photo;
+    }
+        public function getIcon() : ?EImage {
+        return $this->photo[0];
+    }
+
+    public function addPhoto(EImage $image): void {
+        $image->setCarForRent($this); // Assuming EImage has a method to set the car it belongs to
+        $this->photo[] = $image; // Add the image to the collection
+    }
+
+    public function removePhoto(EImage $image): void {
+        if ($this->photo->contains($image)) {
+            $this->photo->removeElement($image); // Remove the image from the collection
+            $image->setCarForRent(null); // Optionally, set the carForRent to null in EImage
+        }
     }
 }
