@@ -1187,3 +1187,29 @@ footer .inner-content p a {
   padding: 20px;
   
 }
+
+
+
+.product-item-icon {
+  object-fit: cover;
+  width: 100px;
+  height: 200px;
+}
+
+
+.product-item .down-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#carouselExampleSlidesOnly {
+  max-width: 1100px;  /* o 100% per responsive */
+  margin: 0 auto;    /* centra il carosello */
+}
+
+#carouselExampleSlidesOnly img {
+  height: 600px;     /* imposta altezza fissa */
+  object-fit: cover; /* evita distorsioni */
+}

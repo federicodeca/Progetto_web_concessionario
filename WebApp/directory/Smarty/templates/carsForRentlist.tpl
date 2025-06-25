@@ -128,7 +128,7 @@
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
     <a href='/WebApp/User/selectCarForRent/{$car->getIdAuto()}'>
       <div class="product-item" >
-       <img src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+       <img class="product-item-icon" src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
         <div class="down-content">
           <h4>{$car->getModel()}</h4>
           <h6><small>from</small> {$car->getBasePrice()}€ <small>per weekend</small></h6>
