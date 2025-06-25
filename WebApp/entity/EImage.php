@@ -36,7 +36,7 @@ use Doctrine\ORM\Mapping as ORM;
         $this->size = $size;
         $this->types = $type;
         $this->imageData = $imageData;
-        $this->carForRent = null; // Initialize carForRent to null
+        $this->car = null; // Initialize carForRent to null
     }
 
     public static function getEntity(): string

@@ -369,10 +369,8 @@ class CUser {
             if (USession::getSessionStatus() === PHP_SESSION_NONE) {
                 USession::getInstance();
             }
-            else{
-                USession::setElementInSession('user', $user->getId());
-            }
             
+            USession::setElementInSession('user', $user->getId());
             USession::setElementInSession('username', $user->getUsername());
 
             if ($user->getRole()=='admin') {
@@ -380,6 +378,7 @@ class CUser {
                     'success' => true,
                     'redirect' => 'WebApp/Admin/home',    
                     ]); 
+                USession::setElementInSession('admin', $user->getId());    
             }
             
             else{ 
@@ -387,6 +386,7 @@ class CUser {
                     'success' => true,
                     'redirect' => 'WebApp/User/'.$actualMethod,     
                 ]);
+                USession::setElementInSession('user', $user->getId());
             }    
 
         } else {

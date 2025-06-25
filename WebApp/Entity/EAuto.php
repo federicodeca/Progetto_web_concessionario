@@ -125,6 +125,7 @@ abstract class EAuto {
         return $this->photo[0];
     }
 
+    /** 
     public function addPhoto(EImage $image): void {
         $image->setCarForRent($this); // Assuming EImage has a method to set the car it belongs to
         $this->photo[] = $image; // Add the image to the collection
@@ -136,4 +137,5 @@ abstract class EAuto {
             $image->setCarForRent(null); // Optionally, set the carForRent to null in EImage
         }
     }
+    */
 }
