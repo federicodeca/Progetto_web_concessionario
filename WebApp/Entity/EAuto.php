@@ -2,6 +2,7 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'auto')]
@@ -121,8 +122,13 @@ abstract class EAuto {
     {
         return $this->photo;
     }
-        public function getIcon() : ?EImage {
-        return $this->photo[0];
+
+    public function getIcon() : ?EImage {
+        $photos = $this->getPhoto();
+        if ($photos instanceof Collection && !$photos->isEmpty()) {
+        return $photos->first();
+        }
+        return null;
     }
 
     /***

@@ -20,7 +20,7 @@ class CCarSale {
     /**
      * this method is used to show the list of cars for sale
      */
-        public static function showCarsForSale($currentPage) {
+    public static function showCarsForSale($currentPage) {
         $carsPerPage = 6;
 
         if (session_status() == PHP_SESSION_NONE) {
@@ -32,7 +32,7 @@ class CCarSale {
             USession::setElementInSession('brand', $_GET['brand']);
         }else{
             $brand = USession::getElementFromSession('brand');}
-         
+            
         if (isset($_GET['model'])) {
             USession::setElementInSession('model', $_GET['model']);
         }else{

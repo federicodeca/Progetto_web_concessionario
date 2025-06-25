@@ -25,7 +25,7 @@ class FCarForSale {
     }
 
     public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
-    $sql = "SELECT *  FROM cars_for_sale WHERE available = 1";
+    $sql = "SELECT a.model, a.brand, a.color, a.horsepower, a.displacement, a.seats, a.fuelType,c.price  FROM cars_for_sale c JOIN auto a ON a.idAuto = c.idAuto WHERE available = 1";
     $offset = (int)$offset;
     $limit = (int)$limit;
 
@@ -43,13 +43,23 @@ class FCarForSale {
  
     // Usa PDO o mysqli con prepared statements per eseguire la query in sicurezza
     $result= FEntityManager::getInstance()->executeQuery($sql);
-    
-    return $result;  
-
-
-
+    $cars = [];
+    foreach ($result as $row) {
+        $car = new ECarForSale(
+            $row['model'],
+            $row['brand'],
+            $row['color'],
+            (int)$row['horsepower'],
+            (int)$row['displacement'],
+            (int)$row['seats'],
+            $row['fuelType'],
+            (int)$row['price']
+        );
+        // Eventuali altri settaggi (id, immagini, ecc.)
+        $cars[] = $car;
     }
-    
+    return $cars;
+}
 
     public static function countSearchedCars($brand = null, $model = null) {
     $sql = "SELECT COUNT(*) FROM cars_for_sale WHERE available = 1";

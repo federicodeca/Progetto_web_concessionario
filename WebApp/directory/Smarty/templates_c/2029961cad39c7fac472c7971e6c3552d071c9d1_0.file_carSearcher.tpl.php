@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-24 22:39:42
+/* Smarty version 5.5.1, created on 2025-06-25 19:20:35
   from 'file:carSearcher.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685b0d0e1fc6d3_87418869',
+  'unifunc' => 'content_685c2fe38d35d6_39507520',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685b0d0e1fc6d3_87418869 (\Smarty\Template $_smarty_tpl) {
+function content_685c2fe38d35d6_39507520 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">

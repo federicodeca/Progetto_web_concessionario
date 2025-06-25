@@ -22,11 +22,13 @@ class EImage extends \EImage implements \Doctrine\ORM\Proxy\InternalProxy
     
 
     private const LAZY_OBJECT_PROPERTY_SCOPES = [
+        "\0".parent::class."\0".'car' => [parent::class, 'car', null, 16],
         "\0".parent::class."\0".'idImage' => [parent::class, 'idImage', null, 16],
         "\0".parent::class."\0".'imageData' => [parent::class, 'imageData', null, 16],
         "\0".parent::class."\0".'name' => [parent::class, 'name', null, 16],
         "\0".parent::class."\0".'size' => [parent::class, 'size', null, 16],
         "\0".parent::class."\0".'types' => [parent::class, 'types', null, 16],
+        'car' => [parent::class, 'car', null, 16],
         'idImage' => [parent::class, 'idImage', null, 16],
         'imageData' => [parent::class, 'imageData', null, 16],
         'name' => [parent::class, 'name', null, 16],

@@ -63,9 +63,9 @@
                     </a>
                 </li> 
     
-              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/showCarsForSale/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
 
-              <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
@@ -145,11 +145,14 @@
         {foreach $filteredCars as $car}
           <div class="col-md-4">
              <div class="product-item" >
-                <img src="data:{$car->getPhoto()->getType()};base64,{$car->getPhoto()->getEncodedData()}" loading="lazy" alt="Img">
+                {if $car->getIcon()}
+                    <img src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+                  {else}
+                    <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
+                  {/if}
                   <div class="down-content">
                     <h4>{$car->getModel()}</h4>
-                    <h6><small>from</small> {$car->getBasePrice()}€ <small>per weekend</small></h6>
-                    <p>{$car->getDescription()}</p>
+                    <h6><small>Prezzo: </small> {$car->getPrice()}€</h6>
                   </div>
               </div>
             </div> 

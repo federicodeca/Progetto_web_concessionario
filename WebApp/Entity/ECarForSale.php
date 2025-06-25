@@ -3,6 +3,7 @@
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'cars_for_sale')]
@@ -24,11 +25,11 @@ class ECarForSale extends EAuto
 
 
 
-    public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, int $price)
+    public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, string $fuelType,int $price)
     {
-        parent::__construct($model, $brand, $color, $horsepower, $engineDisplacement, $seats);
+        parent::__construct($model, $brand, $color, $horsepower, $engineDisplacement, $seats, $fuelType);
         $this->price = $price;
-        $this->photo = null; // Initialize photo to null
+        $this->photo = new ArrayCollection(); // Initialize photo to null
     }
 
     public function getPrice(): int
