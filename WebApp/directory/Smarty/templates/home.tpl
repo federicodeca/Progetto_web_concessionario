@@ -26,6 +26,8 @@
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
+      const permission = "{$permission|escape:'javascript'|default:''}";
+      
       
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
@@ -34,6 +36,8 @@
   <input type="hidden" id="actualMethod" value="home">
 
   <body>
+
+    <p>{$permission}</p>
    
 
  
@@ -67,7 +71,7 @@
                 <a class="nav-link" href="WebApp/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/User/carSearcher/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 

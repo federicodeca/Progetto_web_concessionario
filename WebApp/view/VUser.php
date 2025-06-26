@@ -28,6 +28,7 @@ class VUser{
        
     $this->smarty->assign('isLogged', $infout['isLogged']);  
     $this->smarty->assign('username', $infout['username']);
+    $this->smarty->assign('permission', $infout['permission']);
     $this->smarty->display('home.tpl');
 
 
@@ -87,6 +88,7 @@ class VUser{
         $this->smarty->assign('end',$end);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->assign('cards', $cards);
     
         $this->smarty->display('creditCardForm.tpl');
@@ -104,6 +106,7 @@ class VUser{
         $this->smarty->assign('amount', $amount);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
 
         $this->smarty->display('overview.tpl');
         
@@ -114,6 +117,7 @@ class VUser{
         $this->smarty->assign('indisp', $indisp);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->display('confirmRent.tpl');
     }
     public function showErrorUnavailability(){
@@ -137,6 +141,7 @@ class VUser{
         $this->smarty->assign('licenseInserted', $licenseInserted);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->display('licenseForm.tpl');
     }
     public function showLicenseConfirm(){
@@ -155,12 +160,14 @@ class VUser{
 
 // ======================== CAR SALE ========================
 
-    public function showCarsForSale($filteredCars, $infout,$totalPages, $currentPage) {
+    public function showCarsForSale($filteredCars, $infout,$totalPages, $currentPage,$models) {
         $this->smarty->assign('filteredCars', $filteredCars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->assign('currentPage', $currentPage);
         $this->smarty->assign('totalPages', $totalPages);
+        $this->smarty->assign('models', $models);
         $this->smarty->display('carsForSaleList.tpl');
     }
 
@@ -168,12 +175,14 @@ class VUser{
      * login not required
      */
 
-    public function showCarSaleDetails($car,$infout,$price) {
+    public function showCarSaleDetails($car,$infout,$amount) {
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->assign('amount', $amount);
         $this->smarty->assign('car', $car);
-        $this->smarty->assign('price', $price);
-        $this->smarty->display('saleCarDetails.tpl');
+        
+        $this->smarty->display('carDetailsSale.tpl');
     }
 
     public function showCarSearcher($infout, $models) {
@@ -181,5 +190,30 @@ class VUser{
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->display('carSearcher.tpl');
+    }
+
+    public function showCreditCardFormSale($amount,$car, $infout,$cards) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('car', $car);
+        $this->smarty->assign('amount', $amount);
+        $this->smarty->assign('cards', $cards);
+        $this->smarty->display('creditCardFormSale.tpl');
+    }
+
+    public function showOverviewSale( $amount,$car, $infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('car', $car);
+        $this->smarty->assign('amount', $amount);
+        $this->smarty->display('saleOverview.tpl');
+    }
+    public function showSaleConfirmation($sale, $infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+
+        $this->smarty->assign('sale', $sale);
+        $this->smarty->display('confirmSale.tpl');
     }
 }

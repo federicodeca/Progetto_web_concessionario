@@ -102,8 +102,7 @@
           <div class="custom-license-card">
           <div class="card-header"><h5 style="color:white">Riepilogo</h5></div>
               <div class="card-body">
-                <h7  style="color:white"> Dal: {$start}</h7><br>
-                <h7  style="color:white"> Al:   {$end}</h7><br>
+                <h6 style="color:white"> Auto selezionata: {$car->getBrand()}<small> </small>{$car->getModel()}</h6>
                 <h7  style="color:white"> Prezzo totale: {$amount}</h7>
                 
               </div>
@@ -115,7 +114,7 @@
             <h5 style="color:white"> le tue carte </h5>
           </div>
 
-            <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
+            <form class="needs-validation"  method="post" action="/WebApp/User/showOverviewSale">
                   
             <div class="card-body">        
               <div class="form-group ">
@@ -143,7 +142,7 @@
           <div class="col-md-6 ">
            <div class="custom-license-card">
               <h5  style="color:white" class="card-header">Pagamento</h5>
-                <form class="needs-validation"  method="post" action="/WebApp/User/showOverview">
+                <form class="needs-validation"  method="post" action="/WebApp/User/showOverviewSale">
                   
             <div class="card-body ">
             <div class="d-block  pl-0 pr-0">

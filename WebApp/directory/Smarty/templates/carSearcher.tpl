@@ -64,7 +64,7 @@
                     </a>
                 </li> 
     
-              <li class="nav-item"><a class="nav-link active" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/WebApp/User/carSearcher/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
@@ -93,31 +93,34 @@
     </header>
 
      <!-- Page Content -->
-    <div class="page-heading about-heading header-text"  style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
+       <div class="page-heading about-heading header-text"  style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="custom-license-card">
-              <form method="post" action="/WebApp/CarSale/showCarsForSale/1">
+              <form method="post" action="/WebApp/User/showCarsForSale/1" >
                 <div class="card-header">
                   <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
                 </div>
+       
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                  <div class="col-md-4 mt-5">
+                    <div class="input-group input-group-sm mb-3">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Brand</button>
                       <ul class="dropdown-menu">
                         {foreach $models as $brand => $modelList}
                           <li><a class="dropdown-item" href="#" onclick="selectBrand('{$brand}')">{$brand}</a></li>
                         {/foreach}
                       </ul>
-                      <input type="text" class="form-control" name="brand" readonly id="brandInput" aria-label="Text input with dropdown button" placeholder="brand">
+                      <div style="width: 50%;">
+                        <input type="text" class="form-control" name="brand" readonly id="brandInput" placeholder="brand">
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4 mt-5">
                     <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                      <ul class="dropdown-menu" disabled="" id="modelDropdown">
+                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">model</button>
+                      <ul class="dropdown-menu"  id="modelDropdown">
                         {foreach $models as $brand => $modelList}
                           {foreach $modelList as $model}
                             <li class="dropdown-model-item" data-brand="{$brand}">
@@ -126,20 +129,32 @@
                           {/foreach}
                         {/foreach}
                       </ul>
-                      <input type="text" class="form-control" name="model" readonly id="modelInput" aria-label="Text input with dropdown button" placeholder="model" disabled>
+                      <div style="width: 50%;">
+                      <input type="text" class="form-control" name="model"  id="modelInput" aria-label="Text input with dropdown button" placeholder="model" readonly>
+                      </div>
+                    </div>
+                  </div>
+               
+                  <div class="col-md-4 mt-5">
+                    <div class="form-group">
+                      <label for="formControlRange" class="text-white">Prezzo max: <span id="priceValue">0</span> €</label>
+                      <input type="range" class="form-control-range" id="formControlRange" name="price" min="0" max="100000" step="1000" value="100000" >
                     </div>
                   </div>
                 </div>
-                <div class="mt-3">
-                  <button type="submit" class="btn btn-primary mb-3 " style="color:aliceblue">Cerca</button>
-                </div>
+                
+                  <div class="row">
+                  <div class="col md-12 mt-5">
+                      <button type="submit" class="btn btn-primary btn-primary-center" style="color:aliceblue">Cerca</button>
+                    </div>
+                  </div>
+                
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
 
    
 

@@ -6,22 +6,26 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const box = document.getElementById('login-box');  //cerca nel tpl e gli passa il cotenuto
+  console.log('PERMISSION:', permission);
 
 
 if (isLogged) {
-    box.innerHTML = ` <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                benvenuto ${username} <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                  <a class="dropdown-item" href="/WebApp/User/insertLicense">Patente</a>
-                  <a class="dropdown-item" href="/WebApp/User/logout">Esci</a>
-                </div>
-              </li>
-     
-    `;
+  box.innerHTML = `
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        benvenuto ${username} <span class="caret"></span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+        ${permission ==='admin' ? '<a class="dropdown-item" href="/WebApp/User/showAdminPanel">admin</a>' : ''}
+        <a class="dropdown-item" href="/WebApp/User/insertLicense">Patente</a>
+        <a class="dropdown-item" href="/WebApp/User/logout">Esci</a>
+      </div>
+    </li>
+  `;
+}
 
-  } else {
+  
+else {
     box.innerHTML = `
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,9 +62,11 @@ function submitLogin() {
 })
 .then(data => {
   if (data.success) {
+    sessionStorage.setItem('permission', data.ruolo);
     window.location.href = '/' + data.redirect;
   } else {
     document.getElementById('login-message').innerText = data.message;
+    
   }
 })
 .catch(error => {

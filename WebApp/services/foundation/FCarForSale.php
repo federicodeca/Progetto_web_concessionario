@@ -26,10 +26,12 @@ class FCarForSale {
 /** 
  * This method searches for cars for sale based on brand and model. 
  * It returns a paginated list of cars, with an offset and limit for pagination. dql is used to build the query dynamically based on the provided parameters.
+ * 
  */
-public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
+public static function searchCarsForSale($brand = null, $model = null, $price=null, $offset = 0, $limit = 6) {
     $dql = "SELECT c FROM ECarForSale c WHERE c.available = 1";
     $params = [];
+    $price = (int)$price;
 
     if (!empty($brand)) {
         $dql .= " AND c.brand = :brand";
@@ -40,6 +42,10 @@ public static function searchCarsForSale($brand = null, $model = null, $offset =
         $dql .= " AND c.model = :model";
         $params['model'] = $model;
     }
+    if (!empty($price)) {
+        $dql .= " AND c.price <= :price";
+        $params['price'] = $price;
+    }
 
     $offset = (int)$offset;
     $limit = (int)$limit;
@@ -49,9 +55,9 @@ public static function searchCarsForSale($brand = null, $model = null, $offset =
 
     /**
      * This method counts the total number of cars for sale based on the provided brand and model.
-     * It returns the total count of cars that match the search criteria.
+     * It returns the total count of cars that match the search criteria.Sql query is built dynamically based on the provided parameters.
      */
-    public static function countSearchedCars($brand = null, $model = null) {
+    public static function countSearchedCars($brand = null, $model = null, $price = null) {
         $sql = "SELECT COUNT(*) as total FROM cars_for_sale c join auto a on c.idAuto=a.idAuto  WHERE c.available = 1";
         
 
@@ -62,6 +68,10 @@ public static function searchCarsForSale($brand = null, $model = null, $offset =
 
         if ($model !== null) {
             $sql .= " AND a.model = '$model'";
+            
+        }
+        if ($price !== null) {
+            $sql .= " AND c.price <= $price";
             
         }
 

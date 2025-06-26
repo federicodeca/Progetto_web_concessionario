@@ -27,6 +27,7 @@
       const username = "{$username|escape:'javascript'|default:''}";
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
+    <script src="/WebApp/directory/Smarty/js/select-car.js"></script>
 
   </head>
 
@@ -63,7 +64,7 @@
                     </a>
                 </li> 
     
-              <li class="nav-item"><a class="nav-link active" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/WebApp/User/carSearcher/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
@@ -97,26 +98,29 @@
         <div class="row">
           <div class="col-md-12">
             <div class="custom-license-card">
-              <form method="post" action="carsForSaleList/0">
+              <form method="post" action="/WebApp/User/showCarsForSale/1" >
                 <div class="card-header">
                   <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
                 </div>
+       
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                  <div class="col-md-4 mt-5">
+                    <div class="input-group input-group-sm mb-3">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Brand</button>
                       <ul class="dropdown-menu">
                         {foreach $models as $brand => $modelList}
                           <li><a class="dropdown-item" href="#" onclick="selectBrand('{$brand}')">{$brand}</a></li>
                         {/foreach}
                       </ul>
-                      <input type="text" class="form-control" name="brand" readonly id="brandInput" aria-label="Text input with dropdown button" placeholder="brand">
+                      <div style="width: 50%;">
+                        <input type="text" class="form-control" name="brand" readonly id="brandInput" placeholder="brand">
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4 mt-5">
                     <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                      <ul class="dropdown-menu" disabled="" id="modelDropdown">
+                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">model</button>
+                      <ul class="dropdown-menu"  id="modelDropdown">
                         {foreach $models as $brand => $modelList}
                           {foreach $modelList as $model}
                             <li class="dropdown-model-item" data-brand="{$brand}">
@@ -125,13 +129,26 @@
                           {/foreach}
                         {/foreach}
                       </ul>
-                      <input type="text" class="form-control" name="model" readonly id="modelInput" aria-label="Text input with dropdown button" placeholder="model" disabled>
+                      <div style="width: 50%;">
+                      <input type="text" class="form-control" name="model"  id="modelInput" aria-label="Text input with dropdown button" placeholder="model" readonly>
+                      </div>
+                    </div>
+                  </div>
+               
+                  <div class="col-md-4 mt-5">
+                    <div class="form-group">
+                      <label for="formControlRange" class="text-white">Prezzo max: <span id="priceValue">0</span> €</label>
+                      <input type="range" class="form-control-range" id="formControlRange" name="price" min="0" max="100000" step="1000" value="100000" >
                     </div>
                   </div>
                 </div>
-                <div class="mt-3">
-                  <button type="submit" class="btn btn-primary mb-3 " style="color:aliceblue">Cerca</button>
-                </div>
+                
+                  <div class="row">
+                  <div class="col md-12 mt-5">
+                      <button type="submit" class="btn btn-primary btn-primary-center" style="color:aliceblue">Cerca</button>
+                    </div>
+                  </div>
+                
               </form>
             </div>
           </div>
@@ -139,36 +156,64 @@
       </div>
     </div>
     
-    <div class="products">
-      <div class="container">
+<div class="products">
+  <div class="container">
+  
+    {assign var="index" value=0} <!--gestisco la paginazione 3 per riga -->
+
+    {if $filteredCars|@count == 0}
+      <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+          Nessuna auto trovata per i criteri di ricerca selezionati.
+        </div>
+      </div>
+    {/if}
+
+    {foreach $filteredCars as $car}
+      {if $index % 3 == 0}
         <div class="row">
-        {foreach $filteredCars as $car}
-          <div class="col-md-4">
-             <div class="product-item" >
-                {if $car->getIcon()}
-                    <img src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                  {else}
-                    <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                  {/if}
-                  <div class="down-content">
-                    <h4>{$car->getModel()}</h4>
-                    <h6><small>Prezzo: </small> {$car->getPrice()}€</h6>
-                  </div>
-              </div>
-            </div> 
+      {/if}
+
+      <div class="col-md-4">
+        <a href='/WebApp/User/selectCarForSale/{$car->getIdAuto()}'>
+          <div class="product-item">
+            {if $car->getIcon()}
+              <img class="product-item-icon" src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+            {else}
+              <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
+            {/if}
+            <div class="down-content">
+              <h4>{$car->getModel()}</h4>
+              <h6><small>from:</small> {$car->getPrice()}€ <small>prezzo listino</small></h6>
+            </div>    
           </div>
-          {/foreach}    
+        </a>
+      </div>
+           
+      {if $index % 3 == 2 || $index == $filteredCars|@count - 1}
+        </div>
+      {/if}
+      {assign var="index" value=$index + 1} 
+    {/foreach}
+
+  </div>
+</div>
+            
             
 
           
-
+<footer>
+ <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
           <nav aria-label="Pagination">
             <ul class="pagination">
               
               {* Previous Page *}
               {if $currentPage > 1}
                 <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/{$currentPage - 1}">Previous</a>
+                  <a class="page-link" href="/WebApp/User/showCarsForSale/{$currentPage - 1}">Previous</a>
                 </li>
               {else}
                 <li class="page-item disabled">
@@ -182,7 +227,7 @@
 
               {if $prevPage >= 1}
                 <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/{$prevPage}">{$prevPage}</a>
+                  <a class="page-link" href="/WebApp/User/showCarsForSale/{$prevPage}">{$prevPage}</a>
                 </li>
               {/if}
 
@@ -192,27 +237,30 @@
 
               {if $nextPage <= $totalPages}
                 <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/{$nextPage}">{$nextPage}</a>
+                  <a class="page-link" href="/WebApp/User/showCarsForSale/{$nextPage}">{$nextPage}</a>
                 </li>
               {/if}
 
               {* Next Page *}
               {if $currentPage < $totalPages}
                 <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/{$currentPage + 1}">Next</a>
+                  <a class="page-link" href="/WebApp/User/showCarsForSale/{$currentPage + 1}">Next</a>
                 </li>
               {else}
                 <li class="page-item disabled">
                   <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
                 </li>
               {/if}
-
             </ul>
           </nav>
+          </div>
         </div>
       </div>
     </div>
+</footer>            
 
+
+    
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
