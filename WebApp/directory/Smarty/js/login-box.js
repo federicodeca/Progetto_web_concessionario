@@ -16,7 +16,7 @@ if (isLogged) {
         benvenuto ${username} <span class="caret"></span>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-        ${permission ==='admin' ? '<a class="dropdown-item" href="/WebApp/User/showAdminPanel">admin</a>' : ''}
+        ${permission ==='admin' ? '<a class="dropdown-item" href="/WebApp/Admin/home">admin</a>' : ''}
         <a class="dropdown-item" href="/WebApp/User/insertLicense">Patente</a>
         <a class="dropdown-item" href="/WebApp/User/logout">Esci</a>
       </div>

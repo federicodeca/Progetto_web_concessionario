@@ -37,10 +37,6 @@
 
   <body>
 
-    <p>{$permission}</p>
-   
-
- 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">

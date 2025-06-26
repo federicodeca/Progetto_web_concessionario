@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-26 11:57:19
+/* Smarty version 5.5.1, created on 2025-06-26 22:04:30
   from 'file:carsForRentlist.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685d197f54cc37_81003363',
+  'unifunc' => 'content_685da7ce3e3a08_05555261',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '78bcc1e41409a9943832038bd77fbd1c3485bfdd' => 
     array (
       0 => 'carsForRentlist.tpl',
-      1 => 1750927552,
+      1 => 1750964963,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685d197f54cc37_81003363 (\Smarty\Template $_smarty_tpl) {
+function content_685da7ce3e3a08_05555261 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -132,7 +132,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>Lorem ipsum dolor sit amet</h4>
+              <h4>Our vehicle</h4>
               <h2>Fleet</h2>
      
             </div>
@@ -140,17 +140,17 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         </div>
       </div>
     </div>
-<?php $_smarty_tpl->assign('perPage', 6, false, NULL);?>                       <!-- Number of cars per page -->
-<?php $_smarty_tpl->assign('page', (($tmp = $_GET['page'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp), false, NULL);?> <!-- Current page, default to 1 if not set reda page=x-->
-<?php $_smarty_tpl->assign('start', ($_smarty_tpl->getValue('page')-1)*$_smarty_tpl->getValue('perPage'), false, NULL);?>     <!-- Calculate the starting index for the current page -->
-<?php $_smarty_tpl->assign('end', $_smarty_tpl->getValue('start')+$_smarty_tpl->getValue('perPage'), false, NULL);
-echo $_smarty_tpl->getSmarty()->getFunctionHandler('math')->handle(array('assign'=>"totalPages",'equation'=>"ceil(x / y)",'x'=>$_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')),'y'=>$_smarty_tpl->getValue('perPage')), $_smarty_tpl);?>
+      <?php $_smarty_tpl->assign('perPage', 6, false, NULL);?>                       <!-- Number of cars per page -->
+      <?php $_smarty_tpl->assign('page', (($tmp = $_GET['page'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp), false, NULL);?> <!-- Current page, default to 1 if not set reda page=x-->
+      <?php $_smarty_tpl->assign('start', ($_smarty_tpl->getValue('page')-1)*$_smarty_tpl->getValue('perPage'), false, NULL);?>     <!-- Calculate the starting index for the current page -->
+      <?php $_smarty_tpl->assign('end', $_smarty_tpl->getValue('start')+$_smarty_tpl->getValue('perPage'), false, NULL);?>
+      <?php echo $_smarty_tpl->getSmarty()->getFunctionHandler('math')->handle(array('assign'=>"totalPages",'equation'=>"ceil(x / y)",'x'=>$_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')),'y'=>$_smarty_tpl->getValue('perPage')), $_smarty_tpl);?>
   <!-- Calculate total pages based on the number of cars and perPage -->
-<?php $_smarty_tpl->assign('index', 0, false, NULL);?>  
-    <div class="products">
-      <div class="container">
+      <?php $_smarty_tpl->assign('index', 0, false, NULL);?>  
+          <div class="products">
+            <div class="container">
 
-<?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')) > 0) {?>
+      <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')) > 0) {?>
    
         <!-- mostra auto -->
     
@@ -162,7 +162,11 @@ foreach ($_from ?? [] as $_smarty_tpl->getVariable('car')->value) {
 $foreach0DoElse = false;
 ?>
   <?php if ($_smarty_tpl->getValue('index') >= $_smarty_tpl->getValue('start') && $_smarty_tpl->getValue('index') < $_smarty_tpl->getValue('end')) {?>
-    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 0) {?><div class="row"><?php }?>
+    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 0) {?>
+      <div class="row">
+    <?php }?>
+
+
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
     <a href='/WebApp/User/selectCarForRent/<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
 '>
@@ -174,7 +178,7 @@ $foreach0DoElse = false;
           <h4><?php echo $_smarty_tpl->getValue('car')->getModel();?>
 </h4>
           <h6><small>from</small> <?php echo $_smarty_tpl->getValue('car')->getBasePrice();?>
-€ <small>per weekend</small></h6>
+€ <small>per weekend </small></h6>
           <p><?php echo $_smarty_tpl->getValue('car')->getDescription();?>
 </p>
         </div>
@@ -182,7 +186,8 @@ $foreach0DoElse = false;
       </div>
     </div>
 
-    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 2 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getValue('end')-1 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars'))-1) {?></div><?php }?>
+    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 2 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getValue('end')-1 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars'))-1) {?>
+    </div><?php }?>
   <?php }?>
   <?php $_smarty_tpl->assign('index', $_smarty_tpl->getValue('index')+1, false, NULL);?>
 
@@ -190,11 +195,9 @@ $foreach0DoElse = false;
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
-
-
     
 
-<?php } else { ?>
+ <?php } else { ?>
  <div class="banner-item-03">
   <b class="text-content">  Non ci sono auto disponibili</b>
 </div>

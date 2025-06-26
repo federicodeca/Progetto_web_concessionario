@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-26 11:57:22
+/* Smarty version 5.5.1, created on 2025-06-26 22:00:00
   from 'file:carSearcher.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685d198228c931_76830707',
+  'unifunc' => 'content_685da6c0efdb18_65953697',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2029961cad39c7fac472c7971e6c3552d071c9d1' => 
     array (
       0 => 'carSearcher.tpl',
-      1 => 1750927552,
+      1 => 1750964963,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685d198228c931_76830707 (\Smarty\Template $_smarty_tpl) {
+function content_685da6c0efdb18_65953697 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
     
-              <li class="nav-item"><a class="nav-link active" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/WebApp/User/carSearcher/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
@@ -127,19 +127,20 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </header>
 
      <!-- Page Content -->
-    <div class="page-heading about-heading header-text"  style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
+       <div class="page-heading about-heading header-text"  style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="custom-license-card">
-              <form method="post" action="/WebApp/CarSale/showCarsForSale/1">
+              <form method="post" action="/WebApp/User/showCarsForSale/1" >
                 <div class="card-header">
                   <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
                 </div>
+       
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                  <div class="col-md-4 mt-5">
+                    <div class="input-group input-group-sm mb-3">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Brand</button>
                       <ul class="dropdown-menu">
                         <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
@@ -154,13 +155,15 @@ $foreach0DoElse = false;
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                       </ul>
-                      <input type="text" class="form-control" name="brand" readonly id="brandInput" aria-label="Text input with dropdown button" placeholder="brand">
+                      <div style="width: 50%;">
+                        <input type="text" class="form-control" name="brand" readonly id="brandInput" placeholder="brand">
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4 mt-5">
                     <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                      <ul class="dropdown-menu" disabled="" id="modelDropdown">
+                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">model</button>
+                      <ul class="dropdown-menu"  id="modelDropdown">
                         <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
 $foreach1DoElse = true;
@@ -186,20 +189,32 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                       </ul>
-                      <input type="text" class="form-control" name="model" readonly id="modelInput" aria-label="Text input with dropdown button" placeholder="model" disabled>
+                      <div style="width: 50%;">
+                      <input type="text" class="form-control" name="model"  id="modelInput" aria-label="Text input with dropdown button" placeholder="model" readonly>
+                      </div>
+                    </div>
+                  </div>
+               
+                  <div class="col-md-4 mt-5">
+                    <div class="form-group">
+                      <label for="formControlRange" class="text-white">Prezzo max: <span id="priceValue">0</span> €</label>
+                      <input type="range" class="form-control-range" id="formControlRange" name="price" min="0" max="100000" step="1000" value="100000" >
                     </div>
                   </div>
                 </div>
-                <div class="mt-3">
-                  <button type="submit" class="btn btn-primary mb-3 " style="color:aliceblue">Cerca</button>
-                </div>
+                
+                  <div class="row">
+                  <div class="col md-12 mt-5">
+                      <button type="submit" class="btn btn-primary btn-primary-center" style="color:aliceblue">Cerca</button>
+                    </div>
+                  </div>
+                
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
 
    
 
