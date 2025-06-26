@@ -15,16 +15,20 @@ class VAdmin{
         
         $this->smarty->assign('isLogged', $infout['isLogged']);  
         $this->smarty->assign('username', $infout['username']);
-        $this->smarty->display('addCarForm.tpl');
+        $this->smarty->display('homeAdmin.tpl');
 
+    }
+
+    public function showAddCarForm() {
+        $this->smarty->display('addCarForm.tpl');
     }
 
     public function showCarSuccess(){
-        $this->smarty->display('success.tpl');
+        $this->smarty->display('addCarSuccess.tpl');
     }
 
     public function showCarError(){
-        $this->smarty->display('registractionError.tpl');
+        $this->smarty->display('addCarError.tpl');
     }
 
 }

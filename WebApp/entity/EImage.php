@@ -36,7 +36,7 @@ use Doctrine\ORM\Mapping as ORM;
         $this->size = $size;
         $this->types = $type;
         $this->imageData = $imageData;
-        $this->car = null; // Initialize carForRent to null
+        $this->car = null;
     }
 
     public static function getEntity(): string
@@ -70,15 +70,19 @@ use Doctrine\ORM\Mapping as ORM;
         return $this->imageData;
     }
 
-public function getEncodedData() {
-    if (is_resource($this->imageData)) {
-        rewind($this->imageData);
-        $data = stream_get_contents($this->imageData);
-        return base64_encode($data);
-    } else {
-        return base64_encode($this->imageData);
+    public function setCar(EAuto $car):void {
+        $this->car = $car;
     }
-}
+
+    public function getEncodedData() {
+        if (is_resource($this->imageData)) {
+            rewind($this->imageData);
+            $data = stream_get_contents($this->imageData);
+            return base64_encode($data);
+        } else {
+            return base64_encode($this->imageData);
+        }
+    }
 
 
 }

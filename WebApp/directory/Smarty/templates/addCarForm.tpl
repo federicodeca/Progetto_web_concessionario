@@ -44,7 +44,7 @@
             
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form class="tm-edit-product-form" method="post" action="/WebApp/Admin/addCar">
+                <form class="tm-edit-product-form" method="post" action="/WebApp/Admin/addCar" enctype="multipart/form-data">
                 
                 <div class="col-md-6 mb-3">
                 <label for="cc-name" style="margin-top: 10px">Model</label>
@@ -133,23 +133,16 @@
                   </div>
                   
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                <div class="tm-product-img-dummy mx-auto">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('imageInput').click();"
-                  ></i>
-                </div>
-                <div class="custom-file mt-3 mb-3">
-                  <input id="imageInput" type="file" style="display:none;" />
-                  <input
-                    type="button"
-                    class="btn btn-primary btn-block mx-auto"
-                    value="UPLOAD PRODUCT IMAGE"
-                    onclick="document.getElementById('imageInput').click();"
-                  />
+
+              <div class="col-md-6 mb-3">
+                <label for="car-images" style="margin-top: 10px">Immagini auto</label>
+                <input type="file" class="form-control" id="car-images" name="carImages[]" multiple required>
+                <div class="invalid-feedback">
+                  Almeno un'immagine richiesta
                 </div>
               </div>
+
+
               <div class="btn btn-primary btn-block mx-auto">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">ADD CAR</button>
               </div>

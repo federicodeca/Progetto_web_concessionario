@@ -2,6 +2,8 @@
 
 class CAdmin {
 
+    // DA CONTROLLARE LOGIN, LOGOUT, ISLOGGED
+
     public static function login(){
 
         
@@ -13,7 +15,7 @@ class CAdmin {
             header('Location: /WebApp/Admin/home');
         }
         $view= new VAdmin();
-        $view->showLoginForm();
+        //$view->showLoginForm();
 
     }
 
@@ -86,55 +88,39 @@ class CAdmin {
         
     }
 
-    /**
-         * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
-         * the User is redirected in the carDetails page 
-         */
-    public static function checkLoginRent(){
-        $view = new VUser();
-        $username = FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'));                                            
-        if($username){
-            $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
-            if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
-
-                if(USession::getSessionStatus() === PHP_SESSION_NONE){
-                    USession::getInstance();
-
-                }
-                USession::setElementInSession('user', $user->getId());
-                USession::setElementInSession('username', $user->getUsername());
-                $idAuto=USession::getElementFromSession('idAuto');
-                $url = "/WebApp/User/selectCarForRent/" . $idAuto;
-                header('Location: ' . $url); // Redirect to the cars for rent page
-
-            }else{
-                $view->loginError();
-            }
-
-        }else{
-            $view->loginError();
-        }
-    }
-
     // aggiungere auto nel database
     public static function addCar()
     {
         $view = new VAdmin();
 
         if (UHTTPMethods::post('carType') == 'rental_car') {
-            $rentCar = new ECarForRent(UHTTPMethods::post('carModel'), UHTTPMethods::post('carBrand'), UHTTPMethods::post('carColor'), UHTTPMethods::post('carHorsepower'),UHTTPMethods::post('carDisplacement'), UHTTPMethods::post('carSeats'),UHTTPMethods::post('carFuelType'),UHTTPMethods::post('carPrice'), UHTTPMethods::post('carDescription'));
-            $check = FPersistentManager::getInstance()->uploadObj($rentCar);
-            if ($check) {
-            $view->showCarSuccess();
-            } else {$view->showCarError(); }
+            $car = new ECarForRent(UHTTPMethods::post('carModel'), UHTTPMethods::post('carBrand'), UHTTPMethods::post('carColor'), UHTTPMethods::post('carHorsepower'),UHTTPMethods::post('carDisplacement'), UHTTPMethods::post('carSeats'),UHTTPMethods::post('carFuelType'),UHTTPMethods::post('carPrice'), UHTTPMethods::post('carDescription'));
+            $check = FPersistentManager::getInstance()->uploadObj($car);
+            
         } elseif (UHTTPMethods::post('carType') == 'car_for_sale') {
-            $saleCar = new ECarForSale(UHTTPMethods::post('carModel'), UHTTPMethods::post('carBrand'), UHTTPMethods::post('carColor'), UHTTPMethods::post('carHorsepower'),UHTTPMethods::post('carDisplacement'), UHTTPMethods::post('carSeats'),UHTTPMethods::post('carFuelType'),UHTTPMethods::post('carPrice'), 1);
-            $check = FPersistentManager::getInstance()->uploadObj($saleCar);
-            if ($check) {
+            $car = new ECarForSale(UHTTPMethods::post('carModel'), UHTTPMethods::post('carBrand'), UHTTPMethods::post('carColor'), UHTTPMethods::post('carHorsepower'),UHTTPMethods::post('carDisplacement'), UHTTPMethods::post('carSeats'),UHTTPMethods::post('carFuelType'),UHTTPMethods::post('carPrice'), 1);
+            $check = FPersistentManager::getInstance()->uploadObj($car);
+        }
+
+        if (isset($_FILES['carImages']) && !empty($_FILES['carImages']['name'][0])) {
+            foreach ($_FILES['carImages']['tmp_name'] as $key => $tmp_name) {
+                $name = $_FILES['carImages']['name'][$key];
+                $size = $_FILES['carImages']['size'][$key];
+                $type = $_FILES['carImages']['type'][$key];
+                $imageData = file_get_contents($tmp_name);
+                $image = new EImage($name, $size, $type, $imageData);
+                $image->setCar($car); // collega l'immagine all'auto
+                FPersistentManager::getInstance()->uploadObj($image);
+            }
+        }
+
+        if ($check) {
             $view->showCarSuccess();
             } else {$view->showCarError(); }
-        }
-        
     }
 
+    public static function showCarForm() {
+        $view = new VAdmin();
+        $view->showAddCarForm();
+    }
 }
