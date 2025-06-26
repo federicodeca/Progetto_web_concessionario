@@ -337,38 +337,32 @@ class CUser {
         }
 
     }
-
-
-    /**
-     * this method is used to show the user profile, if the user is logged in
-     * @return void
-     */
-    public static function getUserStatus(): array {
-
-    if (session_status() === PHP_SESSION_NONE) USession::getInstance();
-
-    $isLogged = USession::isSetSessionElement('user') || USession::isSetSessionElement('admin'); 
-    $username = $isLogged ? USession::getElementFromSession('username') : null;
-
-    if (USession::isSetSessionElement('admin')) {
-        $isLogged = true; // If the user is an admin, they are considered logged in
-        $username = USession::getElementFromSession('username');
-        $permission ='admin'; // Set permission level to admin
+public static function getUserStatus(): array {
+    if (session_status() === PHP_SESSION_NONE) {
+        USession::getInstance();
     }
-    else {
-        $isLogged = true; // If the user is an admin, they are considered logged in
+
+    $isAdmin = USession::isSetSessionElement('admin');
+    $isUser = USession::isSetSessionElement('user');
+    $isLogged = $isAdmin || $isUser;
+
+    if ($isAdmin) {
         $username = USession::getElementFromSession('username');
-        $permission ='user'; // Set permission level to user
+        $permission = 'admin';
+    } elseif ($isUser) {
+        $username = USession::getElementFromSession('username');
+        $permission = 'user';
+    } else {
+        $username = null;
+        $permission = null;
     }
 
     return [
         'isLogged' => $isLogged,
         'username' => $username,
-        'permission' => $permission, // Add permission level to the returned array
-        
+        'permission' => $permission,
     ];
 }
-
     public static function checkLoginAuto() {
         $view = new VUser();
         $actualMethod= UHTTPMethods::post('actualMethod');

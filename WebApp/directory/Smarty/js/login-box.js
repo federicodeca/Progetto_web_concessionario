@@ -62,7 +62,7 @@ function submitLogin() {
 })
 .then(data => {
   if (data.success) {
-    sessionStorage.setItem('permission', data.ruolo);
+    
     window.location.href = '/' + data.redirect;
   } else {
     document.getElementById('login-message').innerText = data.message;
