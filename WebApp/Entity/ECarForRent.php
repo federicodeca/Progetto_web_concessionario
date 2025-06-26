@@ -23,10 +23,11 @@ class ECarForRent extends EAuto
 
 
   
-    public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, float $basePrice)
+    public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, string $fuelType, float $basePrice, string $description)
     {
-        parent::__construct($model, $brand, $color, $horsepower, $displacement, $seats);
+        parent::__construct($model, $brand, $color, $horsepower, $displacement, $seats, $fuelType);
         $this->basePrice = $basePrice;
+        $this->description = $description;
         $this->unavailabilities = new ArrayCollection();
         $this->surcharges = new ArrayCollection();
         

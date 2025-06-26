@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-26 12:20:12
-  from 'file:carsForSaleList.tpl' */
+/* Smarty version 5.5.1, created on 2025-06-26 11:57:19
+  from 'file:carsForRentlist.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685d1edcad2b31_25690074',
+  'unifunc' => 'content_685d197f54cc37_81003363',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0ef63910b24f509380104f69836ee3ac7681d63c' => 
+    '78bcc1e41409a9943832038bd77fbd1c3485bfdd' => 
     array (
-      0 => 'carsForSaleList.tpl',
-      1 => 1750931753,
+      0 => 'carsForRentlist.tpl',
+      1 => 1750927552,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685d1edcad2b31_25690074 (\Smarty\Template $_smarty_tpl) {
+function content_685d197f54cc37_81003363 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -64,7 +64,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
   <body>
 
-  <input type="hidden" id="actualMethod" value="showCarsForSale">
+  <input type="hidden" id="actualMethod" value="showCarsForRent">
  
 
     <!-- ***** Preloader Start ***** -->
@@ -83,7 +83,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Concessionario<em>TopGear</em></h2></a>
+          <a class="navbar-brand"   href="index.html"><h2>Piselloni<em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -94,10 +94,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                       <span class="sr-only">(current)</span>
                     </a>
                 </li> 
-    
-              <li class="nav-item"><a class="nav-link active" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/CarSale/carSearcher/">Acquista</a></li>
+
+              <li class="nav-item"><a class="nav-link active" href="/WebApp/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
@@ -123,168 +123,133 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       </nav>
     </header>
 
-     <!-- Page Content -->
-   <div class="page-heading about-heading header-text"  style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
+ <!-- Page Content pagination (smarty side only)-->
+ 
+
+
+     <div class="page-heading about-heading header-text" style="background-image: url(/WebApp/directory/Smarty/assets/images/heading-6-1920x500.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="custom-license-card">
-              <form method="post" action="carsForSaleList/0">
-                <div class="card-header">
-                  <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                      <ul class="dropdown-menu">
-                        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
-$foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
-$foreach0DoElse = false;
-?>
-                          <li><a class="dropdown-item" href="#" onclick="selectBrand('<?php echo $_smarty_tpl->getValue('brand');?>
-')"><?php echo $_smarty_tpl->getValue('brand');?>
-</a></li>
-                        <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                      </ul>
-                      <input type="text" class="form-control" name="brand" readonly id="brandInput" aria-label="Text input with dropdown button" placeholder="brand">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                      <ul class="dropdown-menu" disabled="" id="modelDropdown">
-                        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
-$foreach1DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
-$foreach1DoElse = false;
-?>
-                          <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('modelList'), 'model');
-$foreach2DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('model')->value) {
-$foreach2DoElse = false;
-?>
-                            <li class="dropdown-model-item" data-brand="<?php echo $_smarty_tpl->getValue('brand');?>
-">
-                              <a class="dropdown-item" href="#" onclick="selectModel('<?php echo $_smarty_tpl->getValue('model');?>
-')"><?php echo $_smarty_tpl->getValue('model');?>
-</a>
-                            </li>
-                          <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                        <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                      </ul>
-                      <input type="text" class="form-control" name="model" readonly id="modelInput" aria-label="Text input with dropdown button" placeholder="model" disabled>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-3">
-                  <button type="submit" class="btn btn-primary mb-3 " style="color:aliceblue">Cerca</button>
-                </div>
-              </form>
+            <div class="text-content">
+              <h4>Lorem ipsum dolor sit amet</h4>
+              <h2>Fleet</h2>
+     
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+<?php $_smarty_tpl->assign('perPage', 6, false, NULL);?>                       <!-- Number of cars per page -->
+<?php $_smarty_tpl->assign('page', (($tmp = $_GET['page'] ?? null)===null||$tmp==='' ? 1 ?? null : $tmp), false, NULL);?> <!-- Current page, default to 1 if not set reda page=x-->
+<?php $_smarty_tpl->assign('start', ($_smarty_tpl->getValue('page')-1)*$_smarty_tpl->getValue('perPage'), false, NULL);?>     <!-- Calculate the starting index for the current page -->
+<?php $_smarty_tpl->assign('end', $_smarty_tpl->getValue('start')+$_smarty_tpl->getValue('perPage'), false, NULL);
+echo $_smarty_tpl->getSmarty()->getFunctionHandler('math')->handle(array('assign'=>"totalPages",'equation'=>"ceil(x / y)",'x'=>$_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')),'y'=>$_smarty_tpl->getValue('perPage')), $_smarty_tpl);?>
+  <!-- Calculate total pages based on the number of cars and perPage -->
+<?php $_smarty_tpl->assign('index', 0, false, NULL);?>  
     <div class="products">
       <div class="container">
-        <div class="row">
-        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('filteredCars'), 'car');
-$foreach3DoElse = true;
+
+<?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars')) > 0) {?>
+   
+        <!-- mostra auto -->
+    
+
+<?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cars'), 'car');
+$foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('car')->value) {
-$foreach3DoElse = false;
+$foreach0DoElse = false;
 ?>
-          <div class="col-md-4">
-             <div class="product-item" >
-                <?php if ($_smarty_tpl->getValue('car')->getIcon()) {?>
-                    <img src="data:<?php echo $_smarty_tpl->getValue('car')->getIcon()->getType();?>
+  <?php if ($_smarty_tpl->getValue('index') >= $_smarty_tpl->getValue('start') && $_smarty_tpl->getValue('index') < $_smarty_tpl->getValue('end')) {?>
+    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 0) {?><div class="row"><?php }?>
+    <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
+    <a href='/WebApp/User/selectCarForRent/<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
+'>
+      <div class="product-item" >
+       <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('car')->getIcon()->getType();?>
 ;base64,<?php echo $_smarty_tpl->getValue('car')->getIcon()->getEncodedData();?>
 " loading="lazy" alt="Img">
-                  <?php } else { ?>
-                    <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                  <?php }?>
-                  <div class="down-content">
-                    <h4><?php echo $_smarty_tpl->getValue('car')->getModel();?>
+        <div class="down-content">
+          <h4><?php echo $_smarty_tpl->getValue('car')->getModel();?>
 </h4>
-                    <h6><small>Prezzo: </small> <?php echo $_smarty_tpl->getValue('car')->getPrice();?>
-€</h6>
-                  </div>
-              </div>
-            </div> 
-          </div>
-          <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>    
-            
-
-          
-
-          <nav aria-label="Pagination">
-            <ul class="pagination">
-              
-                            <?php if ($_smarty_tpl->getValue('currentPage') > 1) {?>
-                <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/<?php echo $_smarty_tpl->getValue('currentPage')-1;?>
-">Previous</a>
-                </li>
-              <?php } else { ?>
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-              <?php }?>
-
-                            <?php $_smarty_tpl->assign('prevPage', $_smarty_tpl->getValue('currentPage')-1, false, NULL);?>
-              <?php $_smarty_tpl->assign('nextPage', $_smarty_tpl->getValue('currentPage')+1, false, NULL);?>
-
-              <?php if ($_smarty_tpl->getValue('prevPage') >= 1) {?>
-                <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/<?php echo $_smarty_tpl->getValue('prevPage');?>
-"><?php echo $_smarty_tpl->getValue('prevPage');?>
-</a>
-                </li>
-              <?php }?>
-
-              <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#"><?php echo $_smarty_tpl->getValue('currentPage');?>
-</a>
-              </li>
-
-              <?php if ($_smarty_tpl->getValue('nextPage') <= $_smarty_tpl->getValue('totalPages')) {?>
-                <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/<?php echo $_smarty_tpl->getValue('nextPage');?>
-"><?php echo $_smarty_tpl->getValue('nextPage');?>
-</a>
-                </li>
-              <?php }?>
-
-                            <?php if ($_smarty_tpl->getValue('currentPage') < $_smarty_tpl->getValue('totalPages')) {?>
-                <li class="page-item">
-                  <a class="page-link" href="/WebApp/CarSale/CarList/<?php echo $_smarty_tpl->getValue('currentPage')+1;?>
-">Next</a>
-                </li>
-              <?php } else { ?>
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-                </li>
-              <?php }?>
-
-            </ul>
-          </nav>
+          <h6><small>from</small> <?php echo $_smarty_tpl->getValue('car')->getBasePrice();?>
+€ <small>per weekend</small></h6>
+          <p><?php echo $_smarty_tpl->getValue('car')->getDescription();?>
+</p>
         </div>
+        </a>
       </div>
     </div>
+
+    <?php if (($_smarty_tpl->getValue('index')-$_smarty_tpl->getValue('start'))%3 == 2 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getValue('end')-1 || $_smarty_tpl->getValue('index') == $_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('cars'))-1) {?></div><?php }?>
+  <?php }?>
+  <?php $_smarty_tpl->assign('index', $_smarty_tpl->getValue('index')+1, false, NULL);?>
+
+<?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+
+
+
+    
+
+<?php } else { ?>
+ <div class="banner-item-03">
+  <b class="text-content">  Non ci sono auto disponibili</b>
+</div>
+<?php }?>
+</div>
+</div>
+
+<footer>
+   <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+<?php if ($_smarty_tpl->getValue('totalPages') > 1) {?>
+  
+    <ul class="pages d-flex justify-content-center list-unstyled" style="gap:12px">
+      <?php if ($_smarty_tpl->getValue('page') > 1) {?>
+ 
+        <li><a href="?page=<?php echo $_smarty_tpl->getValue('page')-1;?>
+"><i class="fa fa-angle-double-left"></i></a></li>
+      <?php }?>
+ 
+    
+      <?php
+$__section_i_0_loop = (is_array(@$_loop=$_smarty_tpl->getValue('totalPages')) ? count($_loop) : max(0, (int) $_loop));
+$__section_i_0_total = $__section_i_0_loop;
+$_smarty_tpl->tpl_vars['__smarty_section_i'] = new \Smarty\Variable(array());
+if ($__section_i_0_total !== 0) {
+for ($__section_i_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index'] = 0; $__section_i_0_iteration <= $__section_i_0_total; $__section_i_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_i']->value['index']++){
+?>
+        <?php $_smarty_tpl->assign('p', ($_smarty_tpl->getValue('__smarty_section_i')['index'] ?? null)+1, false, NULL);?>
+        <li <?php if ($_smarty_tpl->getValue('p') == $_smarty_tpl->getValue('page')) {?> class="active"<?php }?>>
+          <a href="?page=<?php echo $_smarty_tpl->getValue('p');?>
+"><?php echo $_smarty_tpl->getValue('p');?>
+</a>
+        </li>
+
+      <?php
+}
+}
+?>
+
+      <?php if ($_smarty_tpl->getValue('page') < $_smarty_tpl->getValue('totalPages')) {?>
+        
+        <li><a href="?page=<?php echo $_smarty_tpl->getValue('page')+1;?>
+"><i class="fa fa-angle-double-right"></i></a></li>
+       
+      <?php }?>
+    </ul>
+  
+<?php }?> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

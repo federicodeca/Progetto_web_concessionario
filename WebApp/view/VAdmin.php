@@ -19,6 +19,12 @@ class VAdmin{
 
     }
 
-    //showLoginForm
+    public function showCarSuccess(){
+        $this->smarty->display('success.tpl');
+    }
+
+    public function showCarError(){
+        $this->smarty->display('registractionError.tpl');
+    }
 
 }

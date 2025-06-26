@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-26 13:33:06
+  from 'file:addCarForm.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_685d2ff2003fb9_52492493',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5bf82e4692690d3668aa8ddc7c6d021dd6c89551' => 
+    array (
+      0 => 'addCarForm.tpl',
+      1 => 1750937572,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_685d2ff2003fb9_52492493 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -169,16 +193,26 @@
         </div>
     </footer> 
 
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery-3.3.1.min.js"><?php echo '</script'; ?>
+>
     <!-- https://jquery.com/download/ -->
-    <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <?php echo '<script'; ?>
+ src="jquery-ui-datepicker/jquery-ui.min.js"><?php echo '</script'; ?>
+>
     <!-- https://jqueryui.com/download/ -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
     <!-- https://getbootstrap.com/ -->
-    <script>
+    <?php echo '<script'; ?>
+>
       $(function() {
         $("#expire_date").datepicker();
       });
-    </script>
+    <?php echo '</script'; ?>
+>
   </body>
 </html>
+<?php }
+}

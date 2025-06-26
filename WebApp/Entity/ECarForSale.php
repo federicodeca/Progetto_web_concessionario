@@ -25,10 +25,11 @@ class ECarForSale extends EAuto
 
 
 
-    public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, string $fuelType,int $price)
+    public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, string $fuelType,int $price, bool $available)
     {
         parent::__construct($model, $brand, $color, $horsepower, $engineDisplacement, $seats, $fuelType);
         $this->price = $price;
+        $this->available = $available;
         $this->photo = new ArrayCollection(); // Initialize photo to null
     }
 

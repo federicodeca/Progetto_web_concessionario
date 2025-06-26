@@ -116,52 +116,25 @@ class CAdmin {
         }
     }
 
+    // aggiungere auto nel database
+    public static function addCar()
+    {
+        $view = new VAdmin();
 
-    public static function addCar() {
-
-        if (CAdmin::isLogged()) {
-
-            $infout=CAdmin::getUserStatus();
-            
-            $idAdmin = USession::getElementFromSession('admin');
-            $admin=FPersistentManager::getInstance()->getObjectbyId(EAdmin::class, $idAdmin);
-            
-            
-            $cardNumber= UHTTPMethods::post('cardNumber');
-
-            $existingMethod=FPersistentManager::getInstance()->verifyCardNumber($cardNumber);
-            if (!$existingMethod) {
-                $cardName= UHTTPMethods::post('cardName');
-                $cardExpiry= UHTTPMethods::post('cardExpiry');
-                $cardCVV= UHTTPMethods::post('cardCVV');
-                $cardDate=explode("/",$cardExpiry);
-                $cardMonth=$cardDate[0];
-                $cardYear="20".$cardDate[1];
-                $cardExp= new DateTime("$cardYear-$cardMonth-01");  
-                $card= new ECreditCard( $cardNumber, $cardExp, $cardCVV, $user);
-
-            }
-            else {
-                $card=FPersistentManager::getInstance()->retrieveObjectByfield(ECreditCard::class,'cardNumber',$cardNumber);
-            }
-            $idAuto=USession::getElementFromSession('idAuto');
-            $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
-
-            $amount=USession::getElementFromSession('amount');
-            $startD=USession::getElementFromSession('startDate');
-            $endD=USession::getElementFromSession('endDate');
-            $start=(new DateTime($startD))->format(DateTime::ATOM);
-            $end=(new DateTime($endD))->format(DateTime::ATOM);
-
-                // Store the credit card in the session
-            FPersistentManager::getInstance()->uploadObj($card);
-            USession::setElementInSession('creditCard', $card->getCardId()); // Persist the credit card
-            $view = new VUser();
-            $view->showOverview($start,$end,$amount,$car,$infout); //button for confirm o to go back to the form
-
-        } else {
-            header('Location: /WebApp/User/Home');
+        if (UHTTPMethods::post('carType') == 'rental_car') {
+            $rentCar = new ECarForRent(UHTTPMethods::post('carModel'), UHTTPMethods::post('carBrand'), UHTTPMethods::post('carColor'), UHTTPMethods::post('carHorsepower'),UHTTPMethods::post('carDisplacement'), UHTTPMethods::post('carSeats'),UHTTPMethods::post('carFuelType'),UHTTPMethods::post('carPrice'), UHTTPMethods::post('carDescription'));
+            $check = FPersistentManager::getInstance()->uploadObj($rentCar);
+            if ($check) {
+            $view->showCarSuccess();
+            } else {$view->showCarError(); }
+        } elseif (UHTTPMethods::post('carType') == 'car_for_sale') {
+            $saleCar = new ECarForSale(UHTTPMethods::post('carModel'), UHTTPMethods::post('carBrand'), UHTTPMethods::post('carColor'), UHTTPMethods::post('carHorsepower'),UHTTPMethods::post('carDisplacement'), UHTTPMethods::post('carSeats'),UHTTPMethods::post('carFuelType'),UHTTPMethods::post('carPrice'), 1);
+            $check = FPersistentManager::getInstance()->uploadObj($saleCar);
+            if ($check) {
+            $view->showCarSuccess();
+            } else {$view->showCarError(); }
         }
+        
     }
 
 }
