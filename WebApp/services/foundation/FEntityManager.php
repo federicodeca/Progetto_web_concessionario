@@ -280,6 +280,35 @@ class FEntityManager {
             return [];
         }
     }
+
+    /**
+     * Execute a DQL query with optional parameters, limit, and offset.
+     *
+     * @param string $sql       The DQL string to execute
+     * @param array  $params    Associative array of parameters for the query
+     * @param int|null $limit   Maximum number of results (optional)
+     * @param int|null $offset  Offset for result set (optional)
+     * @return array            Array of resulting entities or data
+     */
+    public static function doQuery($sql, array $params = [], ?int $limit = null, ?int $offset = null): array {
+        try {
+            $entityManager = self::$entityManager;
+            $query = $entityManager->createQuery($sql)
+                ->setParameters($params);
+
+            if ($limit !== null) {
+                $query->setMaxResults($limit);
+            }
+            if ($offset !== null) {
+                $query->setFirstResult($offset);
+            }
+
+            return $query->getResult();
+        } catch (Exception $e) {
+            echo "ERROR: " . $e->getMessage();
+            return [];
+        }
+    }
         
 
 }

@@ -24,61 +24,42 @@ class FCarForSale {
         return $availableCars;
     }
 
-    public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
-    $sql = "SELECT a.model, a.brand, a.color, a.horsepower, a.displacement, a.seats, a.fuelType,c.price  FROM cars_for_sale c JOIN auto a ON a.idAuto = c.idAuto WHERE available = 1";
+public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {
+    $dql = "SELECT c FROM ECarForSale c WHERE c.available = 1";
+    $params = [];
+
+    if (!empty($brand)) {
+        $dql .= " AND c.brand = :brand";
+        $params['brand'] = $brand;
+    }
+
+    if (!empty($model)) {
+        $dql .= " AND c.model = :model";
+        $params['model'] = $model;
+    }
+
     $offset = (int)$offset;
     $limit = (int)$limit;
 
-    if (!empty($brand)) {
-            $sql .= " AND brand = '$brand'";
-            
-        }
-
-    if (!empty($model)) {
-            $sql .= " AND model = '$model'";
-            
-        }
-
-   $sql .= " LIMIT " . intval($limit) . " OFFSET " . intval($offset);
- 
-    // Usa PDO o mysqli con prepared statements per eseguire la query in sicurezza
-    $result= FEntityManager::getInstance()->executeQuery($sql);
-    $cars = [];
-    foreach ($result as $row) {
-        $car = new ECarForSale(
-            $row['model'],
-            $row['brand'],
-            $row['color'],
-            (int)$row['horsepower'],
-            (int)$row['displacement'],
-            (int)$row['seats'],
-            $row['fuelType'],
-            (int)$row['price']
-        );
-        // Eventuali altri settaggi (id, immagini, ecc.)
-        $cars[] = $car;
-    }
-    return $cars;
+    return FEntityManager::getInstance()->doQuery($dql, $params, $limit, $offset);
 }
 
     public static function countSearchedCars($brand = null, $model = null) {
-    $sql = "SELECT COUNT(*) FROM cars_for_sale WHERE available = 1";
-    $params = [];
+        $sql = "SELECT COUNT(*) as total FROM cars_for_sale  WHERE available = 1";
+        $params = [];
 
-    if ($brand !== null) {
-        $sql .= " AND brand = '$brand";
-        $params[] = $brand;
-    }
+        if ($brand !== null) {
+            $sql .= " AND brand = :brand";
+            $params['brand'] = $brand;
+        }
 
-    if ($model !== null) {
-        $sql .= " AND model = '$model'";
-        $params[] = $model;
-    }
+        if ($model !== null) {
+            $sql .= " AND model = :model";
+            $params['model'] = $model;
+        }
 
-    // Esegui la query e restituisci il numero
-    $result = FEntityManager::getInstance()->executeQuery($sql, $params);
-    return $result[0]['COUNT(*)'] ?? 0;
-  
+        $result = FEntityManager::getInstance()->executeQuery($sql, $params);
+        return $result[0]['total'] ?? 0;
     }
 
     public static function getAllModels($brand) {

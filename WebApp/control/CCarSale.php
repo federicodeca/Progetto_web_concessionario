@@ -27,14 +27,16 @@ class CCarSale {
             session_start();
         }
 
-        
-        if (isset($_GET['brand'])) {
-            USession::setElementInSession('brand', $_GET['brand']);
+        $brand=UHTTPMethods::post('brand');
+        $model=UHTTPMethods::post('model');
+
+        if (isset($brand)) {
+            USession::setElementInSession('brand', $brand);
         }else{
             $brand = USession::getElementFromSession('brand');}
             
-        if (isset($_GET['model'])) {
-            USession::setElementInSession('model', $_GET['model']);
+        if (isset($$model)) {
+            USession::setElementInSession('model', $model);
         }else{
             $model = USession::getElementFromSession('model');}
 
