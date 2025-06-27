@@ -116,12 +116,13 @@ class VUser{
         
     }
 
-    public function showCarRentConfirmation($rent, $indisp,$infout) {
+    public function showCarRentConfirmation($rent, $indisp, $infout) {
         $this->smarty->assign('rent', $rent);
         $this->smarty->assign('indisp', $indisp);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('permission', $infout['permission']);
+      
         $this->smarty->display('confirmRent.tpl');
     }
     public function showErrorUnavailability(){

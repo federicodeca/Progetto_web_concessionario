@@ -158,10 +158,12 @@
                                             <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                 <tr>
                                                     <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                        <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
-                                                        <p>Concessionario <br>Via Roma, 10<br>L'Aquila</p>
                                                         <p style="font-weight: 800;">Riferimento</p>
                                                         <p>ordine numero {$sale->getOrderId()}</p>
+
+                                                        <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
+                                                        <p>Concessionario <br>Via Roma, 10<br>L'Aquila</p>
+                                                        
 
                                                     </td>
                                                 </tr>

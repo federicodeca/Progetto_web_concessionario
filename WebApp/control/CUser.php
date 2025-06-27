@@ -279,8 +279,8 @@ class CUser {
             $amount=USession::getElementFromSession('amount');
             $startD=USession::getElementFromSession('startDate');
             $endD=USession::getElementFromSession('endDate');
-            $start=(new DateTime($startD))->format(DateTime::ATOM);
-            $end=(new DateTime($endD))->format(DateTime::ATOM);
+            $start=(new DateTime($startD))->format('l d F Y');
+            $end=(new DateTime($endD))->format('l d F Y');
 
                 // Store the credit card in the session
             FPersistentManager::getInstance()->uploadObj($card);
@@ -326,6 +326,8 @@ class CUser {
                 $rent= new ERent($now,$method,$user,$indisp,$car);
                 $rent->setTotalPrice($amount);
                 FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
+                
+                UMail::sendRentConfirm($user,$rent,$car,$amount,$startD,$endD);
                  
                 $view = new VUser();
                 $view->showCarRentConfirmation($rent, $indisp,$infout); // Show confirmation of the car rent

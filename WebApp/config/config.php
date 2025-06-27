@@ -8,4 +8,9 @@
 
     define('COOKIE_EXP', 60 * 60 * 24 * 30); // 30 days
 
+
+    define('HOST','sandbox.smtp.mailtrap.io');
+    define('PORT', 2525);
+    define('USERNAME', '3e88807603196e');
+    define('PASSWORD', 'ca32cfbaf0cc85');
     

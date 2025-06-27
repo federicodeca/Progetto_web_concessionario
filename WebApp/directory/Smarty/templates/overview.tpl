@@ -101,7 +101,7 @@
 
           <div class="col-md-6">
             <div class="card">
-              <div class="card-header"><h5>Riepilogo ordine</h5></div>
+              <div class="card-header"><h5><i class="fa-solid fa-info mr-3"></i>Riepilogo ordine</h5></div>
               <div class="card-body">
                 <h7>Dal: {$start}</h7><br>
                 <h7>Al:   {$end}</h7><br>
@@ -112,7 +112,7 @@
 
           <div class="col-md-6">
            <div class="card">
-              <h5 class="card-header">Dettagli auto</h5>
+              <h5 class="card-header"><i class="fa-solid fa-gears mr-3"></i>Dettagli auto</h5>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">

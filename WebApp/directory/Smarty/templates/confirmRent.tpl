@@ -139,8 +139,8 @@
                                 </tr>
                                 <tr>
                                     <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
-                                        <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium iste ipsa numquam odio dolores, nam.
+                                        <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777; text-align: center;">
+                                                   riceverai una mail di conferma con i dettagli del tuo ordine.<br>
                                         </p>
                                     </td>
                                 </tr>
@@ -158,6 +158,8 @@
                                             <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
                                                 <tr>
                                                     <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
+                                                        <p style="font-weight: 800;">Riferimento</p>
+                                                        <p>ordine numero {$rent->getOrderId()}</p>
                                                         <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
                                                         <p>Concessionario boh<br>Via Roma, 10<br>L'Aquila</p>
 

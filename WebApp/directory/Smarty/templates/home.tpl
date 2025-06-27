@@ -42,6 +42,8 @@
   <body>
 
 
+    {$permission}
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
