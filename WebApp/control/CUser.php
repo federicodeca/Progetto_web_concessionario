@@ -142,13 +142,14 @@ class CUser {
      * @return void
      */
     public static function home() {
+    
 
     $infout=CUser::getUserStatus();
 
+    $offers=FPersistentManager::getInstance()->getOffers(); // Retrieve offers for the home page
+
     $view = new VUser();
-
-
-    $view->showHomePage($infout);
+    $view->showHomePage($infout,$offers);
 
     }
 
@@ -488,9 +489,10 @@ public static function getUserStatus(): array {
 
         $carsPerPage = 6;
 
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            USession::getInstance();
         }
+        
         $price = UHTTPMethods::post('price') ?? null;
         $brand = UHTTPMethods::post('brand') ?? null;
         $model = UHTTPMethods::post('model') ?? null;

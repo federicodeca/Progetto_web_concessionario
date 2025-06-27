@@ -21,10 +21,14 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
+    <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
     <!--dati per login-->
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
+      const permission = "{$permission|escape:'javascript'|default:''}";
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
     <script src="/WebApp/directory/Smarty/js/select-car.js"></script>
@@ -52,7 +56,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Concessionario<em>TopGear</em></h2></a>
+          <a class="navbar-brand"   href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -185,6 +189,8 @@
             <div class="down-content">
               <h4>{$car->getModel()}</h4>
               <h6><small>from:</small> {$car->getPrice()}€ <small>prezzo listino</small></h6>
+              <br>
+              <h6>condizione: {$car->getKm0OrNew()}</h6>
             </div>    
           </div>
         </a>
@@ -202,7 +208,7 @@
             
 
           
-<footer>
+
  <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -257,7 +263,34 @@
         </div>
       </div>
     </div>
-</footer>            
+    </div> 
+      <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> RentalTopGear  <a href="/WebApp/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>     
+           
 
 
     
@@ -326,6 +359,7 @@
         </div>
       </div>
     </div>
+    
 
 
 
@@ -344,5 +378,6 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   </body>
+  
 
 </html>

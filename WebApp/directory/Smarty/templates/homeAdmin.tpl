@@ -26,6 +26,7 @@
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
+      const permission = "{$permission|escape:'javascript'|default:''}";
       
     </script>
     <script src="/WebApp/directory/Smarty/js/login-box.js"></script>
@@ -71,7 +72,7 @@
 
               <li class="nav-item"><a class="nav-link" href="">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="WebApp/User/home">home</a></li>
 
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 

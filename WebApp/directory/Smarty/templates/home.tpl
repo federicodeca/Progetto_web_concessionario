@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
+    <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
+
     <!--dati per login-->
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
@@ -54,7 +58,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Piselloni<em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -101,20 +105,20 @@
       <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
           <div class="text-content">
-            <h4>prova scritta</h4>
+            <h4>Qualità</h4>
             <h2>Le migliori auto al miglior prezzo!</h2>
           </div>
         </div>
         <div class="banner-item-02">
           <div class="text-content">
-            <h4>Fugiat Aspernatur</h4>
-            <h2>Laboriosam reprehenderit ducimus</h2>
+            <h4>Accoglienza</h4>
+            <h2>Impegno e dedizione ogni giorno</h2>
           </div>
         </div>
         <div class="banner-item-03">
           <div class="text-content">
-            <h4>Saepe Omnis</h4>
-            <h2>Quaerat suscipit unde minus dicta</h2>
+            <h4>Dal 1998</h4>
+            <h2>Regaliamo felicità ai clienti</h2>
           </div>
         </div>
       </div>
@@ -129,41 +133,64 @@
           <div class="col-md-12">
             <div class="section-heading">
               <h2>Occasioni</h2>
-              <a href="offers.html">view more <i class="fa fa-angle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="product-item">
-              <a href="offers.html"><img src="/WebApp/directory/Smarty/assets/images/offer-1-370x270.jpg" alt=""></a>
-              <div class="down-content">
-                <a href="offers.html"><h4>Lorem ipsum dolor sit amet, consectetur</h4></a>
-                <h6><small>from</small> $120 <small>per weekend</small></h6>
-                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-              </div>
+              <a href="/WebApp/User/carSearcher">scopri di più <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="product-item">
-              <a href="offers.html"><img src="/WebApp/directory/Smarty/assets/images/offer-2-370x270.jpg" alt=""></a>
-              <div class="down-content">
-                <a href="offers.html"><h4>Estorum aspernatur officiis accusamus </h4></a>
-                <h6><small>from</small> $150 <small>per weekend</small></h6>
-                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+            <div class="col-md-4">
+                <a href='/WebApp/User/selectCarForSale/{$offers[0]->getIdAuto()}'>
+                  <div class="product-item">
+                    {if $offers[0]->getIcon()}
+                      <img class="product-item-icon" src="data:{$offers[0]->getIcon()->getType()};base64,{$offers[0]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+                    {else}
+                      <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
+                    {/if}
+                    <div class="down-content">
+                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[0]->getBrand()} {$offers[0]->getModel()}</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[0]->getPrice()}€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[0]->getKm0OrNew()}</h4>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[0]->getFuelType()} </h4>
+                    </div>    
+                  </div>
+                </a>
               </div>
-            </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="product-item">
-              <a href="offers.html"><img src="/WebApp/directory/Smarty/assets/images/offer-3-370x270.jpg" alt=""></a>
-              <div class="down-content">
-                <a href="offers.html"><h4>Reiciendis ullam culpa optio providen</h4></a>
-                <h6><small>from</small> $150 <small>per weekend</small></h6>
-                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+            <div class="col-md-4">
+                <a href='/WebApp/User/selectCarForSale/{$offers[1]->getIdAuto()}'>
+                  <div class="product-item">
+                    {if $offers[1]->getIcon()}
+                      <img class="product-item-icon" src="data:{$offers[1]->getIcon()->getType()};base64,{$offers[1]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+                    {else}
+                      <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
+                    {/if}
+                    <div class="down-content">
+                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[1]->getBrand()} {$offers[1]->getModel()}</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[1]->getPrice()}€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[1]->getKm0OrNew()}</h6>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[1]->getFuelType()} </h6>
+                    </div>    
+                  </div>
+                </a>
               </div>
-            </div>
-          </div>
+
+           <div class="col-md-4">
+                <a href='/WebApp/User/selectCarForSale/{$offers[2]->getIdAuto()}'>
+                  <div class="product-item">
+                    {if $offers[2]->getIcon()}
+                      <img class="product-item-icon" src="data:{$offers[2]->getIcon()->getType()};base64,{$offers[2]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+                    {else}
+                      <img src="/WebApp/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
+                    {/if}
+                    <div class="down-content">
+                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[1]->getBrand()} {$offers[2]->getModel()}</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[2]->getPrice()}€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[2]->getKm0OrNew()}</h6>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[2]->getFuelType()} </h6>
+                    </div>    
+                  </div>
+                </a>
+              </div>
+
         </div>
       </div>
     </div>
@@ -173,7 +200,7 @@
         <div class="row">
           <div class="col-md-12">
               <div class="section-heading">
-                <h2>Vienici a trovare</h2>
+                <h2>Vieni a trovarci</h2>
               </div>
           </div>
           <div class="col-md-12">
@@ -192,7 +219,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Latest blog posts</h2>
+              <h2>Dicono di noi</h2>
 
               <a href="blog.html">read more <i class="fa fa-angle-right"></i></a>
             </div>
@@ -235,82 +262,7 @@
       </div>
     </div>
 
-    <div class="happy-clients">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Happy Clients</h2>
-
-              <a href="testimonials.html">read more <i class="fa fa-angle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="owl-clients owl-carousel text-center">
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>John Doe</h4>
-                  <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Jane Smith</h4>
-                  <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Antony Davis</h4>
-                  <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>John Doe</h4>
-                  <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Jane Smith</h4>
-                  <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Antony Davis</h4>
-                  <p class="n-m"><em>"Lorem ipsum dolor sit amet, consectetur an adipisicing elit. Itaque, corporis nulla at quia quaerat."</em></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 
 
     <div class="call-to-action">
@@ -320,11 +272,13 @@
             <div class="inner-content">
               <div class="row">
                 <div class="col-md-8">
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
+                  <h7>Siamo lieti di accoglierti nel nostro store sito in via..</h7>
+                  <h7>contattaci:</h7><br>
+                  <h7><i class="fa-solid fa-phone mr-2"></i>+39 123 456 789</h7><br>
+                  <h7><i class="fa-solid fa-envelope mr-2"></i>carRental@pippo.it</h7>
                 </div>
                 <div class="col-lg-4 col-md-6 text-right">
-                  <a href="contact.html" class="filled-button">Contact Us</a>
+                  <a href="contact.html" class="filled-button">Contattaci</a>
                 </div>
               </div>
             </div>
@@ -336,18 +290,32 @@
 
 
     
-    <footer>
+      <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> RentalTopGear  <a href="/WebApp/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4>
+
             </div>
           </div>
         </div>
       </div>
     </footer>
-
 
 
 

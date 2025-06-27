@@ -20,8 +20,6 @@ class FPersistentManager {
 
     /**
      * return object by id
-     * @param string $className
-     * @param int $id
      */
     public function getObjectById(string $className, int $id) {
         
@@ -32,10 +30,6 @@ class FPersistentManager {
 
     /**
      * return object by field
-     * @param string $className
-     * @param string $field
-     * @param mixed $value
-     * @return object|null
      */
     public function getObjectByField(string $className, string $field, $value) {
         
@@ -62,8 +56,6 @@ class FPersistentManager {
     //USER AND ADMIN
     /**
      * return a User finding it not on the id but on it's username
-     * @param string $username
-     * @return object|null
      */
 
     public static function retriveUserOnUsername($username)
@@ -76,8 +68,6 @@ class FPersistentManager {
 
     /**
      * return a Admin finding it not on the id but on it's username
-     * @param string $username
-     * @return object|null
      */
     public static function retriveAdmOnUsername($username)
     {
@@ -138,7 +128,7 @@ class FPersistentManager {
     
 
     /**
-     * return the credit card of a user
+     * return the credit card of a user by id
      */
     public static function retriveCreditCardOnUserId($userId) {
         $result = FCreditCard::getCreditCardByUserId($userId);
@@ -154,28 +144,33 @@ class FPersistentManager {
     }
 
     /**
-     * lock table
-     * @param string $table
+     * lOCK TABLE
      */
     public static function lockTable($table) {
         FEntityManager::getInstance()->lockTable($table);
     }
     /**
-     * unlock table
-     * @param string $table
+     * UNLOCK TABLE 
      */
     public static function unlockTable() {
         FEntityManager::getInstance()->unlockTable();
     }
 
     //LOGIN AND REGISTRATION
-        
+    
+
+    /**  
+    * verify if the username is already used by another user
+    */
     public static function verifyUserUsername($username){
         $result = FPerson::verify('username', $username);
 
         return $result;
     }
 
+    /**
+     * verify if the email is already used by another user
+     */
     public static function verifyUserEmail($email){
         $result = FPerson::verify('email', $email);
 
@@ -185,12 +180,18 @@ class FPersistentManager {
 
     //NOLEGGIO AUTO
 
+    /**
+     * verify if the card is already inserted in the database
+     */
     public static function verifyCardNumber($cardNumber){
         $result = FCreditCard::verify('cardNumber', $cardNumber);
 
         return $result;
     }
 
+    /**
+     * return all credit cards of a user
+     */
     public static function getAllCreditCardsByUser($idUser) {
         $user = FEntityManager::getInstance()->retriveObj(EUser::class, $idUser);
         $result = FEntityManager::getInstance()->objectList(ECreditCard::class, 'user', $user);
@@ -198,13 +199,17 @@ class FPersistentManager {
 
     }
 
-
+    /**
+     * return an object by field
+     */
     public static function retrieveObjectByField($className, $field, $value) {
         $result = FEntityManager::getInstance()->retriveObjOnField($className, $field, $value);
         return $result;
     }
 
-
+    /**
+     * delete an object by id
+     */
     public static function removeObject($obj):void {
         FEntityManager::getInstance()->deleteObj($obj);
     } 
@@ -213,28 +218,53 @@ class FPersistentManager {
 
     //ACQUISTO AUTO    
 
+    /**
+     * This method retrieves all cars for sale that are available by filtering based on the provided brand, model and price.
+     * all parameters are optional, if not provided, all cars will be returned.
+     * It returns an array of car objects that are available for sale.
+     */
     public static function searchCarsForSale($brand = null, $model = null, $offset = 0, $limit = 6) {  
         $result = FCarForSale::searchCarsForSale($brand, $model, $offset, $limit);
         return $result;
     } 
 
 
-    
+    /**
+     * This method counts the total number of cars for sale that match the search criteria.
+     * It returns the total count of cars that match the brand and model.
+     */
     public static function countSearchedCars($brand = null, $model = null) {
         $result = FCarForSale::countSearchedCars($brand, $model);
         return $result;
     }
 
+
+    /**
+     * This method retrieves all distinct brands of cars for sale that are available.
+     * It returns an array of unique brands.
+     */
     public static function getAllBrands() {
         $result = FCarForSale::getAllBrands();
         return $result;
     }
 
+
+    /**
+     * This method retrieves all distinct models of cars for sale that are available for a specific brand.
+     */
     public static function getAllModels($brand) {
         $result = FCarForSale::getAllModels($brand);
         return $result;
     }
-        
+    
+    /**
+     * It returns an array of offers that are currently available for sale to be displayed on the home page.
+     */
+    public static function getOffers() {
+        $result = FCarForSale::getOffersSale();
+        return $result;
+    }
+
         
         
         

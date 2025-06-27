@@ -23,13 +23,18 @@ class ECarForSale extends EAuto
     #[ORM\Column(type: 'boolean')]
     protected bool $saled = false;
 
+    #[ORM\Column(type: 'string', length: 10)]
+    
+    protected  string $Km0OrNew ;
 
 
-    public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, string $fuelType,int $price, bool $available)
+
+    public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, string $fuelType,int $price, bool $available, string $condition)
     {
         parent::__construct($model, $brand, $color, $horsepower, $engineDisplacement, $seats, $fuelType);
         $this->price = $price;
         $this->available = $available;
+        $this->Km0OrNew = $condition; // 'Km0' or 'New'
         $this->photo = new ArrayCollection(); // Initialize photo to null
     }
 
@@ -60,9 +65,20 @@ class ECarForSale extends EAuto
     public function getSaled(): bool{
         return $this->saled;}
     
-    public function setSaled(bool $saled): void
-    {
-        $this->saled = $saled;}
+    public function setSaled(bool $saled): void{
+        $this->saled = $saled;
+    }
+
+    public function getKm0OrNew(): string  {
+        return $this->Km0OrNew;
+    }
+
+    public function setKm0OrNew(string $condition): void {
+       
+            $this->Km0OrNew = $condition;
+        
+    }
+
 
 
 }

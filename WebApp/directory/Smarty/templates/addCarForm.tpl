@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
 
+
+    <script src="/WebApp/directory/Smarty/js/admin-choice.js"></script>
+
   </head>
 
   <body>
@@ -43,40 +46,42 @@
             </div>
             
             <div class="row tm-edit-product-row">
-              <div class="col-xl-6 col-lg-6 col-md-12">
+              <div class="container">
                 <form class="tm-edit-product-form" method="post" action="/WebApp/Admin/addCar" enctype="multipart/form-data">
-                
-                <div class="col-md-6 mb-3">
-                <label for="cc-name" style="margin-top: 10px">Model</label>
-                <input type="text" class="form-control" id="car-model" placeholder="" required="" name="carModel">
-                <div class="invalid-feedback">
-                Car model is required
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                  <label for="cc-name" style="margin-top: 10px">Model</label>
+                  <input type="text" class="form-control" id="car-model" placeholder="" required="" name="carModel">
+                  <div class="invalid-feedback">
+                  Car model is required
+                  </div>
+                  </div>
+                      <div class="col-md-6 mb-3">
+                  <label for="cc-name" style="margin-top: 10px">Brand</label>
+                  <input type="text" class="form-control" id="car-brand" required="" name="carBrand">
+                  <div class="invalid-feedback">
+                  Car brand is required
+                  </div>
+                  </div>
                 </div>
-                </div>
-                    <div class="col-md-6 mb-3">
-                <label for="cc-name" style="margin-top: 10px">Brand</label>
-                <input type="text" class="form-control" id="car-brand" required="" name="carBrand">
-                <div class="invalid-feedback">
-                Car brand is required
-                </div>
-                </div>
+                 <div class="row">
+                  <div class="col-md-6 mb-3">
+                  <label for="cc-name" style="margin-top: 10px">Color</label>
+                  <input type="text" class="form-control" id="car-color" placeholder="" required="" name="carColor">
+                  <div class="invalid-feedback">
+                  Car color is required
+                  </div>
+                  </div>
 
-                <div class="col-md-6 mb-3">
-                <label for="cc-name" style="margin-top: 10px">Color</label>
-                <input type="text" class="form-control" id="car-color" placeholder="" required="" name="carColor">
-                <div class="invalid-feedback">
-                Car color is required
-                </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                <label for="cc-name" style="margin-top: 10px">Horsepower</label>
-                <input type="text" class="form-control" id="car-horsepower" placeholder="" required="" name="carHorsepower">
-                <div class="invalid-feedback">
-                Car horsepower is required
-                </div>
-                </div>
-
+                  <div class="col-md-6 mb-3">
+                  <label for="cc-name" style="margin-top: 10px">Horsepower</label>
+                  <input type="text" class="form-control" id="car-horsepower" placeholder="" required="" name="carHorsepower">
+                  <div class="invalid-feedback">
+                  Car horsepower is required
+                  </div>
+                  </div>
+              </div>  
+              <div class="row">
                 <div class="col-md-6 mb-3">
                 <label for="cc-name" style="margin-top: 10px">Displacement</label>
                 <input type="text" class="form-control" id="car-displacement" placeholder="" required="" name="carDisplacement">
@@ -92,7 +97,10 @@
                 Car seats are required
                 </div>
                 </div>
-                
+              </div>
+              
+              
+              <div class="row">  
                 <div class="col-md-6 mb-3">
                 <label for="cc-name" style="margin-top: 10px">Fuel type</label>
                 <input type="text" class="form-control" id="car-fuel-type" placeholder="" required="" name="carFuelType">
@@ -108,10 +116,11 @@
                 Car price type is required
                 </div>
                 </div>
+              </div>  
 
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3 " id="car-description" style="display: none;">
                 <label for="cc-name" style="margin-top: 10px">Description for rent car</label>
-                <input type="text" class="form-control" id="car-description" placeholder="" name="carDescription">
+                <input type="text" class="form-control" id="carDescription" placeholder="" name="carDescription">
                 <div class="invalid-feedback">
                 Car description type is required
                 </div>
@@ -124,11 +133,26 @@
                     >
                     <select
                       class="custom-select tm-select-accounts"
-                      id="category" name="carType"
+                      id="car-type" name="carType"
                     >
                       <option selected>Select Type</option>
                       <option value="rental_car">Car for rent</option>
                       <option value="car_for_sale">Car for sale</option>
+                    </select>
+                  </div>
+
+                   <div class="form-group mb-3" id="condition-select" style="display: none;">
+                    <label
+                      for="category"
+                      >Type</label
+                    >
+                    <select
+                      class="custom-select tm-select-accounts"
+                      id="category" name="condition"
+                    >
+                      <option selected>Select conditions</option>
+                      <option value="Km0">Km0</option>
+                      <option value="New">New</option>
                     </select>
                   </div>
                   

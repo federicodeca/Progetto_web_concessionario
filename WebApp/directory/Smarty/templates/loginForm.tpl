@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
+
+      <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
   
         <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
@@ -45,7 +49,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>Website</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -141,12 +145,27 @@
     </div>
 
 
-      <footer>
+  <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> RentalTopGear  <a href="/WebApp/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
+
             </div>
           </div>
         </div>

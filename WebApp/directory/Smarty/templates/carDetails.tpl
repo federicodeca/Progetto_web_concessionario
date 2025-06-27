@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/owl.css">
     <link rel="stylesheet" href="/WebApp/directory/Smarty/assets/css/calendar-custom.css">
+      <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
@@ -32,6 +35,7 @@
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
+      const permission = "{$permission|escape:'javascript'|default:''}";
     </script>
       <script>
     const indisp = {$indisp|json_encode|raw};
@@ -66,7 +70,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Piselloni <em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -132,9 +136,12 @@
               
               <form id="contact-form" action="/WebApp/User/loginAndCreditRequirement" method="post">
                 <input type="hidden" id="idAuto" name="idAuto" value="{$car->getIdAuto()}">
-                <input type="text" id="date-range" name="dateRange" class="form-control w-50" placeholder="Seleziona intervallo date" style="length: 20px" />
+
+                <i class="fa-solid fa-calendar-days mr-2"></i>
+                <input type="text"  id="date-range" name="dateRange" class="form-control w-50" placeholder="Seleziona intervallo date" style="length: 20px" />
                 <input type="hidden" id="startDate" name="startDate" />
                 <input type="hidden" id="endDate" name="endDate" />
+               
 
                 <div class="col-lg-12">
                     <fieldset>
@@ -158,17 +165,15 @@
               <div class="left-content">
 
                 <p>seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
-                                 {foreach from=$car->getPhoto() item=photo name=foto}
-          <p>Foto {$smarty.foreach.foto.iteration} - Type: {$photo->getType()} - Encoded: {$photo->getEncodedData()|strlen}</p>
-        {/foreach}
+
 
                 <br> 
 
                 <ul class="social-icons">
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                  <li><a href="#"> <i class="fa-brands fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-square-x-twitter"></i></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                  <li><a href="#"><<i class="fa-brands fa-behance"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -195,25 +200,27 @@
             </div>
 
             <div class="col-md-8">
-                <h5>Marca: {$car->getBrand()}</h5>
+                <h5><i class="fa-solid fa-car mr-2"></i>Marca: {$car->getBrand()}</h5>
 
                 <br>
 
-                <h5> Modello: {$car->getModel()}</h5>
+                <h5><i class="fa-solid fa-gear mr-2"></i> Modello: {$car->getModel()}</h5>
 
                 <br>
 
-                <h5>Cavalli: {$car->getHorsePower()}</h5>
+                <h5><i class="fa-solid fa-bolt-lightning mr-2"></i>Cavalli: {$car->getHorsePower()}</h5>
 
                 <br>
 
-               <h5>Cilindrata: {$car->getDisplacement()}</h5>
+                  <h5 ><i class="fa-solid fa-fire mr-2"></i>Cilindrata: {$car->getDisplacement()}</h5>
+                
+                <br>
+
+                <h5><i class="fa-solid fa-wheelchair mr-2"></i>Numero Posti: {$car->getSeats()}</h5>
 
                 <br>
-                <h5>Numero Posti: {$car->getSeats()}</h5>
-
-                <br>
-                <h5>Alimentazione: {$car->getFuelType()}</h5>
+                
+                <h5><i class="fas fa-gas-pump mr-2"></i>Alimentazione: {$car->getFuelType()}</h5>
             </div>
 
             <div class="col-md-4">
@@ -358,5 +365,32 @@
 
 
   </body>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> RentalTopGear  <a href="/WebApp/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
 
 </html >

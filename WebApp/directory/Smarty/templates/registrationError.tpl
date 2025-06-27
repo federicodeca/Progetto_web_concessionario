@@ -2,6 +2,6 @@
 
 <html lang="en">
 <body>
-<a href='WebApp/User/home'> andata male </a>
+<a href='WebApp/User/home'> ops qualcosa è andato storto,torna alla home </a>
 </body>
 </html>
