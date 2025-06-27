@@ -51,8 +51,27 @@ use Doctrine\Common\Collections\ArrayCollection;
         $this->checked = $checked;
     }
 
+    public function getChecked(): bool {
+        return $this->checked;
+    }
+
     public function getIdLicense(): int {
 
         return $this->idLicense;
+    }
+
+    public function getPhoto() {
+
+        return $this->photo;
+    }
+
+    public function getUserId() {
+
+        return $this->user_id;
+    }
+
+    public function getExp() {
+
+        return $this->exp;
     }
 }

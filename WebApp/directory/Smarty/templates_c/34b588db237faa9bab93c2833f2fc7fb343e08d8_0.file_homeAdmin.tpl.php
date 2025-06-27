@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-26 18:01:24
+/* Smarty version 5.5.1, created on 2025-06-27 22:11:34
   from 'file:homeAdmin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_685d6ed4b70f27_77766772',
+  'unifunc' => 'content_685efaf66f8717_79392993',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '34b588db237faa9bab93c2833f2fc7fb343e08d8' => 
     array (
       0 => 'homeAdmin.tpl',
-      1 => 1750953602,
+      1 => 1751047116,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_685d6ed4b70f27_77766772 (\Smarty\Template $_smarty_tpl) {
+function content_685efaf66f8717_79392993 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\WebApp\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -52,6 +52,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
       const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
@@ -101,9 +105,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/Admin/showCarForm/">Aggiungi auto</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="">Verifica patente</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="WebApp/User/home">home</a></li>
 
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 

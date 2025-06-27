@@ -266,7 +266,17 @@ class FPersistentManager {
     }
 
         
-        
+    public static function getNotCheckedLicense($licenseTable) {
+        $result = FLicense::getNotCheckedLicense($licenseTable);
+        return $result;
+    }
+
+    public static function retriveLicense($id)
+    {
+        $result = FLicense::getLicenseById($id);
+
+        return $result;
+    }
         
 
 }

@@ -5,7 +5,7 @@ class VAdmin{
     private $smarty;
 
 
-      public function __construct(){
+    public function __construct(){
 
         $this->smarty = StartSmarty::configuration();
 
@@ -31,4 +31,12 @@ class VAdmin{
         $this->smarty->display('addCarError.tpl');
     }
 
+    public function showLicenseList($licenses) {
+        $this->smarty->assign('licenses', $licenses);
+        $this->smarty->display('licenseList.tpl');
+    }
+
+    public function showCheckSuccess() {
+        $this->smarty->display('licenseCheckSuccess.tpl');
+    }
 }

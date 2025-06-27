@@ -70,7 +70,7 @@
 
               <li class="nav-item"><a class="nav-link" href="/WebApp/Admin/showCarForm/">Aggiungi auto</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="">Verifica patente</a></li>
+              <li class="nav-item"><a class="nav-link" href="/WebApp/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
               <li class="nav-item"><a class="nav-link" href="WebApp/User/home">home</a></li>
 

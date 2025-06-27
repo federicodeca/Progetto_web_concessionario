@@ -123,4 +123,26 @@ class CAdmin {
         $view = new VAdmin();
         $view->showAddCarForm();
     }
+
+    public static function showLicenseNotChecked () {
+        $licenseList = [];
+        $licenseList= FPersistentManager::getInstance()->getNotCheckedLicense(ELicense::class);
+
+        $view = new VAdmin();
+        $view->showLicenseList($licenseList);
+    }
+    
+    public  static function checkLicense (int $id) {
+        $license = FPersistentManager::getInstance()->retriveLicense($id);
+        $license->setChecked(true);
+        $user = $license->getUserId();
+        if ($user) {
+            $user->setVerified(true);
+        }
+        $entityManager = FEntityManager::getEntityManager();
+        $entityManager->flush();
+
+        $view = new VAdmin();
+        $view->showCheckSuccess();
+    }
 }
