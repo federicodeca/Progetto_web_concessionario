@@ -92,7 +92,7 @@
 
     <div class="services" style="background-image: url(/WebApp/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
       <div class="container col-md-6" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form  method="post" action="/WebApp/User/checkLoginRent">
+           <form  method="post" action="/WebApp/User/checkLogin">
 
             <div class="custom-license-card">
   

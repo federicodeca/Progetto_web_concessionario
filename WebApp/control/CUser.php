@@ -30,7 +30,6 @@ class CUser {
 
     /**
      * this method is used to check if the document is verified, if not it will return false
-     * @return bool
      */
     public static function DocVerified(): bool {
 
@@ -54,11 +53,11 @@ class CUser {
         return $user->getIsVerified();
     }
 
-        /**
-         * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
-         * the User is redirected in the carDetails page 
-         */
-    public static function checkLoginRent(){
+    /**
+    * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
+    * the User is redirected in the carDetails page of the car selected for rent or for sale
+    */
+    public static function checkLogin(){
         $view = new VUser();
         $username = FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'));                                            
         if($username){
@@ -79,7 +78,9 @@ class CUser {
                 USession::setElementInSession('user', $user->getId());
                 USession::setElementInSession('username', $user->getUsername());
                 $idAuto=USession::getElementFromSession('idAuto');
-                $url = "/WebApp/User/selectCarForRent/" . $idAuto;
+                $type=USession::getElementFromSession('type'); // Get the type of car (Rent or Sale)
+
+                $url = "/WebApp/User/selectCarFor$type/" . $idAuto;
                 header('Location: ' . $url); // Redirect to the cars for rent page
 
             }else{
@@ -93,7 +94,9 @@ class CUser {
 
 
 
-
+    /**
+     * this method is used to show the login form, if the user is already logged in it will redirect to the home page
+     */
     public static function login(){
 
         
@@ -111,7 +114,6 @@ class CUser {
     
     /**
      * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
-     * @return void
      */
     public static function logout(){
         USession::getInstance();
@@ -121,7 +123,9 @@ class CUser {
         header('Location: /WebApp/User/Home');
     }
 
-
+    /**
+     * this method is used to register a new user, it will check if the email and username are already in use, if not it will create a new user
+     */
     public static function registration()
     {
         $view = new VUser();
@@ -169,12 +173,11 @@ class CUser {
 
     /**
      * this method is used to select a cars for rent, it will redirect to the cars details page
-     * @param int $carId
      */
     public static function selectCarForRent($idAuto) {
 
         $infout=CUser::getUserStatus();
-
+        USession::setElementInSession('type', 'Rent'); 
         USession::setElementInSession('idAuto', $idAuto); // Store the car ID in the session
          // Get the car ID from the request, if not set, it will be null
         $indisponibility= FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto)->getAllIndispDates();
@@ -201,48 +204,53 @@ class CUser {
         $view->showCarDetails($car,$indisp,$infout,$surcharges,$basePrice);
     }
 
+    /**
+     * this method is used to check if the user is logged in and has a verified license, if so it will redirect to the credit card form
+     */
+    public static function loginAndCreditRequirement() {
 
-        public static function loginAndCreditRequirement() {
+    if (CUser::isLogged()) {
+        if (CUser::DocVerified(USession::getElementFromSession('user'))) { // Check if the user has a verified document
 
-        if (CUser::isLogged()) {
-            if (CUser::DocVerified(USession::getElementFromSession('user'))) { // Check if the user has a verified document
-
-                $infout=CUser::getUserStatus();
+            $infout=CUser::getUserStatus();
  
-                $idAuto= UHTTPMethods::post('idAuto');
-                $start=UHTTPMethods::post("startDate");
-                $startD=new DateTime($start);
+            $idAuto= UHTTPMethods::post('idAuto');
+            $start=UHTTPMethods::post("startDate");
+            $startD=new DateTime($start);
 
-                $end=UHTTPMethods::post("endDate");
-                $endD=new DateTime($end);
+            $end=UHTTPMethods::post("endDate");
+            $endD=new DateTime($end);
 
-                $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
+            $car=FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $idAuto);
 
-                $amount=$car->getTotalPrice($startD,$endD);
-                
+            $amount=$car->getTotalPrice($startD,$endD);
+            
 
-                USession::setElementInSession('amount', $amount);
-                USession::setElementInSession('startDate', $startD->format(DateTime::ATOM));
-                USession::setElementInSession('endDate', $endD->format(DateTime::ATOM));
-                USession::setElementInSession('idAuto', $idAuto);
+            USession::setElementInSession('amount', $amount);
+            USession::setElementInSession('startDate', $startD->format(DateTime::ATOM));
+            USession::setElementInSession('endDate', $endD->format(DateTime::ATOM));
+            USession::setElementInSession('idAuto', $idAuto);
 
-                $start=$startD->format('d-m-Y');
-                $end=$endD->format('d-m-Y');
-                $cardList= FPersistentManager::getInstance()->getAllCreditCardsByUser(USession::getElementFromSession('user'));
-                $cards=[]; // Array to store card numbers
-                foreach($cardList as $card) {
-                    $cards[] = $card->getCardNumber();}
+            $start=$startD->format('d-m-Y');
+            $end=$endD->format('d-m-Y');
+            $cardList= FPersistentManager::getInstance()->getAllCreditCardsByUser(USession::getElementFromSession('user'));
+            $cards=[]; // Array to store card numbers
+            foreach($cardList as $card) {
+                $cards[] = $card->getCardNumber();}
 
 
-                $view = new VUser();
-                $view->showCreditCardForm($amount,$start,$end,$infout,$cards);
+            $view = new VUser();
+            $view->showCreditCardForm($amount,$start,$end,$infout,$cards);
 
-            } else {
+        } else {
 
-                $view = new VUser();
-                $view->showLicenseRequest(); ///da implementare!!!!
-            }
+            $view = new VUser();
+            $view->showLicenseRequest(); 
+        }
 
+    }else {
+        $view = new VUser();
+        $view->showloginForm(); // Show error message if the document is not verified
         }
     }
 
@@ -338,9 +346,9 @@ class CUser {
                 
             }
         }
-
     }
-public static function getUserStatus(): array {
+    public static function getUserStatus(): array {
+
     if (session_status() === PHP_SESSION_NONE) {
         USession::getInstance();
     }
@@ -365,21 +373,24 @@ public static function getUserStatus(): array {
         'username' => $username,
         'permission' => $permission,
     ];
-}
+    }
+    
+    /**
+     * this method is used to login the user, if so it will redirect to the actual page
+     */
     public static function checkLoginAuto() {
+
         $view = new VUser();
         $actualMethod= UHTTPMethods::post('actualMethod');
         $user=UHTTPMethods::post('username');
         $password=UHTTPMethods::post('password');
         $user = FPersistentManager::getInstance()->retriveUserOnUsername($user);
+
         if($user && password_verify($password, $user->getPassword())) {
-
-
 
             if (USession::getSessionStatus() === PHP_SESSION_NONE) {
                 USession::getInstance();
             }
-            
             
             USession::setElementInSession('username', $user->getUsername());
 
@@ -393,12 +404,10 @@ public static function getUserStatus(): array {
              
             echo json_encode([
                 'success' => true,
-                'redirect' => 'WebApp/User/'.$actualMethod, 
-                        
+                'redirect' => 'WebApp/User/'.$actualMethod,       
                 ]);
                
             }
-            
 
          else {
             echo json_encode([
@@ -532,6 +541,7 @@ public static function getUserStatus(): array {
     public static function selectCarForSale($idAuto) {
         $infout=CUser::getUserStatus();
 
+        USession::setElementInSession('type', 'Sale'); 
         USession::setElementInSession('idAuto', $idAuto); // Store the car ID in the session
          // Get the car ID from the request, if not set, it will be null
         

@@ -139,7 +139,7 @@
 
                 <div class="col-lg-12">
                     <fieldset>
-                      <br>
+                      
                       <h2>Prezzo totale: {$amount} €</h2>
                       <br>
                       <p>Per procedere all'acquisto, è necessario effettuare il login<br> o registrarsi se non si è ancora iscritti.</p>
@@ -164,17 +164,14 @@
               <div class="left-content">
 
                 <p>seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
-                                 {foreach from=$car->getPhoto() item=photo name=foto}
-          <p>Foto {$smarty.foreach.foto.iteration} - Type: {$photo->getType()} - Encoded: {$photo->getEncodedData()|strlen}</p>
-        {/foreach}
 
                 <br> 
 
                 <ul class="social-icons">
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                  <li><a href="#"> <i class="fa-brands fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-square-x-twitter"></i></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                  <li><a href="#"><<i class="fa-brands fa-behance"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -229,25 +226,28 @@
             </div>
 
             <div class="col-md-8">
-                <h5>Marca: {$car->getBrand()}</h5>
+                <h5><i class="fa-solid fa-car mr-2"></i>Marca: {$car->getBrand()}</h5>
 
                 <br>
 
-                <h5> Modello: {$car->getModel()}</h5>
+                <h5><i class="fa-solid fa-gear mr-2"></i> Modello: {$car->getModel()}</h5>
 
                 <br>
 
-                <h5>Cavalli: {$car->getHorsePower()}</h5>
+                <h5><i class="fa-solid fa-bolt-lightning mr-2"></i>Cavalli: {$car->getHorsePower()}</h5>
 
                 <br>
 
-               <h5>Cilindrata: {$car->getDisplacement()}</h5>
+                  <h5 ><i class="fa-solid fa-fire mr-2"></i>Cilindrata: {$car->getDisplacement()}</h5>
+                
+                <br>
+
+                <h5><i class="fa-solid fa-wheelchair mr-2"></i>Numero Posti: {$car->getSeats()}</h5>
 
                 <br>
-                <h5>Numero Posti: {$car->getSeats()}</h5>
-
-                <br>
-                <h5>Alimentazione: {$car->getFuelType()}</h5>
+                
+                <h5><i class="fas fa-gas-pump mr-2"></i>Alimentazione: {$car->getFuelType()}</h5>
+ 
             </div>
 
             <div class="col-md-4">
@@ -257,8 +257,8 @@
                 <br>
                 
                 <p>Vieni in concessionaria per informazioni riguardo finanziamenti disponibili </p>
-                
-                <p>Si ricorda che in caso di acquisto online bisogna effettuare il pagamento entro due settimane ...</p>
+                <p>Si ricorda che in caso di acquisto online bisogna effettuare il pagamento tramite ...</p>
+
               </div>
             </div>
         </div>
@@ -274,84 +274,6 @@
 
   
  
-      <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Book Now</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="contact-form">
-              <form action="WebApp/User/loginAndCreditRequirementSale" id="modal-contact">
-                  <div class="row">
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Pick-up location" required="">
-                          </fieldset>
-                       </div>
-
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Return location" required="">
-                          </fieldset>
-                       </div>
-                  </div>
-
-                  <div class="row">
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Pick-up date/time" required="">
-                          </fieldset>
-                       </div>
-
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Return date/time" required="">
-                          </fieldset>
-                       </div>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Enter full name" required="">
-
-                  <div class="row">
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter email address" required="">
-                          </fieldset>
-                       </div>
-
-                       <div class="col-md-6">
-                          <fieldset>
-                            <input type="text" class="form-control" placeholder="Enter phone" required="">
-                          </fieldset>
-                       </div>
-                  </div>
-              </form>
-           </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Book Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
 
 

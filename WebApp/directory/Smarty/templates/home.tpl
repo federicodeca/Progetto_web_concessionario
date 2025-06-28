@@ -12,7 +12,7 @@
     <link rel="icon" href="/WebApp/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
+    <title>Rental Top Gear</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/WebApp/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

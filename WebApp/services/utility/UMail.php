@@ -11,7 +11,7 @@ class UMail {
        
 
         try {
-           // Looking to send emails in production? Check out our Email API/SMTP product!
+
 
             $mailer->isSMTP();
             $mailer->Host = HOST;
