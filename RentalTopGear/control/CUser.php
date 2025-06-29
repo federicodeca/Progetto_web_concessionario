@@ -453,10 +453,10 @@ class CUser {
 
        
         $user = FPersistentManager::getInstance()->getObjectById(EUser::class, USession::getElementFromSession('user'));
-        $user->setVerified(true); // Set the user as verified
+        $user->setVerified(true); 
         FPersistentManager::getInstance()->uploadObj($user); // Save the user object
         $license= New ELicense($expiration,$image,$user); // Save the image object
-        $license->setChecked(true); // !!!!!!!!!!! DA MODIFICARE QUANDO FACCIAMO ADMIN QUESTO é IL CAMPO DI VERIFICA
+        $license->setChecked(false);
         FPersistentManager::getInstance()->uploadObj($license); // Save the license object
 
 

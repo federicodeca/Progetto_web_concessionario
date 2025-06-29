@@ -7,7 +7,7 @@ namespace DoctrineProxies\__CG__;
  */
 class EUser extends \EUser implements \Doctrine\ORM\Proxy\InternalProxy
 {
-     use \Symfony\Component\VarExporter\LazyGhostTrait {
+    use \Symfony\Component\VarExporter\LazyGhostTrait {
         initializeLazyObject as private;
         setLazyObjectAsInitialized as public __setInitialized;
         isLazyObjectInitialized as private;
@@ -48,7 +48,7 @@ class EUser extends \EUser implements \Doctrine\ORM\Proxy\InternalProxy
         'surname' => [parent::class, 'surname', null, 8],
         'username' => [parent::class, 'username', null, 8],
         'zipCode' => [parent::class, 'zipCode', null, 8],
-    ];
+    ];
 
     public function __isInitialized(): bool
     {
