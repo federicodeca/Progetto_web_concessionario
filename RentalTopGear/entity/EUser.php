@@ -74,4 +74,9 @@ class EUser extends EPerson {
     {
         return $this->getUserName() === $username;
     }
+
+    public function verifyPassword($inputPassword): bool
+{
+    return password_verify($inputPassword, $this->password);
+}
 }

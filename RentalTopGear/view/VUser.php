@@ -11,6 +11,8 @@ class VUser{
 
     }
 
+
+
     public function showCars($cars,$infout) {
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
@@ -163,9 +165,46 @@ class VUser{
         $this->smarty->display('loginForm.tpl');
     }
 
+    public function showSuccessChangeEmail() {
+        $this->smarty->assign('title', 'Ottimo!');
+        $this->smarty->assign('para' , "La tua email è stata cambiata correttamente");
+        $this->smarty->display('success.tpl');
+    }
+
+    public function showSuccessChangePassword() {
+        $this->smarty->assign('title', 'Ottimo!');
+        $this->smarty->assign('para' , "La tua password è stata cambiata correttamente");
+        $this->smarty->display('success.tpl');
+    }
+    public function showErrorChangePassword() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "Password errata.");
+        $this->smarty->display('error.tpl');
+    }
+    public function showErrorChangeEmail() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "Errore nel cambio dell'email.");
+        $this->smarty->display('error.tpl');
+    }
+
+    public function showErrorMatchPassword() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "Le password non corrispondono.");
+        $this->smarty->display('error.tpl');
+    }
+
     public function showLicenseRequest() {
 
         $this->smarty->display('needLicense.tpl');
+    }
+
+    public function showUserProfile($user,$license,$infout) {
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('license', $license);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->display('userProfile.tpl');
     }
 
 // ======================== CAR SALE ========================

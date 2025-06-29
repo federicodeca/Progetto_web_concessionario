@@ -140,7 +140,7 @@
 
                 <div class="col-lg-12" style= "margin-top: 20px">
                     <fieldset>
-                      <button type="submit" id="form-submit"  class="filled-button">Acquista ora </button>
+                      {if $permission=='user'}<button type="submit" id="form-submit"  class="filled-button">Acquista ora </button>{/if}
                     </fieldset>
 
                     

@@ -84,4 +84,31 @@ class EPerson {
     {
         return $this->role;
     }
+
+
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    public function setLastname($surname)
+    {   
+        $this->surname = $surname;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;      
+    }
+
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+    
+ 
 }

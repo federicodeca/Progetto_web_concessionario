@@ -17,8 +17,10 @@ if (isLogged) {
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
         ${permission ==='admin' ? '<a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a>' : ''}
-        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
-        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+        ${permission === 'user' ? `
+          <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+          <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+        ` : ''}
         <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
       </div>
     </li>

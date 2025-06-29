@@ -144,7 +144,7 @@
 
                 <div class="col-lg-12" style= "margin-top: 20px">
                     <fieldset>
-                      <button type="submit" id="form-submit"  class="filled-button">Submit</button>
+                      {if $permission=='user'}<button type="submit" id="form-submit"  class="filled-button">Submit</button>{/if}
                     </fieldset>
                   </div>
 

@@ -673,6 +673,76 @@ class CUser {
         }
 
     }
+
+    public static function showProfile() {
+
+        $infout=CUser::getUserStatus();
+        $idUser = USession::getElementFromSession('user');
+        $user = FPersistentManager::getInstance()->getObjectbyId(EUser::class, $idUser);
+        $license=FPersistentManager::getInstance()->getObjectByField(ELicense::class, 'user_id', $idUser);
+
+        $view = new VUser();
+        $view->showUserProfile($user,$license,$infout);
+    }
+
+
+    public static function changeEmail() {
+
+        if (CUser::isLogged()) {
+
+            $infout=CUser::getUserStatus();
+            $idUser = USession::getElementFromSession('user');
+            $user = FPersistentManager::getInstance()->getObjectbyId(EUser::class, $idUser);
+            $newEmail= UHTTPMethods::post('email');
+
+            if(FPersistentManager::getInstance()->verifyUserEmail($newEmail) == false) {
+                $user->setEmail($newEmail);
+                FPersistentManager::getInstance()->uploadObj($user);
+                $view = new VUser();
+                $view->showSuccessChangeEmail();
+            } else {
+                $view = new VUser();
+                $view->showErrorChangeEmail();
+            }
+        }
+        else {
+            header('Location: /RentalTopGear/User/Home');
+        }
+
+    }
+
+    public static function changePassword() {
+
+
+        if( CUser::isLogged()) {
+            $infout=CUser::getUserStatus();
+            $idUser = USession::getElementFromSession('user');
+            $user = FPersistentManager::getInstance()->getObjectbyId(EUser::class, $idUser);
+            $currentPassword= UHTTPMethods::post('current');
+            $newPassword= UHTTPMethods::post('new');
+            $confirmPassword= UHTTPMethods::post('confirm');
+
+            if(password_verify($currentPassword, $user->getPassword())) {
+                if($newPassword === $confirmPassword) {
+                    $user->setPassword($newPassword);
+                    FPersistentManager::getInstance()->uploadObj($user);
+                    $view = new VUser();
+                    $view->showSuccessChangePassword();
+                } else {
+                    $view = new VUser();
+                    $view->showErrorMatchPassword();
+                }
+            } else {
+                $view = new VUser();
+                $view->showErrorChangePassword();
+            }
+        }else {
+            header('Location: /RentalTopGear/User/Home');
+        }
+    }
+
+
+
 }
 
 
