@@ -14,7 +14,7 @@ class CFrontController{
         $uriParts = explode('/', $requestUri);
 
         array_shift($uriParts);
-        var_dump($uriParts);
+    
       
 
         // Extract controller and method names

@@ -68,13 +68,13 @@
                     </a>
                 </li> 
     
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-              <li class="nav-item"><a class="nav-link active " href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link " href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
 
                 <li class="nav-item"> <div id="login-box" ></div> </li>
                   

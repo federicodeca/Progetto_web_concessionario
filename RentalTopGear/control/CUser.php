@@ -379,6 +379,8 @@ class CUser {
      * this method is used to login the user, if so it will redirect to the actual page
      */
     public static function checkLoginAuto() {
+        //header('Content-Type: application/json');
+        //ob_clean();
 
         $view = new VUser();
         $actualMethod= UHTTPMethods::post('actualMethod');
