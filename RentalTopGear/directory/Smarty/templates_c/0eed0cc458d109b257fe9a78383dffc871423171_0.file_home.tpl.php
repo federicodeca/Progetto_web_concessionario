@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-29 13:06:08
+  from 'file:home.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_68611e206510c2_62938789',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '0eed0cc458d109b257fe9a78383dffc871423171' => 
+    array (
+      0 => 'home.tpl',
+      1 => 1751194582,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68611e206510c2_62938789 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -27,14 +51,25 @@
 
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
       
-    </script>
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+    <?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -127,54 +162,78 @@
           </div>
 
             <div class="col-md-4">
-                <a href='/RentalTopGear/User/selectCarForSale/{$offers[0]->getIdAuto()}'>
+                <a href='/RentalTopGear/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[0]->getIdAuto();?>
+'>
                   <div class="product-item">
-                    {if $offers[0]->getIcon()}
-                      <img class="product-item-icon" src="data:{$offers[0]->getIcon()->getType()};base64,{$offers[0]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                    {else}
+                    <?php if ($_smarty_tpl->getValue('offers')[0]->getIcon()) {?>
+                      <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('offers')[0]->getIcon()->getType();?>
+;base64,<?php echo $_smarty_tpl->getValue('offers')[0]->getIcon()->getEncodedData();?>
+" loading="lazy" alt="Img">
+                    <?php } else { ?>
                       <img src="/RentalTopGear/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                    {/if}
+                    <?php }?>
                     <div class="down-content">
-                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[0]->getBrand()} {$offers[0]->getModel()}</h4>
-                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[0]->getPrice()}€ <small>prezzo listino</small></h6>
-                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[0]->getKm0OrNew()}</h4>
-                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[0]->getFuelType()} </h4>
+                      <h4><i class="fas fa-gas-pump mr-2"></i><?php echo $_smarty_tpl->getValue('offers')[0]->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('offers')[0]->getModel();?>
+</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> <?php echo $_smarty_tpl->getValue('offers')[0]->getPrice();?>
+€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> <?php echo $_smarty_tpl->getValue('offers')[0]->getKm0OrNew();?>
+</h4>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small><?php echo $_smarty_tpl->getValue('offers')[0]->getFuelType();?>
+ </h4>
                     </div>    
                   </div>
                 </a>
               </div>
 
             <div class="col-md-4">
-                <a href='/RentalTopGear/User/selectCarForSale/{$offers[1]->getIdAuto()}'>
+                <a href='/RentalTopGear/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[1]->getIdAuto();?>
+'>
                   <div class="product-item">
-                    {if $offers[1]->getIcon()}
-                      <img class="product-item-icon" src="data:{$offers[1]->getIcon()->getType()};base64,{$offers[1]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                    {else}
+                    <?php if ($_smarty_tpl->getValue('offers')[1]->getIcon()) {?>
+                      <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('offers')[1]->getIcon()->getType();?>
+;base64,<?php echo $_smarty_tpl->getValue('offers')[1]->getIcon()->getEncodedData();?>
+" loading="lazy" alt="Img">
+                    <?php } else { ?>
                       <img src="/RentalTopGear/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                    {/if}
+                    <?php }?>
                     <div class="down-content">
-                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[1]->getBrand()} {$offers[1]->getModel()}</h4>
-                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[1]->getPrice()}€ <small>prezzo listino</small></h6>
-                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[1]->getKm0OrNew()}</h6>
-                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[1]->getFuelType()} </h6>
+                      <h4><i class="fas fa-gas-pump mr-2"></i><?php echo $_smarty_tpl->getValue('offers')[1]->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('offers')[1]->getModel();?>
+</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> <?php echo $_smarty_tpl->getValue('offers')[1]->getPrice();?>
+€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> <?php echo $_smarty_tpl->getValue('offers')[1]->getKm0OrNew();?>
+</h6>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small><?php echo $_smarty_tpl->getValue('offers')[1]->getFuelType();?>
+ </h6>
                     </div>    
                   </div>
                 </a>
               </div>
 
            <div class="col-md-4">
-                <a href='/RentalTopGear/User/selectCarForSale/{$offers[2]->getIdAuto()}'>
+                <a href='/RentalTopGear/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[2]->getIdAuto();?>
+'>
                   <div class="product-item">
-                    {if $offers[2]->getIcon()}
-                      <img class="product-item-icon" src="data:{$offers[2]->getIcon()->getType()};base64,{$offers[2]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                    {else}
+                    <?php if ($_smarty_tpl->getValue('offers')[2]->getIcon()) {?>
+                      <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('offers')[2]->getIcon()->getType();?>
+;base64,<?php echo $_smarty_tpl->getValue('offers')[2]->getIcon()->getEncodedData();?>
+" loading="lazy" alt="Img">
+                    <?php } else { ?>
                       <img src="/RentalTopGear/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                    {/if}
+                    <?php }?>
                     <div class="down-content">
-                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[1]->getBrand()} {$offers[2]->getModel()}</h4>
-                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[2]->getPrice()}€ <small>prezzo listino</small></h6>
-                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[2]->getKm0OrNew()}</h6>
-                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[2]->getFuelType()} </h6>
+                      <h4><i class="fas fa-gas-pump mr-2"></i><?php echo $_smarty_tpl->getValue('offers')[1]->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('offers')[2]->getModel();?>
+</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> <?php echo $_smarty_tpl->getValue('offers')[2]->getPrice();?>
+€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> <?php echo $_smarty_tpl->getValue('offers')[2]->getKm0OrNew();?>
+</h6>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small><?php echo $_smarty_tpl->getValue('offers')[2]->getFuelType();?>
+ </h6>
                     </div>    
                   </div>
                 </a>
@@ -309,13 +368,22 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
      
   </body>
-</html>
+</html><?php }
+}

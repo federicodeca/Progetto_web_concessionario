@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-29 13:27:48
+  from 'file:licenseForm.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6861233448cdc8_92239196',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'bf1d259bd195d992d7f3c029b3fdea6cbbc1f772' => 
+    array (
+      0 => 'licenseForm.tpl',
+      1 => 1751195040,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6861233448cdc8_92239196 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -24,21 +48,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     
    <!--dati per login-->
-  <script>
-    const isLogged = {$isLogged|@json_encode|default:'false'};
-    const username = "{$username|escape:'javascript'|default:''}";
-    const permission = "{$permission|escape:'javascript'|default:''}";
-  </script>
+  <?php echo '<script'; ?>
+>
+    const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+    const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+    const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+  <?php echo '</script'; ?>
+>
 
-  <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
-  <script src="/RentalTopGear/directory/Smarty/js/license-calendar.js"></script>
-  <script src="/RentalTopGear/directory/Smarty/js/size-image.js"></script>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/size-image.js"><?php echo '</script'; ?>
+>
 
 
   </head>
@@ -102,11 +147,14 @@
             <div class="card-header">
             <h2 style="color:white">License</h2>
             </div>
-            <script>
-  console.log("licenseInserted =", {$licenseInserted|@json_encode});
-</script> 
+            <?php echo '<script'; ?>
+>
+  console.log("licenseInserted =", <?php echo json_encode($_smarty_tpl->getValue('licenseInserted'));?>
+);
+<?php echo '</script'; ?>
+> 
 
-                  {if !$licenseInserted}
+                  <?php if (!$_smarty_tpl->getValue('licenseInserted')) {?>
                   <form id="uploadForm" method="POST" action="/RentalTopGear/User/uploadLicense" enctype="multipart/form-data">
                     <div class="col-md-12 my-5">
                       <div class="mb-5">
@@ -123,7 +171,7 @@
                       <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit">Invia</button>
                     </div>  
                   </form>
-                {else}
+                <?php } else { ?>
                   <div class="card-body">
                   <br>
                   <h5 style="color:white">Patente già verificata</h5><br>
@@ -131,7 +179,7 @@
                   <div class="col-md-12 my-5 ">
                   <a class="btn btn-primary" href="RentalTopGear/User/home">Vai alla Home</a>
                   </div>
-                {/if}
+                <?php }?>
               
             </div>
           </div>
@@ -170,15 +218,23 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
    
 
   </body>
 
 </html>
+<?php }
+}

@@ -28,7 +28,9 @@ class VAdmin{
     }
 
     public function showCarError(){
-        $this->smarty->display('addCarError.tpl');
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "L'auto non è stata inserita correttamente.");
+        $this->smarty->display('error.tpl');
     }
 
     public function showLicenseList($licenses) {

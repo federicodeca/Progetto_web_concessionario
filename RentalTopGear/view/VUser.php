@@ -65,20 +65,15 @@ class VUser{
 
 
     
-     public function loginError() {
-        $this->smarty->assign('error', 'Invalid username or password');
-        $this->smarty->display('loginForm.tpl');
+    public function loginError() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "Errore nel login.");
+        $this->smarty->display('error.tpl');
+    
     }
-
-
 
     public function showRegistrationForm() {
         $this->smarty->display('registrationForm.tpl');
-    }
-
-    public function showRegistrationSuccess() {
-        $this->smarty->assign('message', 'Registration successful! Please log in.');
-        $this->smarty->display('registrationSuccess.tpl');
     }
 
     public function showError($message) {
@@ -126,8 +121,10 @@ class VUser{
         $this->smarty->display('confirmRent.tpl');
     }
     public function showErrorUnavailability(){
-        $this->smarty->assign('error', 'The car is not available for the selected dates.');
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "L'auto non è disponibile.");
         $this->smarty->display('error.tpl');
+    
     }
 
     public function showRegistration() {
@@ -140,9 +137,11 @@ class VUser{
     }
     
 
-    public function registrationError(){
-
-        $this->smarty->display('registrationError.tpl');
+    public function registrationError() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "Sei già registrato.");
+        $this->smarty->display('error.tpl');
+    
     }
 
     public function showLicenseForm($infout,$licenseInserted){
