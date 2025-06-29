@@ -70,25 +70,28 @@ class FCarForSale {
      * It returns the total count of cars that match the search criteria.Sql query is built dynamically based on the provided parameters.
      */
     public static function countSearchedCars($brand = null, $model = null, $price = null) {
-        $sql = "SELECT COUNT(*) as total FROM cars_for_sale c join auto a on c.idAuto=a.idAuto  WHERE c.available = 1";
+       
         
+        $dql = "SELECT c FROM ECarForSale c WHERE c.available = 1";
+        $params = [];
+        $price = (int)$price;
 
-        if ($brand !== null) {
-            $sql .= " AND a.brand = '$brand'";
-            
+        if (!empty($brand)) {
+            $dql .= " AND c.brand = :brand";
+            $params['brand'] = $brand;
         }
 
-        if ($model !== null) {
-            $sql .= " AND a.model = '$model'";
-            
+        if (!empty($model)) {
+            $dql .= " AND c.model = :model";
+            $params['model'] = $model;
         }
-        if ($price !== null) {
-            $sql .= " AND c.price <= $price";
-            
+        if (!empty($price)) {
+            $dql .= " AND c.price <= :price";
+            $params['price'] = $price;
         }
-
-        $result = FEntityManager::getInstance()->executeQuery($sql);
-        return $result[0]['total'] ?? 0;
+        $result=FEntityManager::getInstance()->doQuery($dql, $params);
+        
+        return count($result) ;
     }
 
     /**

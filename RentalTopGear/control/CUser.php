@@ -504,9 +504,9 @@ class CUser {
             USession::getInstance();
         }
         
-        $price = UHTTPMethods::post('price') ?? null;
-        $brand = UHTTPMethods::post('brand') ?? null;
-        $model = UHTTPMethods::post('model') ?? null;
+        $price = UHTTPMethods::postOrNull('price') ?? null;
+        $brand = UHTTPMethods::postOrNull('brand') ?? null;
+        $model = UHTTPMethods::postOrNull('model') ?? null;
 
         if (isset($brand)) {
             USession::setElementInSession('brand', $brand);
@@ -523,11 +523,15 @@ class CUser {
             $price = USession::getElementFromSession('price');}
 
         $offset = ($currentPage - 1) * $carsPerPage;
+            echo "DEBUG: Current page = $currentPage, offset = $offset,$brand  $model  $price ";
 
         
         $filteredCars = FPersistentManager::getInstance()->searchCarsForSale($brand, $model, $price, $offset, $carsPerPage);
+        
         $filteredCarsNumber = FPersistentManager::getInstance()->countSearchedCars($brand, $model,$price);
-        $totalPages = ceil($filteredCarsNumber / $carsPerPage);
+        var_dump($filteredCarsNumber);
+        $totalPages = intval(ceil($filteredCarsNumber / $carsPerPage));
+        var_dump($totalPages);
 
         $infout = CUser::getUserStatus();
         $view = new VUser();

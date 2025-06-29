@@ -209,7 +209,7 @@ class VUser{
 
 // ======================== CAR SALE ========================
 
-    public function showCarsForSale($filteredCars, $infout,$totalPages, $currentPage,$models) {
+    public function showCarsForSale($filteredCars, $infout, $currentPage,$totalPages,$models) {
         $this->smarty->assign('filteredCars', $filteredCars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);

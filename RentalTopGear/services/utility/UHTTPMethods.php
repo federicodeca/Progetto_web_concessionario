@@ -12,7 +12,13 @@ class UHTTPMethods{
     public static function post($param){
         return $_POST[$param];
     }
-
+    /**
+     * can access to $_POST superglobal, if the param is not set return null
+     */
+    public static function postOrNull($param){
+        if (isset($_POST[$param])) return $_POST[$param];
+        else return null;
+    }
     /**
      * can access to $_FILES superglobal
      */
