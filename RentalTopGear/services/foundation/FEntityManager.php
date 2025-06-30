@@ -31,6 +31,7 @@ class FEntityManager {
      * @return obj || null
      */
     public static function retriveObj($class, $id){
+        
         try{
             $obj = self::$entityManager->find($class, $id);
             return $obj;
@@ -39,6 +40,56 @@ class FEntityManager {
             return null;
         }
     }
+
+    //TRANSAZIONI E LOCKING
+    /**
+     * retrive one obj and lock the tuple with all the attributes
+     * this method is used to prevent concurrent modifications on the same object
+     */
+    public static function retriveObjLock($class, $id){
+       self::$entityManager->getConnection()->beginTransaction(); // begin transaction 
+        
+        try{
+            $obj = self::$entityManager->find($class, $id, \Doctrine\DBAL\LockMode::PESSIMISTIC_WRITE);
+            return $obj;
+
+        }catch(Exception $e){
+            echo "ERROR: ". $e->getMessage();
+            return null;
+        }
+
+
+    /**
+     * save an object trough a transaction during a locking table  
+     */    
+    }
+    public static function uploadObjAndUnlock($obj){
+        try{
+            
+            self::$entityManager->persist($obj);
+            self::$entityManager->flush();
+            self::$entityManager->getConnection()->commit(); // commit transaction, object is saved correctly
+            return true;
+        }catch(Exception $e){
+            self::$entityManager->getConnection()->rollBack(); // annulla tutto
+            echo "ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    /**
+     * unlock the table
+     * this method is used to unlock the table after a transaction
+     */
+    public static function commit(){
+        try{
+            self::$entityManager->getConnection()->commit();
+        }catch(Exception $e){
+            echo "ERROR: " . $e->getMessage();
+        }
+    }
+
+
 
     /**
      * return an object finding it not on the id but on an attribute
@@ -198,10 +249,9 @@ class FEntityManager {
             self::$entityManager->flush();
             self::$entityManager->getConnection()->commit();     // commit transaction, object is saved correctly
             return true;
-        }catch(Exception $e){
-            self::$entityManager->getConnection();
-            echo "ERROR: " . $e->getMessage();
-            return false;
+            } catch (\Exception $e) {
+            $em->getConnection()->rollBack(); // annulla tutto
+            throw $e;
         }
     }
 
@@ -242,32 +292,7 @@ class FEntityManager {
     }
 
 
-  public static function lockTable(string $tableName): void {
-    try {
-        $conn = self::$entityManager->getConnection();
-       
-        $conn->executeQuery("LOCK TABLES `$tableName` WRITE");
-       
-    } catch (Exception $e) {
-        
-       
-        echo "ERROR: " . $e->getMessage();
-    }
-}
-
-
-   public static function unlockTable(): void {
-    try {
-        $conn = self::$entityManager->getConnection();
-        
-        $conn->executeQuery("UNLOCK TABLES");
-       
-       
-    } catch (Exception $e) {
-       
-        echo "ERROR: " . $e->getMessage();
-    }
-}
+ 
 
     public static function executeQuery($sql, $params = []){
         try {

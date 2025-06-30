@@ -27,6 +27,34 @@ class FPersistentManager {
         return $res;
     }
 
+    //TRANSAZIONI E LOCKING
+    /**
+     * return object by id with locking and relase
+     */
+    public function getObjectByIdLock(string $className, int $id) {
+        
+        $res= FEntityManager::getInstance()->retriveObjLock($className, $id);
+        return $res;
+    }
+
+    /**
+     * upload object and unlock the table
+     * this method is used to save an object in the database and unlock the table
+     * it is used to prevent concurrent modifications on the same table
+     */
+    public static function uploadObjAndUnlock($obj) {
+        FEntityManager::getInstance()->uploadObjAndUnlock($obj);
+    }
+
+    /**
+     * lock the table
+     * this method is used to unlock the table 
+     */
+    public static function unlock(){
+        FEntityManager::getInstance()->commit();
+    }
+
+
 
     /**
      * return object by field
@@ -143,18 +171,9 @@ class FPersistentManager {
         return $result;
     }
 
-    /**
-     * lOCK TABLE
-     */
-    public static function lockTable($table) {
-        FEntityManager::getInstance()->lockTable($table);
-    }
-    /**
-     * UNLOCK TABLE 
-     */
-    public static function unlockTable() {
-        FEntityManager::getInstance()->unlockTable();
-    }
+
+
+
 
     //LOGIN AND REGISTRATION
     
