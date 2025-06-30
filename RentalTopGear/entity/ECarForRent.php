@@ -142,6 +142,19 @@ class ECarForRent extends EAuto
     }
 
 
+    public function insertUnavailability($indisp,$idAuto): void
+    {
+    try{
+        $FEntityManager::getInstance()->getConnection()->beginTransaction(); // Begin transaction
+        $car = FPersistentManager::getInstance()->getObjectByIdLock(ECarForRent::class, $idAuto); // Lock the car object
+        if (!$car->checkAvailability($indisp->getStart(), $indisp->getEnd())) {
+            throw new Exception("Car is not available for the selected dates.");
+        }
+    }
+        $this->addUnavailability($unavailability);
+    }
+
+
 
 
 

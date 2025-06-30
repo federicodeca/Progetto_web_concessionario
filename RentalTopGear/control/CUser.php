@@ -331,7 +331,7 @@ class CUser {
                 $idUser = USession::getElementFromSession('user');
                 $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
                 $amount=USession::getElementFromSession('amount');
-                $idUser= USession::getElementFromSession('user');
+               
 
                 $rent= new ERent($now,$method,$user,$indisp,$car);
                 $rent->setTotalPrice($amount);

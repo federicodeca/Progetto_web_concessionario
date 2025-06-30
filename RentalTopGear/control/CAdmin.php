@@ -216,21 +216,22 @@ class CAdmin {
             $carId = UHTTPMethods::post('idAuto');
             $start = new DateTime(UHTTPMethods::post('start'));
             $end = new DateTime(UHTTPMethods::post('end'));
-            FPersistentManager::getInstance()::lockTable('unavailabilities');
-            $car = FPersistentManager::getInstance()->retriveCarOnId($carId);
-            if(!$car->checkAvailability($start, $end)) {
-                FPersistentManager::getInstance()::unlockTable();
-                $view->showOverlappingError();
+            $car= FPersistentManager::getInstance()->getObjectByIdLock(ECarForRent::class, $idAuto); 
+            $indisp= new EUnavailability($start, $end, $car);
+            if($car->checkAvailability($start, $end)) {
+                
+                FPersistentManager::getInstance()->uploadObjAndUnlock($indisp);
+              
+                $view->showSuccessInsert();
+                
 
                 
             }
             else{             
-                $indisp = new EUnavailability($start, $end, $car);  
-                FPersistentManager::getInstance()::lockTable('unavailabilities'); 
-                FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
-                FPersistentManager::getInstance()::unlockTable();
+
+                FPersistentManager::getInstance()::unlock();
             
-            $view->showSuccessInsert();
+             $view->showOverlappingError();
                 }
             }
         }

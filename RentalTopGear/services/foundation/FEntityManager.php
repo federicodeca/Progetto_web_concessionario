@@ -42,6 +42,7 @@ class FEntityManager {
     }
 
     //TRANSAZIONI E LOCKING
+    
     /**
      * retrive one obj and lock the tuple with all the attributes
      * this method is used to prevent concurrent modifications on the same object
@@ -79,7 +80,7 @@ class FEntityManager {
 
     /**
      * unlock the table
-     * this method is used to unlock the table after a transaction
+     * this method is used to unlock the table after a locking
      */
     public static function commit(){
         try{
@@ -334,6 +335,11 @@ class FEntityManager {
             return [];
         }
     }
-        
+       
+    
+
+
+  
+
 
 }

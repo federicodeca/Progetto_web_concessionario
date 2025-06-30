@@ -23,7 +23,7 @@ abstract class EOrder
 
 
     #[ORM\ManyToOne(targetEntity: ECreditCard::class)]
-    #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'idCard', nullable: false)]
+    #[ORM\JoinColumn(name: 'method_id', referencedColumnName: 'idCard', nullable: true)]
     protected ECreditCard $method;
 
     #[ORM\ManyToOne(targetEntity: EUser::class)]
