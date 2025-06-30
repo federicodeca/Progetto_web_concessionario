@@ -313,15 +313,17 @@ class CUser {
             $end=new DateTime($endD);
 
             $idAuto=USession::getElementFromSession('idAuto');
-            
+            FPersistentManager::getInstance()::lockTable('unavailabilities');
+
             $car= FPersistentManager::getInstance()->getObjectById(ECarForRent::class, $idAuto);
             $indisp= new EUnavailability($start, $end, $car);
 
             if ($car->checkAvailability($start,$end)) { //metodo clu
-                FPersistentManager::getInstance()::lockTable('unavailabilities'); // Lock the table to prevent concurrent modifications
+                 // Lock the table to prevent concurrent modifications
                 FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
-                $car->addUnavailability($indisp); // Add the unavailability to the car
                 FPersistentManager::getInstance()::unlockTable();
+
+                
                 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
                 
                 $idMethod = USession::getElementFromSession('creditCard');
@@ -341,6 +343,7 @@ class CUser {
                 $view->showCarRentConfirmation($rent, $indisp,$infout); // Show confirmation of the car rent
             }
             else {
+                FPersistentManager::getInstance()::unlockTable();
                 $view = new VUser();
                 $view->showErrorUnavailability(); // Show error message if the car is not available
                 
