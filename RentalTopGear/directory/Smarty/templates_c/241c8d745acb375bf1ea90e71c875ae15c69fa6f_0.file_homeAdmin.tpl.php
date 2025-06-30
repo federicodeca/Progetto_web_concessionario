@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-29 17:36:50
+/* Smarty version 5.5.1, created on 2025-06-30 19:02:06
   from 'file:homeAdmin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68615d92a616f6_61103425',
+  'unifunc' => 'content_6862c30e216c97_04881492',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
     array (
       0 => 'homeAdmin.tpl',
-      1 => 1751192071,
+      1 => 1751302780,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68615d92a616f6_61103425 (\Smarty\Template $_smarty_tpl) {
+function content_6862c30e216c97_04881492 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -107,9 +107,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">gestione prezzi </a></li>
 
               <li class="nav-item"> <div id="login-box" ></div> </li>
 

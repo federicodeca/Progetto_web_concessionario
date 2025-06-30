@@ -72,7 +72,7 @@
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">vista cliente</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
 

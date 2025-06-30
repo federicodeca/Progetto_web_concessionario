@@ -63,7 +63,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <!-- Spazio riservato al login/user box -->
+              <!-- Spazio riservato al login/user box -->  
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
               <li class="nav-item active">
@@ -74,9 +74,11 @@
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/Admin/showAllRentCarsForSurcharges">vista cliente</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">vista cliente</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Gestione prezzi</a></li>
 
               <li class="nav-item"> <div id="login-box" ></div> </li>
 

@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-30 18:56:34
+  from 'file:addCarForm.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6862c1c2b286a4_98148999',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'bb380ca0f8a72c44fbf15bca09e498df7e60df18' => 
+    array (
+      0 => 'addCarForm.tpl',
+      1 => 1751301758,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6862c1c2b286a4_98148999 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +39,9 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
 
-    <script src="/RentalTopGear/directory/Smarty/js/admin-choice.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/admin-choice.js"><?php echo '</script'; ?>
+>
 
   </head>
 
@@ -186,16 +212,26 @@
         </div>
     </footer> 
 
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery-3.3.1.min.js"><?php echo '</script'; ?>
+>
     <!-- https://jquery.com/download/ -->
-    <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <?php echo '<script'; ?>
+ src="jquery-ui-datepicker/jquery-ui.min.js"><?php echo '</script'; ?>
+>
     <!-- https://jqueryui.com/download/ -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
     <!-- https://getbootstrap.com/ -->
-    <script>
+    <?php echo '<script'; ?>
+>
       $(function() {
         $("#expire_date").datepicker();
       });
-    </script>
+    <?php echo '</script'; ?>
+>
   </body>
 </html>
+<?php }
+}

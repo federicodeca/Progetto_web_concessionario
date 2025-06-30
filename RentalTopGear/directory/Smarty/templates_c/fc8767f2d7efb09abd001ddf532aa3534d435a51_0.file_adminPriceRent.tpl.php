@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-30 18:55:06
+  from 'file:adminPriceRent.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6862c16a6bba38_80449526',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'fc8767f2d7efb09abd001ddf532aa3534d435a51' => 
+    array (
+      0 => 'adminPriceRent.tpl',
+      1 => 1751293120,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6862c16a6bba38_80449526 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -23,15 +47,28 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
-    </script>
+    <?php echo '</script'; ?>
+>
 
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"><?php echo '</script'; ?>
+>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -74,7 +111,7 @@
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
+              <li class="nav-item"><a class="nav-link" href="RentalTopGear/Admin/showAllRentCarsForSurcharges">vista cliente</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
 
@@ -89,13 +126,24 @@
     <div class="banner header-text">
     <div class="container my-5">
       <h2 class="header-text text-center mb-5">inserisci prenotazione</h2>
-      <form  method="post" action="/RentalTopGear/Admin/showUnavailabilities" enctype="multipart/form-data">
+      <form  method="post" action="/RentalTopGear/Admin/showSurcharges" enctype="multipart/form-data">
         <div class="form-group col-md-12">
           <label for="car">Seleziona auto</label>
           <select class="form-control form-control-sm mb-5" name="car" id="car">
-            {foreach from=$cars item=car}
-              <option value="{$car->getIdAuto()}">{$car->getBrand()} {$car->getModel()} {$car->getDescription()}</option>
-            {/foreach}
+            <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cars'), 'car');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('car')->value) {
+$foreach0DoElse = false;
+?>
+              <option value="<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
+"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('car')->getModel();?>
+ <?php echo $_smarty_tpl->getValue('car')->getDescription();?>
+</option>
+            <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
           </select>
         </div>
         <div class="btn btn-primary btn-block mx-auto">
@@ -103,9 +151,9 @@
         </div>
       </form>
 
-      {if isset($unavailabilities)}
+         <?php if ((true && ($_smarty_tpl->hasVariable('surcharges') && null !== ($_smarty_tpl->getValue('surcharges') ?? null)))) {?>
         <div class="mt-5">
-          <h4 class="header-text text-center my-3">Indisponibilità</h4>
+          <h4 class="header-text text-center my-3">modifiche prezzi</h4>
           <div style="max-height: 300px; overflow-y: auto;">
             <table class="table table-sm table-bordered table-striped bg-white">
               <thead class="thead-dark">
@@ -115,17 +163,30 @@
                 </tr>
               </thead>
               <tbody>
-                {foreach from=$unavailabilities item=unavailability}
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('surcharges'), 'price');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('price')->value) {
+$foreach1DoElse = false;
+?>
                   <tr>
-                    <td>{$unavailability->getStart()->format("d-m-y")}</td>
-                    <td>{$unavailability->getEnd()->format("d-m-y")}</td>
+                    <td><?php echo $_smarty_tpl->getValue('price')->getStart()->format("d-m-y");?>
+</td>
+                    <td><?php echo $_smarty_tpl->getValue('price')->getEnd()->format("d-m-y");?>
+</td>
+                    <td><?php echo $_smarty_tpl->getValue('price')->getPrice();?>
+ €</td>
                   </tr>
-                {/foreach}
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
               </tbody>
             </table>
           </div>
         </div>
-         <form method="post" action="/RentalTopGear/Admin/insertUnavailability" enctype="multipart/form-data" class="mt-4">
+
+
+        <form method="post" action="/RentalTopGear/Admin/insertSurcharge" enctype="multipart/form-data" class="mt-4">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="start_date">Data inizio</label>
@@ -135,17 +196,19 @@
               <label for="end_date">Data fine</label>
               <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
             </div>
+            <div class="form-group col-md-6">
+              <label for="price">Prezzo</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Inserisci prezzo" required>
           </div>
-          <input type="hidden" name="idAuto" value="{$selectedCar->getIdAuto()}">
+          <input type="hidden" name="idAuto" value="<?php echo $_smarty_tpl->getValue('selectedCar')->getIdAuto();?>
+">
           <div class="btn btn-primary btn-block mx-auto">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi indisponibilità</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi sovrapprezzo</button>
           </div>
         </form>
-      {/if}
+      <?php }?>
     </div>
     </div>
-
-
 
 
     <footer class="tm-footer row tm-mt-small">
@@ -160,14 +223,24 @@
 
 
       <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
      
 
   </body>
 </html>
+<?php }
+}
