@@ -19,3 +19,4 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure the DOM is fully
   start.addEventListener('change', validate); // Validate when the start date changes
   end.addEventListener('change', validate);
 });
+

@@ -102,6 +102,17 @@ class ECarForRent extends EAuto
 
     }
 
+    public function checkExistingSurcharges(DateTime $start, DateTime $end): bool
+    {
+        foreach ($this->surcharges as $surcharge) {
+            if ($surcharge->getStart() <= $end && $surcharge->getEnd() >= $start) {
+                return false; // Overlapping dates found
+            }
+        }
+        return true; // No overlapping dates
+
+    }
+
 
 
 

@@ -74,9 +74,9 @@
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
+              <li class="nav-item"><a class="nav-link" href="RentalTopGear/Admin/showAllRentCarsForSurcharges">vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCars/">prenotazioni noleggio</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
 
               <li class="nav-item"> <div id="login-box" ></div> </li>
 
@@ -89,7 +89,7 @@
     <div class="banner header-text">
     <div class="container my-5">
       <h2 class="header-text text-center mb-5">inserisci prenotazione</h2>
-      <form  method="post" action="/RentalTopGear/Admin/showUnavailabilities" enctype="multipart/form-data">
+      <form  method="post" action="/RentalTopGear/Admin/showSurcharges" enctype="multipart/form-data">
         <div class="form-group col-md-12">
           <label for="car">Seleziona auto</label>
           <select class="form-control form-control-sm mb-5" name="car" id="car">
@@ -103,9 +103,9 @@
         </div>
       </form>
 
-      {if isset($unavailabilities)}
+         {if isset($surcharges)}
         <div class="mt-5">
-          <h4 class="header-text text-center my-3">Indisponibilità</h4>
+          <h4 class="header-text text-center my-3">modifiche prezzi</h4>
           <div style="max-height: 300px; overflow-y: auto;">
             <table class="table table-sm table-bordered table-striped bg-white">
               <thead class="thead-dark">
@@ -115,17 +115,20 @@
                 </tr>
               </thead>
               <tbody>
-                {foreach from=$unavailabilities item=unavailability}
+                {foreach from=$surcharges item=price}
                   <tr>
-                    <td>{$unavailability->getStart()->format("d-m-y")}</td>
-                    <td>{$unavailability->getEnd()->format("d-m-y")}</td>
+                    <td>{$price->getStart()->format("d-m-y")}</td>
+                    <td>{$price->getEnd()->format("d-m-y")}</td>
+                    <td>{$price->getPrice()} €</td>
                   </tr>
                 {/foreach}
               </tbody>
             </table>
           </div>
         </div>
-         <form method="post" action="/RentalTopGear/Admin/insertUnavailability" enctype="multipart/form-data" class="mt-4">
+
+
+        <form method="post" action="/RentalTopGear/Admin/insertSurcharge" enctype="multipart/form-data" class="mt-4">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="start_date">Data inizio</label>
@@ -135,17 +138,18 @@
               <label for="end_date">Data fine</label>
               <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
             </div>
+            <div class="form-group col-md-6">
+              <label for="price">Prezzo</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Inserisci prezzo" required>
           </div>
           <input type="hidden" name="idAuto" value="{$selectedCar->getIdAuto()}">
           <div class="btn btn-primary btn-block mx-auto">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi indisponibilità</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi sovrapprezzo</button>
           </div>
         </form>
       {/if}
     </div>
     </div>
-
-
 
 
     <footer class="tm-footer row tm-mt-small">

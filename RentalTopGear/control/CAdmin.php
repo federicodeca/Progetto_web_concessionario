@@ -180,7 +180,7 @@ class CAdmin {
      * this method is used to show all the cars for rent in the database
      * @return void
      */
-    public static function showAllRentCars(){
+    public static function showAllRentCarsForUnavailabilities(){
          if (CAdmin::isLogged()) {
         $cars= FPersistentManager::getInstance()->retriveAllRentCars();
         $infout=CAdmin::getUserStatus();    
@@ -216,24 +216,69 @@ class CAdmin {
             $carId = UHTTPMethods::post('idAuto');
             $start = new DateTime(UHTTPMethods::post('start'));
             $end = new DateTime(UHTTPMethods::post('end'));
+            FPersistentManager::getInstance()::lockTable('unavailabilities');
             $car = FPersistentManager::getInstance()->retriveCarOnId($carId);
             if(!$car->checkAvailability($start, $end)) {
-                
+                FPersistentManager::getInstance()::unlockTable();
                 $view->showOverlappingError();
+
                 
             }
             else{             
                 $indisp = new EUnavailability($start, $end, $car);  
-                FPersistentManager::getInstance()::lockTable('unavailabilities'); // Lock the table to prevent concurrent modifications
+                FPersistentManager::getInstance()::lockTable('unavailabilities'); 
                 FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
-                $car->addUnavailability($indisp); // Add the unavailability to the car
                 FPersistentManager::getInstance()::unlockTable();
             
             $view->showSuccessInsert();
+                }
             }
+        }
+    
+    public static function showAllRentCarsForSurcharges() {
+        if (CAdmin::isLogged()) {
+            $cars= FPersistentManager::getInstance()->retriveAllRentCars();
+            $infout=CAdmin::getUserStatus();    
+            $view = new VAdmin();
+            $view->showAllRentCarsForSurcharges($cars, $infout);
         }
     }
 
+        public static function showSurcharges() {
+        if (CAdmin::isLogged()) {
+            $carId = UHTTPMethods::post('car');
+            $cars= FPersistentManager::getInstance()->retriveAllRentCars();
+            $selectedCar = FPersistentManager::getInstance()->retriveCarOnId($carId);
+            $infout=CAdmin::getUserStatus();  
+            $sur=FPersistentManager::getAllValidSurcharges($carId);
+            $view = new VAdmin();
+            $view->showSurcharges($cars,$infout,$sur, $selectedCar);
+        }
+    }
+    
 
 
+
+
+
+    public static function insertSurcharge() {
+        if (CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $carId = UHTTPMethods::post('idAuto');
+            $start = new DateTime(UHTTPMethods::post('start'));
+            $end = new DateTime(UHTTPMethods::post('end'));
+            $car = FPersistentManager::getInstance()->retriveCarOnId($carId);
+            if($car->checkExistingSurcharges($start, $end)) {
+                $surcharge= new ESurcharge($start, $end, UHTTPMethods::post('price'), $car);
+                FPersistentManager::getInstance()->saveObject($surcharge); //TRANSACTION
+                $view->showSurchargeInsert();
+        
+
+            }
+            else {
+                $view->showOverlappingError();
+            }
+        }
+
+    }
 }

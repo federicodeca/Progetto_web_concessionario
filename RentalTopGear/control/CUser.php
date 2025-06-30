@@ -323,7 +323,7 @@ class CUser {
                 FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
                 FPersistentManager::getInstance()::unlockTable();
 
-                
+
                 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
                 
                 $idMethod = USession::getElementFromSession('creditCard');
@@ -649,12 +649,12 @@ class CUser {
 
 
             $idAuto=USession::getElementFromSession('idAuto');
-            
+            FPersistentManager::getInstance()::lockTable('cars_for_sale');
             $car= FPersistentManager::getInstance()->getObjectById(ECarForSale::class, $idAuto);
             
 
             if ($car->isAvailable()) { //metodo clu
-                FPersistentManager::getInstance()::lockTable('cars_for_sale'); // Lock the table to prevent concurrent modifications
+                
                 $car->setAvailable(false); // Set the car as not available
                 FPersistentManager::getInstance()->saveObject($car); //TRANSACTION          
                 FPersistentManager::getInstance()::unlockTable();
@@ -675,6 +675,7 @@ class CUser {
                 $view->showSaleConfirmation($sale,$infout); // Show confirmation of the car rent
             }
             else {
+                FPersistentManager::getInstance()::unlockTable();
                 $view = new VUser();
                 $view->showErrorUnavailability(); // Show error message if the car is not available
                 

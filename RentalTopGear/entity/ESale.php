@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 class ESale extends EOrder
 {
-    #[ORM\OneToOne(targetEntity: ECarForSale::class, inversedBy: 'SaleOrder')]
+    #[ORM\OneToOne(targetEntity: ECarForSale::class, inversedBy: 'saleOrder')]
     #[ORM\JoinColumn(name: 'car_id', referencedColumnName: 'idAuto', nullable: true)]
     private ECarForSale $carForSale;
 

@@ -282,6 +282,11 @@ class FPersistentManager {
        $result=FUnavailability::getAllValidUnavailabilities($carId);
        return $result;
     }
+
+    public static function getAllValidSurcharges(int $carId) {
+       $result=FSurcharge::getAllValidSurcharges($carId);
+       return $result;
+    }
         
     public static function getSaleOrders($saleTable) {
         $result = FSale::getSaleOrders($saleTable);

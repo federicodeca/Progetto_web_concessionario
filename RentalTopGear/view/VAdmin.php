@@ -71,4 +71,28 @@ class VAdmin{
         $this->smarty->assign('para' , "La prenotazione è stata inserita correttamente.");
         $this->smarty->display('success.tpl');
     }
+
+     public function showSurchargeInsert() {
+        $this->smarty->assign('title', 'Successo!');
+        $this->smarty->assign('para' , "La fascia di prezzo è stata inserita correttamente.");
+        $this->smarty->display('success.tpl');
+    }
+
+    public function showAllRentCarsForSurcharges($cars, $infout) {
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+
+        $this->smarty->display('adminPriceRent.tpl');
+    }
+
+    public function showSurcharges($cars,$infout,$surcharges, $selectedCar) {
+        $this->smarty->assign('surcharges', $surcharges);
+        $this->smarty->assign('selectedCar', $selectedCar);
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        
+        $this->smarty->display('adminPriceRent.tpl');
+    }
 }

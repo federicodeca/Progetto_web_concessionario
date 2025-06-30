@@ -67,7 +67,7 @@
                     </a>
                 </li> 
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/CarSale/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
               <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 

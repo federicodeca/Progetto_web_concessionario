@@ -74,7 +74,9 @@
 
               <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCars/">prenotazioni noleggio</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">gestione prezzi </a></li>
 
               <li class="nav-item"> <div id="login-box" ></div> </li>
 
