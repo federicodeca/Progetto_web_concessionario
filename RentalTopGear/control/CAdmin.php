@@ -222,9 +222,12 @@ class CAdmin {
                 $view->showOverlappingError();
                 
             }
-            else{
-            $unavailability = new EUnavailability($start, $end, $car);
-            FPersistentManager::getInstance()->uploadObj($unavailability);
+            else{             
+                $indisp = new EUnavailability($start, $end, $car);  
+                FPersistentManager::getInstance()::lockTable('unavailabilities'); // Lock the table to prevent concurrent modifications
+                FPersistentManager::getInstance()->saveObject($indisp); //TRANSACTION
+                $car->addUnavailability($indisp); // Add the unavailability to the car
+                FPersistentManager::getInstance()::unlockTable();
             
             $view->showSuccessInsert();
             }
