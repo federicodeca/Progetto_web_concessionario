@@ -21,8 +21,7 @@ class EUnavailability {
     #[ORM\Column(type: 'datetime')]
     private DateTime $end;
     
-    #[ORM\Column(type: 'boolean')]
-    private bool $available = false;
+
 
     #[ORM\ManyToOne(targetEntity: ECarForRent::class, inversedBy: 'unavailabilities')]
     #[ORM\JoinColumn(name: 'car_id', referencedColumnName: 'idAuto', nullable: false)]

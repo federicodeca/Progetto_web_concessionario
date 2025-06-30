@@ -29,7 +29,9 @@
       const permission = "{$permission|escape:'javascript'|default:''}";
       
     </script>
+
     <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+    <script src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"></script>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -84,34 +86,78 @@
       </nav>
     </header>
 
-    <!-- Page Content -->
-    <!-- Banner Starts Here, posso aggiungere testo in h4-->
     <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-          <div class="text-content">
-            <h4></h4>
+    <div class="container my-5">
+      <h2 class="header-text text-center mb-5">inserisci prenotazione</h2>
+      <form  method="post" action="/RentalTopGear/Admin/showUnavailabilities" enctype="multipart/form-data">
+        <div class="form-group col-md-12">
+          <label for="car">Seleziona auto</label>
+          <select class="form-control form-control-sm mb-5" name="car" id="car">
+            {foreach from=$cars item=car}
+              <option value="{$car->getIdAuto()}">{$car->getBrand()} {$car->getModel()} {$car->getDescription()}</option>
+            {/foreach}
+          </select>
+        </div>
+        <div class="btn btn-primary btn-block mx-auto">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">scegli auto </button>
+        </div>
+      </form>
+
+      {if isset($unavailabilities)}
+        <div class="mt-5">
+          <h4 class="header-text text-center my-3">Indisponibilità</h4>
+          <div style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-sm table-bordered table-striped bg-white">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Inizio</th>
+                  <th>Fine</th>
+                </tr>
+              </thead>
+              <tbody>
+                {foreach from=$unavailabilities item=unavailability}
+                  <tr>
+                    <td>{$unavailability->getStart()->format("d-m-y")}</td>
+                    <td>{$unavailability->getEnd()->format("d-m-y")}</td>
+                  </tr>
+                {/foreach}
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
-    </div>
-    
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+
+        <form method="post" action="/RentalTopGear/Admin/insertUnavailability" enctype="multipart/form-data" class="mt-4">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="start_date">Data inizio</label>
+              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="end_date">Data fine</label>
+              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
             </div>
           </div>
-        </div>
+          <input type="hidden" name="idAuto" value="{$selectedCar->getIdAuto()}">
+          <div class="btn btn-primary btn-block mx-auto">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi indisponibilità</button>
+          </div>
+        </form>
+      {/if}
+    </div>
+    </div>
+
+    <footer class="tm-footer row tm-mt-small">
+      <div class="col-12 font-weight-light">
+        <p class="text-center text-white mb-0 px-4 small">
+          Copyright &copy; <b>2018</b> All rights reserved. 
+          
+          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link"></a>
+        </p>
       </div>
-    </footer>
+    </footer> 
 
 
-
-
-    <!-- Bootstrap core JavaScript -->
+      <!-- Bootstrap core JavaScript -->
     <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
     <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -120,5 +166,6 @@
     <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
     <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
      
+
   </body>
 </html>

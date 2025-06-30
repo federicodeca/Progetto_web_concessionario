@@ -41,4 +41,34 @@ class VAdmin{
     public function showCheckSuccess() {
         $this->smarty->display('licenseCheckSuccess.tpl');
     }
+
+    public function showAllRentCars($cars, $infout) {
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+
+        $this->smarty->display('adminRentCars.tpl');
+    }
+
+    public function showUnavailabilities($cars,$infout,$unavailabilities, $selectedCar) {
+        $this->smarty->assign('unavailabilities', $unavailabilities);
+        $this->smarty->assign('selectedCar', $selectedCar);
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        
+        $this->smarty->display('adminRentCars.tpl');
+    }
+
+    public function showOverlappingError() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "Esiste gia un'altra prenotazione che si sovrappone a quella che stai cercando di inserire.");
+        $this->smarty->display('error.tpl');
+    }
+
+    public function showSuccessInsert() {
+        $this->smarty->assign('title', 'Successo!');
+        $this->smarty->assign('para' , "La prenotazione è stata inserita correttamente.");
+        $this->smarty->display('success.tpl');
+    }
 }

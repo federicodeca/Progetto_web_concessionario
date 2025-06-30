@@ -105,8 +105,8 @@ class FPersistentManager {
     /** 
      * return all cars for rent from the table
      */
-    public static function retriveAllRentCars($tabel) {
-        $result = FCarForRent::getAllCarsForRent($tabel);
+    public static function retriveAllRentCars() {
+        $result = FCarForRent::getAllCarsForRent(ECarForRent::class);
         return $result;
     }
 
@@ -276,6 +276,11 @@ class FPersistentManager {
         $result = FLicense::getLicenseById($id);
 
         return $result;
+    }
+
+    public static function getAllValidUnavailabilities(int $carId) {
+       $result=FUnavailability::getAllValidUnavailabilities($carId);
+       return $result;
     }
         
 
