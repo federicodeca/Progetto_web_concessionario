@@ -125,7 +125,11 @@
     <div class="col-md-4"> <!--row in 12,every column start on 4 from 12-->
     <a href='/RentalTopGear/User/selectCarForRent/{$car->getIdAuto()}'>
       <div class="product-item" >
+        {if $car->getIcon() && $car->getIcon()->getEncodedData()}
        <img class="product-item-icon" src="data:{$car->getIcon()->getType()};base64,{$car->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
+        {else}
+        <img class="product-item-icon" src="/RentalTopGear/directory/Smarty/assets/images/product-1-370x270.jpg" loading="lazy" alt="Img">
+        {/if}
         <div class="down-content">
           <h4>{$car->getModel()}</h4>
           <h6><small>from</small> {$car->getBasePrice()}€ <small>per weekend </small></h6>

@@ -126,6 +126,8 @@
             </div>
           </div>
 
+          {if $offers|@count > 2}
+   
             <div class="col-md-4">
                 <a href='/RentalTopGear/User/selectCarForSale/{$offers[0]->getIdAuto()}'>
                   <div class="product-item">
@@ -179,6 +181,12 @@
                   </div>
                 </a>
               </div>
+
+        {else}
+          <div class="col-md-12">
+            <p class="text-center">Nessuna offerta disponibile al momento.</p>
+          </div>
+        {/if}
 
         </div>
       </div>

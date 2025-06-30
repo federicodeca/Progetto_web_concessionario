@@ -37,7 +37,7 @@
 
   <body>
 
-  <input type="hidden" id="actualMethod" value="showCarsForSale">
+  <input type="hidden" id="actualMethod" value="showCarsForSale/{$currentPage|default:1}">
  
 
     <!-- ***** Preloader Start ***** -->

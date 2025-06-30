@@ -1214,4 +1214,13 @@ footer .inner-content p a {
   object-fit: cover; /* evita distorsioni */
 }
 
+.image-carousel-custom {
+width: 1000px !important;
+height: 800px !important; 
+object-fit: contain !important; 
+
+align-items: center !important; 
+display: flex !important;
+
+}
 
