@@ -283,5 +283,14 @@ class FPersistentManager {
        return $result;
     }
         
+    public static function getSaleOrders($saleTable) {
+        $result = FSale::getSaleOrders($saleTable);
+        return $result;
+    }
+
+    public static function getRentOrders($rentTable) {
+        $result = FRent::getRentOrders($rentTable);
+        return $result;
+    }
 
 }
