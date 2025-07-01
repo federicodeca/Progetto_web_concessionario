@@ -58,14 +58,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="products.html">
-                                <i class="fas fa-shopping-cart"></i>
                                 Products
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="accounts.html">
-                                <i class="far fa-user"></i>
                                 Accounts
                             </a>
                         </li>
@@ -87,7 +85,12 @@
                 <!--- Lista degli ordini -->
                 <div class="col-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" style="height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
-                        <h2 class="tm-block-title">Lista ordini</h2>
+                        <h2 class="tm-block-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                            <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                            </svg>
+                            Lista ordini</h2>
                         <table class="table" style="width: 100%;">
                             <thead>
                                 <tr>
@@ -103,7 +106,7 @@
                             <tbody>
 
                                 <!--- Lista auto vendita -->
-
+                                {assign var="total" value=0}
                                 {foreach from=$saleOrders item=sale}
                                     <tr>
                                         <td>{$sale->getOrderId()}</td>
@@ -113,11 +116,12 @@
                                         <td>{$sale->getCarForSale()->getModel()}</td>
                                         <td>{$sale->getOrderDate()->format("Y/m/d")}</td>
                                         <td>{$sale->getPrice()}</td>
+                                        {assign var="total" value=$total + $sale->getPrice()}
                                     </tr>
                                     {/foreach}
 
                                     <!--- Lista auto noleggio-->
-
+                                    {assign var="totalRent" value=0}
                                     {foreach from=$rentOrders item=rent}
                                     <tr>
                                         <td>{$rent->getOrderId()}</td>
@@ -127,6 +131,7 @@
                                         <td>{$rent->getAuto()->getModel()}</td>
                                         <td>{$rent->getOrderDate()->format("Y/m/d")}</td>
                                         <td>{$rent->getTotalPrice()}</td>
+                                        {assign var="totalRent" value=$totalRent + $rent->getTotalPrice()}
                                     </tr>
                                     {/foreach}
                             </tbody>
@@ -134,20 +139,34 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+        
+            <div class="row mt-5">
+                <div class="col-sm-12 col-md-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Latest Hits</h2>
+                        <h2 class="tm-block-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                            <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                            <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Totale vendite:  <small>€ {$total|number_format:2:",":"."}</small></h2>
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Performance</h2>
+                        <h2 class="tm-block-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                            <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                            <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Totale noleggi:  <small>€ {$totalRent|number_format:2:",":"."}</small></h2>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
+            </div>
+        </div>
+
+
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller">
                         <h2 class="tm-block-title">Storage Information</h2>
@@ -157,6 +176,7 @@
                         </div>                        
                     </div>
                 </div>
+
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
                         <h2 class="tm-block-title">Notification List</h2>

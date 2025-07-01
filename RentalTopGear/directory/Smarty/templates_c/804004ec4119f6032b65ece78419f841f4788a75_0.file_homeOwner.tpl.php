@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-01 10:39:16
+/* Smarty version 5.5.1, created on 2025-07-01 11:30:20
   from 'file:homeOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68639eb4bed881_32338830',
+  'unifunc' => 'content_6863aaac375940_62661666',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '804004ec4119f6032b65ece78419f841f4788a75' => 
     array (
       0 => 'homeOwner.tpl',
-      1 => 1751359149,
+      1 => 1751362215,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68639eb4bed881_32338830 (\Smarty\Template $_smarty_tpl) {
+function content_6863aaac375940_62661666 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -93,14 +93,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="products.html">
-                                <i class="fas fa-shopping-cart"></i>
                                 Products
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="accounts.html">
-                                <i class="far fa-user"></i>
                                 Accounts
                             </a>
                         </li>
@@ -122,7 +120,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <!--- Lista degli ordini -->
                 <div class="col-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" style="height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
-                        <h2 class="tm-block-title">Lista ordini</h2>
+                        <h2 class="tm-block-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                            <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                            </svg>
+                            Lista ordini</h2>
                         <table class="table" style="width: 100%;">
                             <thead>
                                 <tr>
@@ -138,7 +141,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                             <tbody>
 
                                 <!--- Lista auto vendita -->
-
+                                <?php $_smarty_tpl->assign('total', 0, false, NULL);?>
                                 <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale');
 $foreach0DoElse = true;
@@ -160,13 +163,14 @@ $foreach0DoElse = false;
 </td>
                                         <td><?php echo $_smarty_tpl->getValue('sale')->getPrice();?>
 </td>
+                                        <?php $_smarty_tpl->assign('total', $_smarty_tpl->getValue('total')+$_smarty_tpl->getValue('sale')->getPrice(), false, NULL);?>
                                     </tr>
                                     <?php
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
                                     <!--- Lista auto noleggio-->
-
+                                    <?php $_smarty_tpl->assign('totalRent', 0, false, NULL);?>
                                     <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentOrders'), 'rent');
 $foreach1DoElse = true;
@@ -188,6 +192,7 @@ $foreach1DoElse = false;
 </td>
                                         <td><?php echo $_smarty_tpl->getValue('rent')->getTotalPrice();?>
 </td>
+                                        <?php $_smarty_tpl->assign('totalRent', $_smarty_tpl->getValue('totalRent')+$_smarty_tpl->getValue('rent')->getTotalPrice(), false, NULL);?>
                                     </tr>
                                     <?php
 }
@@ -197,20 +202,36 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
             </div>
-        </div>
-
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+        
+            <div class="row mt-5">
+                <div class="col-sm-12 col-md-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Latest Hits</h2>
+                        <h2 class="tm-block-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                            <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                            <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Totale vendite:  <small>€ <?php echo $_smarty_tpl->getSmarty()->getModifierCallback('number_format')($_smarty_tpl->getValue('total'),2,",",".");?>
+</small></h2>
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Performance</h2>
+                        <h2 class="tm-block-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                            <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                            <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"/>
+                            </svg>
+                            Totale noleggi:  <small>€ <?php echo $_smarty_tpl->getSmarty()->getModifierCallback('number_format')($_smarty_tpl->getValue('totalRent'),2,",",".");?>
+</small></h2>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
+            </div>
+        </div>
+
+
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller">
                         <h2 class="tm-block-title">Storage Information</h2>
@@ -220,6 +241,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         </div>                        
                     </div>
                 </div>
+
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
                         <h2 class="tm-block-title">Notification List</h2>
