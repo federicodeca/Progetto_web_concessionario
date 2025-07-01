@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-01 10:39:16
+  from 'file:homeOwner.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_68639eb4bed881_32338830',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '804004ec4119f6032b65ece78419f841f4788a75' => 
+    array (
+      0 => 'homeOwner.tpl',
+      1 => 1751359149,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68639eb4bed881_32338830 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,13 +47,24 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
-    </script>
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+    <?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
 
   </head>
 
@@ -104,31 +139,59 @@
 
                                 <!--- Lista auto vendita -->
 
-                                {foreach from=$saleOrders item=sale}
+                                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('sale')->value) {
+$foreach0DoElse = false;
+?>
                                     <tr>
-                                        <td>{$sale->getOrderId()}</td>
-                                        <td>{$sale->getUser()->getFirstName()}</td>
-                                        <td>{$sale->getUser()->getLastName()}</td>
-                                        <td>{$sale->getCarForSale()->getBrand()}</td>
-                                        <td>{$sale->getCarForSale()->getModel()}</td>
-                                        <td>{$sale->getOrderDate()->format("Y/m/d")}</td>
-                                        <td>{$sale->getPrice()}</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getOrderId();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getUser()->getFirstName();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getUser()->getLastName();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getCarForSale()->getBrand();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getCarForSale()->getModel();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getOrderDate()->format("Y/m/d");?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('sale')->getPrice();?>
+</td>
                                     </tr>
-                                    {/foreach}
+                                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
                                     <!--- Lista auto noleggio-->
 
-                                    {foreach from=$rentOrders item=rent}
+                                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentOrders'), 'rent');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('rent')->value) {
+$foreach1DoElse = false;
+?>
                                     <tr>
-                                        <td>{$rent->getOrderId()}</td>
-                                        <td>{$rent->getUser()->getFirstName()}</td>
-                                        <td>{$rent->getUser()->getLastName()}</td>
-                                        <td>{$rent->getAuto()->getBrand()}</td>
-                                        <td>{$rent->getAuto()->getModel()}</td>
-                                        <td>{$rent->getOrderDate()->format("Y/m/d")}</td>
-                                        <td>{$rent->getTotalPrice()}</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getOrderId();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getUser()->getFirstName();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getUser()->getLastName();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getAuto()->getBrand();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getAuto()->getModel();?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getOrderDate()->format("Y/m/d");?>
+</td>
+                                        <td><?php echo $_smarty_tpl->getValue('rent')->getTotalPrice();?>
+</td>
                                     </tr>
-                                    {/foreach}
+                                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                             </tbody>
                         </table>
                     </div>
@@ -249,16 +312,27 @@
         </footer>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery-3.3.1.min.js"><?php echo '</script'; ?>
+>
     <!-- https://jquery.com/download/ -->
-    <script src="js/moment.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/moment.min.js"><?php echo '</script'; ?>
+>
     <!-- https://momentjs.com/ -->
-    <script src="js/Chart.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/Chart.min.js"><?php echo '</script'; ?>
+>
     <!-- http://www.chartjs.org/docs/latest/ -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
     <!-- https://getbootstrap.com/ -->
-    <script src="js/tooplate-scripts.js"></script>
-    <script>
+    <?php echo '<script'; ?>
+ src="js/tooplate-scripts.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+>
         Chart.defaults.global.defaultFontColor = 'white';
         let ctxLine,
             ctxBar,
@@ -282,7 +356,9 @@
                 updateBarChart();                
             });
         })
-    </script>
+    <?php echo '</script'; ?>
+>
 </body>
 
-</html>
+</html><?php }
+}

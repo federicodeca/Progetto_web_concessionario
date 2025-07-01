@@ -141,7 +141,7 @@ class ECarForRent extends EAuto
     return $totalPrice;   
     }
 
-
+    /*** 
     public function insertUnavailability($indisp,$idAuto): void
     {
     try{
@@ -154,7 +154,7 @@ class ECarForRent extends EAuto
         $this->addUnavailability($unavailability);
     }
 
-
+*/
 
 
 
