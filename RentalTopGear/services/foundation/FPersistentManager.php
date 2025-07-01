@@ -29,7 +29,7 @@ class FPersistentManager {
 
     //TRANSAZIONI E LOCKING
     /**
-     * return object by id with locking and relase
+     * return object by id with locking the tuple 
      */
     public function getObjectByIdLock(string $className, int $id) {
         
