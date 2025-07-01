@@ -92,9 +92,9 @@
       <form  method="post" action="/RentalTopGear/Admin/showUnavailabilities" enctype="multipart/form-data">
         <div class="form-group col-md-12">
           <label for="car">Seleziona auto</label>
-          <select class="form-control form-control-sm mb-5" name="car" id="car">
+          <select class="form-control form-control-sm mb-5" name="idAuto" id="car" required>
             {foreach from=$cars item=car}
-              <option value="{$car->getIdAuto()}">{$car->getBrand()} {$car->getModel()} {$car->getDescription()}</option>
+              <option value="{$car->getIdAuto()}" >{$car->getBrand()} {$car->getModel()} {$car->getDescription()}</option>
             {/foreach}
           </select>
         </div>
@@ -112,6 +112,7 @@
                 <tr>
                   <th>Inizio</th>
                   <th>Fine</th>
+                  <th>Azioni</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,6 +120,11 @@
                   <tr>
                     <td>{$unavailability->getStart()->format("d-m-y")}</td>
                     <td>{$unavailability->getEnd()->format("d-m-y")}</td>
+                    <td>
+                      <a href="/RentalTopGear/Admin/deleteUnavailability/{$unavailability->getIdUnav()}" class="btn btn-danger btn-sm">
+                        Elimina
+                      </a>
+                    </td>
                   </tr>
                 {/foreach}
               </tbody>
@@ -136,7 +142,7 @@
               <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
             </div>
           </div>
-          <input type="hidden" name="idAuto" value="{$selectedCar->getIdAuto()}">
+         
           <div class="btn btn-primary btn-block mx-auto">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi indisponibilità</button>
           </div>

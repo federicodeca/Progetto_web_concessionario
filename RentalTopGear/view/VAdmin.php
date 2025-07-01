@@ -95,4 +95,10 @@ class VAdmin{
         
         $this->smarty->display('adminPriceRent.tpl');
     }
+
+    public function showRentError() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' , "L'auto è associata ad una prenotazione, non puoi eliminare l'ordine.");
+        $this->smarty->display('error.tpl');
+    }
 }

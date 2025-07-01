@@ -196,7 +196,15 @@ class CAdmin {
 
     public static function showUnavailabilities() {
         if (CAdmin::isLogged()) {
-            $carId = UHTTPMethods::post('car');
+
+
+            $carId = UHTTPMethods::postOrNull('idAuto');
+            if ($carId === null) {
+                $carId=USession::getElementFromSession('idAuto'); // Retrieve carId from session if not provided
+            }
+            else {
+                USession::setElementInSession('idAuto', $carId); // Clear session if carId is provided
+            }
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
             $selectedCar = FPersistentManager::getInstance()->retriveCarOnId($carId);
             $infout=CAdmin::getUserStatus();  
@@ -213,10 +221,10 @@ class CAdmin {
     public static function insertUnavailability() {
         if (CAdmin::isLogged()) {
             $view = new VAdmin();
-            $carId = UHTTPMethods::post('idAuto');
+            $carId = USession::getElementFromSession('idAuto'); // Retrieve carId from session
             $start = new DateTime(UHTTPMethods::post('start'));
             $end = new DateTime(UHTTPMethods::post('end'));
-            $car= FPersistentManager::getInstance()->getObjectByIdLock(ECarForRent::class, $idAuto); 
+            $car= FPersistentManager::getInstance()->getObjectByIdLock(ECarForRent::class, $carId); 
             $indisp= new EUnavailability($start, $end, $car);
             if($car->checkAvailability($start, $end)) {
                 
@@ -232,9 +240,29 @@ class CAdmin {
                 FPersistentManager::getInstance()::unlock();
             
              $view->showOverlappingError();
-                }
             }
         }
+    }
+
+
+
+    public static function deleteUnavailability($id) {
+        
+        if (CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $unavailability = FPersistentManager::getInstance()->getObjectById(EUnavailability::class ,$id);
+            
+            if(FPersistentManager::getInstance()->retrieveObjectByField(ERent::class,'Unavailability', $id) ) {
+                $view->showRentError();
+
+                
+            }else{
+            FPersistentManager::getInstance()->removeObject($unavailability);
+            header('location: /RentalTopGear/Admin/showUnavailabilities');
+            exit();
+            }
+        }
+    }    
     
     public static function showAllRentCarsForSurcharges() {
         if (CAdmin::isLogged()) {
