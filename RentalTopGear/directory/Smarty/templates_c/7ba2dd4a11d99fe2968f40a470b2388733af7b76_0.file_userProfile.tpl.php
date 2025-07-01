@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-01 12:39:02
+  from 'file:userProfile.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6863bac685cff6_28658950',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '7ba2dd4a11d99fe2968f40a470b2388733af7b76' => 
+    array (
+      0 => 'userProfile.tpl',
+      1 => 1751366307,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6863bac685cff6_28658950 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -24,25 +48,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     
    <!--dati per login-->
-  <script>
-    const isLogged = {$isLogged|@json_encode|default:'false'};
-    const username = "{$username|escape:'javascript'|default:''}";
-    const permission = "{$permission|escape:'javascript'|default:''}";
-  </script>
+  <?php echo '<script'; ?>
+>
+    const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+    const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+    const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+  <?php echo '</script'; ?>
+>
 
-  <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
-  <script src="/RentalTopGear/directory/Smarty/js/license-calendar.js"></script>
-  <script src="/RentalTopGear/directory/Smarty/js/change-info.js"></script>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/change-info.js"><?php echo '</script'; ?>
+>
 
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
+
+ <?php if ($_smarty_tpl->getValue('user')->verifyPassword('pippo')) {?>
+  <p>Password corretta</p>
+<?php } else { ?>
+  <p>Password errata</p>
+<?php }?>
 
   <body>
 
@@ -80,25 +131,26 @@
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-              {if $isLogged}
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
@@ -113,7 +165,7 @@
                             </form>
                           </div>
                         </li>
-              {/if}          
+              <?php }?>          
             
             </ul>
           </div>
@@ -144,9 +196,11 @@
           
             <div class="card-body">
 
-              <h4 class="mb-3" style="color:white">Username: {$user->getUsername()}</h4>
+              <h4 class="mb-3" style="color:white">Username: <?php echo $_smarty_tpl->getValue('user')->getUsername();?>
+</h4>
 
-              <h4 class="mb-3" style="color:white; ">Email: {$user->getEmail()}</h4>
+              <h4 class="mb-3" style="color:white; ">Email: <?php echo $_smarty_tpl->getValue('user')->getEmail();?>
+</h4>
 
                   
 
@@ -162,18 +216,23 @@
                    </div>
                 </div>
                  <div class="col-md-4 text-md-right">
-                  <button class="btn btn-primary" style="color: aliceblue;" onclick="submit">Cambia Email</button>
+                  <button class="btn btn-primary" style="color: aliceblue;" onclick="submit">Change</button>
                  </div> 
                 </div>
               </div>
               </form>
                   
-              <h4 class="mb-3 ml-3" style="color:white">Nome: {$user->getFirstname()}</h4> 
-              <h4 class="mb-3 ml-3" style="color:white">Cognome: {$user->getLastname()}</h4>
-              <h4 class="mb-3 ml-3" style="color:white">Patente: {if $user->getIsVerified()}inserita{else}non inserita{/if}</h4>
-              <h4 class="mb-3 ml-3" style="color:white">Telefono: {$user->getPhone()}</h4>
-              <h4 class="mb-3 ml-3" style="color:white">Indirizzo: {$user->getAddress()}</h4>
-              <h4 class="mb-3 ml-3" style="color:white">Città: {$user->getCity()}</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Nome: <?php echo $_smarty_tpl->getValue('user')->getFirstname();?>
+</h4> 
+              <h4 class="mb-3 ml-3" style="color:white">Cognome: <?php echo $_smarty_tpl->getValue('user')->getLastname();?>
+</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Patente: <?php if ($_smarty_tpl->getValue('user')->getIsVerified()) {?>inserita<?php } else { ?>non inserita<?php }?></h4>
+              <h4 class="mb-3 ml-3" style="color:white">Numero telefono: <?php echo $_smarty_tpl->getValue('user')->getPhone();?>
+</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Indirizzo: <?php echo $_smarty_tpl->getValue('user')->getAddress();?>
+</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Città: <?php echo $_smarty_tpl->getValue('user')->getCity();?>
+</h4>
 
               <button class="btn btn-primary px-4 mb-4" style="color:aliceblue; margin-top: 20px;" data-toggle="modal" data-target="#passwordModal">Cambia Password</button>. <!-- data target= id del modal-->
 
@@ -254,15 +313,23 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
    
 
   </body>
 
 </html>
+<?php }
+}

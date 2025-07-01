@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-30 19:02:06
+/* Smarty version 5.5.1, created on 2025-07-01 12:35:28
   from 'file:homeAdmin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6862c30e216c97_04881492',
+  'unifunc' => 'content_6863b9f023af48_25533747',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
     array (
       0 => 'homeAdmin.tpl',
-      1 => 1751302780,
+      1 => 1751365887,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6862c30e216c97_04881492 (\Smarty\Template $_smarty_tpl) {
+function content_6863b9f023af48_25533747 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -90,7 +90,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Dashboard<em></em></h2></a>
+          <a class="navbar-brand" href="/RentalTopGear/Admin/home/"><h2>Dashboard<em></em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -113,7 +113,42 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">gestione prezzi </a></li>
 
-              <li class="nav-item"> <div id="login-box" ></div> </li>
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              <?php } else { ?>
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form id="login-form">
+                              <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
+                              <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                            </form>
+                          </div>
+                        </li>
+              <?php }?>          
+            
 
             </ul>
           </div>

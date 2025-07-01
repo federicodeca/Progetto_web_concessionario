@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-29 13:06:08
+/* Smarty version 5.5.1, created on 2025-07-01 12:32:39
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68611e206510c2_62938789',
+  'unifunc' => 'content_6863b947ef1496_37737492',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0eed0cc458d109b257fe9a78383dffc871423171' => 
     array (
       0 => 'home.tpl',
-      1 => 1751194582,
+      1 => 1751365887,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68611e206510c2_62938789 (\Smarty\Template $_smarty_tpl) {
+function content_6863b947ef1496_37737492 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -53,8 +53,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <!--dati per login-->
     <?php echo '<script'; ?>
 >
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
-;
+     
       const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
@@ -63,7 +62,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-      
       
     <?php echo '</script'; ?>
 >
@@ -115,7 +113,42 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-              <li class="nav-item"> <div id="login-box" ></div> </li>
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              <?php } else { ?>
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form id="login-form">
+                              <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
+                              <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                            </form>
+                          </div>
+                        </li>
+              <?php }?>          
+            
 
             </ul>
           </div>
@@ -161,6 +194,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
             </div>
           </div>
 
+          <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('offers')) > 2) {?>
+   
             <div class="col-md-4">
                 <a href='/RentalTopGear/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[0]->getIdAuto();?>
 '>
@@ -238,6 +273,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                   </div>
                 </a>
               </div>
+
+        <?php } else { ?>
+          <div class="col-md-12">
+            <p class="text-center">Nessuna offerta disponibile al momento.</p>
+          </div>
+        <?php }?>
 
         </div>
       </div>
