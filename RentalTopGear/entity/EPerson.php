@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'persons')]
 #[ORM\InheritanceType("JOINED")] // STI single table inheritance
 #[ORM\DiscriminatorColumn(name: "type", type: "string")]
-#[ORM\DiscriminatorMap(["admin" => "EAdmin", "user" => "EUser"])]
+#[ORM\DiscriminatorMap(["admin" => "EAdmin", "user" => "EUser", "owner" => "EOwner"])]
 
 class EPerson {
 
@@ -30,8 +30,7 @@ class EPerson {
     #[ORM\Column(type: 'string', unique: true)]
     protected $username;
 
-    #[ORM\Column(type: 'string')]
-    protected $role;
+
 
     protected static $entity = EPerson::class;
 
@@ -44,7 +43,7 @@ class EPerson {
         $this->email = $email;
         $this->password = $hashedPassword;
         $this->username = $username;
-        $this->role = 'user'; // Default type, can be overridden in subclasses
+       
     }
 
     public function getPassword()
@@ -80,10 +79,7 @@ class EPerson {
     {
         return $this->username;
     }
-    public function getRole()
-    {
-        return $this->role;
-    }
+
 
 
     public function setFirstname($firstname)
@@ -105,10 +101,9 @@ class EPerson {
     {
         $this->username = $username;
     }
-    public function setRole($role)
-    {
-        $this->role = $role;
-    }
+
     
  
 }
+
+

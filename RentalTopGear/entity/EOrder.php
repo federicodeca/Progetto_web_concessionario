@@ -71,4 +71,6 @@ abstract class EOrder
         $this->$user = $user;
     }
 
+    
+
 }

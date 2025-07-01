@@ -15,6 +15,7 @@ class VAdmin{
         
         $this->smarty->assign('isLogged', $infout['isLogged']);  
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->display('homeAdmin.tpl');
 
     }
@@ -46,6 +47,7 @@ class VAdmin{
         $this->smarty->assign('cars', $cars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
 
         $this->smarty->display('adminRentCars.tpl');
     }
@@ -56,6 +58,7 @@ class VAdmin{
         $this->smarty->assign('cars', $cars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         
         $this->smarty->display('adminRentCars.tpl');
     }
@@ -82,6 +85,7 @@ class VAdmin{
         $this->smarty->assign('cars', $cars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
 
         $this->smarty->display('adminPriceRent.tpl');
     }
@@ -92,6 +96,7 @@ class VAdmin{
         $this->smarty->assign('cars', $cars);
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         
         $this->smarty->display('adminPriceRent.tpl');
     }

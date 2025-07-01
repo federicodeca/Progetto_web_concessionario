@@ -29,6 +29,8 @@ class EUser extends EPerson {
     #[ORM\Column(type: 'boolean')]
     protected bool $isVerified ;
 
+     protected static $entity = EUser::class;
+
     
 
     public function __construct($name, $surname, $email, $phone, $userName, $password, $city, $zipCode, $address)
@@ -79,4 +81,7 @@ class EUser extends EPerson {
 {
     return password_verify($inputPassword, $this->password);
 }
+    public static function getEntity() {
+        return self::$entity;
+    }
 }

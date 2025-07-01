@@ -91,6 +91,9 @@
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
                       {/if}
+                      {if $permission === 'owner'}
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
+                      {/if}
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>

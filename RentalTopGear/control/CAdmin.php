@@ -2,34 +2,8 @@
 
 class CAdmin {
 
-    // DA CONTROLLARE LOGIN, LOGOUT, ISLOGGED
 
-    public static function login(){
 
-        
-        if (session_status() === PHP_SESSION_NONE) {
-            USession::getInstance();
-        }
-        
-        if(USession::isSetSessionElement('admin')) { //admin is logged direct to homepage
-            header('Location: /RentalTopGear/Admin/home');
-        }
-        $view= new VAdmin();
-        //$view->showLoginForm();
-
-    }
-
-     /**
-     * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
-     * @return void
-     */
-    public static function logout(){
-        USession::getInstance();
-        USession::unsetAllElementsInSession();// Unset all session elements
-        USession::killSession();
-        setcookie('PHPSESSID','',time()-42000); //??
-        header('Location: /RentalTopGear/User/home');
-    }
 
     /**
      * this method show an home page for the admin, if the admin is logged in
@@ -38,38 +12,37 @@ class CAdmin {
     public static function home() {
         if (CAdmin::isLogged()) {
 
-        
 
-        $infout=CAdmin::getUserStatus();
+                $infout=CAdmin::getAdminStatus();
 
-        $view = new VAdmin();
+                $view = new VAdmin();
 
-
-        $view->showHomePage($infout);
+                $view->showHomePage($infout);
 
         }
 
     }
 
       /**
-     * this method is used to show the user profile, if the user is logged in
+     * this method is used to get info about th status of admin
      * @return void
      */
-    public static function getUserStatus(): array {
+    public static function getAdminStatus(): array {
 
-    if (session_status() === PHP_SESSION_NONE) USession::getInstance();
+        if (session_status() === PHP_SESSION_NONE) USession::getInstance();
 
-    $isLogged = USession::isSetSessionElement('admin'); 
-    $username = $isLogged ? USession::getElementFromSession('username') : null;
+        $isLogged = USession::isSetSessionElement('admin'); 
+        $username = $isLogged ? USession::getElementFromSession('username') : null; //if is logged..
 
-    return [
-        'isLogged' => $isLogged,
-        'username' => $username
-    ];
+        return [
+            'isLogged' => $isLogged,
+            'username' => $username,
+            'permission' => 'admin' // permission level for admin
+        ];
 }
 
     /**
-     * this method is used to check if the user is logged in, if not it will redirect to the login page
+     * this method is used to check if the admin is logged in, if not it will redirect to the login page
      * @return void
      */
     public static function isLogged(): bool {
@@ -86,7 +59,7 @@ class CAdmin {
         }
         if(!$logged) {
         
-        header('Location: /RentalTopGear/User/home'); // Redirect to home if not logged in
+        header('Location: /RentalTopGear/User/home'); // Redirect to home of user if not logged in
         exit();}
 
         return $logged;
@@ -183,7 +156,7 @@ class CAdmin {
     public static function showAllRentCarsForUnavailabilities(){
          if (CAdmin::isLogged()) {
         $cars= FPersistentManager::getInstance()->retriveAllRentCars();
-        $infout=CAdmin::getUserStatus();    
+        $infout=CAdmin::getAdminStatus();    
         $view = new VAdmin();
         $view->showAllRentCars($cars, $infout);
         }
@@ -207,7 +180,7 @@ class CAdmin {
             }
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
             $selectedCar = FPersistentManager::getInstance()->retriveCarOnId($carId);
-            $infout=CAdmin::getUserStatus();  
+            $infout=CAdmin::getAdminStatus();  
             $unav=FPersistentManager::getAllValidUnavailabilities($carId);
             $view = new VAdmin();
             $view->showUnavailabilities($cars,$infout,$unav, $selectedCar);
@@ -267,7 +240,7 @@ class CAdmin {
     public static function showAllRentCarsForSurcharges() {
         if (CAdmin::isLogged()) {
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
-            $infout=CAdmin::getUserStatus();    
+            $infout=CAdmin::getAdminStatus();    
             $view = new VAdmin();
             $view->showAllRentCarsForSurcharges($cars, $infout);
         }
@@ -278,7 +251,7 @@ class CAdmin {
             $carId = UHTTPMethods::post('car');
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
             $selectedCar = FPersistentManager::getInstance()->retriveCarOnId($carId);
-            $infout=CAdmin::getUserStatus();  
+            $infout=CAdmin::getAdminStatus();  
             $sur=FPersistentManager::getAllValidSurcharges($carId);
             $view = new VAdmin();
             $view->showSurcharges($cars,$infout,$sur, $selectedCar);

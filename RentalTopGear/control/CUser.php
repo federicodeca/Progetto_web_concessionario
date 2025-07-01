@@ -64,12 +64,6 @@ class CUser {
             $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
             if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
 
-                if ($user->getRole()=='admin') {
-                USession::setElementInSession('admin', $user->getId());
-                USession::setElementInSession('username', $user->getUsername());
-                    header('Location: RentalTopGear/Admin/home');
-                    exit;
-                }    
 
                 if(USession::getSessionStatus() === PHP_SESSION_NONE){
                     USession::getInstance();
@@ -149,9 +143,9 @@ class CUser {
     
 
     $infout=CUser::getUserStatus();
-
+        
     $offers=FPersistentManager::getInstance()->getOffers(); // Retrieve offers for the home page
-
+    
     $view = new VUser();
     $view->showHomePage($infout,$offers);
 
@@ -330,6 +324,7 @@ class CUser {
                 $method = FPersistentManager::getInstance()->getObjectById(ECreditCard::class, $idMethod);
                 $idUser = USession::getElementFromSession('user');
                 $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+                print($user->getEntity());
                 $amount=USession::getElementFromSession('amount');
                
 
@@ -352,6 +347,12 @@ class CUser {
             }
         }
     }
+
+
+    /**
+     * this method is used to get the user or admin or owner status, it will return an array with the  status, username and permission
+     * different from th getOwnerStatus method,getAdminStatus this method is also used to get the permissions and to modifiy the home dashboard 
+     */
     public static function getUserStatus(): array {
 
     if (session_status() === PHP_SESSION_NONE) {
@@ -360,7 +361,8 @@ class CUser {
 
     $isAdmin = USession::isSetSessionElement('admin');
     $isUser = USession::isSetSessionElement('user');
-    $isLogged = $isAdmin || $isUser;
+    $isOwner = USession::isSetSessionElement('owner'); // Check if the user is an owner
+    $isLogged = $isAdmin || $isUser|| $isOwner; // User is logged in if any of these session elements are set
 
     if ($isAdmin) {
         $username = USession::getElementFromSession('username');
@@ -368,6 +370,11 @@ class CUser {
     } elseif ($isUser) {
         $username = USession::getElementFromSession('username');
         $permission = 'user';
+
+    } elseif ($isOwner) {
+        $username = USession::getElementFromSession('username');
+        $permission = 'owner'; // Set permission for owner  
+
     } else {
         $username = null;
         $permission = null;
@@ -401,12 +408,16 @@ class CUser {
             
             USession::setElementInSession('username', $user->getUsername());
 
-            if ($user->getRole()=='admin') {
-                USession::setElementInSession('admin', $user->getId());    
-            }
-            else{
+            if ($user->getEntity()=='EUser') {
                 USession::setElementInSession('user', $user->getId());
             }
+            if ($user->getEntity()=='EAdmin') {
+                USession::setElementInSession('admin', $user->getId());    
+            }
+            if ($user->getEntity()=='EOwner') {
+                USession::setElementInSession('owner', $user->getId());    
+            }
+
         
              
             echo json_encode([

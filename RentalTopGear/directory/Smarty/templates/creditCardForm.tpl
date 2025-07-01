@@ -30,6 +30,8 @@
       
     </script>
     <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+    <script src="/RentalTopGear/directory/Smarty/js/payment-method.js"></script>
+
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -159,7 +161,7 @@
 
 
               <hr class="md-6 mb-3">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <button class="btn btn-primary btn-lg btn-block" id="selected-button" type="submit">Continue to checkout</button>
            </div>
             </form>        
         </div>
@@ -313,40 +315,7 @@
     <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
     <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const creditFields = document.getElementById("credit-fields");
-        const paypalFields = document.getElementById("paypal-fields");
-        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
-
-        function togglePaymentFields() {
-          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
-          if (selected === "paypal") {
-            creditFields.style.display = "none";
-            paypalFields.style.display = "block";
-          } else {
-            creditFields.style.display = "block";
-            paypalFields.style.display = "none";
-          }
-        }
-
-        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
-        togglePaymentFields();
-
-        // Controllo iniziale per i campi manuali carta
-        if (document.getElementById('card-select')) {
-          toggleManualFields(document.getElementById('card-select'));
-        }
-      });
-
-      function toggleManualFields(select) {
-        const disabled = select.value !== "";
-        document.getElementById('cc-name').disabled = disabled;
-        document.getElementById('cc-number').disabled = disabled;
-        document.getElementById('cc-expiration').disabled = disabled;
-        document.getElementById('cc-cvv').disabled = disabled;
-      }
-    </script>
+    
 
   </body>
 
