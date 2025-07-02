@@ -25,7 +25,9 @@ class VAdmin{
     }
 
     public function showCarSuccess(){
-        $this->smarty->display('addCarSuccess.tpl');
+        $this->smarty->assign('title', 'Ottimo!');
+        $this->smarty->assign('para' , "L'auto è stata inserita correttamente.");
+        $this->smarty->display('success.tpl');
     }
 
     public function showCarError(){

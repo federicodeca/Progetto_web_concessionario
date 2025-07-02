@@ -30,7 +30,6 @@
       
     </script>
 
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
     <script src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"></script>
 
   </head>
@@ -66,7 +65,7 @@
               <!-- Spazio riservato al login/user box -->
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
               </li>
 
@@ -74,9 +73,12 @@
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
+              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">Vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
+
 
               {if $isLogged}
 

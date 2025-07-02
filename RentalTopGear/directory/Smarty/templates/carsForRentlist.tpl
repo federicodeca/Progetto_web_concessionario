@@ -30,7 +30,6 @@
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
     </script>
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
 
   </head>
 

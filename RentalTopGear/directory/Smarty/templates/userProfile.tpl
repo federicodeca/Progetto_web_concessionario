@@ -35,8 +35,7 @@
     const username = "{$username|escape:'javascript'|default:''}";
     const permission = "{$permission|escape:'javascript'|default:''}";
   </script>
-
-  <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+  
   <script src="/RentalTopGear/directory/Smarty/js/license-calendar.js"></script>
   <script src="/RentalTopGear/directory/Smarty/js/change-info.js"></script>
 

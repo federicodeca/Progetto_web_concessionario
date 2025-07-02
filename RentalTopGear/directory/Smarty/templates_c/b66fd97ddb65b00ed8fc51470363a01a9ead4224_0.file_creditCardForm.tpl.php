@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-30 12:58:14
+/* Smarty version 5.5.1, created on 2025-07-02 16:54:11
   from 'file:creditCardForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68626dc60ab0e6_48750073',
+  'unifunc' => 'content_68654813abf7d7_73899937',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b66fd97ddb65b00ed8fc51470363a01a9ead4224' => 
     array (
       0 => 'creditCardForm.tpl',
-      1 => 1751194788,
+      1 => 1751465378,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68626dc60ab0e6_48750073 (\Smarty\Template $_smarty_tpl) {
+function content_68654813abf7d7_73899937 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -65,6 +65,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
 >
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/payment-method.js"><?php echo '</script'; ?>
+>
+
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -98,15 +102,55 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-                <li class="nav-item"> <div id="login-box" ></div> </li>
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              <?php } else { ?>
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
+                            </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
+                          </div>
+                        </li>
+              <?php }?>       
+            
             </ul>
           </div>
         </div>
@@ -172,7 +216,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
 
               <hr class="md-6 mb-3">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <button class="btn btn-primary btn-lg btn-block" id="selected-button" type="submit">Continue to checkout</button>
            </div>
             </form>        
         </div>
@@ -334,42 +378,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
 
-    <?php echo '<script'; ?>
->
-      document.addEventListener("DOMContentLoaded", function () {
-        const creditFields = document.getElementById("credit-fields");
-        const paypalFields = document.getElementById("paypal-fields");
-        const paymentMethods = document.querySelectorAll("input[name='paymentMethod']");
-
-        function togglePaymentFields() {
-          const selected = document.querySelector("input[name='paymentMethod']:checked").id;
-          if (selected === "paypal") {
-            creditFields.style.display = "none";
-            paypalFields.style.display = "block";
-          } else {
-            creditFields.style.display = "block";
-            paypalFields.style.display = "none";
-          }
-        }
-
-        paymentMethods.forEach(el => el.addEventListener("change", togglePaymentFields));
-        togglePaymentFields();
-
-        // Controllo iniziale per i campi manuali carta
-        if (document.getElementById('card-select')) {
-          toggleManualFields(document.getElementById('card-select'));
-        }
-      });
-
-      function toggleManualFields(select) {
-        const disabled = select.value !== "";
-        document.getElementById('cc-name').disabled = disabled;
-        document.getElementById('cc-number').disabled = disabled;
-        document.getElementById('cc-expiration').disabled = disabled;
-        document.getElementById('cc-cvv').disabled = disabled;
-      }
-    <?php echo '</script'; ?>
->
+    
 
   </body>
 

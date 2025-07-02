@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-30 18:56:34
+/* Smarty version 5.5.1, created on 2025-07-02 18:33:43
   from 'file:addCarForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6862c1c2b286a4_98148999',
+  'unifunc' => 'content_68655f67696a08_37008729',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bb380ca0f8a72c44fbf15bca09e498df7e60df18' => 
     array (
       0 => 'addCarForm.tpl',
-      1 => 1751301758,
+      1 => 1751474014,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6862c1c2b286a4_98148999 (\Smarty\Template $_smarty_tpl) {
+function content_68655f67696a08_37008729 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">

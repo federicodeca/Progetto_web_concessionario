@@ -200,8 +200,9 @@ class VUser{
     }
 
     public function showLicenseRequest() {
-
-        $this->smarty->display('needLicense.tpl');
+        $this->smarty->assign('title', 'Attenzione!');
+        $this->smarty->assign('para' , "Per procedere con l'acquisto occorre prima inserire una patente.");
+        $this->smarty->display('error.tpl');
     }
 
     public function showUserProfile($user,$license,$infout) {

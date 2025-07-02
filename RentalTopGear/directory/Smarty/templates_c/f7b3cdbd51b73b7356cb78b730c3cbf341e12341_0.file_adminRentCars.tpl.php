@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-30 18:47:50
+/* Smarty version 5.5.1, created on 2025-07-02 18:35:33
   from 'file:adminRentCars.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6862bfb6979c32_68611240',
+  'unifunc' => 'content_68655fd53e6387_58534942',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f7b3cdbd51b73b7356cb78b730c3cbf341e12341' => 
     array (
       0 => 'adminRentCars.tpl',
-      1 => 1751302051,
+      1 => 1751473524,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6862bfb6979c32_68611240 (\Smarty\Template $_smarty_tpl) {
+function content_68655fd53e6387_58534942 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -63,9 +63,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <?php echo '</script'; ?>
 >
 
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"><?php echo '</script'; ?>
 >
@@ -111,11 +108,54 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
+              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">Vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
 
-              <li class="nav-item"> <div id="login-box" ></div> </li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
+
+
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              <?php } else { ?>
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
+                            </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
+                          </div>
+                        </li>
+              <?php }?>          
+            
 
             </ul>
           </div>
@@ -129,7 +169,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       <form  method="post" action="/RentalTopGear/Admin/showUnavailabilities" enctype="multipart/form-data">
         <div class="form-group col-md-12">
           <label for="car">Seleziona auto</label>
-          <select class="form-control form-control-sm mb-5" name="car" id="car">
+          <select class="form-control form-control-sm mb-5" name="idAuto" id="car" required>
             <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cars'), 'car');
 $foreach0DoElse = true;
@@ -137,7 +177,7 @@ foreach ($_from ?? [] as $_smarty_tpl->getVariable('car')->value) {
 $foreach0DoElse = false;
 ?>
               <option value="<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
-"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
+" ><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
  <?php echo $_smarty_tpl->getValue('car')->getModel();?>
  <?php echo $_smarty_tpl->getValue('car')->getDescription();?>
 </option>
@@ -160,6 +200,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 <tr>
                   <th>Inizio</th>
                   <th>Fine</th>
+                  <th>Azioni</th>
                 </tr>
               </thead>
               <tbody>
@@ -174,6 +215,12 @@ $foreach1DoElse = false;
 </td>
                     <td><?php echo $_smarty_tpl->getValue('unavailability')->getEnd()->format("d-m-y");?>
 </td>
+                    <td>
+                      <a href="/RentalTopGear/Admin/deleteUnavailability/<?php echo $_smarty_tpl->getValue('unavailability')->getIdUnav();?>
+" class="btn btn-danger btn-sm">
+                        Elimina
+                      </a>
+                    </td>
                   </tr>
                 <?php
 }
@@ -193,8 +240,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
               <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
             </div>
           </div>
-          <input type="hidden" name="idAuto" value="<?php echo $_smarty_tpl->getValue('selectedCar')->getIdAuto();?>
-">
+         
           <div class="btn btn-primary btn-block mx-auto">
             <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi indisponibilità</button>
           </div>

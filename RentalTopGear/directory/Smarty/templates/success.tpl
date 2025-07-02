@@ -15,39 +15,9 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
-    <style>
-    
-    .congratulation-contents-icon {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        height: 100px;
-        width: 100px;
-        background-color: #40c75b;
-        color: #fff;
-        font-size: 50px;
-        border-radius: 50%;
-        margin-bottom: 30px;
-    }
-    
-    .cmn-btn.btn-bg-1 {
-        background: #5464ce;
-        color: #fff;
-        border: 2px solid transparent;
-        border-radius:3px;
-        text-decoration: none;
-        padding:5px;
-    }
-    </style>
 </head>
 
-<body>
+<body class="success-page">
     <!-- Congratulations area start -->
     <div class="congratulation-area text-center mt-5">
         <div class="container">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-29 12:28:38
+/* Smarty version 5.5.1, created on 2025-07-02 17:01:42
   from 'file:success.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6861155692a3a8_97368535',
+  'unifunc' => 'content_686549d6cf47e5_99892842',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '17d0eed28f1fdeb7631623f863e3ee5ebf02f230' => 
     array (
       0 => 'success.tpl',
-      1 => 1751192071,
+      1 => 1751468018,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6861155692a3a8_97368535 (\Smarty\Template $_smarty_tpl) {
+function content_686549d6cf47e5_99892842 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -39,39 +39,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
-    <style>
-    
-    .congratulation-contents-icon {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        height: 100px;
-        width: 100px;
-        background-color: #40c75b;
-        color: #fff;
-        font-size: 50px;
-        border-radius: 50%;
-        margin-bottom: 30px;
-    }
-    
-    .cmn-btn.btn-bg-1 {
-        background: #5464ce;
-        color: #fff;
-        border: 2px solid transparent;
-        border-radius:3px;
-        text-decoration: none;
-        padding:5px;
-    }
-    </style>
 </head>
 
-<body>
+<body class="success-page">
     <!-- Congratulations area start -->
     <div class="congratulation-area text-center mt-5">
         <div class="container">

@@ -24,15 +24,15 @@
     <!-- Congratulations area start -->
     <div class="congratulation-area text-center mt-5">
         <div class="container">
-            <div class="congratulation-wrapper">
-                <div class="congratulation-contents center-text">
-                    <div class="congratulation-contents-icon">
+            <div class="error-wrapper">
+                <div class="error-contents center-text">
+                    <div class="error-contents-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                         </svg>
                     </div>
-                    <h4 class="congratulation-contents-title">{$title} </h4>
-                    <p class="congratulation-contents-para"> {$para} </p>
+                    <h4 class="error-contents-title">{$title} </h4>
+                    <p class="error-contents-para"> {$para} </p>
                     <div class="btn-wrapper mt-4">
                         <a href="/RentalTopGear/User/home" class="cmn-btn btn-bg-1"> Torna alla Home </a>
                     </div>

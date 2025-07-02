@@ -42,7 +42,6 @@
     const surcharges = {$surcharges|json_encode|raw};
     const basePrice={$basePrice|default:50};
     </script>
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
    
 
   </head>
@@ -82,9 +81,9 @@
                     </a>
                 </li> 
 
-              <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
 
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
@@ -177,8 +176,8 @@
 
                 <div class="col-lg-12" style= "margin-top: 20px">
                     <fieldset>
-                      {if $permission=='admin'}
-                      {else}<button type="submit" id="form-submit"  class="filled-button">Submit</button>
+                      {if $permission=='user'}<button type="submit" id="form-submit"  class="filled-button">Submit</button>
+                      {else}
                       {/if}
                     </fieldset>
 
@@ -192,7 +191,7 @@
           <div class="col-md-4">
               <div class="left-content">
 
-                <p>seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
+                <p>Seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
 
                 <br> 
 

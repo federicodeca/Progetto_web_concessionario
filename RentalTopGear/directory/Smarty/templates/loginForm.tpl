@@ -33,7 +33,6 @@
 
   <body>
 
-   <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -61,9 +60,9 @@
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 

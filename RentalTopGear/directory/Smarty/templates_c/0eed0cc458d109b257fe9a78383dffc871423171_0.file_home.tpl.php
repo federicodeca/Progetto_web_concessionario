@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-01 12:32:39
+/* Smarty version 5.5.1, created on 2025-07-02 18:15:54
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6863b947ef1496_37737492',
+  'unifunc' => 'content_68655b3a8a9f83_93719842',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0eed0cc458d109b257fe9a78383dffc871423171' => 
     array (
       0 => 'home.tpl',
-      1 => 1751365887,
+      1 => 1751472213,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6863b947ef1496_37737492 (\Smarty\Template $_smarty_tpl) {
+function content_68655b3a8a9f83_93719842 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -65,12 +65,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       
     <?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
+
 
   <body>
 
@@ -126,6 +123,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
                       <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
+                      <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
@@ -138,13 +138,18 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                             Login
                           </a>
                           <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
-                            <form id="login-form">
-                              <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
-                              <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
-                              <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
-                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
-                              <div id="login-message" class="text-danger mt-2"></div>
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
                             </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
                           </div>
                         </li>
               <?php }?>          

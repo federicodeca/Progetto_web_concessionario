@@ -30,7 +30,6 @@
       const permission = "{$permission|escape:'javascript'|default:''}";
       
     </script>
-    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -65,15 +64,15 @@
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-               {if $isLogged}
+              {if $isLogged}
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -119,27 +118,6 @@
     </header>
 
     <!-- Page Content -->
- 
-  <!--<div class="call-to-action">
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mt-5">
-            <div class="inner-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-right">
-                  <a href="contact.html" class="filled-button">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     
    <div class="call-to-action">
      
