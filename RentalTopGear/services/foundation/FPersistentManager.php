@@ -81,28 +81,19 @@ class FPersistentManager {
     }
 
 
-    //USER AND ADMIN
+    //LOGIN
     /**
      * return a User finding it not on the id but on it's username
      */
 
-    public static function retriveUserOnUsername($username)
+    public static function retrivePersonOnUsername($username)
     {
-        $result = FUser::getUserByUsername($username);
+        $result = FPerson::getPersonByUsername($username);
 
         return $result;
     }
 
 
-    /**
-     * return a Admin finding it not on the id but on it's username
-     */
-    public static function retriveAdmOnUsername($username)
-    {
-        $result = FAdmin::getAdminByUsername($username);
-
-        return $result;
-    }
 
 
     //CAR

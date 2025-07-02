@@ -3,7 +3,10 @@ require_once __DIR__.'/config/bootstrap.php';
 require_once __DIR__.'/config/autoloader.php';
 require_once __DIR__.'/config/config.php';
 
-$entityManager = FPersistentManager::getInstance()->getEntityManager();
+FEntityManager::getInstance();
+$entityManager = FEntityManager::getEntityManager();
+
+
 
 
 $c1= new EUser('Federico', 'Rossi', 'federico@gmail.com',34334343,'user', 'user', 'London', 12345, '123 Main St');
@@ -22,10 +25,10 @@ $entityManager->persist($c5);
 $entityManager->flush();
 
 
-$e1= new EImage('about1-570x350.jpg', 76218, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/about1-570x350.jpg'));
+$e1= new EImage('about-1-570x350.jpg', 76218, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/about-1-570x350.jpg'));
 $l1= new ELicense(new DateTime('2025-12-31'),$e1, $c1);
 $l1->setChecked(true);
-$e8= new EImage('about2-570x350.jpg', 76218, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/about2-570x350.jpg'));
+$e8= new EImage('about-1-570x350.jpg', 76218, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/about-1-570x350.jpg'));
 $l2= new ELicense(new DateTime('2025-12-31'),$e8, $c2);
 $l2->setChecked(true);
 
@@ -49,43 +52,43 @@ $entityManager->flush();
 
 
 
-$carS1 = new EAuto('Model S', 'Tesla', 'Red', 150, 2500, 5, 'Electric', 100.000, false, 'New');
-$carS2 = new EAuto('Astra', 'Opel', 'Blue', 95, 1600, 5, 'Petrol', 21000, true, 'New');
-$carS3 = new EAuto('Corsa', 'Opel', 'Red', 85, 1400, 5, 'Diesel', 18000, false, 'Km0');
-$carS4 = new EAuto('Crossland', 'Opel', 'White', 90, 1500, 5, 'Petrol', 19500, true, 'New');
-$carS5 = new EAuto('Grandland', 'Opel', 'Grey', 110, 2000, 5, 'Diesel', 27000, false, 'Km0');
-$carS6 = new EAuto('Mokka', 'Opel', 'Black', 100, 1600, 5, 'Petrol', 23000, true, 'New');
-$carS7 = new EAuto('Zafira', 'Opel', 'Silver', 120, 1900, 7, 'Diesel', 25000, true, 'Km0');
-$carS8 = new EAuto('Insignia', 'Opel', 'Blue', 130, 2200, 5, 'Petrol', 30000, true, 'New');
-$carS9 = new EAuto('Combo', 'Opel', 'White', 80, 1400, 5, 'Diesel', 17000, true, 'Km0');
-$carS10 = new EAuto('Model 3', 'Tesla', 'Black', 140, 2200, 5, 'Electric', 85000, true, 'New');
-$carS11= new EAuto('Panda', 'Fiat', 'White', 70, 1000, 5, 'Petrol', 15000, true, 'Km0');
-$carS12 = new EAuto('Corsa', 'Opel', 'Blue', 90, 1400, 5, 'Diesel', 18000, false, 'Km0');
-$carS13 = new EAuto('Tucson', 'Hyundai', 'Silver', 110, 1800, 5, 'Diesel', 25000, true, 'New');
-$carS14 = new EAuto('Astra', 'Opel', 'Red', 95, 1500, 5, 'Petrol', 20000, true, 'Km0');
-$carS15 = new EAuto('Santa Fe', 'Hyundai', 'Black', 130, 2000, 7, 'Diesel', 30000, true, 'New');
-$carS16 = new EAuto('500', 'Fiat', 'Yellow', 80, 1100, 4, 'Petrol', 17000, false, 'Km0');
-$carS17 = new EAuto('i30', 'Hyundai', 'White', 100, 1600, 5, 'Petrol', 22000, true, 'New');
+$carS1 = new ECarForSale('Model S', 'Tesla', 'Red', 150, 2500, 5, 'Electric', 100.000, false, 'New');
+$carS2 = new ECarForSale('Astra', 'Opel', 'Blue', 95, 1600, 5, 'Petrol', 21000, true, 'New');
+$carS3 = new ECarForSale('Corsa', 'Opel', 'Red', 85, 1400, 5, 'Diesel', 18000, false, 'Km0');
+$carS4 = new ECarForSale('Crossland', 'Opel', 'White', 90, 1500, 5, 'Petrol', 19500, true, 'New');
+$carS5 = new ECarForSale('Grandland', 'Opel', 'Grey', 110, 2000, 5, 'Diesel', 27000, false, 'Km0');
+$carS6 = new ECarForSale('Mokka', 'Opel', 'Black', 100, 1600, 5, 'Petrol', 23000, true, 'New');
+$carS7 = new ECarForSale('Zafira', 'Opel', 'Silver', 120, 1900, 7, 'Diesel', 25000, true, 'Km0');
+$carS8 = new ECarForSale('Insignia', 'Opel', 'Blue', 130, 2200, 5, 'Petrol', 30000, true, 'New');
+$carS9 = new ECarForSale('Combo', 'Opel', 'White', 80, 1400, 5, 'Diesel', 17000, true, 'Km0');
+$carS10 = new ECarForSale('Model 3', 'Tesla', 'Black', 140, 2200, 5, 'Electric', 85000, true, 'New');
+$carS11= new ECarForSale('Panda', 'Fiat', 'White', 70, 1000, 5, 'Petrol', 15000, true, 'Km0');
+$carS12 = new ECarForSale('Corsa', 'Opel', 'Blue', 90, 1400, 5, 'Diesel', 18000, false, 'Km0');
+$carS13 = new ECarForSale('Tucson', 'Hyundai', 'Silver', 110, 1800, 5, 'Diesel', 25000, true, 'New');
+$carS14 = new ECarForSale('Astra', 'Opel', 'Red', 95, 1500, 5, 'Petrol', 20000, true, 'Km0');
+$carS15 = new ECarForSale('Santa Fe', 'Hyundai', 'Black', 130, 2000, 7, 'Diesel', 30000, true, 'New');
+$carS16 = new ECarForSale('500', 'Fiat', 'Yellow', 80, 1100, 4, 'Petrol', 17000, false, 'Km0');
+$carS17 = new ECarForSale('i30', 'Hyundai', 'White', 100, 1600, 5, 'Petrol', 22000, true, 'New');
 
 
-$carR18= new EAuto( 'Panda','Fiat', 'Blue',  70, 1000, 5,  'Petrol', 50, 'id=23e3d');
+$carR18= new ECarForRent( 'Panda','Fiat', 'Blue',  70, 1000, 5,  'Petrol', 50, 'id=23e3d');
 
-$carR19 = new EAuto('500', 'Fiat', 'Red', 85, 1200, 4, 'Petrol', 60, 'id=243ff');
-$carR20 = new EAuto('Punto', 'Fiat', 'White', 65, 1100, 5, 'Diesel', 55, 'id=33hdh');
-$carR21 = new EAuto('Astra', 'Opel', 'Black', 90, 1400, 5, 'Petrol', 65, 'id=44jdh');
-$carR22 = new EAuto('Corsa', 'Opel', 'Grey', 75, 1300, 4, 'Diesel', 58, 'id=55kdh');
-$carR23 = new EAuto('Tigra', 'Opel', 'Blue', 80, 1350, 4, 'Petrol', 62, 'id=66ldh');
-$carR24 = new EAuto('i30', 'Hyundai', 'Silver', 95, 1500, 5, 'Petrol', 70, 'id=77mdh');
-$carR25 = new EAuto('Tucson', 'Hyundai', 'White', 110, 1800, 5, 'Diesel', 75, 'id=88ndh');
-$carR26 = new EAuto('Santa Fe', 'Hyundai', 'Black', 130, 2000, 7, 'Diesel', 80, 'id=99odh');
+$carR19 = new ECarForRent('500', 'Fiat', 'Red', 85, 1200, 4, 'Petrol', 60, 'id=243ff');
+$carR20 = new ECarForRent('Punto', 'Fiat', 'White', 65, 1100, 5, 'Diesel', 55, 'id=33hdh');
+$carR21 = new ECarForRent('Astra', 'Opel', 'Black', 90, 1400, 5, 'Petrol', 65, 'id=44jdh');
+$carR22 = new ECarForRent('Corsa', 'Opel', 'Grey', 75, 1300, 4, 'Diesel', 58, 'id=55kdh');
+$carR23 = new ECarForRent('Tigra', 'Opel', 'Blue', 80, 1350, 4, 'Petrol', 62, 'id=66ldh');
+$carR24 = new ECarForRent('i30', 'Hyundai', 'Silver', 95, 1500, 5, 'Petrol', 70, 'id=77mdh');
+$carR25 = new ECarForRent('Tucson', 'Hyundai', 'White', 110, 1800, 5, 'Diesel', 75, 'id=88ndh');
+$carR26 = new ECarForRent('Santa Fe', 'Hyundai', 'Black', 130, 2000, 7, 'Diesel', 80, 'id=99odh');
 
 
 $e2= new EImage('offer-4-370x270.jpg', 43553, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/offer-4-370x270.jpg'));
-$e2->setCar($carS1);
+$e2->setCar($carS2);
 $e3= new EImage('product-4-370x270.jpg', 38554, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/product-4-370x270.jpg'));
-$e3->setCar($carS1);
+$e3->setCar($carS2);
 $e5= new EImage('offer-2-370x270.jpg', 61873, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/offer-2-370x270.jpg'));
-$e5->setCar($carS1);
+$e5->setCar($carS2);
 $e4= new EImage('product-5-370x270.jpg',44101, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/product-5-370x270.jpg'));
 $e4->setCar($carR18);
 $e6= new EImage('offer-3-370x270.jpg', 51234, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/offer-3-370x270.jpg'));
@@ -147,7 +150,7 @@ $entityManager->persist($un5);
 $entityManager->flush();    
 $sur=new ESurcharge(new DateTime('2025-10-01'), new DateTime('2025-10-10'), 100.0, $carR18);
 $sur2=new ESurcharge(new DateTime('2025-11-01'), new DateTime('2025-11-05'), 40.0, $carR18);
-$sur3=new ESurcharge(new DateTime('2025-07-028'), new DateTime('2025-07-30'), 80.0, $carR18);
+$sur3=new ESurcharge(new DateTime('2025-07-28'), new DateTime('2025-07-30'), 80.0, $carR18);
 $sur4=new ESurcharge(new DateTime('2025-08-01'), new DateTime('2025-08-15'), 20.0, $carR18);
 
 
@@ -191,6 +194,11 @@ $entityManager->flush();
 
 
 
-
+$entityManager->persist($c1);
+$entityManager->persist($c2);
+$entityManager->persist($c3);
+$entityManager->persist($c4);
+$entityManager->persist($c5);       
+$entityManager->flush();
 
 

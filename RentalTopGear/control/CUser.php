@@ -397,7 +397,7 @@ class CUser {
         $redirect= UHTTPMethods::post('actualMethod');
         $user=UHTTPMethods::post('username');
         $password=UHTTPMethods::post('password');
-        $user = FPersistentManager::getInstance()->retriveUserOnUsername($user);
+        $user = FPersistentManager::getInstance()->retrivePersonOnUsername($user);
 
         if($user && password_verify($password, $user->getPassword())) {
 

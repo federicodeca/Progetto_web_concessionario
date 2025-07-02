@@ -9,8 +9,7 @@ class FEntityManager {
 
 
     private function __construct() {
-        global $entityManager;
-        self::$entityManager = $entityManager;
+        self::$entityManager = getEntityManager();
     }
 
     //singleton
