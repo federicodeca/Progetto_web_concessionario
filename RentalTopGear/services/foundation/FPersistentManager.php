@@ -92,6 +92,13 @@ class FPersistentManager {
 
         return $result;
     }
+    
+    public static function retriveUserOnUsername($username)
+    {
+        $result = FUser::retriveUserOnUsername($username);
+
+        return $result;
+    }
 
 
 
@@ -170,19 +177,19 @@ class FPersistentManager {
     
 
     /**  
-    * verify if the username is already used by another user
+    * verify if the username is already used by another person
     */
-    public static function verifyUserUsername($username){
+    public static function verifyPersonUsername($username){
         $result = FPerson::verify('username', $username);
 
         return $result;
     }
 
     /**
-     * verify if the email is already used by another user
+     * verify if the username is already used by another user
      */
-    public static function verifyUserEmail($email){
-        $result = FPerson::verify('email', $email);
+    public static function verifyUserUsername($username){
+        $result = FUser::verify('username', $username);
 
         return $result;
     }

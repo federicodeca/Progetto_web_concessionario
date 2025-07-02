@@ -161,10 +161,15 @@ $entityManager->persist($sur4);
 $entityManager->flush();
 
 $R1 = new ERent(new DateTime('2025-03-01'),$cr1,$c1, $un1, $carR18);
+$R1->setTotalPrice(1500.0);
 $R2 = new ERent(new DateTime('2025-04-01'),$cr2,$c1, $un2, $carR18);
+$R2->setTotalPrice(450.0);
 $R3 = new ERent(new DateTime('2025-04-04'),$cr1,$c2, $un3, $carR18);
+$R3->setTotalPrice(600.0);
 $R4 = new ERent(new DateTime('2025-04-07'),$cr1,$c2, $un4, $carR18);
-$R5 = new ERent(new DateTime('2025-05-10'),$cr2,$c2, $un5, $carR18);
+$R4->setTotalPrice(300.0);
+$R5 = new ERent(new DateTime('2025-05-10'),$cr2,$c2, $un5, $carR18);    
+$R5->setTotalPrice(400.0);
 
 $entityManager->persist($cr1);
 $entityManager->persist($cr2);      
@@ -194,11 +199,6 @@ $entityManager->flush();
 
 
 
-$entityManager->persist($c1);
-$entityManager->persist($c2);
-$entityManager->persist($c3);
-$entityManager->persist($c4);
-$entityManager->persist($c5);       
-$entityManager->flush();
+
 
 
