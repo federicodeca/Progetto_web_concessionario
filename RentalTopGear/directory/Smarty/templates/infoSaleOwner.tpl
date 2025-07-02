@@ -152,13 +152,13 @@
                 <div class="col-md-12">
                   <div class="section-heading">
                     <h2>Statistiche Vendite</h2>
-                    <span>seleziona mese e anno</span>
+                    
                     <div class="row">
                       <form method="post" action="/RentalTopGear/Owner/getNumberOfSalePerPeriod" class="w-50">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="month">Mese:</label>
-                                <input type="number" class="form-control" id="year" name="year" min="" max="" required regular="/^\d{4}$/" placeholder="2000" >                                                                 
+                                <label for="month">Inserire anno:</label>
+                                <input type="text" class="form-control w-25" name="year" pattern="^\d&#123;4&#125;$" placeholder="2000" required>
                             </div>
                         </div>
                         <div class="col-md-12 mt-2">

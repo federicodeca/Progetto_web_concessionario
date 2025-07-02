@@ -155,11 +155,11 @@
                     <h2>Statistiche Noleggi</h2>
                     <span>seleziona mese e anno</span>
                     <div class="row">
-                      <form method="post" action="/RentalTopGear/Owner/getRentStatsForPeriod" class="w-100">
-                        <div class="col-md-6">
+                      <form method="post" action="/RentalTopGear/Owner/getRentStatsForPeriod" >
+                        <div class="col-md-12">
                           <div class="form-group">
                             <label for="bdaymonth">Periodo</label>
-                            <input type="month" id="month" name="period" class="form-control" required>
+                            <input type="month" id="month" name="period" class="form-control w-100" required>
                           </div>
                         </div>
                         <div class="col-md-12 mt-2">

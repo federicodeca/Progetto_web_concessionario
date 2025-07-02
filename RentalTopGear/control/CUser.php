@@ -534,7 +534,7 @@ class CUser {
             $price = USession::getElementFromSession('price');}
 
         $offset = ($currentPage - 1) * $carsPerPage;
-            echo "DEBUG: Current page = $currentPage, offset = $offset,$brand  $model  $price ";
+          
 
         
         $filteredCars = FPersistentManager::getInstance()->searchCarsForSale($brand, $model, $price, $offset, $carsPerPage);

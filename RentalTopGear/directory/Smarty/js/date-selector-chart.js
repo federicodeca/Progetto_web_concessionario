@@ -36,7 +36,7 @@ const scatterConfig = {
         title: {
             display: true,
             text: 'Data',
-        
+            color: '#000',  
         }
         },
         y: {

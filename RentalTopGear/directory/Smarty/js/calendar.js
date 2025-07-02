@@ -1,7 +1,10 @@
-$(document).ready(function() {
+// This script manages the date range selection and pricing logic for a rental car 
 
 
-  $('#date-range').daterangepicker({
+$(document).ready(function() { // Assicurati che il DOM sia pronto prima di eseguire il codice
+
+
+  $('#date-range').daterangepicker({   // Inizializza il date range picker
     locale: { format: 'YYYY-MM-DD' },
     minDate: moment().startOf('day'),
     

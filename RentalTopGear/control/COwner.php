@@ -68,6 +68,8 @@ class COwner {
     $rentOrders = FPersistentManager::getInstance()->getRentOrders(ERent::class);
 
 
+
+
     $rentTotalPerDay = [];
     foreach ($rentOrders as $order) {
         $date = $order->getOrderDate()->format('Y-m-d');
@@ -78,8 +80,18 @@ class COwner {
         
     }
 
+    $saleTotalPerDay = [];  
+    foreach ($saleOrders as $order) {
+        $date = $order->getOrderDate()->format('Y-m-d');
+        if (!isset($saleTotalPerDay[$date])) {
+            $saleTotalPerDay[$date] = 0;
+        }
+        $saleTotalPerDay[$date] += $order->getPrice();
+        
+    }
+
     $view = new VOwner();
-    $view->showOwnerHome($saleOrders, $rentOrders,$rentTotalPerDay,$infout);
+    $view->showOwnerHome($saleOrders, $rentOrders,$rentTotalPerDay,$saleTotalPerDay,$infout);
 
     }
 
