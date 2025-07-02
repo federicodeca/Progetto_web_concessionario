@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:53:12
+/* Smarty version 5.5.1, created on 2025-07-02 19:06:42
   from 'file:dateSelector.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686563f8d08d63_94689597',
+  'unifunc' => 'content_68656722108669_78129572',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e1f2245f795d6c2ccbfbf512743a7a2749c72ad' => 
     array (
       0 => 'dateSelector.tpl',
-      1 => 1751475178,
+      1 => 1751475929,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686563f8d08d63_94689597 (\Smarty\Template $_smarty_tpl) {
+function content_68656722108669_78129572 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -66,16 +66,27 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-      
     <?php echo '</script'; ?>
 >
 
+    <!-- dati per il grafico -->
+    <?php echo '<script'; ?>
+>
+      const rentTotalPerDay = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('rentTotalPerDay')) ?? null)===null||$tmp==='' ? '{}' ?? null : $tmp);?>
+;
+
+    <?php echo '</script'; ?>
+>
+   
 
   </head>
 
 <body>
       <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/date-selector-chart.js"><?php echo '</script'; ?>
 >
     
 
@@ -109,12 +120,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">Clienti</a></li>
 
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
 
 
 
@@ -174,7 +185,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
         
     <div class="services">
-        <div class="container">
+        <div class="container " style="max-height: auto;">
             <div class="row">
 
                 
@@ -205,8 +216,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
         
                 <div class="col-12 tm-block-col my-4 text-center">
        
-                    <h2 class="tm-block-title">Noleggi </h2>
-                    <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('rentTotalPerDay')) > 0) {?>        
+                    <h2 class="tm-block-title my-5">Noleggi </h2>
+
+                    <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('rentTotalPerDay')) > 0) {?>      
+    
+                    <div class="row">
+                        <div class="col-md-12">
                         <canvas id="rentScatterChart" class="graphic-custom"></canvas>
                     <?php } else { ?>
                         <div class="alert alert-warning" role="alert">

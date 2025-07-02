@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:52:44
+/* Smarty version 5.5.1, created on 2025-07-02 19:06:38
   from 'file:infoSaleOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686563dc4349b9_42135143',
+  'unifunc' => 'content_6865671e855715_38956677',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '702929d86e2668aa98b2dcb37ac515ccb779d515' => 
     array (
       0 => 'infoSaleOwner.tpl',
-      1 => 1751475161,
+      1 => 1751475929,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686563dc4349b9_42135143 (\Smarty\Template $_smarty_tpl) {
+function content_6865671e855715_38956677 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -67,14 +67,23 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
       
-    <?php echo '</script'; ?>
+
+      const salesPerMonth =<?php echo (($tmp = json_encode($_smarty_tpl->getValue('salesPerMonth')) ?? null)===null||$tmp==='' ? '[]' ?? null : $tmp);?>
+;
+       <?php echo '</script'; ?>
 >
+
+   
+
 
   </head>
 
 <body>
       <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/sale-chart.js"><?php echo '</script'; ?>
 >
     
 
@@ -108,12 +117,12 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">Clienti</a></li>
 
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
 
 
 
@@ -204,9 +213,19 @@ $/" placeholder="2000" >
           </div>
         
                 <div class="col-12 my-4 text-center">
-                  
+                    <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('salesPerMonth')) > 0) {?>
+                     
                     <h2 class="tm-block-title" style="padding:10px;">Numero Vendite </h2>
-                    <canvas id="saleChart" class="graphic-custom" ></canvas>
+                    <canvas id="saleChart" class="graphic-custom-big" ></canvas>
+                     
+                      <?php } else { ?>
+                        <div class="alert alert-warning" role="alert">
+                          Nessun dato disponibile per il periodo selezionato.
+                        </div>
+                      <?php }?>
+
+
+                 
                   </div>
                 </div>
            
@@ -267,76 +286,8 @@ $/" placeholder="2000" >
  src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"><?php echo '</script'; ?>
 >
     
-<?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('salesPerMonth')) > 0) {
-echo '<script'; ?>
->
-  // Labels = nomi mesi
-  const labels = [
-    <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('salesPerMonth'), 'value', false, 'month');
-$foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('month')->value => $_smarty_tpl->getVariable('value')->value) {
-$foreach0DoElse = false;
-?>"<?php echo $_smarty_tpl->getValue('month');?>
-"<?php if (!($_smarty_tpl->getValue('__smarty_foreach_month')['last'] ?? null)) {?>,<?php }
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-  ];
 
-  // Dati numerici
-  const dataValues = [
-    <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('salesPerMonth'), 'value', false, 'month');
-$foreach1DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('month')->value => $_smarty_tpl->getVariable('value')->value) {
-$foreach1DoElse = false;
-echo $_smarty_tpl->getValue('value');
-if (!($_smarty_tpl->getValue('__smarty_foreach_month')['last'] ?? null)) {?>,<?php }
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-  ];
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      data: dataValues,
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)',
-        'rgba(255, 159, 64, 0.7)',
-        // aggiungi altri colori se servono
-      ],
-      hoverOffset: 4
-    }]
-  };
-
-  const config = {
-    type: 'doughnut',
-    data: data,
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { position: 'top' },
-        title: {
-          display: true,
-          text: 'Vendite per mese'
-        }
-      }
-    }
-  };
-
-  const ctx = document.getElementById('saleChart').getContext('2d');
-  new Chart(ctx, config);
-<?php echo '</script'; ?>
->
-<?php } else { ?>
-  <div class="alert alert-warning" role="alert">
-    Nessun dato disponibile per il periodo selezionato.
-  </div>
-<?php }?>
 
 
 
