@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-01 12:39:02
+/* Smarty version 5.5.1, created on 2025-07-02 22:05:22
   from 'file:userProfile.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6863bac685cff6_28658950',
+  'unifunc' => 'content_68659102bd8381_81153156',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ba2dd4a11d99fe2968f40a470b2388733af7b76' => 
     array (
       0 => 'userProfile.tpl',
-      1 => 1751366307,
+      1 => 1751473089,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6863bac685cff6_28658950 (\Smarty\Template $_smarty_tpl) {
+function content_68659102bd8381_81153156 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -74,10 +74,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 ";
   <?php echo '</script'; ?>
 >
-
-  <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
+  
   <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
 >
@@ -88,12 +85,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
-
- <?php if ($_smarty_tpl->getValue('user')->verifyPassword('pippo')) {?>
-  <p>Password corretta</p>
-<?php } else { ?>
-  <p>Password errata</p>
-<?php }?>
 
   <body>
 
@@ -155,14 +146,19 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
-                            <form id="login-form">
-                              <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
-                              <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
-                              <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
-                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
-                              <div id="login-message" class="text-danger mt-2"></div>
+                            <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
                             </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
                           </div>
                         </li>
               <?php }?>          
@@ -216,7 +212,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                    </div>
                 </div>
                  <div class="col-md-4 text-md-right">
-                  <button class="btn btn-primary" style="color: aliceblue;" onclick="submit">Change</button>
+                  <button class="btn btn-primary" style="color: aliceblue;" onclick="submit">Cambia Email</button>
                  </div> 
                 </div>
               </div>
@@ -227,7 +223,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
               <h4 class="mb-3 ml-3" style="color:white">Cognome: <?php echo $_smarty_tpl->getValue('user')->getLastname();?>
 </h4>
               <h4 class="mb-3 ml-3" style="color:white">Patente: <?php if ($_smarty_tpl->getValue('user')->getIsVerified()) {?>inserita<?php } else { ?>non inserita<?php }?></h4>
-              <h4 class="mb-3 ml-3" style="color:white">Numero telefono: <?php echo $_smarty_tpl->getValue('user')->getPhone();?>
+              <h4 class="mb-3 ml-3" style="color:white">Telefono: <?php echo $_smarty_tpl->getValue('user')->getPhone();?>
 </h4>
               <h4 class="mb-3 ml-3" style="color:white">Indirizzo: <?php echo $_smarty_tpl->getValue('user')->getAddress();?>
 </h4>

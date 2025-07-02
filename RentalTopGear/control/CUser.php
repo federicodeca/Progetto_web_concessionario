@@ -540,9 +540,7 @@ class CUser {
         $filteredCars = FPersistentManager::getInstance()->searchCarsForSale($brand, $model, $price, $offset, $carsPerPage);
         
         $filteredCarsNumber = FPersistentManager::getInstance()->countSearchedCars($brand, $model,$price);
-        var_dump($filteredCarsNumber);
         $totalPages = intval(ceil($filteredCarsNumber / $carsPerPage));
-        var_dump($totalPages);
 
         $infout = CUser::getUserStatus();
         $view = new VUser();

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 19:06:38
+/* Smarty version 5.5.1, created on 2025-07-02 22:32:50
   from 'file:infoSaleOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6865671e855715_38956677',
+  'unifunc' => 'content_68659772ad0fd8_07680758',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '702929d86e2668aa98b2dcb37ac515ccb779d515' => 
     array (
       0 => 'infoSaleOwner.tpl',
-      1 => 1751475929,
+      1 => 1751478980,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6865671e855715_38956677 (\Smarty\Template $_smarty_tpl) {
+function content_68659772ad0fd8_07680758 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -192,14 +192,13 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <div class="col-md-12">
                   <div class="section-heading">
                     <h2>Statistiche Vendite</h2>
-                    <span>seleziona mese e anno</span>
+                    
                     <div class="row">
                       <form method="post" action="/RentalTopGear/Owner/getNumberOfSalePerPeriod" class="w-50">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="month">Mese:</label>
-                                <input type="number" class="form-control" id="year" name="year" min="" max="" required regular="/^\d<?php echo 4;?>
-$/" placeholder="2000" >                                                                 
+                                <label for="month">Inserire anno:</label>
+                                <input type="text" class="form-control w-25" name="year" pattern="^\d&#123;4&#125;$" placeholder="2000" required>
                             </div>
                         </div>
                         <div class="col-md-12 mt-2">

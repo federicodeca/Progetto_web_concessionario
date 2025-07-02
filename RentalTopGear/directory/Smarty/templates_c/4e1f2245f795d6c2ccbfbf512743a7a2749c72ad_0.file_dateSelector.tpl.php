@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 19:06:42
+/* Smarty version 5.5.1, created on 2025-07-02 22:33:00
   from 'file:dateSelector.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68656722108669_78129572',
+  'unifunc' => 'content_6865977cf160f9_19440586',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e1f2245f795d6c2ccbfbf512743a7a2749c72ad' => 
     array (
       0 => 'dateSelector.tpl',
-      1 => 1751475929,
+      1 => 1751478980,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68656722108669_78129572 (\Smarty\Template $_smarty_tpl) {
+function content_6865977cf160f9_19440586 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -197,11 +197,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     <h2>Statistiche Noleggi</h2>
                     <span>seleziona mese e anno</span>
                     <div class="row">
-                      <form method="post" action="/RentalTopGear/Owner/getRentStatsForPeriod" class="w-100">
-                        <div class="col-md-6">
+                      <form method="post" action="/RentalTopGear/Owner/getRentStatsForPeriod" >
+                        <div class="col-md-12">
                           <div class="form-group">
                             <label for="bdaymonth">Periodo</label>
-                            <input type="month" id="month" name="period" class="form-control" required>
+                            <input type="month" id="month" name="period" class="form-control w-100" required>
                           </div>
                         </div>
                         <div class="col-md-12 mt-2">

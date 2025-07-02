@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:46:52
+/* Smarty version 5.5.1, created on 2025-07-02 22:55:54
   from 'file:carDetailsSale.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6865627ca41be4_02301158',
+  'unifunc' => 'content_68659cdaad0d28_73928867',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8ff8b2f3a70bd24559649575d8f540c93b2f982' => 
     array (
       0 => 'carDetailsSale.tpl',
-      1 => 1751473374,
+      1 => 1751489725,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6865627ca41be4_02301158 (\Smarty\Template $_smarty_tpl) {
+function content_68659cdaad0d28_73928867 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 
@@ -334,7 +334,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 
                 <br>
 
-                <h5><i class="fa-solid fa-wheelchair mr-2"></i>Numero Posti: <?php echo $_smarty_tpl->getValue('car')->getSeats();?>
+                <h5><i class="fa-solid fa-user mr-2"></i>Numero Posti: <?php echo $_smarty_tpl->getValue('car')->getSeats();?>
 </h5>
 
                 <br>

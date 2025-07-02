@@ -248,7 +248,7 @@
                 
                 <br>
 
-                <h5><i class="fa-solid fa-wheelchair mr-2"></i>Numero Posti: {$car->getSeats()}</h5>
+                <h5><i class="fa-solid fa-user mr-2"></i>Numero Posti: {$car->getSeats()}</h5>
 
                 <br>
                 

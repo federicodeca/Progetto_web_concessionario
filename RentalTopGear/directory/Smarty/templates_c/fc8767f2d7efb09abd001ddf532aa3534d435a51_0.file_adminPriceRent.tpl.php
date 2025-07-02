@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:24:46
+/* Smarty version 5.5.1, created on 2025-07-02 22:36:37
   from 'file:adminPriceRent.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68655d4e129f76_84699103',
+  'unifunc' => 'content_686598558cc5f9_56547391',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fc8767f2d7efb09abd001ddf532aa3534d435a51' => 
     array (
       0 => 'adminPriceRent.tpl',
-      1 => 1751473453,
+      1 => 1751474185,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68655d4e129f76_84699103 (\Smarty\Template $_smarty_tpl) {
+function content_686598558cc5f9_56547391 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -100,7 +100,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
               <!-- Spazio riservato al login/user box -->  
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
               </li>
 
@@ -112,7 +112,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 

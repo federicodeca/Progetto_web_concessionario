@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 19:06:04
+/* Smarty version 5.5.1, created on 2025-07-02 22:30:04
   from 'file:homeOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686566fc8e3fb3_08846455',
+  'unifunc' => 'content_686596cceed3a5_61268608',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '804004ec4119f6032b65ece78419f841f4788a75' => 
     array (
       0 => 'homeOwner.tpl',
-      1 => 1751475284,
+      1 => 1751478980,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686566fc8e3fb3_08846455 (\Smarty\Template $_smarty_tpl) {
+function content_686596cceed3a5_61268608 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -64,6 +64,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
+
+      const rentPerDay=<?php echo (($tmp = json_encode($_smarty_tpl->getValue('rentPerDay')) ?? null)===null||$tmp==='' ? '[]' ?? null : $tmp);?>
+;
+      const salePerDay=<?php echo (($tmp = json_encode($_smarty_tpl->getValue('salePerDay')) ?? null)===null||$tmp==='' ? '[]' ?? null : $tmp);?>
+;
       
     <?php echo '</script'; ?>
 >
@@ -72,6 +77,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 <body>
     <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/home-chart.js"><?php echo '</script'; ?>
 >
 
 
@@ -165,16 +173,17 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     
 
 
+  
         
     <div class="services">
         <div class="container">
-            <div class="row">
+            <div class="row my-5">
                 
    
             <!-- row -->
           
                 <!--- Lista degli ordini -->
-                <div class="col-12 tm-block-col">
+                <div class="col-12 tm-block-col my-4">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" style="height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
                         <h2 class="tm-block-title">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
@@ -202,14 +211,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                                 <!--- Lista auto vendita -->
                                 <?php $_smarty_tpl->assign('total', 0, false, NULL);?>
                                 <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale', true);
-$_smarty_tpl->getVariable('sale')->iteration = 0;
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('sale')->value) {
 $foreach0DoElse = false;
-$_smarty_tpl->getVariable('sale')->iteration++;
-$_smarty_tpl->getVariable('sale')->last = $_smarty_tpl->getVariable('sale')->iteration === $_smarty_tpl->getVariable('sale')->total;
-$foreach0Backup = clone $_smarty_tpl->getVariable('sale');
 ?>
                                     <tr>
                                         <td><?php echo $_smarty_tpl->getValue('sale')->getOrderId();?>
@@ -229,7 +234,6 @@ $foreach0Backup = clone $_smarty_tpl->getVariable('sale');
                                         <?php $_smarty_tpl->assign('total', $_smarty_tpl->getValue('total')+$_smarty_tpl->getValue('sale')->getPrice(), false, NULL);?>
                                     </tr>
                                 <?php
-$_smarty_tpl->setVariable('sale', $foreach0Backup);
 }
 $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?> 
                                 </tbody>
@@ -238,7 +242,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 </div>
         
             
-                <div class="col-sm-12 col-md-12">
+                <div class="col-sm-12 col-md-12 my-4">
                     <div class="tm-bg-primary-dark tm-block">
                         <h2 class="tm-block-title">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
@@ -251,7 +255,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                     </div>
                 </div>
                 <!-- Scatter chart Vendite (Data vs Prezzo) -->
-                <div class="col-12 tm-block-col my-4">
+                <div class="col-12 tm-block-col mb-5">
                   <div class="tm-bg-primary-dark tm-block">
                     <h2 class="tm-block-title">Vendite </h2>
                     <canvas id="salesScatterChart" class="graphic-custom"></canvas>
@@ -263,7 +267,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
             
         <div class="container">
             <div class="row ">
-                <div class="col-12 tm-block-col">    
+                <div class="col-12 tm-block-col" >    
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" style="height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
                         <h2 class="tm-block-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
@@ -319,7 +323,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                 </div>
   
         
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                <div class="col-sm-12 col-md-12 my-4">
                     <div class="tm-bg-primary-dark tm-block">
                         <h2 class="tm-block-title">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
@@ -388,151 +392,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
  src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"><?php echo '</script'; ?>
 >
     
-    <?php echo '<script'; ?>
->
-      const scatterData = {
-        datasets: [{
-          label: 'Prezzo Vendita',
-          data: [
-            <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale', true);
-$_smarty_tpl->getVariable('sale')->iteration = 0;
-$foreach2DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('sale')->value) {
-$foreach2DoElse = false;
-$_smarty_tpl->getVariable('sale')->iteration++;
-$_smarty_tpl->getVariable('sale')->last = $_smarty_tpl->getVariable('sale')->iteration === $_smarty_tpl->getVariable('sale')->total;
-$foreach2Backup = clone $_smarty_tpl->getVariable('sale');
-?>
-              {
-                x: "<?php echo $_smarty_tpl->getValue('sale')->getOrderDate()->format('Y-m-d');?>
-",
-                y: <?php echo $_smarty_tpl->getValue('sale')->getPrice();?>
-
-              }<?php if (!$_smarty_tpl->getVariable('sale')->last) {?>,<?php }?>
-            <?php
-$_smarty_tpl->setVariable('sale', $foreach2Backup);
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-          ],
-          backgroundColor: 'rgba(54, 162, 235, 0.7)'
-        }]
-      };
-
-      const scatterConfig = {
-        color: 'rgb(255, 99, 132)',
-        type: 'scatter',
-        data: scatterData,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { position: 'top' },
-            title: {
-              display: true,
-              text: 'Prezzi delle vendite nel tempo'
-            }
-          },
-          scales: {
-            x: {
-              type: 'time',
-              time: {
-                unit: 'day',
-                tooltipFormat: 'YYYY-MM-DD',
-                displayFormats: { day: 'YYYY-MM-DD' }
-              },
-              title: {
-                display: true,
-                text: 'Data'
-              }
-            },
-            y: {
-              title: {
-                display: true,
-                text: 'Prezzo (€)'
-              }
-            }
-          }
-        }
-      };
-
-      new Chart(
-        document.getElementById('salesScatterChart').getContext('2d'),
-        scatterConfig
-      );
-    <?php echo '</script'; ?>
->
-
-    <?php echo '<script'; ?>
->
-      const scatterData2 = {
-        datasets: [{
-            
-          label: 'Prezzo Noleggio',
-          data: [
-            <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentMedium'), 'price', false, 'day');
-$foreach3DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('day')->value => $_smarty_tpl->getVariable('price')->value) {
-$foreach3DoElse = false;
-?>
-              {
-                x: "<?php echo $_smarty_tpl->getValue('day');?>
-",
-                y: <?php echo $_smarty_tpl->getValue('price');?>
-
-              }<?php if (!$_smarty_tpl->getVariable('rentMedium')->last) {?>,<?php }?>
-            <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-          ],
-          backgroundColor: 'rgba(255, 99, 132, 0.7)'
-        }]
-      };
-
-      const scatterConfig2 = {
-        type: 'line',
-        data: scatterData2,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { position: 'top' },
-            title: {
-              display: true,
-              text: 'Prezzi dei noleggi nel tempo'
-            }
-          },
-          scales: {
-            x: {
-              type: 'time',
-              time: {
-                unit: 'day',
-                tooltipFormat: 'YYYY-MM-DD',
-                displayFormats: { day: 'YYYY-MM-DD' }
-              },
-              title: {
-                display: true,
-                text: 'Data'
-              }
-            },
-            y: {
-              title: {
-                display: true,
-                text: 'Prezzo (€)'
-              }
-            }
-          }
-        }
-      };
-
-      new Chart(
-        document.getElementById('rentScatterChart').getContext('2d'),
-        scatterConfig2
-      );
-    <?php echo '</script'; ?>
->
-
-
-
+   
 
     <!-- Bootstrap core JavaScript -->
     <?php echo '<script'; ?>

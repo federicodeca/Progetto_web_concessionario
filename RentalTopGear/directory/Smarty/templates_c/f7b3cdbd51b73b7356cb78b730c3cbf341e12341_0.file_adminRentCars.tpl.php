@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:35:33
+/* Smarty version 5.5.1, created on 2025-07-02 22:35:19
   from 'file:adminRentCars.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68655fd53e6387_58534942',
+  'unifunc' => 'content_686598072f4a54_73347163',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f7b3cdbd51b73b7356cb78b730c3cbf341e12341' => 
     array (
       0 => 'adminRentCars.tpl',
-      1 => 1751473524,
+      1 => 1751474203,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68655fd53e6387_58534942 (\Smarty\Template $_smarty_tpl) {
+function content_686598072f4a54_73347163 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -100,7 +100,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
               <!-- Spazio riservato al login/user box -->
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
               </li>
 
@@ -110,7 +110,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">Vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
 
