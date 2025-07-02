@@ -75,7 +75,7 @@ class COwner {
             $rentTotalPerDay[$date] = 0;
         }
         $rentTotalPerDay[$date] += $order->getTotalPrice();
-        print_r($rentTotalPerDay);
+        
     }
 
     $view = new VOwner();

@@ -35,12 +35,22 @@
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
       
+<<<<<<< Updated upstream
     </script>
+=======
+
+      const salesPerMonth ={$salesPerMonth|@json_encode|default:'[]'};
+       </script>
+
+   
+
+>>>>>>> Stashed changes
 
   </head>
 
 <body>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="/RentalTopGear/directory/Smarty/js/sale-chart.js"></script>
     
 
 
@@ -166,9 +176,19 @@
           </div>
         
                 <div class="col-12 my-4 text-center">
-                  
+                    {if $salesPerMonth|@count > 0}
+                     
                     <h2 class="tm-block-title" style="padding:10px;">Numero Vendite </h2>
-                    <canvas id="saleChart" class="graphic-custom" ></canvas>
+                    <canvas id="saleChart" class="graphic-custom-big" ></canvas>
+                     
+                      {else}
+                        <div class="alert alert-warning" role="alert">
+                          Nessun dato disponibile per il periodo selezionato.
+                        </div>
+                      {/if}
+
+
+                 
                   </div>
                 </div>
            
@@ -223,58 +243,8 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
     
-{if $salesPerMonth|@count > 0}
-<script>
-  // Labels = nomi mesi
-  const labels = [
-    {foreach from=$salesPerMonth key=month item=value}"{$month}"{if !$smarty.foreach.month.last},{/if}{/foreach}
-  ];
 
-  // Dati numerici
-  const dataValues = [
-    {foreach from=$salesPerMonth key=month item=value}{$value}{if !$smarty.foreach.month.last},{/if}{/foreach}
-  ];
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      data: dataValues,
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)',
-        'rgba(255, 159, 64, 0.7)',
-        // aggiungi altri colori se servono
-      ],
-      hoverOffset: 4
-    }]
-  };
-
-  const config = {
-    type: 'doughnut',
-    data: data,
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { position: 'top' },
-        title: {
-          display: true,
-          text: 'Vendite per mese'
-        }
-      }
-    }
-  };
-
-  const ctx = document.getElementById('saleChart').getContext('2d');
-  new Chart(ctx, config);
-</script>
-{else}
-  <div class="alert alert-warning" role="alert">
-    Nessun dato disponibile per il periodo selezionato.
-  </div>
-{/if}
 
 
 

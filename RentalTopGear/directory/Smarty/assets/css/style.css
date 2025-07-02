@@ -1256,12 +1256,21 @@ display: flex !important;
 
 
 	.graphic-custom{
-		width: 50% !important;
-		height: 50% !important;
+		width: 1200px;
+		max-height: 1500px;
 		object-fit: cover;
-		display: block; 
+
 		margin: 0 auto; 
-		max-width: 700px;
+	
+		
+	}
+	.graphic-custom-big{
+		width: 800px;
+		max-height: 800px;
+		object-fit: cover;
+
+		margin: 0 auto; 
+	
 		
 	}
 

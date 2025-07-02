@@ -34,14 +34,25 @@
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
-      
     </script>
+<<<<<<< Updated upstream
+=======
+    <!-- dati per il grafico -->
+    <script>
+      const rentTotalPerDay = {$rentTotalPerDay|@json_encode|default:'{}'};
+
+    </script>
+    
+
+  
+>>>>>>> Stashed changes
 
 
   </head>
 
 <body>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="/RentalTopGear/directory/Smarty/js/date-selector-chart.js"></script>
     
 
 
@@ -137,7 +148,7 @@
 
         
     <div class="services">
-        <div class="container">
+        <div class="container " style="max-height: auto;">
             <div class="row">
 
                 
@@ -168,8 +179,12 @@
         
                 <div class="col-12 tm-block-col my-4 text-center">
        
-                    <h2 class="tm-block-title">Noleggi </h2>
-                    {if $rentTotalPerDay|@count > 0}        
+                    <h2 class="tm-block-title my-5">Noleggi </h2>
+
+                    {if $rentTotalPerDay|@count > 0}      
+    
+                    <div class="row">
+                        <div class="col-md-12">
                         <canvas id="rentScatterChart" class="graphic-custom"></canvas>
                     {else}
                         <div class="alert alert-warning" role="alert">

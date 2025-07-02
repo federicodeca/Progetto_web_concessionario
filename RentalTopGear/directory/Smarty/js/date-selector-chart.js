@@ -1,24 +1,21 @@
+document.addEventListener('DOMContentLoaded', function() {
 
+ const dataPoints = Object.entries(rentTotalPerDay).map(([date, rent]) => ({
+    x: date,
+    y: rent
+}));
 
-
-const scatterData2 = {
+const scatterData = {
     datasets: [{
     label: 'Prezzo Noleggio',
-    data: [
-    {foreach from=$rentTotalPerDay key=date item=rent}
-        {
-        x: "{$date}",
-        y: {$rent}
-        },
-    {/foreach}
-    ],
+    data: dataPoints,
     backgroundColor: 'rgba(255, 99, 132, 0.7)'
     }]
 };
 
-const scatterConfig2 = {
+const scatterConfig = {
     type: 'line',
-    data: scatterData2,
+    data: scatterData,
     options: {
     responsive: true,
     plugins: {
@@ -38,7 +35,8 @@ const scatterConfig2 = {
         },
         title: {
             display: true,
-            text: 'Data'
+            text: 'Data',
+        
         }
         },
         y: {
@@ -53,6 +51,6 @@ const scatterConfig2 = {
 
 new Chart(
     document.getElementById('rentScatterChart').getContext('2d'),
-    scatterConfig2
+    scatterConfig
 );
-
+});
