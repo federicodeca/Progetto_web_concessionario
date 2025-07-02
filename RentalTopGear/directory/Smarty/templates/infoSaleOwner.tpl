@@ -35,16 +35,17 @@
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
       
-<<<<<<< Updated upstream
-    </script>
-=======
+
+    
+
+   
+
 
       const salesPerMonth ={$salesPerMonth|@json_encode|default:'[]'};
        </script>
 
    
 
->>>>>>> Stashed changes
 
   </head>
 

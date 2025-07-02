@@ -35,18 +35,13 @@
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
     </script>
-<<<<<<< Updated upstream
-=======
+
     <!-- dati per il grafico -->
     <script>
       const rentTotalPerDay = {$rentTotalPerDay|@json_encode|default:'{}'};
 
     </script>
-    
-
-  
->>>>>>> Stashed changes
-
+   
 
   </head>
 
