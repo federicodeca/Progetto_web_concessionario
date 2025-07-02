@@ -36,11 +36,6 @@
       const permission = "{$permission|escape:'javascript'|default:''}";
       
 
-    
-
-   
-
-
       const salesPerMonth ={$salesPerMonth|@json_encode|default:'[]'};
        </script>
 
