@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-01 11:30:20
+/* Smarty version 5.5.1, created on 2025-07-02 18:47:37
   from 'file:homeOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6863aaac375940_62661666',
+  'unifunc' => 'content_686562a9c92018_73148817',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '804004ec4119f6032b65ece78419f841f4788a75' => 
     array (
       0 => 'homeOwner.tpl',
-      1 => 1751362215,
+      1 => 1751472237,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6863aaac375940_62661666 (\Smarty\Template $_smarty_tpl) {
+function content_686562a9c92018_73148817 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -46,6 +46,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
+     <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
+
+
     <!--dati per login-->
     <?php echo '<script'; ?>
 >
@@ -62,61 +67,112 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       
     <?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
-
   </head>
 
 <body>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
 
-<header>
-    <div class="" id="home">
-        <nav class="navbar navbar-expand-xl">
-            <div class="container h-100">
-                <a class="navbar-brand" href="/RentalTopGear/Owner/home/">
-                    <h1 class="tm-site-title mb-0">Dashboard</h1>
-                </a>
-                <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars tm-nav-icon"></i>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto h-100">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/RentalTopGear/Owner/home/">
-                                <i class="fas fa-tachometer-alt"></i>
-                                Dashboard
-                                <span class="sr-only">(current)</span>
-                            </a>
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+ 
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
+
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
+
+
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
+                      <?php }?>
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              <?php } else { ?>
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
+                            </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
+                          </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="products.html">
-                                Products
-                            </a>
-                        </li>
+              <?php }?>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="accounts.html">
-                                Accounts
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        </nav>
+    
+
+
+        
+    <div class="services">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
-                </div>
-            </div>
+                
+   
             <!-- row -->
-            <div class="row tm-content-row">
-
+          
                 <!--- Lista degli ordini -->
                 <div class="col-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" style="height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
@@ -125,7 +181,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
                             <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
                             </svg>
-                            Lista ordini</h2>
+                            Lista Vendite</h2>
                         <table class="table" style="width: 100%;">
                             <thead>
                                 <tr>
@@ -139,14 +195,21 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                                 </tr>
                             </thead>
                             <tbody>
+                        
 
+                                
+                         
                                 <!--- Lista auto vendita -->
                                 <?php $_smarty_tpl->assign('total', 0, false, NULL);?>
                                 <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale');
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale', true);
+$_smarty_tpl->getVariable('sale')->iteration = 0;
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('sale')->value) {
 $foreach0DoElse = false;
+$_smarty_tpl->getVariable('sale')->iteration++;
+$_smarty_tpl->getVariable('sale')->last = $_smarty_tpl->getVariable('sale')->iteration === $_smarty_tpl->getVariable('sale')->total;
+$foreach0Backup = clone $_smarty_tpl->getVariable('sale');
 ?>
                                     <tr>
                                         <td><?php echo $_smarty_tpl->getValue('sale')->getOrderId();?>
@@ -165,46 +228,17 @@ $foreach0DoElse = false;
 </td>
                                         <?php $_smarty_tpl->assign('total', $_smarty_tpl->getValue('total')+$_smarty_tpl->getValue('sale')->getPrice(), false, NULL);?>
                                     </tr>
-                                    <?php
+                                <?php
+$_smarty_tpl->setVariable('sale', $foreach0Backup);
 }
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-
-                                    <!--- Lista auto noleggio-->
-                                    <?php $_smarty_tpl->assign('totalRent', 0, false, NULL);?>
-                                    <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentOrders'), 'rent');
-$foreach1DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('rent')->value) {
-$foreach1DoElse = false;
-?>
-                                    <tr>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getOrderId();?>
-</td>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getUser()->getFirstName();?>
-</td>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getUser()->getLastName();?>
-</td>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getAuto()->getBrand();?>
-</td>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getAuto()->getModel();?>
-</td>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getOrderDate()->format("Y/m/d");?>
-</td>
-                                        <td><?php echo $_smarty_tpl->getValue('rent')->getTotalPrice();?>
-</td>
-                                        <?php $_smarty_tpl->assign('totalRent', $_smarty_tpl->getValue('totalRent')+$_smarty_tpl->getValue('rent')->getTotalPrice(), false, NULL);?>
-                                    </tr>
-                                    <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                            </tbody>
-                        </table>
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?> 
+                                </tbody>
+                        </table> 
                     </div>
                 </div>
-            </div>
         
-            <div class="row mt-5">
-                <div class="col-sm-12 col-md-12 tm-block-col">
+            
+                <div class="col-sm-12 col-md-12">
                     <div class="tm-bg-primary-dark tm-block">
                         <h2 class="tm-block-title">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
@@ -216,6 +250,75 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
+                <!-- Scatter chart Vendite (Data vs Prezzo) -->
+                <div class="col-12 tm-block-col my-4">
+                  <div class="tm-bg-primary-dark tm-block">
+                    <h2 class="tm-block-title">Vendite </h2>
+                    <canvas id="salesScatterChart" class="graphic-custom"></canvas>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+            
+        <div class="container">
+            <div class="row ">
+                <div class="col-12 tm-block-col">    
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll" style="height: 500px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+                        <h2 class="tm-block-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                    <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                    </svg>
+                    Lista ordini</h2>
+
+                        <table class="table" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">NUM. ORDINE</th>
+                                    <th scope="col">NOME</th>
+                                    <th scope="col">COGNOME</th>
+                                    <th scope="col">MARCA AUTO</th>
+                                    <th scope="col">MODELLO AUTO</th>
+                                    <th scope="col">DATA ORDINE</th>
+                                    <th scope="col">TOTALE</th>
+                                </tr>
+                            </thead>
+                            <tbody>  
+                                <!--- Lista auto noleggio-->
+                                <?php $_smarty_tpl->assign('totalRent', 0, false, NULL);?>
+                                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentOrders'), 'rent');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('rent')->value) {
+$foreach1DoElse = false;
+?>
+                                <tr>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getOrderId();?>
+</td>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getUser()->getFirstName();?>
+</td>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getUser()->getLastName();?>
+</td>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getAuto()->getBrand();?>
+</td>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getAuto()->getModel();?>
+</td>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getOrderDate()->format("Y/m/d");?>
+</td>
+                                    <td><?php echo $_smarty_tpl->getValue('rent')->getTotalPrice();?>
+</td>
+                                    <?php $_smarty_tpl->assign('totalRent', $_smarty_tpl->getValue('totalRent')+$_smarty_tpl->getValue('rent')->getTotalPrice(), false, NULL);?>
+                                </tr>
+                                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+  
+        
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block">
                         <h2 class="tm-block-title">
@@ -228,159 +331,226 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
+                                <!-- Scatter chart Vendite (Data vs Prezzo) -->
+                <div class="col-12 tm-block-col my-4">
+                  <div class="tm-bg-primary-dark tm-block">
+                    <h2 class="tm-block-title">Noleggi </h2>
+                    <canvas id="rentScatterChart" class="graphic-custom"></canvas>
+                  </div>
+                </div>
             </div>
         </div>
 
 
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller">
-                        <h2 class="tm-block-title">Storage Information</h2>
-                        <div id="pieChartContainer">
-                            <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-                            
-                        </div>                        
-                    </div>
-                </div>
 
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-                        <h2 class="tm-block-title">Notification List</h2>
-                        <div class="tm-notification-items">
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#"
-                                            class="tm-notification-link">product updates</a>. Check new orders.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
-                                            class="tm-notification-link">product updates</a>. Read more reports.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Victoria</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">order updates</a>. Read order information.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Laura Cute</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product records</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Samantha</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">order stuffs</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Sophie</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Lily A</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Amara</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                            <div class="media tm-notification-item">
-                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-                                <div class="media-body">
-                                    <p class="mb-2"><b>Cinthela</b> and <b>6 others</b> sent you <a href="#"
-                                            class="tm-notification-link">product updates</a>.</p>
-                                    <span class="tm-small tm-text-color-secondary">6h ago.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+    
+      <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
                 
-        <footer class="tm-footer row tm-mt-small">
-            <div class="col-12 font-weight-light">
-                <p class="text-center text-white mb-0 px-4 small">
-                    Copyright &copy; <b>2018</b> All rights reserved. 
-                    
-                    Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
-                </p>
+
             </div>
-        </footer>
-    </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-    <?php echo '<script'; ?>
- src="js/jquery-3.3.1.min.js"><?php echo '</script'; ?>
->
-    <!-- https://jquery.com/download/ -->
-    <?php echo '<script'; ?>
- src="js/moment.min.js"><?php echo '</script'; ?>
->
-    <!-- https://momentjs.com/ -->
-    <?php echo '<script'; ?>
- src="js/Chart.min.js"><?php echo '</script'; ?>
->
-    <!-- http://www.chartjs.org/docs/latest/ -->
-    <?php echo '<script'; ?>
- src="js/bootstrap.min.js"><?php echo '</script'; ?>
->
-    <!-- https://getbootstrap.com/ -->
-    <?php echo '<script'; ?>
- src="js/tooplate-scripts.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
->
-        Chart.defaults.global.defaultFontColor = 'white';
-        let ctxLine,
-            ctxBar,
-            ctxPie,
-            optionsLine,
-            optionsBar,
-            optionsPie,
-            configLine,
-            configBar,
-            configPie,
-            lineChart;
-        barChart, pieChart;
-        // DOM is ready
-        $(function () {
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            drawPieChart(); // Pie Chart
 
-            $(window).resize(function () {
-                updateLineChart();
-                updateBarChart();                
-            });
-        })
+
+
+
+    <!-- Chart.js scatter chart for Vendite (Data vs Prezzo) -->
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"><?php echo '</script'; ?>
+>
+    
+    <?php echo '<script'; ?>
+>
+      const scatterData = {
+        datasets: [{
+          label: 'Prezzo Vendita',
+          data: [
+            <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('saleOrders'), 'sale', true);
+$_smarty_tpl->getVariable('sale')->iteration = 0;
+$foreach2DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('sale')->value) {
+$foreach2DoElse = false;
+$_smarty_tpl->getVariable('sale')->iteration++;
+$_smarty_tpl->getVariable('sale')->last = $_smarty_tpl->getVariable('sale')->iteration === $_smarty_tpl->getVariable('sale')->total;
+$foreach2Backup = clone $_smarty_tpl->getVariable('sale');
+?>
+              {
+                x: "<?php echo $_smarty_tpl->getValue('sale')->getOrderDate()->format('Y-m-d');?>
+",
+                y: <?php echo $_smarty_tpl->getValue('sale')->getPrice();?>
+
+              }<?php if (!$_smarty_tpl->getVariable('sale')->last) {?>,<?php }?>
+            <?php
+$_smarty_tpl->setVariable('sale', $foreach2Backup);
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+          ],
+          backgroundColor: 'rgba(54, 162, 235, 0.7)'
+        }]
+      };
+
+      const scatterConfig = {
+        color: 'rgb(255, 99, 132)',
+        type: 'scatter',
+        data: scatterData,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'top' },
+            title: {
+              display: true,
+              text: 'Prezzi delle vendite nel tempo'
+            }
+          },
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day',
+                tooltipFormat: 'YYYY-MM-DD',
+                displayFormats: { day: 'YYYY-MM-DD' }
+              },
+              title: {
+                display: true,
+                text: 'Data'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Prezzo (€)'
+              }
+            }
+          }
+        }
+      };
+
+      new Chart(
+        document.getElementById('salesScatterChart').getContext('2d'),
+        scatterConfig
+      );
     <?php echo '</script'; ?>
 >
-</body>
 
+    <?php echo '<script'; ?>
+>
+      const scatterData2 = {
+        datasets: [{
+            
+          label: 'Prezzo Noleggio',
+          data: [
+            <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentMedium'), 'price', false, 'day');
+$foreach3DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('day')->value => $_smarty_tpl->getVariable('price')->value) {
+$foreach3DoElse = false;
+?>
+              {
+                x: "<?php echo $_smarty_tpl->getValue('day');?>
+",
+                y: <?php echo $_smarty_tpl->getValue('price');?>
+
+              }<?php if (!$_smarty_tpl->getVariable('rentMedium')->last) {?>,<?php }?>
+            <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+          ],
+          backgroundColor: 'rgba(255, 99, 132, 0.7)'
+        }]
+      };
+
+      const scatterConfig2 = {
+        type: 'line',
+        data: scatterData2,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'top' },
+            title: {
+              display: true,
+              text: 'Prezzi dei noleggi nel tempo'
+            }
+          },
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day',
+                tooltipFormat: 'YYYY-MM-DD',
+                displayFormats: { day: 'YYYY-MM-DD' }
+              },
+              title: {
+                display: true,
+                text: 'Data'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Prezzo (€)'
+              }
+            }
+          }
+        }
+      };
+
+      new Chart(
+        document.getElementById('rentScatterChart').getContext('2d'),
+        scatterConfig2
+      );
+    <?php echo '</script'; ?>
+>
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+
+
+    <!-- Additional Scripts -->
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
+     
+</body>
 </html><?php }
 }

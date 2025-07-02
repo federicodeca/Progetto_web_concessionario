@@ -70,16 +70,16 @@
               <!-- Spazio riservato al login/user box -->
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">Clienti</a></li>
 
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
 
 
 

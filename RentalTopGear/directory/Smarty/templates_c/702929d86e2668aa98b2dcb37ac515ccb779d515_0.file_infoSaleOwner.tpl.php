@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-02 18:52:44
+  from 'file:infoSaleOwner.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_686563dc4349b9_42135143',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '702929d86e2668aa98b2dcb37ac515ccb779d515' => 
+    array (
+      0 => 'infoSaleOwner.tpl',
+      1 => 1751475161,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_686563dc4349b9_42135143 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,17 +54,28 @@
 
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
-    </script>
+    <?php echo '</script'; ?>
+>
 
   </head>
 
 <body>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
     
 
 
@@ -73,37 +108,38 @@
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">Clienti</a></li>
-
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
 
 
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
 
-              {if $isLogged}
+
+
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
-                      {/if}
-                      {if $permission === 'owner'}
+                      <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
                         <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
@@ -112,7 +148,8 @@
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
-                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
                               <button type="submit" class="btn btn-primary btn-block">Accedi</button>
                              
                             </form>
@@ -122,7 +159,7 @@
                           
                           </div>
                         </li>
-              {/if}         
+              <?php }?>         
             
 
             </ul>
@@ -152,7 +189,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="month">Mese:</label>
-                                <input type="number" class="form-control" id="year" name="year" min="" max="" required regular="/^\d{4}$/" placeholder="2000" >                                                                 
+                                <input type="number" class="form-control" id="year" name="year" min="" max="" required regular="/^\d<?php echo 4;?>
+$/" placeholder="2000" >                                                                 
                             </div>
                         </div>
                         <div class="col-md-12 mt-2">
@@ -219,20 +257,43 @@
 
 
     <!-- Chart.js scatter chart for Vendite (Data vs Prezzo) -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"><?php echo '</script'; ?>
+>
     
-{if $salesPerMonth|@count > 0}
-<script>
+<?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('salesPerMonth')) > 0) {
+echo '<script'; ?>
+>
   // Labels = nomi mesi
   const labels = [
-    {foreach from=$salesPerMonth key=month item=value}"{$month}"{if !$smarty.foreach.month.last},{/if}{/foreach}
+    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('salesPerMonth'), 'value', false, 'month');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('month')->value => $_smarty_tpl->getVariable('value')->value) {
+$foreach0DoElse = false;
+?>"<?php echo $_smarty_tpl->getValue('month');?>
+"<?php if (!($_smarty_tpl->getValue('__smarty_foreach_month')['last'] ?? null)) {?>,<?php }
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
   ];
 
   // Dati numerici
   const dataValues = [
-    {foreach from=$salesPerMonth key=month item=value}{$value}{if !$smarty.foreach.month.last},{/if}{/foreach}
+    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('salesPerMonth'), 'value', false, 'month');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('month')->value => $_smarty_tpl->getVariable('value')->value) {
+$foreach1DoElse = false;
+echo $_smarty_tpl->getValue('value');
+if (!($_smarty_tpl->getValue('__smarty_foreach_month')['last'] ?? null)) {?>,<?php }
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
   ];
 
   const data = {
@@ -269,30 +330,46 @@
 
   const ctx = document.getElementById('saleChart').getContext('2d');
   new Chart(ctx, config);
-</script>
-{else}
+<?php echo '</script'; ?>
+>
+<?php } else { ?>
   <div class="alert alert-warning" role="alert">
     Nessun dato disponibile per il periodo selezionato.
   </div>
-{/if}
+<?php }?>
 
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     
    
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/js/calendar.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/calendar.js"><?php echo '</script'; ?>
+>
  
 
 </body>
-</html>
+</html><?php }
+}

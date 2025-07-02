@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:16:01
+/* Smarty version 5.5.1, created on 2025-07-02 18:46:52
   from 'file:carDetailsSale.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68655b4186d1b8_67200188',
+  'unifunc' => 'content_6865627ca41be4_02301158',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8ff8b2f3a70bd24559649575d8f540c93b2f982' => 
     array (
       0 => 'carDetailsSale.tpl',
-      1 => 1751472092,
+      1 => 1751473374,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68655b4186d1b8_67200188 (\Smarty\Template $_smarty_tpl) {
+function content_6865627ca41be4_02301158 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 
@@ -119,9 +119,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
 
                 <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
@@ -234,7 +234,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
           <div class="col-md-4">
               <div class="left-content">
 
-                <p>seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
+                <p>Seguici sulle nostre pagine social per rimanere aggiornato sulle novità e per ricevere sconti</p>
 
                 <br> 
 
