@@ -9,4 +9,16 @@ class FRent {
         return $rentOrders;
     }
 
+    public static function retrieveRentsForPeriod($start, $end) {
+        $dql="SELECT r FROM ERent r WHERE r.orderDate >= :start AND r.orderDate < :end";
+        $params = [
+            'start' => $start,
+            'end' => $end
+            
+        ];
+        $rents = FEntityManager::getInstance()->doQuery($dql, $params);
+        
+        return $rents;
+    }
+
 }

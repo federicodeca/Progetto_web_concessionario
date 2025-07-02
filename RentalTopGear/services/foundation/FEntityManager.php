@@ -316,10 +316,10 @@ class FEntityManager {
      * @param int|null $offset  Offset for result set (optional)
      * @return array            Array of resulting entities or data
      */
-    public static function doQuery($sql, array $params = [], ?int $limit = null, ?int $offset = null): array {
+    public static function doQuery($dql, array $params = [], ?int $limit = null, ?int $offset = null): array {
         try {
             $entityManager = self::$entityManager;
-            $query = $entityManager->createQuery($sql)
+            $query = $entityManager->createQuery($dql)
                 ->setParameters($params);
 
             if ($limit !== null) {

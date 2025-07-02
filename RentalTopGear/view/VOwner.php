@@ -21,4 +21,46 @@ class VOwner{
         $this->smarty->display('homeOwner.tpl');
     }
 
+    public function showDateSelection($infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->display('dateSelector.tpl');
+
+       
+       
+    }
+
+       public function showSelectedPeriodStats($infout,$rentTotalPerDay) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->assign('rentTotalPerDay', $rentTotalPerDay);
+        
+        $this->smarty->display('dateSelector.tpl');
+
+       
+       
+    }
+
+
+    public function showDateSelectionSale($infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->display('infoSaleOwner.tpl');
+
+       
+       
+    }
+
+    public function showCountPerMonth($infout,$salesPerMonth) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->assign('salesPerMonth', $salesPerMonth);
+        $this->smarty->display('infoSaleOwner.tpl');
+    }
+
+
 }

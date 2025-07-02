@@ -36,7 +36,7 @@
     <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
+
 
   <body>
 
@@ -106,13 +106,17 @@
                             Login
                           </a>
                           <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
-                            <form id="login-form">
-                              <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
-                              <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
-                              <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
-                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
-                              <div id="login-message" class="text-danger mt-2"></div>
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
                             </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
                           </div>
                         </li>
               {/if}          

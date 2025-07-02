@@ -391,11 +391,10 @@ class CUser {
      * this method is used to login the user, if so it will redirect to the actual page
      */
     public static function checkLoginAuto() {
-        //header('Content-Type: application/json');
-        //ob_clean();
+
 
         $view = new VUser();
-        $actualMethod= UHTTPMethods::post('actualMethod');
+        $redirect= UHTTPMethods::post('actualMethod');
         $user=UHTTPMethods::post('username');
         $password=UHTTPMethods::post('password');
         $user = FPersistentManager::getInstance()->retriveUserOnUsername($user);
@@ -418,22 +417,16 @@ class CUser {
                 USession::setElementInSession('owner', $user->getId());    
             }
 
-        
-             
-            echo json_encode([
-                'success' => true,
-                'redirect' => 'RentalTopGear/User/'.$actualMethod,       
-                ]);
-               
-            }
+                        
+            header("Location: " . $redirect);
+            exit;
 
-         else {
-            echo json_encode([
-                'success' => false,
-                'message' => 'Invalid username or password'
-            ]);
-        }
-    }
+            } else {
+                
+                $view->loginError(); // Show error message if the login fails
+                   }
+            }
+    
     
     public static function showRegistrationForm() {
         $view = new VUser();

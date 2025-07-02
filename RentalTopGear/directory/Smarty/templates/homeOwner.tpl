@@ -25,6 +25,8 @@
      <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
+
+
     <!--dati per login-->
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
@@ -69,14 +71,13 @@
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
 
 
-              <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
 
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
               {if $isLogged}
 
@@ -105,17 +106,20 @@
                             Login
                           </a>
                           <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
-                            <form id="login-form">
-                              <input type="text" id="username" placeholder="Username" class="form-control mb-2" required>
-                              <input type="password" id="password" placeholder="Password" class="form-control mb-2" required>
-                              <button type="button" onclick="submitLogin()" class="btn btn-primary btn-block">Accedi</button>
-                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-primary btn-block">Registrati</button>
-                              <div id="login-message" class="text-danger mt-2"></div>
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
                             </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
                           </div>
                         </li>
-              {/if}          
-            
+              {/if}
 
             </ul>
           </div>
@@ -195,7 +199,7 @@
                 <div class="col-12 tm-block-col my-4">
                   <div class="tm-bg-primary-dark tm-block">
                     <h2 class="tm-block-title">Vendite </h2>
-                    <canvas id="salesScatterChart" height="150"></canvas>
+                    <canvas id="salesScatterChart" class="graphic-custom"></canvas>
                   </div>
                 </div>
             </div>
@@ -261,7 +265,7 @@
                 <div class="col-12 tm-block-col my-4">
                   <div class="tm-bg-primary-dark tm-block">
                     <h2 class="tm-block-title">Noleggi </h2>
-                    <canvas id="rentScatterChart" height="150"></canvas>
+                    <canvas id="rentScatterChart" class="graphic-custom"></canvas>
                   </div>
                 </div>
             </div>
@@ -291,11 +295,7 @@
               <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
-                  {foreach $rentMedium  key= day item=rent}
-                    {$day} 
-                    {$rent}
-
-                    {/foreach}       
+                
 
             </div>
           </div>
@@ -311,6 +311,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    
     <script>
       const scatterData = {
         datasets: [{

@@ -9,4 +9,16 @@ class FSale {
         return $saleOrders;
     }
 
+    public static function retrieveSalesForPeriod($start, $end) {
+        $dql="SELECT s FROM ESale s WHERE s.orderDate >= :start AND s.orderDate < :end";
+        $params = [
+            'start' => $start,
+            'end' => $end
+            
+        ];
+        $sales = FEntityManager::getInstance()->doQuery($dql, $params);
+        
+        return $sales;
+    }
+
 }

@@ -317,4 +317,14 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function getRentsForPeriod($start, $end) {
+        $result = FRent::retrieveRentsForPeriod($start, $end);
+        return $result;
+    }
+
+
+    public static function getSalesForPeriod($start, $end) {
+        $result = FSale::retrieveSalesForPeriod($start, $end);
+        return $result;
+    }
 }

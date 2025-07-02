@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
   
    
@@ -22,6 +22,13 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
+     <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
     <!--dati per login-->
     <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
@@ -29,17 +36,15 @@
       const permission = "{$permission|escape:'javascript'|default:''}";
       
     </script>
-
     <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"></script>
+
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
 
-  <body>
-   
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
- 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -57,7 +62,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Dashboard<em></em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -67,16 +72,17 @@
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="RentalTopGear/User/home">vista cliente</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">prenotazioni noleggio</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
+
+
 
               {if $isLogged}
 
@@ -89,6 +95,9 @@
                       {if $permission === 'user'} 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      {/if}
+                      {if $permission === 'owner'}
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
                       {/if}
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
@@ -124,94 +133,126 @@
       </nav>
     </header>
 
-    <div class="banner header-text">
-    <div class="container my-5">
-      <h2 class="header-text text-center mb-5">inserisci prenotazione</h2>
-      <form  method="post" action="/RentalTopGear/Admin/showUnavailabilities" enctype="multipart/form-data">
-        <div class="form-group col-md-12">
-          <label for="car">Seleziona auto</label>
-          <select class="form-control form-control-sm mb-5" name="idAuto" id="car" required>
-            {foreach from=$cars item=car}
-              <option value="{$car->getIdAuto()}" >{$car->getBrand()} {$car->getModel()} {$car->getDescription()}</option>
-            {/foreach}
-          </select>
-        </div>
-        <div class="btn btn-primary btn-block mx-auto">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">scegli auto </button>
-        </div>
-      </form>
+    
 
-      {if isset($unavailabilities)}
-        <div class="mt-5">
-          <h4 class="header-text text-center my-3">Indisponibilità</h4>
-          <div style="max-height: 300px; overflow-y: auto;">
-            <table class="table table-sm table-bordered table-striped bg-white">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Inizio</th>
-                  <th>Fine</th>
-                  <th>Azioni</th>
-                </tr>
-              </thead>
-              <tbody>
-                {foreach from=$unavailabilities item=unavailability}
-                  <tr>
-                    <td>{$unavailability->getStart()->format("d-m-y")}</td>
-                    <td>{$unavailability->getEnd()->format("d-m-y")}</td>
-                    <td>
-                      <a href="/RentalTopGear/Admin/deleteUnavailability/{$unavailability->getIdUnav()}" class="btn btn-danger btn-sm">
-                        Elimina
-                      </a>
-                    </td>
-                  </tr>
-                {/foreach}
-              </tbody>
-            </table>
+
+        
+    <div class="services">
+        <div class="container">
+            <div class="row">
+
+                
+
+
+   
+                <div class="col-md-12">
+                  <div class="section-heading">
+                    <h2>Statistiche Noleggi</h2>
+                    <span>seleziona mese e anno</span>
+                    <div class="row">
+                      <form method="post" action="/RentalTopGear/Owner/getRentStatsForPeriod" class="w-100">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="bdaymonth">Periodo</label>
+                            <input type="month" id="month" name="period" class="form-control" required>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <button type="submit" class="btn btn-primary">Visualizza Statistiche</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
-        </div>
-         <form method="post" action="/RentalTopGear/Admin/insertUnavailability" enctype="multipart/form-data" class="mt-4">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="start_date">Data inizio</label>
-              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="end_date">Data fine</label>
-              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
+        
+                <div class="col-12 tm-block-col my-4 text-center">
+       
+                    <h2 class="tm-block-title">Noleggi </h2>
+                    {if $rentTotalPerDay|@count > 0}        
+                        <canvas id="rentScatterChart" class="graphic-custom"></canvas>
+                    {else}
+                        <div class="alert alert-warning" role="alert">
+                          Nessun dato disponibile per il periodo selezionato.
+                        </div>
+                      {/if}
+                  
+                </div>
             </div>
           </div>
-         
-          <div class="btn btn-primary btn-block mx-auto">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi indisponibilità</button>
+        </div>
+
+
+
+
+
+ 
+      
+      
+             
+
+
+    
+      <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
+                
+
+            </div>
           </div>
-        </form>
-      {/if}
-    </div>
-    </div>
-
-
-
-
-    <footer class="tm-footer row tm-mt-small">
-      <div class="col-12 font-weight-light">
-        <p class="text-center text-white mb-0 px-4 small">
-          Copyright &copy; <b>2018</b> All rights reserved. 
-          
-          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link"></a>
-        </p>
+        </div>
       </div>
-    </footer> 
+    </footer>
+
+    {foreach $rentsPerPeriod item=rent}
+    {$rent->getOrderdate()->format('y-m-d')}
+    {$rent->getTotalPrice()}
+    {/foreach}
 
 
-      <!-- Bootstrap core JavaScript -->
+
+    <!-- Chart.js scatter chart for Vendite (Data vs Prezzo) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
     <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+    
+   
 
     <!-- Additional Scripts -->
     <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
     <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
-     
+    <script src="/RentalTopGear/directory/Smarty/js/calendar.js"></script>
+ 
 
-  </body>
+</body>
 </html>

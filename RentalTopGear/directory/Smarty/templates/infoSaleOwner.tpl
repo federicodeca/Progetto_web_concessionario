@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
+  
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -20,20 +22,29 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-      <!-- Additional icon  -->
+     <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
-  
-        <script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <!--dati per login-->
+    <script>
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
+      const permission = "{$permission|escape:'javascript'|default:''}";
+      
     </script>
+    <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+
 
   </head>
 
-  <body>
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
-   <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -46,29 +57,33 @@
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+ 
+
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="RentalTopGear/User/home">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                </li> 
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+              <li class="nav-item active">
+                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
+              </li>
 
-                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">numero vendite</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">clienti</a></li>
+
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">statistiche per mesi </a></li>
+
+
+
               {if $isLogged}
 
                 <li class="nav-item dropdown">
@@ -81,6 +96,9 @@
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
                       {/if}
+                      {if $permission === 'owner'}
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
+                      {/if}
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
@@ -92,7 +110,7 @@
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                              <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
@@ -106,73 +124,71 @@
                           
                           </div>
                         </li>
-              {/if}        
+              {/if}         
             
+
             </ul>
           </div>
         </div>
       </nav>
     </header>
 
-    <!-- Page Content -->
- 
+    
 
-    <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-      <div class="container col-md-6" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form  method="post" action="/RentalTopGear/User/checkLogin">
 
-            <div class="custom-license-card">
-  
-              <div class="col-md-12">
-              <label for="inputName" class="form-label" style="color:aliceblue"> username </label>
-              <input type="text" class="form-control" id="inputName" name="username">
-            </div>
-             <div class="col-md-12">
-              <label for="inputName" class="form-label" style="color:aliceblue"> password</label>
-              <input type="password" class="form-control" id="inputSurname" name="password">
-            </div>
+        
+    <div class="services">
+        <div class="container">
+            <div class="row align-items-center" >
+
+                
+
+
+   
+                <div class="col-md-12">
+                  <div class="section-heading">
+                    <h2>Statistiche Vendite</h2>
+                    <span>seleziona mese e anno</span>
+                    <div class="row">
+                      <form method="post" action="/RentalTopGear/Owner/getNumberOfSalePerPeriod" class="w-50">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="month">Mese:</label>
+                                <input type="number" class="form-control" id="year" name="year" min="" max="" required regular="/^\d{4}$/" placeholder="2000" >                                                                 
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <button type="submit" class="btn btn-primary">Visualizza Statistiche</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        
+                <div class="col-12 my-4 text-center">
+                  
+                    <h2 class="tm-block-title" style="padding:10px;">Numero Vendite </h2>
+                    <canvas id="saleChart" class="graphic-custom" ></canvas>
+                  </div>
+                </div>
            
-            <div class="col-md-12" style="margin-top: 20px;" >
-              <button type="submit" class="btn btn-primary" style="color:aliceblue">Sign in</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>  
-
-
-         <div class="best-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Us</h2>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-              </ul>
-              <a href="about-us.html" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="/RentalTopGear/directory/Smarty/assets/images/about-1-570x350.jpg" alt="">
-            </div>
           </div>
         </div>
-      </div>
-    </div>
 
 
-  <footer>
+
+
+
+ 
+      
+      
+             
+
+
+    
+      <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -191,7 +207,8 @@
 
               <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
-              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
+                
 
             </div>
           </div>
@@ -199,16 +216,85 @@
       </div>
     </footer>
 
+ 
+
+
+
+    <!-- Chart.js scatter chart for Vendite (Data vs Prezzo) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    
+{if $salesPerMonth|@count > 0}
+<script>
+  // Labels = nomi mesi
+  const labels = [
+    {foreach from=$salesPerMonth key=month item=value}"{$month}"{if !$smarty.foreach.month.last},{/if}{/foreach}
+  ];
+
+  // Dati numerici
+  const dataValues = [
+    {foreach from=$salesPerMonth key=month item=value}{$value}{if !$smarty.foreach.month.last},{/if}{/foreach}
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      data: dataValues,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.7)',
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 206, 86, 0.7)',
+        'rgba(75, 192, 192, 0.7)',
+        'rgba(153, 102, 255, 0.7)',
+        'rgba(255, 159, 64, 0.7)',
+        // aggiungi altri colori se servono
+      ],
+      hoverOffset: 4
+    }]
+  };
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top' },
+        title: {
+          display: true,
+          text: 'Vendite per mese'
+        }
+      }
+    }
+  };
+
+  const ctx = document.getElementById('saleChart').getContext('2d');
+  new Chart(ctx, config);
+</script>
+{else}
+  <div class="alert alert-warning" role="alert">
+    Nessun dato disponibile per il periodo selezionato.
+  </div>
+{/if}
+
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+    
+   
 
     <!-- Additional Scripts -->
     <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
     <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <script src="/RentalTopGear/directory/Smarty/js/calendar.js"></script>
+ 
 
-  </body>
-
+</body>
 </html>

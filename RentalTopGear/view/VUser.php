@@ -11,6 +11,12 @@ class VUser{
 
     }
 
+    public function loginError() {
+        $this->smarty->assign('title', 'Ops!');
+        $this->smarty->assign('para' ,'credenziali sbagliate');
+        $this->smarty->display('error.tpl');
+    }
+
 
 
     public function showCars($cars,$infout) {
@@ -67,7 +73,7 @@ class VUser{
 
 
     
-    public function loginError() {
+    public function showloginError() {
         $this->smarty->assign('title', 'Ops!');
         $this->smarty->assign('para' , "Errore nel login.");
         $this->smarty->display('error.tpl');
