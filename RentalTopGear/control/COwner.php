@@ -181,12 +181,49 @@ class COwner {
                 
             }    
             
-
-
            
             $infout = COwner::getOwnerStatus();
             $view = new VOwner();
             $view->showCountPerMonth($infout,$salesPerName);
+        }
+    }
+
+    public static function showClientStats() {
+        if (COwner::isLogged()) {
+            $infout = COwner::getOwnerStatus();
+            $view = new VOwner();
+            $clientReviews=FPersistentManager::getInstance()->retrieveAllReviews();
+            $numberReviews=FPersistentManager::getInstance()->countReviews();
+
+          
+            if($numberReviews){
+                $totalValue=0;
+                foreach($clientReviews as $review) {
+                    $totalValue +=$review->getRating();
+                }
+                $averageReview=round($totalValue/$numberReviews,1);
+
+            }else{
+                $averageReview=0;
+                
+            }
+            $clientStats = [];
+            $clientStats[1] = 0;
+            $clientStats[2] = 0;
+            $clientStats[3] = 0;  
+            $clientStats[4] = 0;
+            $clientStats[5] = 0;
+            foreach ($clientReviews as $review) {
+                $rating = $review->getRating();
+                $clientStats[$rating]++;
+            }
+
+
+
+
+            $view->showClientStats($infout,$averageReview,$clientStats,$numberReviews);
+
+
         }
     }
     

@@ -16,12 +16,28 @@ $c2->setVerified(true);
 $c3 = new EUser('Maria', 'Verdi', 'maria.verdi@example.com', 12345678, 'user2', 'user', 'Milan', 67890, '789 Oak St');
 $c4 = new EUser('Giulia', 'Neri', 'giulia.neri@example.com', 87654321, 'user3', 'user', 'Naples', 11223, '321 Pine St');
 $c5 = new EUser('Marco', 'Russo', 'marco.russo@example.com', 23456789, 'user4', 'user', 'Turin', 44556, '654 Maple St');
+$c6 = new EUser('Sara', 'Gallo', 'msara@gmail.com', 34567890, 'user5', 'user', 'Florence', 77889, '987 Cedar St');
+$c7 = new EUser('Alessandro', 'Conti', 'alessandro@gmail.com', 45678901, 'user6', 'user', 'Bologna', 99000, '159 Birch St');
+$c8 = new EUser('Chiara', 'Fontana', 's@gi.it', 56789012, 'user7', 'user', 'Palermo', 22334, '753 Spruce St');
+$c9 = new EUser('Matteo', 'Rinaldi', 'matte@f.it', 67890123, 'user8', 'user', 'Genoa', 55667, '852 Fir St');
+$c10 = new EUser('Elena', 'Marino', 'elena.marino@er.it', 78901234, 'user9', 'user', 'Verona', 88990, '369 Cypress St');
+$c11 = new EUser('Francesco', 'Leone', 'francesco.leone@gmail.com', 89012345, 'user10', 'user', 'Catania', 11223, '258 Redwood St');
+$c12 = new EUser('Laura', 'Barbieri', 'laura.barb@mertini.it', 90123456, 'user11', 'user', 'Padua', 44556, '147 Walnut St');
+
 
 $entityManager->persist($c1);
 $entityManager->persist($c2);
 $entityManager->persist($c3);
 $entityManager->persist($c4);
-$entityManager->persist($c5);       
+$entityManager->persist($c5);  
+$entityManager->persist($c6);
+$entityManager->persist($c7);
+$entityManager->persist($c8);
+$entityManager->persist($c9);
+$entityManager->persist($c10);      
+$entityManager->persist($c11);
+$entityManager->persist($c12);
+      
 $entityManager->flush();
 
 
@@ -207,4 +223,33 @@ $e9= new EImage('teslaModelS.jpg', 51234, 'image/jpeg', file_get_contents(__DIR_
 $e9->setCar($carS26);
 $entityManager->persist($carS26);
 $entityManager->persist($e9);
+$entityManager->flush();
+
+
+
+$w1=new EReview('Great service!', 5, $c1);
+$w2=new EReview('Very satisfied with my purchase.', 4, $c2);
+$w3=new EReview('Bad Experience', 2, $c3);
+$w4=new EReview('Fast and reliable service.', 4, $c4);
+$w5=new EReview('Highly recommend this dealership.', 5, $c5);   
+$w6=new EReview('Good selection of cars.', 3, $c6);
+$w7=new EReview('Friendly staff and great service.', 5, $c7);
+$w8=new EReview('Very happy with my new car.', 4, $c8);
+$w9=new EReview('Professional and helpful team.', 5, $c9);
+$w10=new EReview('Smooth transaction and great car.', 4, $c10);
+$w11=new EReview('it sucks.', 1, $c11);
+$w12=new EReview('Satisfied with my purchase.', 4, $c12);
+
+$entityManager->persist($w1);
+$entityManager->persist($w2);
+$entityManager->persist($w3);   
+$entityManager->persist($w4);
+$entityManager->persist($w5);
+$entityManager->persist($w6);
+$entityManager->persist($w7);
+$entityManager->persist($w8);
+$entityManager->persist($w9);
+$entityManager->persist($w10);
+$entityManager->persist($w11);
+$entityManager->persist($w12);
 $entityManager->flush();

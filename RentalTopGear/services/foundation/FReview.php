@@ -23,4 +23,20 @@ public static function getReviewByUserId($user) {
             return false;
         }    
     }
+
+    public static function getAllReviews() {
+        $result= FEntityManager::getInstance()->selectAll(EReview::class);
+
+        return $result;
+
+    }
+
+
+    public static function countAllReviews(){
+    $sql="SELECT COUNT(*) as count FROM reviews";
+    $result=FEntityManager::getInstance()->executeQuery($sql);
+        return $result[0]['count'] ;
+    }
+
+
 }

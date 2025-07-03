@@ -82,7 +82,7 @@
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/+/">Clienti</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showClientStats">Clienti</a></li>
 
 
               <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>

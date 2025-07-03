@@ -332,4 +332,20 @@ class FPersistentManager {
 
         return $result;
     }
+
+    /**
+     * retrieve all reviews
+     */
+    public static function retrieveAllReviews() {
+        $result = FReview::getAllReviews();
+        return $result;
+    }
+
+    /**
+     * count the number of reviews
+     */
+    public function countReviews() {
+    $result=FReview::countAllReviews();
+    return $result;
+    }
 }

@@ -293,7 +293,9 @@ class FEntityManager {
 
 
  
-
+    /**
+     * do query in native sql language
+     */
     public static function executeQuery($sql, $params = []){
         try {
             $conn = self::$entityManager->getConnection();

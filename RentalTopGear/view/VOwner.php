@@ -26,7 +26,7 @@ class VOwner{
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('permission', $infout['permission']);
-        $this->smarty->display('dateSelector.tpl');
+        $this->smarty->display('infoRentOwner.tpl');
 
        
        
@@ -38,7 +38,7 @@ class VOwner{
         $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->assign('rentTotalPerDay', $rentTotalPerDay);
         
-        $this->smarty->display('dateSelector.tpl');
+        $this->smarty->display('infoRentOwner.tpl');
 
        
        
@@ -60,7 +60,20 @@ class VOwner{
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->assign('salesPerMonth', $salesPerMonth);
-        $this->smarty->display('infoSaleOwner.tpl');
+        $this->smarty->display('infoSaleOwnser.tpl');
+    }
+
+
+    public function showClientStats($infout,$averageReview,$clientStats,$numberReviews){
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->assign('averageReview', $averageReview);
+        $this->smarty->assign('clientStats', $clientStats);  
+        $this->smarty->assign('numberReviews', $numberReviews);
+        $this->smarty->display('infoClientOwner.tpl');
+ 
+    
     }
 
 

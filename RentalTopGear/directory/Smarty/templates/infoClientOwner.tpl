@@ -34,19 +34,21 @@
       const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
-      
+    </script>
 
-      const salesPerMonth ={$salesPerMonth|@json_encode|default:'[]'};
-       </script>
+    <!-- dati per il grafico  -->
+    <script>
+      const clientStats = {$clientStats|@json_encode|default:'{}'};
 
+    </script>
+    
    
-
 
   </head>
 
 <body>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script src="/RentalTopGear/directory/Smarty/js/sale-chart.js"></script>
+      <script src="/RentalTopGear/directory/Smarty/js/client-chart.js"></script>
     
 
 
@@ -79,12 +81,12 @@
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showClientStats/">Clienti</a></li>
 
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
 
 
 
@@ -115,7 +117,7 @@
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                              <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
@@ -129,7 +131,7 @@
                           
                           </div>
                         </li>
-              {/if}         
+              {/if}          
             
 
             </ul>
@@ -143,8 +145,18 @@
 
         
     <div class="services">
-        <div class="container">
-            <div class="row align-items-center" >
+        <div class="container " style="max-height: auto;">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                        <h2 style="font:italic">info</h2>
+                        <br>
+                    
+                      <i class="fa-solid fa-star mr-2"></i><h7> valore medio delle recensioni è: {$averageReview} stelle </h7> <br>
+                      <i class="fa-solid fa-comment mr-2"></i><h7>il numero totale di recensioni è: {$numberReviews}</h7>
+                
+                  </div>
+     
 
                 
 
@@ -152,43 +164,33 @@
    
                 <div class="col-md-12">
                   <div class="section-heading">
-                    <h2>Statistiche Vendite</h2>
-                    
-                    <div class="row">
-                      <form method="post" action="/RentalTopGear/Owner/getNumberOfSalePerPeriod" class="w-50">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="month">Inserire anno:</label>
-                                <input type="text" class="form-control w-25" name="year" pattern="^\d&#123;4&#125;$" placeholder="2000" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                          <button type="submit" class="btn btn-primary">Visualizza Statistiche</button>
-                        </div>
-                      </form>
-                    </div>
+                    <h2>Statistiche Clienti</h2>
+                
+               
+                  
+
                   </div>
                 </div>
               </div>
           </div>
         
-                <div class="col-12 my-4 text-center">
-                    {if $salesPerMonth|@count > 0}
-                     
-                    <h2 class="tm-block-title" style="padding:10px;">Numero Vendite </h2>
-                    <canvas id="saleChart" class="graphic-custom-big" ></canvas>
-                     
-                      {else}
+                <div class="col-12 tm-block-col my-4 text-center">
+       
+                    <h2 class="tm-block-title my-5">Clienti </h2>
+
+                    {if $clientStats|@count > 0}      
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                        <canvas id="clientBarChart" class="graphic-custom"></canvas>
+                    {else}
                         <div class="alert alert-warning" role="alert">
-                          Nessun dato disponibile per il periodo selezionato.
+                          Nessun dato disponibile sui clienti.
                         </div>
                       {/if}
-
-
-                 
-                  </div>
+                  
                 </div>
-           
+            </div>
           </div>
         </div>
 
@@ -231,7 +233,7 @@
       </div>
     </footer>
 
- 
+   
 
 
 
@@ -240,7 +242,6 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
     
-
 
 
 
