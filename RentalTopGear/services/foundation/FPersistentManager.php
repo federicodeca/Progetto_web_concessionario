@@ -325,4 +325,11 @@ class FPersistentManager {
         $result = FSale::retrieveSalesForPeriod($start, $end);
         return $result;
     }
+
+
+    public static function verifyReview($user) {
+        $result = FReview::verify($user);
+
+        return $result;
+    }
 }

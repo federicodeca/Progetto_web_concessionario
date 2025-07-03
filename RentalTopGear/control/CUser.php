@@ -755,9 +755,53 @@ class CUser {
     }
 
 
+    //RECENSIONI
+
+    public static function insertReview(){
+
+        $infout=CUser::getUserStatus();
+        if(CUser::isLogged()){
+        $idUser = USession::getElementFromSession('user');  
+        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        if (FPersistentManager::getInstance()->verifyReview($user)) {
+            $review = FPersistentManager::getInstance()->getObjectByField(EReview::class, 'user', $user);
+            $content = $review->getContent();
+            $rating = $review->getRating();
+        } else {
+            $content = '';
+            $rating = '';
+        }
+        $view = new VUser();
+        $view->showReviewForm($infout, $rating, $content); // Show the review form with existing content and rating if available
+        } 
+    }
+
+    public static function updateReview(){
+
+        if(CUser::isLogged()){
+        $idUser = USession::getElementFromSession('user');  
+        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        $content = UHTTPMethods::post('inputReview');
+        $rating = isset($_POST['rating']) ? $_POST['rating'] : null;
+        if (FPersistentManager::getInstance()->verifyReview($user)) {
+
+            $review = FPersistentManager::getInstance()->getObjectByField(EReview::class, 'user', $user);
+            $review->setContent($content);
+            $review->setRating($rating);
+            FPersistentManager::getInstance()->uploadObj($review); 
+        } else {
+            $review = new EReview($content, $rating, $user);
+            FPersistentManager::getInstance()->uploadObj($review);
+        }
+        
+        $view = new VUser();
+        $view->showSuccessReview(); 
+    }
+
+
 
 }
-
+}
 
 
 

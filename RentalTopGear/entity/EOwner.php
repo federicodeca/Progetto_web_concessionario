@@ -21,7 +21,7 @@ class EOwner extends EPerson {
     public function __construct($firstname, $surname, $email, $password, $username)
     {
         parent::__construct($firstname, $surname, $email, $password, $username);
-        $this->role = 'owner'; // Set the role specifically for owner
+        
     }
 
     public static function getEntity() {

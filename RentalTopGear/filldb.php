@@ -6,7 +6,7 @@ require_once __DIR__.'/config/config.php';
 FEntityManager::getInstance();
 $entityManager = FEntityManager::getEntityManager();
 
-
+// echo("Filling the database with initial data...\n");
 
 
 $c1= new EUser('Federico', 'Rossi', 'federico@gmail.com',34334343,'user', 'user', 'London', 12345, '123 Main St');
@@ -69,6 +69,7 @@ $carS14 = new ECarForSale('Astra', 'Opel', 'Red', 95, 1500, 5, 'Petrol', 20000, 
 $carS15 = new ECarForSale('Santa Fe', 'Hyundai', 'Black', 130, 2000, 7, 'Diesel', 30000, true, 'New');
 $carS16 = new ECarForSale('500', 'Fiat', 'Yellow', 80, 1100, 4, 'Petrol', 17000, false, 'Km0');
 $carS17 = new ECarForSale('i30', 'Hyundai', 'White', 100, 1600, 5, 'Petrol', 22000, true, 'New');
+
 
 
 $carR18= new ECarForRent( 'Panda','Fiat', 'Blue',  70, 1000, 5,  'Petrol', 50, 'id=23e3d');
@@ -201,4 +202,9 @@ $entityManager->flush();
 
 
 
-
+$carS26= new ECarForSale('Model S', 'Tesla', 'Red', 160, 2600, 5, 'Electric', 95000, true, 'New');
+$e9= new EImage('teslaModelS.jpg', 51234, 'image/jpeg', file_get_contents(__DIR__.'/directory/Smarty/assets/images/teslaModelS.jpg'));
+$e9->setCar($carS26);
+$entityManager->persist($carS26);
+$entityManager->persist($e9);
+$entityManager->flush();

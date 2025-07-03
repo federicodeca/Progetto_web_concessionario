@@ -275,4 +275,21 @@ class VUser{
         $this->smarty->assign('sale', $sale);
         $this->smarty->display('confirmSale.tpl');
     }
+
+
+
+    //RECENSIONI
+    public function showReviewForm($infout, $rating, $content){
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('content', $content);
+        $this->smarty->assign('rating', $rating);
+        $this->smarty->display('reviewForm.tpl');
+    }
+
+    public function showSuccessReview() {
+        $this->smarty->assign("title", "Recensione Inviata!");
+        $this->smarty->assign("para", "Grazie per aver condiviso la tua esperienza con noi.");
+        $this->smarty->display('success.tpl');
+    }
 }
