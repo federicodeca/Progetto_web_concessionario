@@ -344,6 +344,7 @@ class FPersistentManager {
         return $result;
     }
 
+
     /**
      * retrieve all reviews
      */
@@ -358,9 +359,5 @@ class FPersistentManager {
     public function countReviews() {
     $result=FReview::countAllReviews();
     return $result;
-    }
-    public static function getBestReviews() {
-        $result = FReview::retrieveBestReviews();
-        return $result;
     }
 }
