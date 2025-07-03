@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-03 12:11:54
+  from 'file:reviewForm.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6866576ad0ff17_55267244',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5af4a910739e6877290cff6e8248acbada936a8a' => 
+    array (
+      0 => 'reviewForm.tpl',
+      1 => 1751536475,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6866576ad0ff17_55267244 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -21,11 +45,17 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
         <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
-    </script>
+    <?php echo '</script'; ?>
+>
 
 
   </head>
@@ -58,11 +88,22 @@
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="blog.html">Blog</a>
+                      <a class="dropdown-item" href="team.html">Team</a>
+                      <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                      <a class="dropdown-item" href="terms.html">Terms</a>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
@@ -87,18 +128,19 @@
 
 
               <select class="form-control" id="rating" name="rating" style="width: 200px;" required = "">
-                <option value="" disabled {if $rating == ""}selected{/if}>Seleziona le stelle</option>
-                <option value="5" {if $rating == "5"}selected{/if}>★★★★★ - 5 stelle</option>
-                <option value="4" {if $rating == "4"}selected{/if}>★★★★☆ - 4 stelle</option>
-                <option value="3" {if $rating == "3"}selected{/if}>★★★☆☆ - 3 stelle</option>
-                <option value="2" {if $rating == "2"}selected{/if}>★★☆☆☆ - 2 stelle</option>
-                <option value="1" {if $rating == "1"}selected{/if}>★☆☆☆☆ - 1 stella</option>
+                <option value="" disabled <?php if ($_smarty_tpl->getValue('rating') == '') {?>selected<?php }?>>Seleziona le stelle</option>
+                <option value="5" <?php if ($_smarty_tpl->getValue('rating') == "5") {?>selected<?php }?>>★★★★★ - 5 stelle</option>
+                <option value="4" <?php if ($_smarty_tpl->getValue('rating') == "4") {?>selected<?php }?>>★★★★☆ - 4 stelle</option>
+                <option value="3" <?php if ($_smarty_tpl->getValue('rating') == "3") {?>selected<?php }?>>★★★☆☆ - 3 stelle</option>
+                <option value="2" <?php if ($_smarty_tpl->getValue('rating') == "2") {?>selected<?php }?>>★★☆☆☆ - 2 stelle</option>
+                <option value="1" <?php if ($_smarty_tpl->getValue('rating') == "1") {?>selected<?php }?>>★☆☆☆☆ - 1 stella</option>
               </select>
     </div>
 
              <div class="col-12" style="margin-top: 20px;" >
               <label for="inputReview" class="form-label" style="color:aliceblue"  >Dettagli recensione:</label>
-              <textarea type="text" class="form-control" id="inputReview" rows="4" placeholder="Scrivi la tua recensione qui..." name="inputReview">{$content}</textarea>
+              <textarea type="text" class="form-control" id="inputReview" rows="4" placeholder="Scrivi la tua recensione qui..." name="inputReview"><?php echo $_smarty_tpl->getValue('content');?>
+</textarea>
             </div>
 
 
@@ -156,14 +198,24 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
   </body>
 
 </html>
+<?php }
+}

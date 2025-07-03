@@ -801,6 +801,14 @@ class CUser {
 
 
 }
+
+public static function showAboutUs() {
+    $view = new VUser();
+    $view->showAboutUs();
+}
+
+
+
 }
 
 

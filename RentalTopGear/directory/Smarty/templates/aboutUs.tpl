@@ -3,6 +3,8 @@
 
   <head>
 
+  
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -10,7 +12,7 @@
     <link rel="icon" href="/RentalTopGear/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
+    <title>Rental Top Gear</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/RentalTopGear/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,16 +22,20 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-      <!-- Additional icon  -->
+    <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
-  
-        <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
+
+    <!--dati per login-->
+    <script>
+     
       const username = "{$username|escape:'javascript'|default:''}";
+      const permission = "{$permission|escape:'javascript'|default:''}";
+      
     </script>
 
   </head>
+
 
   <body>
 
@@ -45,29 +51,33 @@
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+ 
+
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="RentalTopGear/User/home">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                </li> 
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
+              </li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+
+
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+
               {if $isLogged}
 
                 <li class="nav-item dropdown">
@@ -78,8 +88,10 @@
                       {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
                       {if $permission === 'user'} 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
-                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      {/if}
+                      {if $permission === 'owner'}
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
                       {/if}
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
@@ -106,8 +118,9 @@
                           
                           </div>
                         </li>
-              {/if}        
+              {/if}          
             
+
             </ul>
           </div>
         </div>
@@ -115,56 +128,13 @@
     </header>
 
     <!-- Page Content -->
- 
-
-    <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-      <div class="container col-md-6" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form  method="post" action="/RentalTopGear/User/checkLogin">
-
-            <div class="custom-license-card">
-  
-              <div class="col-md-12">
-              <label for="inputName" class="form-label" style="color:aliceblue"> username </label>
-              <input type="text" class="form-control" id="inputName" name="username">
-            </div>
-             <div class="col-md-12">
-              <label for="inputName" class="form-label" style="color:aliceblue"> password</label>
-              <input type="password" class="form-control" id="inputSurname" name="password">
-            </div>
-           
-            <div class="col-md-12" style="margin-top: 20px;" >
-              <button type="submit" class="btn btn-primary" style="color:aliceblue">Sign in</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>  
-
-
-         <div class="best-features">
+    <div class="page-heading about-heading header-text" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Us</h2>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-              </ul>
-              <a href="about-us.html" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="/RentalTopGear/directory/Smarty/assets/images/about-1-570x350.jpg" alt="">
+            <div class="text-content">
+              <h4>about us</h4>
+              <h2><em>duplex drive</em></h2>
             </div>
           </div>
         </div>
@@ -172,7 +142,58 @@
     </div>
 
 
-  <footer>
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Ogni viaggio inizia con la scelta giusta.</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="assets/images/about-1-570x350.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>CHI SIAMO</h4>
+              <p>Benvenuti su DuplexDrive, il punto di riferimento per chi cerca auto affidabili, per ogni stile di vita e ogni tipo di viaggio.
+                <br>Siamo un concessionario specializzato nella vendita di auto, oltre offrire soluzioni di noleggio flessibili, pernsate per adattarsi alle diverse esigenze di privadi e aziende.</br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            <h4>COSA OFFRIAMO</h4>
+            <br></br>
+            <ul>
+            <li>- AMPIA SCELTA DI VEICOLI: selezionate con cura per garantire qualità.</li>
+            <li>- SERVIZIO DI NOLEGGIO: a breve e lungo termine, per ogni esigenza</li>
+            <li>- CONSULENZA PERSONALIZZATA: il nostro team è sempre disponibile per aiutarti a trovare l'auto giusta.</li>
+            </ul>
+
+            <br></br>
+
+            <p></p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+      <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -191,13 +212,14 @@
 
               <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
-              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4>
 
             </div>
           </div>
         </div>
       </div>
     </footer>
+
 
 
     <!-- Bootstrap core JavaScript -->
@@ -208,7 +230,6 @@
     <!-- Additional Scripts -->
     <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
     <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
-
+     
   </body>
-
 </html>

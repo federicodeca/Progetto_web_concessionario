@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-03 12:11:14
-  from 'file:carSearcher.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-03 12:17:13
+  from 'file:aboutUs.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68665742db7b64_62245218',
+  'unifunc' => 'content_686658a9b063e7_82053286',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '098a0acdf48d7aeccb8152d0e09cdf8fb7853665' => 
+    'a901373974efb59c095b4cc2e5b3bb75a6c6ff54' => 
     array (
-      0 => 'carSearcher.tpl',
-      1 => 1751536475,
+      0 => 'aboutUs.tpl',
+      1 => 1751537389,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,23 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68665742db7b64_62245218 (\Smarty\Template $_smarty_tpl) {
+function content_686658a9b063e7_82053286 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
 
   <head>
 
+  
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/Webapp/directory/Smarty/assets/images/favicon.ico">
-
+    <link rel="icon" href="/RentalTopGear/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>PHPJabbers.com | Free Car Rental Website Template</title>
+    <title>Rental Top Gear</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/RentalTopGear/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,14 +46,14 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-          <!-- Additional icon  -->
+    <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
 
     <!--dati per login-->
     <?php echo '<script'; ?>
 >
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
-;
+     
       const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
@@ -61,18 +62,15 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
+      
     <?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/select-car.js"><?php echo '</script'; ?>
 >
 
   </head>
 
+
   <body>
 
-  <input type="hidden" id="actualMethod" value="carSearcher">
- 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -85,30 +83,32 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-
+ 
 
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/RentalTopGear/User/home">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                </li> 
-    
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item"><a class="nav-link " href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
+              </li>
 
-                <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+
+
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
@@ -121,8 +121,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                       <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
                       <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
-                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
                       <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
@@ -150,9 +152,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           
                           </div>
                         </li>
-              <?php }?>     
+              <?php }?>          
             
-                  
 
             </ul>
           </div>
@@ -160,99 +161,73 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       </nav>
     </header>
 
-     <!-- Page Content -->
-       <div class="page-heading about-heading header-text"  style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
+    <!-- Page Content -->
+    <div class="page-heading about-heading header-text" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="custom-license-card">
-              <form method="post" action="/RentalTopGear/User/showCarsForSale/1" >
-                <div class="card-header">
-                  <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
-                </div>
-       
-                <div class="row">
-                  <div class="col-md-4 mt-5">
-                    <div class="input-group input-group-sm mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Brand</button>
-                      <ul class="dropdown-menu">
-                        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
-$foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
-$foreach0DoElse = false;
-?>
-                          <li><a class="dropdown-item" href="#" onclick="selectBrand('<?php echo $_smarty_tpl->getValue('brand');?>
-')"><?php echo $_smarty_tpl->getValue('brand');?>
-</a></li>
-                        <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                      </ul>
-                      <div style="width: 50%;">
-                        <input type="text" class="form-control" name="brand" readonly id="brandInput" placeholder="brand">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mt-5">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">model</button>
-                      <ul class="dropdown-menu"  id="modelDropdown">
-                        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
-$foreach1DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
-$foreach1DoElse = false;
-?>
-                          <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('modelList'), 'model');
-$foreach2DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('model')->value) {
-$foreach2DoElse = false;
-?>
-                            <li class="dropdown-model-item" data-brand="<?php echo $_smarty_tpl->getValue('brand');?>
-">
-                              <a class="dropdown-item" href="#" onclick="selectModel('<?php echo $_smarty_tpl->getValue('model');?>
-')"><?php echo $_smarty_tpl->getValue('model');?>
-</a>
-                            </li>
-                          <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                        <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                      </ul>
-                      <div style="width: 50%;">
-                      <input type="text" class="form-control" name="model"  id="modelInput" aria-label="Text input with dropdown button" placeholder="model" readonly>
-                      </div>
-                    </div>
-                  </div>
-               
-                  <div class="col-md-4 mt-5">
-                    <div class="form-group">
-                      <label for="formControlRange" class="text-white">Prezzo max: <span id="priceValue">0</span> €</label>
-                      <input type="range" class="form-control-range" id="formControlRange" name="price" min="0" max="100000" step="1000" value="100000" >
-                    </div>
-                  </div>
-                </div>
-                
-                  <div class="row">
-                  <div class="col md-12 mt-5">
-                      <button type="submit" class="btn btn-primary btn-primary-center" style="color:aliceblue">Cerca</button>
-                    </div>
-                  </div>
-                
-              </form>
+            <div class="text-content">
+              <h4>about us</h4>
+              <h2><em>duplex drive</em></h2>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-   
 
-  <footer>
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Ogni viaggio inizia con la scelta giusta.</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="assets/images/about-1-570x350.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>CHI SIAMO</h4>
+              <p>Benvenuti su DuplexDrive, il punto di riferimento per chi cerca auto affidabili, per ogni stile di vita e ogni tipo di viaggio.
+                <br>Siamo un concessionario specializzato nella vendita di auto, oltre offrire soluzioni di noleggio flessibili, pernsate per adattarsi alle diverse esigenze di privadi e aziende.</br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            <h4>COSA OFFRIAMO</h4>
+            <br></br>
+            <ul>
+            <li>- AMPIA SCELTA DI VEICOLI: selezionate con cura per garantire qualità.</li>
+            <li>- SERVIZIO DI NOLEGGIO: a breve e lungo termine, per ogni esigenza</li>
+            <li>- CONSULENZA PERSONALIZZATA: il nostro team è sempre disponibile per aiutarti a trovare l'auto giusta.</li>
+            </ul>
+
+            <br></br>
+
+            <p></p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+      <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -271,24 +246,22 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 
               <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
-              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4>
 
             </div>
           </div>
         </div>
       </div>
-  </footer>
-   
-  
+    </footer>
 
 
 
     <!-- Bootstrap core JavaScript -->
     <?php echo '<script'; ?>
-   src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
- src= "/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
 
 
@@ -299,24 +272,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
-
-    <!-- Popper.js (necessario per Bootstrap dropdown) -->
-    <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"><?php echo '</script'; ?>
->
-    <!-- Bootstrap JS -->
-    <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"><?php echo '</script'; ?>
->
-
-
-
+     
   </body>
-
-
-</html>
-<?php }
+</html><?php }
 }

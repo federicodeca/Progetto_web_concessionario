@@ -292,4 +292,9 @@ class VUser{
         $this->smarty->assign("para", "Grazie per aver condiviso la tua esperienza con noi.");
         $this->smarty->display('success.tpl');
     }
+
+    // ABOUT US
+    public function showAboutUs() {
+        $this->smarty->display('aboutUs.tpl');
+    }
 }
