@@ -123,7 +123,7 @@ class CUser {
     public static function registration()
     {
         $view = new VUser();
-        if(FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) == false && FPersistentManager::getInstance()->verifyPersonUsername(UHTTPMethods::post('username')) == false){
+        if(FPersistentManager::getInstance()->verifyPersonEmail(UHTTPMethods::post('email')) == false && FPersistentManager::getInstance()->verifyPersonUsername(UHTTPMethods::post('username')) == false){
                 $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'), UHTTPMethods::post('email'), UHTTPMethods::post('phone'),UHTTPMethods::post('username'), UHTTPMethods::post('password'),UHTTPMethods::post('city'),UHTTPMethods::post('zip'),UHTTPMethods::post('address'));
                 $check = FPersistentManager::getInstance()->uploadObj($user);
                 if($check){

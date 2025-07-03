@@ -194,6 +194,12 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function verifyPersonEmail($email) {
+        $result = FPerson::verify('email', $email);
+
+        return $result;
+    }
+
 
     //NOLEGGIO AUTO
 

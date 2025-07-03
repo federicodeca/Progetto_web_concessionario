@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-06-30 12:55:34
+/* Smarty version 5.5.1, created on 2025-07-03 12:25:58
   from 'file:confirmSale.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68626d26360144_13187710',
+  'unifunc' => 'content_68665ab6736497_79603129',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ec0b374d63cfb12e587e48466690e12cee4d2fa7' => 
     array (
       0 => 'confirmSale.tpl',
-      1 => 1751194759,
+      1 => 1751537991,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68626d26360144_13187710 (\Smarty\Template $_smarty_tpl) {
+function content_68665ab6736497_79603129 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -63,9 +63,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       
     <?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -100,15 +97,56 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
-                <li class="nav-item"> <div id="login-box" ></div> </li>
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              <?php } else { ?>
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
+                            </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
+                          </div>
+                        </li>
+              <?php }?>          
+            
             </ul>
           </div>
         </div>
@@ -116,27 +154,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </header>
 
     <!-- Page Content -->
- 
-  <!--<div class="call-to-action">
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mt-5">
-            <div class="inner-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-right">
-                  <a href="contact.html" class="filled-button">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     
    <div class="call-to-action">
      

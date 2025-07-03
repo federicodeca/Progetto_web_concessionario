@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 18:26:26
+/* Smarty version 5.5.1, created on 2025-07-03 12:26:58
   from 'file:homeAdmin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68655db2b782a8_94191402',
+  'unifunc' => 'content_68665af2b3e694_96574312',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
     array (
       0 => 'homeAdmin.tpl',
-      1 => 1751473559,
+      1 => 1751536475,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68655db2b782a8_94191402 (\Smarty\Template $_smarty_tpl) {
+function content_68665af2b3e694_96574312 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -121,6 +121,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                       <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
                       <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
                       <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
