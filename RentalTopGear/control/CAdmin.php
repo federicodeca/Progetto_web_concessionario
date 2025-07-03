@@ -304,6 +304,17 @@ class CAdmin {
     }
 
 
+    public function showFormModify() {
+        if (CAdmin::isLogged()) {
+            $carId = UHTTPMethods::post('idAuto');
+            $car = FPersistentManager::getInstance()->retriveCarOnId($carId);
+            $infout=CAdmin::getAdminStatus();
+            $view = new VAdmin();
+            $view->showModifyCarForm($car, $infout);
+        }
+    }
+
+
 
 
 }
