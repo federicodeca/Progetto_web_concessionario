@@ -681,6 +681,7 @@ class CUser {
                 FPersistentManager::getInstance()->persistInTransaction($sale); //  persist+flush the car object to the database       
                  
                 FPersistentManager::getInstance()->unlock(); // commit ends the transaction and unlocks the table
+                UMail::sendRentConfirm($user,$sale,$car,$amount);
                 $view = new VUser();
                 $view->showSaleConfirmation($sale,$infout); // Show confirmation of the car rent
             }
