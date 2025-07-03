@@ -339,6 +339,11 @@ class FPersistentManager {
         return $result;
     }
 
+    public static function getBestReviews() {
+        $result = FReview::retrieveBestReviews();
+        return $result;
+    }
+
     /**
      * retrieve all reviews
      */
