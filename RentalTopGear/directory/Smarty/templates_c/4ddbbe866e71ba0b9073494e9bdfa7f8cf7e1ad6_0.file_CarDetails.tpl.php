@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 22:55:44
+/* Smarty version 5.5.1, created on 2025-07-02 23:06:38
   from 'file:CarDetails.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68659cd01cd2f8_67711887',
+  'unifunc' => 'content_68659f5e7bc3a5_91089864',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4ddbbe866e71ba0b9073494e9bdfa7f8cf7e1ad6' => 
     array (
       0 => 'CarDetails.tpl',
-      1 => 1751489739,
+      1 => 1751490296,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68659cd01cd2f8_67711887 (\Smarty\Template $_smarty_tpl) {
+function content_68659f5e7bc3a5_91089864 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 
@@ -226,8 +226,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
                 <div class="col-lg-12" style= "margin-top: 20px">
                     <fieldset>
-                      <?php if ($_smarty_tpl->getValue('permission') == 'user') {?><button type="submit" id="form-submit"  class="filled-button">Submit</button>
+                    <?php if ($_smarty_tpl->getValue('permission') == 'admin' || $_smarty_tpl->getValue('permission') == 'owner') {?>
                       <?php } else { ?>
+                      <button type="submit" id="form-submit"  class="filled-button">Submit</button>
                       <?php }?>
                     </fieldset>
                   </div>

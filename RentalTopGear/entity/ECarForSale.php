@@ -18,10 +18,6 @@ class ECarForSale extends EAuto
 
     #[ORM\OneToOne(targetEntity: ESale::class, mappedBy: 'carForSale')]
     protected? ESale $saleOrder = null;
-    
-    // DA CANCELLARE !!!!!! abbiamo usato available, eliminare anche i suoi metodi 
-    #[ORM\Column(type: 'boolean')]
-    protected bool $saled = false;
 
     #[ORM\Column(type: 'string', length: 10)]
     
@@ -61,12 +57,6 @@ class ECarForSale extends EAuto
     public function setSaleOrder(?ESale $saleOrder): void
     {
         $this->saleOrder = $saleOrder;
-    }
-    public function getSaled(): bool{
-        return $this->saled;}
-    
-    public function setSaled(bool $saled): void{
-        $this->saled = $saled;
     }
 
     public function getKm0OrNew(): string  {
