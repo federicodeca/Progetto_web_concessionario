@@ -15,11 +15,11 @@ class FLicense {
     return $notCheckedLicenses;
     }
 
-     public static function getLicenseById($id) {
-
+    public static function getLicenseById($id) {
         $license = FEntityManager::getInstance()->retriveObj(ELicense::class, $id);
         return $license;
-
     }
+
+
 
 }

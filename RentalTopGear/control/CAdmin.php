@@ -175,7 +175,7 @@ class CAdmin {
                 USession::setElementInSession('idAuto', $carId); // Clear session if carId is provided
             }
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
-            $selectedCar = FPersistentManager::getInstance()->retriveCarOnId($carId);
+            $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
             $infout=CAdmin::getAdminStatus();  
             $unav=FPersistentManager::getAllValidUnavailabilities($carId);
             $view = new VAdmin();
@@ -246,7 +246,7 @@ class CAdmin {
         if (CAdmin::isLogged()) {
             $carId = UHTTPMethods::post('car');
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
-            $selectedCar = FPersistentManager::getInstance()->retriveCarOnId($carId);
+            $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
             $infout=CAdmin::getAdminStatus();  
             $sur=FPersistentManager::getAllValidSurcharges($carId);
             $view = new VAdmin();
@@ -265,10 +265,10 @@ class CAdmin {
             $carId = UHTTPMethods::post('idAuto');
             $start = new DateTime(UHTTPMethods::post('start'));
             $end = new DateTime(UHTTPMethods::post('end'));
-            $car = FPersistentManager::getInstance()->retriveCarOnId($carId);
+            $car = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId); // Lock the car object
             if($car->checkExistingSurcharges($start, $end)) {
                 $surcharge= new ESurcharge($start, $end, UHTTPMethods::post('price'), $car);
-                FPersistentManager::getInstance()->saveObject($surcharge); //TRANSACTION
+                FPersistentManager::getInstance()->uploadObject($surcharge); //TRANSACTION
                 $view->showSurchargeInsert();
         
 

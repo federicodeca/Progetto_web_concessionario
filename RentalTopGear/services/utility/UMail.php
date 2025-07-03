@@ -19,8 +19,9 @@ class UMail {
             $mailer->Port = PORT;
             $mailer->Username = USERNAME;
             $mailer->Password = PASSWORD;
+         
 
-            $mailer->setFrom('provarental@gmail.com', 'TopGear');
+            $mailer->setFrom('provarental@gmail.com', 'duplexdrive');
             $mailer->addAddress($user->getEmail());
 
             $mailer->isHTML(false);

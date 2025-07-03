@@ -42,7 +42,9 @@ class VAdmin{
     }
 
     public function showCheckSuccess() {
-        $this->smarty->display('licenseCheckSuccess.tpl');
+        $this->smarty->assign('title', 'Ottimo!');
+        $this->smarty->assign('para' , "La patente è stata controllata correttamente.");
+        $this->smarty->display('success.tpl');
     }
 
     public function showAllRentCars($cars, $infout) {

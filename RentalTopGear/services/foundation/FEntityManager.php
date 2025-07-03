@@ -60,7 +60,7 @@ class FEntityManager {
 
 
     /**
-     * save an object trough a transaction during a locking table  
+     * save an object trough a transaction during a locking table , unlock the table  and close the transaction
      */    
     }
     public static function uploadObjAndUnlock($obj){
@@ -85,7 +85,7 @@ class FEntityManager {
         try{
             self::$entityManager->getConnection()->commit();
         }catch(Exception $e){
-            echo "ERROR: " . $e->getMessage();
+            self::$entityManager->getConnection()->rollback();
         }
     }
 
@@ -196,7 +196,6 @@ class FEntityManager {
     }
 
     /**
-     * FIND OBJECTS BY ATTRIBUTE
      * return the number of objects in a list finding they on a specific attribute
      */
     public static function countObjectListAttribute($table, $field, $value)
@@ -250,7 +249,7 @@ class FEntityManager {
             self::$entityManager->getConnection()->commit();     // commit transaction, object is saved correctly
             return true;
             } catch (\Exception $e) {
-            $em->getConnection()->rollBack(); // annulla tutto
+            $entityManager->getConnection()->rollBack(); // annulla tutto
             throw $e;
         }
     }
@@ -340,7 +339,19 @@ class FEntityManager {
     
 
 
+    
   
+    /**
+     * Persist an object in the database.
+     * This method is used to save an object in the database inside a transaction.
+     * It is used to prevent concurrent modifications on the same table.
+     */
+    public static function persistAndFlush($obj) {
+     
+            self::$entityManager->persist($obj); // Persist the object
+            self::$entityManager->flush(); // Flush changes to the database
+   
+    }
 
 
 }

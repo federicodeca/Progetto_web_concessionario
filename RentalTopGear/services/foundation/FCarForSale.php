@@ -2,18 +2,6 @@
 
 class FCarForSale {
 
-    /**
-     * This method retrieves a car for sale by its ID.
-     * It returns the car object if found, or null if not found.
-     */
-
-    public static function getAllCarsForSale($table) {
-        $cars = FEntityManager::getInstance()->selectAll($table);
-        if (!$cars) {
-            return [];
-        }
-        return $cars;
-    }
 
     
     /**

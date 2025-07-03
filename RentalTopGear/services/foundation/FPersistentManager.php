@@ -18,16 +18,9 @@ class FPersistentManager {
         return self::$instance;
     }
 
-    /**
-     * return object by id
-     */
-    public function getObjectById(string $className, int $id) {
-        
-        $res= FEntityManager::getInstance()->retriveObj($className, $id);
-        return $res;
-    }
+  
 
-    //TRANSAZIONI E LOCKING
+    ////////TRANSAZIONI E LOCKING
     /**
      * return object by id with locking the tuple 
      */
@@ -46,14 +39,57 @@ class FPersistentManager {
         FEntityManager::getInstance()->uploadObjAndUnlock($obj);
     }
 
+
     /**
-     * lock the table
-     * this method is used to unlock the table 
+     * persist an object in the database
+     * this method is used to save an object in the database inside a transaction
+     * it is used to prevent concurrent modifications on the same table
+     */
+    public static function persistInTransaction($obj) {
+        FEntityManager::getInstance()->persistAndFlush($obj);
+    }
+
+    /**
+
+     * this method is used to unlock the table and close the transaction
      */
     public static function unlock(){
         FEntityManager::getInstance()->commit();
     }
 
+
+
+      /**
+     * UPLOAD OBJECT
+     * upload any Object in the database with single TRANSACTION
+     */
+    public static function uploadObj($obj){
+
+        $result = FEntityManager::getInstance()->saveObject($obj);
+
+        return $result;
+    }
+
+     /**
+      * DELETE OBJECT
+     * delete an object by id in a TRANSACTION
+     */
+    public static function removeObject($obj):void {
+        FEntityManager::getInstance()->deleteObj($obj);
+    } 
+
+    
+    //////// OBJECTS RETRIEVAL 
+
+
+      /**
+     * return object by id
+     */
+    public function getObjectById(string $className, int $id) {
+        
+        $res= FEntityManager::getInstance()->retriveObj($className, $id);
+        return $res;
+    }
 
 
     /**
@@ -65,20 +101,10 @@ class FPersistentManager {
         return $res;
     }
 
-    /**
-     * UPLOAD OBJECT
-     * upload any Object in the database
-     */
-    public static function uploadObj($obj){
+  
 
-        $result = FEntityManager::getInstance()->saveObject($obj);
 
-        return $result;
-    }
-
-    public static function caricaObj($obj) {
-        FEntityManager::getInstance()->caricaObj($obj);
-    }
+ 
 
 
     //LOGIN
@@ -103,19 +129,6 @@ class FPersistentManager {
 
 
 
-    //CAR
-    /**
-     * return a car finding it on the id
-     * @param int $id
-     * @return object|null
-     */
-    public static function retriveCarOnId($id)
-    {
-        $result = FAuto::getCarById($id);
-
-        return $result;
-    }
-
     /**
      * return all cars from a table
      * @param string $table
@@ -136,14 +149,7 @@ class FPersistentManager {
         return $result;
     }
 
-    /**
-     * return all cars for sale from the table
-     */
-    public static function retriveAllSaleCars() {
-        $result = FCarForSale::getAllCarsForSale(ECarForSale::class);
-        return $result;
-    }
-
+ 
     /**
      * return all cars for sale from the table
      */
@@ -153,23 +159,9 @@ class FPersistentManager {
     }
     
 
-    /**
-     * return the credit card of a user by id
-     */
-    public static function retriveCreditCardOnUserId($userId) {
-        $result = FCreditCard::getCreditCardByUserId($userId);
-        return $result;
-    }
 
-    /**
-     * TRANSACTION INSERT
-     */
-    public static function saveObject($obj) {
-        $result = FEntityManager::getInstance()->saveObject($obj);
-        return $result;
-    }
-
-
+    
+    
 
 
 
@@ -194,6 +186,9 @@ class FPersistentManager {
         return $result;
     }
 
+    /**
+     * verify if the email is already used by another person (user,admin)
+     */
     public static function verifyPersonEmail($email) {
         $result = FPerson::verify('email', $email);
 
@@ -230,13 +225,7 @@ class FPersistentManager {
         return $result;
     }
 
-    /**
-     * delete an object by id
-     */
-    public static function removeObject($obj):void {
-        FEntityManager::getInstance()->deleteObj($obj);
-    } 
-
+   
 
 
     //ACQUISTO AUTO    
@@ -288,57 +277,85 @@ class FPersistentManager {
         return $result;
     }
 
-        
+    /**
+     *retrieve all licenses that are not checked yet
+      */    
     public static function getNotCheckedLicense($licenseTable) {
         $result = FLicense::getNotCheckedLicense($licenseTable);
         return $result;
     }
 
-    public static function retriveLicense($id)
-    {
+    public static function retriveLicense($id) {
         $result = FLicense::getLicenseById($id);
-
         return $result;
     }
 
+
+
+    /**
+     * this method retrieves all unavailabilities that are actually (start > current time) valid for a specific car
+     */
     public static function getAllValidUnavailabilities(int $carId) {
        $result=FUnavailability::getAllValidUnavailabilities($carId);
        return $result;
     }
 
+
+    /**
+     * retrieve all surcharges for a car
+     */
     public static function getAllValidSurcharges(int $carId) {
        $result=FSurcharge::getAllValidSurcharges($carId);
        return $result;
     }
-        
+    
+    /**
+     * retrieve all sales 
+     */
     public static function getSaleOrders($saleTable) {
         $result = FSale::getSaleOrders($saleTable);
         return $result;
     }
 
+
+    /**
+     * retrieve all rents
+     */
     public static function getRentOrders($rentTable) {
         $result = FRent::getRentOrders($rentTable);
         return $result;
     }
 
+    /**
+     * retrieve all rents for a specific period from start to end date
+     */
     public static function getRentsForPeriod($start, $end) {
         $result = FRent::retrieveRentsForPeriod($start, $end);
         return $result;
     }
 
-
+    /**
+     * retrieve all sales for a specific period from start to end date
+     */
     public static function getSalesForPeriod($start, $end) {
         $result = FSale::retrieveSalesForPeriod($start, $end);
         return $result;
     }
 
-
+    /**
+     * verify if the user has already written a review 
+     */
     public static function verifyReview($user) {
         $result = FReview::verify($user);
 
         return $result;
     }
 
+    /**
+     * retrieve the best reviews
+     * this method retrieves the best reviews from the database, ordered by rating in descending order
+     */
+    
     public static function getBestReviews() {
         $result = FReview::retrieveBestReviews();
         return $result;

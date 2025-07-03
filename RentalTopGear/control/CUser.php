@@ -308,19 +308,20 @@ class CUser {
             $end=new DateTime($endD);
 
             $idAuto=USession::getElementFromSession('idAuto');
+           
           
 
-            $car= FPersistentManager::getInstance()->getObjectByIdLock(ECarForRent::class, $idAuto); //lock tables
-            $indisp= new EUnavailability($start, $end, $car);
+            $car= FPersistentManager::getInstance()->getObjectByIdLock(ECarForRent::class, $idAuto); //get the car object by id and lock the tuples and start transaction 
+             $indisp= new EUnavailability($start, $end, $car);
 
-            if ($car->checkAvailability($start,$end)) { //metodo clu
-                 // Lock the table to prevent concurrent modifications
-                FPersistentManager::getInstance()->uploadObjAndUnlock($indisp); //trnasaction + unlock tables
+            if ($car->checkAvailability($start,$end)) { 
+                
+                FPersistentManager::getInstance()->persistInTransaction($indisp); /// Save the unavailability object in transaction and locking
                
 
 
                 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
-                
+             
                 $idMethod = USession::getElementFromSession('creditCard');
                 $method = FPersistentManager::getInstance()->getObjectById(ECreditCard::class, $idMethod);
                 $idUser = USession::getElementFromSession('user');
@@ -330,12 +331,14 @@ class CUser {
 
                 $rent= new ERent($now,$method,$user,$indisp,$car);
                 $rent->setTotalPrice($amount);
-                FPersistentManager::getInstance()->saveObject($rent); // Save the rent object
+                FPersistentManager::getInstance()->persistInTransaction($rent); // Save the rent object in transaction and locking
                 
                 UMail::sendRentConfirm($user,$rent,$car,$amount,$startD,$endD);
+                FPersistentManager::getInstance()->unlock();
                  
                 $view = new VUser();
                 $view->showCarRentConfirmation($rent, $indisp,$infout); // Show confirmation of the car rent
+                
             }
             else {
 
@@ -547,11 +550,14 @@ class CUser {
         $view->showCarsForSale($filteredCars, $infout, $currentPage, $totalPages, $models);
     }
 
+
+
     /**
      * this method is used to select a cars for sale, it will redirect to the car detail page
      * @param int $carId
      */
     public static function selectCarForSale($idAuto) {
+
         $infout=CUser::getUserStatus();
 
         USession::setElementInSession('type', 'Sale'); 
@@ -659,7 +665,7 @@ class CUser {
             if ($car->isAvailable()) { //metodo clu
                 
                 $car->setAvailable(false); // Set the car as not available
-                FPersistentManager::getInstance()->uploadObjAndUnlock($car); //TRANSACTION + UNLOCK          
+                FPersistentManager::getInstance()->persistInTransaction($car); // persist+flush the car object to the database       
                
 
 
@@ -672,8 +678,9 @@ class CUser {
                 $idUser= USession::getElementFromSession('user');
 
                 $sale= new ESale($now,$method,$user,$car,$amount);
-                FPersistentManager::getInstance()->saveObject($sale); // Save the rent object
+                FPersistentManager::getInstance()->persistInTransaction($sale); //  persist+flush the car object to the database       
                  
+                FPersistentManager::getInstance()->unlock(); // commit ends the transaction and unlocks the table
                 $view = new VUser();
                 $view->showSaleConfirmation($sale,$infout); // Show confirmation of the car rent
             }
