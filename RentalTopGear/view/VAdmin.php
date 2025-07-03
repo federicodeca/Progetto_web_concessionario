@@ -120,4 +120,13 @@ class VAdmin{
         $this->smarty->assign('cars', $cars);
         $this->smarty->display('modifyCar.tpl');
     }
+
+
+    public function showModifyCarForm($car, $infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->assign('car', $car);
+        $this->smarty->display('modifyCarForm.tpl');
+    }
 }
