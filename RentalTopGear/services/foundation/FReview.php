@@ -39,4 +39,9 @@ public static function getReviewByUserId($user) {
     }
 
 
+    public static function retrieveBestReviews() {
+        $dql = "SELECT r FROM EReview r ORDER BY r.rating DESC, r.id DESC";
+        $result = FEntityManager::getInstance()->doQuery($dql, [], 3, 0);      
+        return $result ?: [];
+    }
 }
