@@ -31,6 +31,28 @@ class UHTTPMethods{
         else return $_FILES[$param[0]][$param[1]][$param[2]][$param[3]][$param[4]][$param[5]];
     }
 
+    public static function multipleFiles($param) {
+        //Se è una sola immagine
+        if (!is_array($_FILES[$param]['name'])) {
+            return [$_FILES[$param]];
+        }
+
+        // Se sono più immagini
+        $files = [];
+        $count = count($_FILES[$param]['name']);
+        for ($i = 0; $i < $count; $i++) {
+            if ($_FILES[$param]['error'][$i] === UPLOAD_ERR_NO_FILE) continue;
+            $files[] = [
+                'name' => $_FILES[$param]['name'][$i],
+                'type' => $_FILES[$param]['type'][$i],
+                'tmp_name' => $_FILES[$param]['tmp_name'][$i],
+                'error' => $_FILES[$param]['error'][$i],
+                'size' => $_FILES[$param]['size'][$i],
+            ];
+        }
+        return $files;
+    }
+
     public static function getBinaryFile($File){
         $fileData = file_get_contents($$File['$name']['tmp_name']);
         return $fileData; 

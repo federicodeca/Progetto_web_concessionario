@@ -34,7 +34,6 @@ class ECarForSale extends \ECarForSale implements \Doctrine\ORM\Proxy\InternalPr
         "\0".'*'."\0".'photo' => [parent::class, 'photo', null, 8],
         "\0".'*'."\0".'price' => [parent::class, 'price', null, 8],
         "\0".'*'."\0".'saleOrder' => [parent::class, 'saleOrder', null, 8],
-        "\0".'*'."\0".'saled' => [parent::class, 'saled', null, 8],
         "\0".'*'."\0".'seats' => [parent::class, 'seats', null, 8],
         'Km0OrNew' => [parent::class, 'Km0OrNew', null, 8],
         'available' => [parent::class, 'available', null, 8],
@@ -48,7 +47,6 @@ class ECarForSale extends \ECarForSale implements \Doctrine\ORM\Proxy\InternalPr
         'photo' => [parent::class, 'photo', null, 8],
         'price' => [parent::class, 'price', null, 8],
         'saleOrder' => [parent::class, 'saleOrder', null, 8],
-        'saled' => [parent::class, 'saled', null, 8],
         'seats' => [parent::class, 'seats', null, 8],
     ];
 

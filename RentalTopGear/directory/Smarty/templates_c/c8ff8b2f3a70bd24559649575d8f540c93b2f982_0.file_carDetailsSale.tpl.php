@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-02 23:05:58
+/* Smarty version 5.5.1, created on 2025-07-03 12:25:38
   from 'file:carDetailsSale.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68659f36821469_31938318',
+  'unifunc' => 'content_68665aa2d2d202_50139115',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8ff8b2f3a70bd24559649575d8f540c93b2f982' => 
     array (
       0 => 'carDetailsSale.tpl',
-      1 => 1751490296,
+      1 => 1751537935,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68659f36821469_31938318 (\Smarty\Template $_smarty_tpl) {
+function content_68665aa2d2d202_50139115 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 
@@ -124,7 +124,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
 
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
@@ -138,6 +138,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                       <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
                       <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
                       <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>

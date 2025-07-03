@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-03 12:11:54
+/* Smarty version 5.5.1, created on 2025-07-03 12:26:15
   from 'file:reviewForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6866576ad0ff17_55267244',
+  'unifunc' => 'content_68665ac73be082_12000118',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5af4a910739e6877290cff6e8248acbada936a8a' => 
     array (
       0 => 'reviewForm.tpl',
-      1 => 1751536475,
+      1 => 1751538165,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6866576ad0ff17_55267244 (\Smarty\Template $_smarty_tpl) {
+function content_68665ac73be082_12000118 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -88,22 +88,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link" href="fleet.html">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="offers.html">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
-                    
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="blog.html">Blog</a>
-                      <a class="dropdown-item" href="team.html">Team</a>
-                      <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                      <a class="dropdown-item" href="terms.html">Terms</a>
-                    </div>
-                </li>
-
-                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 

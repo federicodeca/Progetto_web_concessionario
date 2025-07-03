@@ -81,16 +81,12 @@ class CAdmin {
             $check = FPersistentManager::getInstance()->uploadObj($car);
         }
 
-        if (isset($_FILES['carImages']) && !empty($_FILES['carImages']['name'][0])) {
-            foreach ($_FILES['carImages']['tmp_name'] as $key => $tmp_name) {
-                $name = $_FILES['carImages']['name'][$key];
-                $size = $_FILES['carImages']['size'][$key];
-                $type = $_FILES['carImages']['type'][$key];
-                $imageData = file_get_contents($tmp_name);
-                $image = new EImage($name, $size, $type, $imageData);
-                $image->setCar($car); // collega l'immagine all'auto
-                FPersistentManager::getInstance()->uploadObj($image);
-            }
+        $photos= UHTTPMethods::multipleFiles('carImages');
+        foreach ($photos as $photo) {
+            $blobFile=file_get_contents($photo['tmp_name']);
+            $image = new EImage($photo['name'],$photo['size'], $photo['type'],$blobFile);
+            $image->setCar($car); // collega l'immagine all'auto
+            FPersistentManager::getInstance()->uploadObj($image);
         }
 
         if ($check) {

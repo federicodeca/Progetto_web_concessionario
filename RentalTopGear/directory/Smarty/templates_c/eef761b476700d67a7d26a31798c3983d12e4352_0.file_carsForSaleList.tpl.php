@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-03 12:11:44
+/* Smarty version 5.5.1, created on 2025-07-03 12:25:32
   from 'file:carsForSaleList.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68665760944200_12941395',
+  'unifunc' => 'content_68665a9c001ac1_77196616',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eef761b476700d67a7d26a31798c3983d12e4352' => 
     array (
       0 => 'carsForSaleList.tpl',
-      1 => 1751536475,
+      1 => 1751537971,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68665760944200_12941395 (\Smarty\Template $_smarty_tpl) {
+function content_68665a9c001ac1_77196616 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -107,7 +107,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item "><a class="nav-link " href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
 
