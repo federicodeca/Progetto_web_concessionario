@@ -51,7 +51,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -248,37 +248,6 @@
   </div>
 </div>
 
-     
-   <div class="best-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Us</h2>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <p>Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit. Explicabo, esse consequatur alias repellat in excepturi inventore ad <a href="#">asperiores</a> tempora ipsa. Accusantium tenetur voluptate labore aperiam molestiae rerum excepturi minus in pariatur praesentium, corporis, aliquid dicta.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-              </ul>
-              <a href="about-us.html" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="/RentalTopGear/directory/Smarty/assets/images/about-1-570x350.jpg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
 
          <footer>
       <div class="container">
@@ -297,7 +266,7 @@
          </div>
         </div>
 
-              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
 

@@ -325,7 +325,6 @@ class CUser {
                 $method = FPersistentManager::getInstance()->getObjectById(ECreditCard::class, $idMethod);
                 $idUser = USession::getElementFromSession('user');
                 $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
-                print($user->getEntity());
                 $amount=USession::getElementFromSession('amount');
                
 
@@ -805,7 +804,8 @@ class CUser {
 
 public static function showAboutUs() {
     $view = new VUser();
-    $view->showAboutUs();
+    $infout = CUser::getUserStatus();
+    $view->showAboutUs($infout);
 }
 
 

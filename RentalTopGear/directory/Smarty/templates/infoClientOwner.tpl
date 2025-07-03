@@ -68,7 +68,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -222,7 +222,7 @@
          </div>
         </div>
 
-              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
                 

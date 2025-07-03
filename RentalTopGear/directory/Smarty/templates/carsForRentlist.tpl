@@ -72,8 +72,6 @@
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-
               {if $isLogged}
 
                 <li class="nav-item dropdown">
@@ -131,8 +129,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>Our vehicle</h4>
-              <h2>Fleet</h2>
+              <h4>I nostri veicoli</h4>
+              <h2>Noleggio</h2>
      
             </div>
           </div>
@@ -330,7 +328,7 @@
          </div>
         </div>
 
-              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-03 12:17:11
+/* Smarty version 5.5.1, created on 2025-07-03 21:57:47
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686658a7e525e2_12943867',
+  'unifunc' => 'content_6866e0bb9bb3b4_17206606',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0eed0cc458d109b257fe9a78383dffc871423171' => 
     array (
       0 => 'home.tpl',
-      1 => 1751537825,
+      1 => 1751572603,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686658a7e525e2_12943867 (\Smarty\Template $_smarty_tpl) {
+function content_6866e0bb9bb3b4_17206606 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="icon" href="/RentalTopGear/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Rental Top Gear</title>
+    <title>Duplex Drive</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/RentalTopGear/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -88,7 +88,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -107,8 +107,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
@@ -316,43 +314,37 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
             <div class="section-heading">
               <h2>Dicono di noi</h2>
 
-              <a href="blog.html">read more <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
-
+          <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('reviews'), 'review');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('review')->value) {
+$foreach0DoElse = false;
+?>
           <div class="col-lg-4 col-md-6">
             <div class="service-item">
               <a href="#" class="services-item-image"><img src="/RentalTopGear/directory/Smarty/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
-                <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+                <h4><a href="#"><?php
+$_smarty_tpl->assign('i', null);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? ($_smarty_tpl->getValue('review')->getRating()-1)+1 - (0) : 0-(($_smarty_tpl->getValue('review')->getRating()-1))+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?><i class="fa-solid fa-star mr-2"></i><?php }
+}
+?></a></h4>
+                <p style = "font-style: italic; font-size: 18px" > <?php echo $_smarty_tpl->getValue('review')->getContent();?>
+ </h7>
+                <p style="margin: 0;"><?php echo $_smarty_tpl->getValue('review')->getUser()->getFirstname();?>
+ &nbsp <?php echo substr((string) $_smarty_tpl->getValue('review')->getUser()->getLastname(), (int) 0, (int) 1);?>
+.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="/RentalTopGear/directory/Smarty/assets/images/blog-2-370x270.jpg" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="/RentalTopGear/directory/Smarty/assets/images/blog-3-370x270.jpg" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
+          <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </div>
       </div>
     </div>
@@ -367,13 +359,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
             <div class="inner-content">
               <div class="row">
                 <div class="col-md-8">
-                  <h7>Siamo lieti di accoglierti nel nostro store sito in via..</h7>
-                  <h7>contattaci:</h7><br>
+                  <h7>Siamo lieti di accoglierti nel nostro store.</h7>
+                  <br></br>
+                  <h7>Contattaci:</h7><br>
                   <h7><i class="fa-solid fa-phone mr-2"></i>+39 123 456 789</h7><br>
-                  <h7><i class="fa-solid fa-envelope mr-2"></i>carRental@pippo.it</h7>
-                </div>
-                <div class="col-lg-4 col-md-6 text-right">
-                  <a href="contact.html" class="filled-button">Contattaci</a>
+                  <h7><i class="fa-solid fa-envelope mr-2"></i>duplexdrive@pippo.it</h7>
                 </div>
               </div>
             </div>
@@ -402,7 +392,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
          </div>
         </div>
 
-              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4>
 

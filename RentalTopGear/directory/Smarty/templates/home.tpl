@@ -12,7 +12,7 @@
     <link rel="icon" href="/RentalTopGear/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Rental Top Gear</title>
+    <title>Duplex Drive</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/RentalTopGear/directory/Smarty/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +56,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -75,8 +75,6 @@
 
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
 
               {if $isLogged}
 
@@ -258,7 +256,6 @@
             <div class="section-heading">
               <h2>Dicono di noi</h2>
 
-              <a href="blog.html">read more <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
           {foreach from=$reviews item=review}
@@ -288,13 +285,11 @@
             <div class="inner-content">
               <div class="row">
                 <div class="col-md-8">
-                  <h7>Siamo lieti di accoglierti nel nostro store sito in via..</h7>
-                  <h7>contattaci:</h7><br>
+                  <h7>Siamo lieti di accoglierti nel nostro store.</h7>
+                  <br></br>
+                  <h7>Contattaci:</h7><br>
                   <h7><i class="fa-solid fa-phone mr-2"></i>+39 123 456 789</h7><br>
-                  <h7><i class="fa-solid fa-envelope mr-2"></i>carRental@pippo.it</h7>
-                </div>
-                <div class="col-lg-4 col-md-6 text-right">
-                  <a href="contact.html" class="filled-button">Contattaci</a>
+                  <h7><i class="fa-solid fa-envelope mr-2"></i>duplexdrive@pippo.it</h7>
                 </div>
               </div>
             </div>
@@ -323,7 +318,7 @@
          </div>
         </div>
 
-              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4>
 

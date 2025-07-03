@@ -69,7 +69,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -89,8 +89,6 @@
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-
                              {if $isLogged}
 
                 <li class="nav-item dropdown">
@@ -207,7 +205,7 @@
                   <li><a href="#"> <i class="fa-brands fa-facebook"></i></a></li>
                   <li><a href="#"><i class="fa-brands fa-square-x-twitter"></i></i></a></li>
                   <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
-                  <li><a href="#"><<i class="fa-brands fa-behance"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-behance"></i></a></li>
                 </ul>
               </div>
             </div>
@@ -416,7 +414,7 @@
          </div>
         </div>
 
-              <p> RentalTopGear  <a href="/RentalTopGear/User/home"></a> </p>
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
               <p>Copyright &copy; 2023 TopGear</p>
               <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
 
