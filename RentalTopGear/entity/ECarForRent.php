@@ -21,6 +21,8 @@ class ECarForRent extends EAuto
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     protected $description;
 
+    protected static $entity = ECarForRent::class;
+
 
   
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, string $fuelType, float $basePrice, string $description)
@@ -69,6 +71,10 @@ class ECarForRent extends EAuto
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 
 
@@ -139,6 +145,10 @@ class ECarForRent extends EAuto
     }
 
     return $totalPrice;   
+    }
+
+    public static function getEntity() {
+        return self::$entity;
     }
 
     /*** 

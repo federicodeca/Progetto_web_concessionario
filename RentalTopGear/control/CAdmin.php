@@ -279,4 +279,87 @@ class CAdmin {
         }
 
     }
+
+
+    public static function showAllCars($type){
+        if (CAdmin::isLogged()) {
+
+            USession::setElementInSession('type', $type); // Store type in session for later use
+            if ($type=='Rent'){
+                $cars = FPersistentManager::getInstance()->retriveAllRentCars();
+            } else if ($type=='Sale') {
+                $cars = FPersistentManager::getInstance()->retriveAllAvailableSaleCars();
+            }
+            $infout=CAdmin::getAdminStatus();    
+            $view = new VAdmin();
+            $view->showCars($cars, $infout);
+        }
+    }
+
+  public static function showFormModify(){
+    if (CAdmin::isLogged()) {
+
+
+        $type = USession::getElementFromSession('type'); // Retrieve type from session
+        $carId = UHTTPMethods::post('idAuto');
+        USession::setElementInSession('idAuto', $carId); // Store selected car in session for later use
+
+
+
+
+        if ($type == 'Rent') {
+            $cars = FPersistentManager::getInstance()->retriveAllRentCars();
+            $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
+        } else if ($type == 'Sale') {
+            $cars = FPersistentManager::getInstance()->retriveAllAvailableSaleCars();
+            $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForSale::class, $carId);
+        }
+
+        if ($selectedCar === null) {
+            error_log("showFormModify: selectedCar is NULL for carId: $carId");
+        }
+
+        $infout = CAdmin::getAdminStatus();
+
+        USession::setElementInSession('idAuto', $carId); // Store selected car in session for later use
+        $view = new VAdmin();
+        $view->showModifyCarForm($selectedCar, $cars, $infout);
+        }
+    }
+
+    public static function modifyCar() {
+        if (CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $carId = USession::getElementFromSession('idAuto'); // Retrieve carId from session
+            $car = FPersistentManager::getInstance()->getObjectByIdLock(EAuto::class, $carId); // Lock the car object 
+
+            if ($car->getEntity()=='ECarForRent') {
+                $car->setModel(UHTTPMethods::post('model'));
+                $car->setBrand(UHTTPMethods::post('brand'));
+                $car->setColor(UHTTPMethods::post('color'));
+                $car->setHorsepower(UHTTPMethods::post('horsepower'));
+                $car->setDisplacement(UHTTPMethods::post('displacement'));
+                $car->setSeats(UHTTPMethods::post('seats'));
+                $car->setFuelType(UHTTPMethods::post('fuelType'));
+                $car->setBasePrice(UHTTPMethods::post('price'));
+                $car->setDescription(UHTTPMethods::post('description'));
+
+            } elseif ($car->getEntity()== 'ECarForSale') {
+                $car->setModel(UHTTPMethods::post('model'));
+                $car->setBrand(UHTTPMethods::post('brand'));
+                $car->setColor(UHTTPMethods::post('color'));
+                $car->setHorsepower(UHTTPMethods::post('horsepower'));
+                $car->setDisplacement(UHTTPMethods::post('displacement'));
+                $car->setSeats(UHTTPMethods::post('seats'));
+                $car->setFuelType(UHTTPMethods::post('fuelType'));
+                $car->setPrice(UHTTPMethods::post('price'));
+                $car->setKm0ornew(UHTTPMethods::post('condition')); // Assuming 'condition' is the field for Km0 or New
+            }
+
+            FPersistentManager::getInstance()->uploadObjAndUnlock($car); // Save changes and unlock the object
+            header("Location: /RentalTopGear/Admin/showAllCars/" . USession::getElementFromSession('type')); // Redirect to the car list page
+            exit();
+        }
+    }
+
 }

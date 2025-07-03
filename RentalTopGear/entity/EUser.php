@@ -78,9 +78,9 @@ class EUser extends EPerson {
     }
 
     public function verifyPassword($inputPassword): bool
-{
+    {
     return password_verify($inputPassword, $this->password);
-}
+    }
     public static function getEntity() {
         return self::$entity;
     }

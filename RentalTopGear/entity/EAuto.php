@@ -43,6 +43,8 @@ abstract class EAuto {
 
 
 
+    protected static $entity = EAuto::class;
+
 
 
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $displacement, int $seats, string $fuelType) {
@@ -130,6 +132,12 @@ abstract class EAuto {
         }
         return null;
     }
+    
+    public static function getEntity()
+    {
+        return self::$entity;
+    }
+
 
     /***
     public function addPhoto(EImage $image): void {

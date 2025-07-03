@@ -20,9 +20,9 @@ class ECarForSale extends EAuto
     protected? ESale $saleOrder = null;
 
     #[ORM\Column(type: 'string', length: 10)]
-    
     protected  string $Km0OrNew ;
 
+    protected static $entity = ECarForSale::class;
 
 
     public function __construct(string $model, string $brand, string $color, int $horsepower, int $engineDisplacement, int $seats, string $fuelType,int $price, bool $available, string $condition)
@@ -67,6 +67,9 @@ class ECarForSale extends EAuto
        
             $this->Km0OrNew = $condition;
         
+    }
+    public static function getEntity() {
+        return self::$entity;
     }
 
 
