@@ -279,4 +279,31 @@ class CAdmin {
         }
 
     }
+
+
+    public static function selectCar($type) {
+        if (CAdmin::isLogged()) {
+            USession::setElementInSession('type', $type); // Store the type in session for later use
+            if($type === 'Rent') {
+                $cars = FPersistentManager::getInstance()->retriveAllRentCars();
+            } elseif ($type === 'Sale') {
+                $cars = FPersistentManager::getInstance()->retriveAllAvailableSaleCars();
+            } else {
+                $cars = []; // If type is not recognized, return an empty array 
+            }
+
+            $view = new VAdmin();
+            $infout=CAdmin::getAdminStatus();
+            $view->showCars($cars, $infout);
+
+
+            
+        
+        }
+
+    }
+
+
+
+
 }

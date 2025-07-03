@@ -294,7 +294,10 @@ class VUser{
     }
 
     // ABOUT US
-    public function showAboutUs() {
+    public function showAboutUs($infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->display('aboutUs.tpl');
     }
 }

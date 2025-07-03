@@ -28,10 +28,10 @@
 
     <!--dati per login-->
     <script>
-     
+
+      const isLogged = {$isLogged|@json_encode|default:'false'};
       const username = "{$username|escape:'javascript'|default:''}";
       const permission = "{$permission|escape:'javascript'|default:''}";
-      
     </script>
 
   </head>
@@ -88,6 +88,7 @@
                       {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
                       {if $permission === 'user'} 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
                       {/if}
                       {if $permission === 'owner'}

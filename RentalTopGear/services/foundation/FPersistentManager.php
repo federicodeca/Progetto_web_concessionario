@@ -139,16 +139,16 @@ class FPersistentManager {
     /**
      * return all cars for sale from the table
      */
-    public static function retriveAllSaleCars($table) {
-        $result = FCarForSale::getAllCarsForSale($table);
+    public static function retriveAllSaleCars() {
+        $result = FCarForSale::getAllCarsForSale(ECarForSale::class);
         return $result;
     }
 
     /**
      * return all cars for sale from the table
      */
-    public static function retriveAllAvailableSaleCars($table) {
-        $result = FCarForSale::getAllAvailableCarsForSale($table);
+    public static function retriveAllAvailableSaleCars() {
+        $result = FCarForSale::getAllAvailableCarsForSale(ECarForSale::class);
         return $result;
     }
     

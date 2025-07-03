@@ -20,23 +20,89 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-xl">
-      <div class="container h-100">
-        <button
-          class="navbar-toggler ml-auto mr-0"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars tm-nav-icon"></i>
-        </button>
-      </div>
-    </nav>
-    <div class="container tm-mt-big tm-mb-big">
-      <div class="row">
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="/RentalTopGear/Admin/home/"><h2>Dashboard<em></em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a></li>
+
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/selectCar/Rent">auto Noleggio</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/selectCar/Sale">auto Acquisto</a>
+                    </div>
+                </li>
+
+              {if $isLogged}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto {$username} <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
+                      {if $permission === 'user'} 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      {/if}
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              {else}
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
+                            </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
+                          </div>
+                        </li>
+              {/if}          
+            
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="services" style="size-adjust: auto;">
+      <div class="row ">
         <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">

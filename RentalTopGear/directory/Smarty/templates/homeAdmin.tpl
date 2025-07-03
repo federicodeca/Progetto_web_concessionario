@@ -23,12 +23,7 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-      
-    </script>
+   
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -76,6 +71,15 @@
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a></li>
+
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/selectCar/Rent">auto Noleggio</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/selectCar/Sale">auto Acquisto</a>
+                    </div>
+                </li>
 
               {if $isLogged}
 

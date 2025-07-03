@@ -108,4 +108,13 @@ class VAdmin{
         $this->smarty->assign('para' , "L'auto è associata ad una prenotazione, non puoi eliminare l'ordine.");
         $this->smarty->display('error.tpl');
     }
+
+
+    public function showCars( $cars,$infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
+        $this->smarty->assign('cars', $cars);
+        $this->smarty->display('modifyCar.tpl');
+    }
 }
