@@ -22,18 +22,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
-        <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-      
-    </script>
+
     <script src="/RentalTopGear/directory/Smarty/js/payment-method.js"></script>
 
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
+
 
 
   <body>

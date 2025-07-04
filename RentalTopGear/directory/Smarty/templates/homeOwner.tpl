@@ -27,12 +27,8 @@
 
 
 
-    <!--dati per login-->
+ 
     <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-
       const rentPerDay={$rentPerDay|@json_encode|default:'[]'};
       const salePerDay={$salePerDay|@json_encode|default:'[]'};
       

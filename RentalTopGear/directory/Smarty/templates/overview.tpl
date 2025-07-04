@@ -26,11 +26,6 @@
 
     
 
-         <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-    </script>
   </head>
 
   <body>

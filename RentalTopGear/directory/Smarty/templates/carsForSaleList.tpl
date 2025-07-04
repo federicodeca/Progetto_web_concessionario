@@ -24,19 +24,14 @@
     <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
-    <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-    </script>
+
     <script src="/RentalTopGear/directory/Smarty/js/select-car.js"></script>
 
   </head>
 
   <body>
 
-  <input type="hidden" id="actualMethod" value="showCarsForSale/{$currentPage|default:1}">
+
  
 
     <!-- ***** Preloader Start ***** -->
@@ -85,6 +80,9 @@
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      {/if}
+                      {if $permission === 'owner'}
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
                       {/if}
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>

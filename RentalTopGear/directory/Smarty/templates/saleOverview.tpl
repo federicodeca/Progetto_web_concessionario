@@ -27,15 +27,11 @@
 
     
 
-         <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-    </script>
   </head>
 
   <body>
 
-   <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+  
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">

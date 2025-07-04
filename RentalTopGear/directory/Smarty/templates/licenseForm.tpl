@@ -29,20 +29,15 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     
-   <!--dati per login-->
-  <script>
-    const isLogged = {$isLogged|@json_encode|default:'false'};
-    const username = "{$username|escape:'javascript'|default:''}";
-    const permission = "{$permission|escape:'javascript'|default:''}";
-  </script>
 
-  <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
+
+  
   <script src="/RentalTopGear/directory/Smarty/js/license-calendar.js"></script>
   <script src="/RentalTopGear/directory/Smarty/js/size-image.js"></script>
 
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
+
 
 
   <body>

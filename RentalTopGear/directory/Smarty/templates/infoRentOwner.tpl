@@ -29,12 +29,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
-    <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-    </script>
+
 
     <!-- dati per il grafico -->
     <script>
@@ -77,7 +72,7 @@
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
               <li class="nav-item">
-                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>

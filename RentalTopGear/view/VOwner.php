@@ -60,7 +60,7 @@ class VOwner{
         $this->smarty->assign('username', $infout['username']);
         $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->assign('salesPerMonth', $salesPerMonth);
-        $this->smarty->display('infoSaleOwnser.tpl');
+        $this->smarty->display('infoSaleOwner.tpl');
     }
 
 
