@@ -364,4 +364,20 @@ class CAdmin {
         }
     }
 
+
+    public static function refuseLicense($id) {
+        if (CAdmin::isLogged()) {
+            $view = new VAdmin();
+            $license = FPersistentManager::getInstance()->getObjectById(ELicense::class, $id);
+            $user = $license->getUserId();
+            if ($user) {
+                $user->setVerified(false);
+            }
+            FPersistentManager::getInstance()->removeObject($license);
+
+            header('Location: /DuplexDrive/Admin/showLicenseNotChecked');
+            exit();
+        }
+    }
+
 }

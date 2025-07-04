@@ -158,8 +158,10 @@
                 {else}
                   <div class="card-body">
                   <br>
-                  <h5 style="color:white">Patente già verificata</h5><br>
-                  <h7 style="color:white">Gentile cliente ha gia fornito una patente valida.<br> Torni alla home</h7>
+                  <h5 style="color:white">Patente già inserita</h5><br>
+                  <h7 style="color:white">Gentile cliente ha gia fornito una patente.<br> Torni alla home</h7>
+                  
+
                   <div class="col-md-12 my-5 ">
                   <a class="btn btn-primary" href="RentalTopGear/User/home">Vai alla Home</a>
                   </div>

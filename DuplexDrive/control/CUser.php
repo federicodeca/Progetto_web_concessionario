@@ -332,7 +332,7 @@ class CUser {
 
     }else {
         $view = new VUser();
-        $view->showloginForm(); // Show error message if the document is not verified
+        $view->showloginForm(); 
         }
     }
 
@@ -509,6 +509,10 @@ class CUser {
             // Patente scaduta: eliminiamola e resettiamo lo stato dell’utente
             FPersistentManager::getInstance()->removeObject($license);
             
+            return false;
+        }
+        if($license->getChecked() == false) {
+            // License is not checked yet, so we return false
             return false;
         }
 

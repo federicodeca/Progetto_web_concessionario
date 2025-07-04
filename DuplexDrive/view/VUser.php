@@ -201,7 +201,7 @@ class VUser{
 
     public function showLicenseRequest() {
         $this->smarty->assign('title', 'Attenzione!');
-        $this->smarty->assign('para' , "Per procedere con l'acquisto occorre prima inserire una patente.");
+        $this->smarty->assign('para' , "Per procedere con l'acquisto occorre prima inserire una patente.Se hai gia inserito una patente, attendi la verifica da parte di un amministratore.");
         $this->smarty->display('error.tpl');
     }
 

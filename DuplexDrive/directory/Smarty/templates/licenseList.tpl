@@ -150,6 +150,10 @@
                            class="btn btn-primary btn-lg btn-block">
                            Accetta
                         </a>
+                        <a href="/DuplexDrive/Admin/refuseLicense/{$license->getIdLicense()}" 
+                           class="btn btn-primary btn-lg btn-block">
+                           Rifiuta
+                        </a>
                     </td>
                 </tr>
             {/foreach}
