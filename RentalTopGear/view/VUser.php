@@ -282,6 +282,7 @@ class VUser{
     public function showReviewForm($infout, $rating, $content){
         $this->smarty->assign('isLogged', $infout['isLogged']);
         $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->assign('content', $content);
         $this->smarty->assign('rating', $rating);
         $this->smarty->display('reviewForm.tpl');

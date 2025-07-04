@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:24:19
-  from 'file:loginForm.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-04 09:50:31
+  from 'file:reviewForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686781a363cc86_21225126',
+  'unifunc' => 'content_686787c7bb5544_15182798',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '13452762929177e8ca81cbfcfa787440ccf20a77' => 
+    '5af4a910739e6877290cff6e8248acbada936a8a' => 
     array (
-      0 => 'loginForm.tpl',
-      1 => 1751571873,
+      0 => 'reviewForm.tpl',
+      1 => 1751615364,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686781a363cc86_21225126 (\Smarty\Template $_smarty_tpl) {
+function content_686787c7bb5544_15182798 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -44,11 +44,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-      <!-- Additional icon  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
-
-  
-        <?php echo '<script'; ?>
+        <!--dati per login-->
+    <?php echo '<script'; ?>
 >
       const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
@@ -56,13 +53,14 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
+      
     <?php echo '</script'; ?>
 >
+
 
   </head>
 
   <body>
-
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -95,7 +93,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
-                                
+                
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
@@ -121,7 +119,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
@@ -136,7 +134,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           
                           </div>
                         </li>
-              <?php }?>        
+              <?php }?>          
             
             </ul>
           </div>
@@ -148,52 +146,47 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
  
 
     <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-      <div class="container col-md-6" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
-           <form  method="post" action="/RentalTopGear/User/checkLogin">
-
+      <div class="container" style="width:auto; height: auto; padding: 20px; margin-top: 100px;">
+           <form  method="post" action="/RentalTopGear/User/updateReview">
             <div class="custom-license-card">
-  
-              <div class="col-md-12">
-              <label for="inputName" class="form-label" style="color:aliceblue"> username </label>
-              <input type="text" class="form-control" id="inputName" name="username">
-            </div>
-             <div class="col-md-12">
-              <label for="inputName" class="form-label" style="color:aliceblue"> password</label>
-              <input type="password" class="form-control" id="inputSurname" name="password">
-            </div>
-           
-            <div class="col-md-12" style="margin-top: 20px;" >
-              <button type="submit" class="btn btn-primary" style="color:aliceblue">Accedi</button>
+
+
+            <div class="col-12" style="margin-top: 20px;">
+            <label class="form-label" style="color:aliceblue">Valutazione:</label>
+
+
+              <select class="form-control" id="rating" name="rating" style="width: 200px;" required = "">
+                <option value="" disabled <?php if ($_smarty_tpl->getValue('rating') == '') {?>selected<?php }?>>Seleziona le stelle</option>
+                <option value="5" <?php if ($_smarty_tpl->getValue('rating') == "5") {?>selected<?php }?>>★★★★★ - 5 stelle</option>
+                <option value="4" <?php if ($_smarty_tpl->getValue('rating') == "4") {?>selected<?php }?>>★★★★☆ - 4 stelle</option>
+                <option value="3" <?php if ($_smarty_tpl->getValue('rating') == "3") {?>selected<?php }?>>★★★☆☆ - 3 stelle</option>
+                <option value="2" <?php if ($_smarty_tpl->getValue('rating') == "2") {?>selected<?php }?>>★★☆☆☆ - 2 stelle</option>
+                <option value="1" <?php if ($_smarty_tpl->getValue('rating') == "1") {?>selected<?php }?>>★☆☆☆☆ - 1 stella</option>
+              </select>
+    </div>
+
+             <div class="col-12" style="margin-top: 20px;" >
+              <label for="inputReview" class="form-label" style="color:aliceblue"  >Dettagli recensione:</label>
+              <textarea type="text" class="form-control" id="inputReview" rows="4" placeholder="Scrivi la tua recensione qui..." name="inputReview"><?php echo $_smarty_tpl->getValue('content');?>
+</textarea>
             </div>
 
+
+            <div class="col-12" style="margin-top: 20px;" >
+              <button type="submit" class="btn btn-primary" style="color:aliceblue" id="submitBtn">Invia</button>
+            </div>
           </form>
         </div>
       </div>
     </div>  
 
 
-
-  <footer>
+      <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-                    <div class="row ">
-        <div class="col-md-12">
-          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-amex fa-2x"></i>
-            
-         </div>
-        </div>
-
-              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
-              <p>Copyright &copy; 2023 TopGear</p>
-              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
-
+              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
             </div>
           </div>
         </div>

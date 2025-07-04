@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-03 21:57:47
+/* Smarty version 5.5.1, created on 2025-07-04 09:46:27
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6866e0bb9bb3b4_17206606',
+  'unifunc' => 'content_686786d37f8181_06442250',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6866e0bb9bb3b4_17206606 (\Smarty\Template $_smarty_tpl) {
+function content_686786d37f8181_06442250 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">

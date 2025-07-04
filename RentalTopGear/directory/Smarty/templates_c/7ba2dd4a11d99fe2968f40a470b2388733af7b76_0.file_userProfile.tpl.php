@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:25:57
-  from 'file:saleOverview.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-04 09:50:34
+  from 'file:userProfile.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68678205e66022_35541181',
+  'unifunc' => 'content_686787cae72d16_60032021',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '328ab267f4f47a20b7d96f582604f7bd0ea74c7e' => 
+    '7ba2dd4a11d99fe2968f40a470b2388733af7b76' => 
     array (
-      0 => 'saleOverview.tpl',
-      1 => 1751613952,
+      0 => 'userProfile.tpl',
+      1 => 1751572175,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68678205e66022_35541181 (\Smarty\Template $_smarty_tpl) {
+function content_686787cae72d16_60032021 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -48,26 +48,45 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
 
-
-    
-
-         <?php echo '<script'; ?>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"><?php echo '</script'; ?>
 >
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+   <!--dati per login-->
+  <?php echo '<script'; ?>
+>
+    const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+    const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-    <?php echo '</script'; ?>
+    const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+  <?php echo '</script'; ?>
 >
+  
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/change-info.js"><?php echo '</script'; ?>
+>
+
+
   </head>
+  <input type="hidden" id="actualMethod" value="home">
 
   <body>
-
-   <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -95,7 +114,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
@@ -126,7 +145,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
@@ -141,7 +160,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           
                           </div>
                         </li>
-              <?php }?>       
+              <?php }?>          
             
             </ul>
           </div>
@@ -150,109 +169,117 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </header>
 
     <!-- Page Content -->
-    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style="width: 75%"></div>
-</div>
- 
-      <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
+
+      <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 50%"></div>
+  </div>
+  
+      <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg); max-height: auto;">
         <div class="container">
-
         <div class="row">
+          <div class="col-md-10 ">
+            <div class="custom-license-card">
+            <div class="card-header">
+              <div class="row align-items-center pr-3">
+                <div class="col-md-8">
+                  <h2 style="color:white; padding: auto;">Profile</h2>
+                </div>
+                <div class="col-md-4 text-md-right ">
+                  <button class="btn btn-primary px-4" style="color: aliceblue; " onclick="window.location.href='/RentalTopGear/User/home/'">home</button>  
+                </div>  
+            </div>
+          
+            <div class="card-body">
 
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header"><h5>Riepilogo ordine</h5></div>
-              <div class="card-body">
-                <h7>La tua auto sarà pronta entro un mese </h7><br>
-                <h7>dal pagamento</h7><br>
-              </div>
-            </div> <!--fine card-->
-          </div>
+              <h4 class="mb-3" style="color:white">Username: <?php echo $_smarty_tpl->getValue('user')->getUsername();?>
+</h4>
 
+              <h4 class="mb-3" style="color:white; ">Email: <?php echo $_smarty_tpl->getValue('user')->getEmail();?>
+</h4>
 
-          <div class="col-md-6">
-           <div class="card">
-              <h5 class="card-header">Dettagli auto</h5>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <ul class="list-group mb-3 p-4"> 
-                      <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Marca:</h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
-</span>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Modello:</h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getModel();?>
-</span>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Colore: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getColor();?>
-</span>
-                          </li>
-                          
-                          <li class="list-group-item d-flex justify-content-between ">
-                              <div>
-                                  <h6 class="my-0">Potenza: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getHorsepower();?>
-</span>
-                          </li>
+                  
 
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Cilindrata: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getDisplacement();?>
-</span>
-                          </li>
+              <form method="post" action="/RentalTopGear/User/changeEmail">
 
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Posti: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getSeats();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Alimentazione: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getFuelType();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between">
-                              <span>Total (EUR)</span>
-                              <strong>Totale: <?php echo $_smarty_tpl->getValue('amount');?>
- </strong>
-                          </li>
-                      </ul>
-                        
-                      <hr class="mb-4">
-                      <a href="/RentalTopGear/User/confirmSale" class="btn btn-primary btn-lg btn-block">Acquista</a>
-                     
-                    </div>
+         
+         
+              <div class="row align-items-center mb-3">
+                <div class="col-md-8">
+                  <input type="email" class="form-control w-50" id="inputEmail" name="email" placeholder="Enter new email" required>
+                   <div class="invalid-feedback">
+                    Please enter a valid email address.
+                   </div>
+                </div>
+                 <div class="col-md-4 text-md-right">
+                  <button class="btn btn-primary" style="color: aliceblue;" onclick="submit">Cambia Email</button>
+                 </div> 
                 </div>
               </div>
+              </form>
+                  
+              <h4 class="mb-3 ml-3" style="color:white">Nome: <?php echo $_smarty_tpl->getValue('user')->getFirstname();?>
+</h4> 
+              <h4 class="mb-3 ml-3" style="color:white">Cognome: <?php echo $_smarty_tpl->getValue('user')->getLastname();?>
+</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Patente: <?php if ($_smarty_tpl->getValue('user')->getIsVerified()) {?>inserita<?php } else { ?>non inserita<?php }?></h4>
+              <h4 class="mb-3 ml-3" style="color:white">Telefono: <?php echo $_smarty_tpl->getValue('user')->getPhone();?>
+</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Indirizzo: <?php echo $_smarty_tpl->getValue('user')->getAddress();?>
+</h4>
+              <h4 class="mb-3 ml-3" style="color:white">Città: <?php echo $_smarty_tpl->getValue('user')->getCity();?>
+</h4>
+
+              <button class="btn btn-primary px-4 mb-4" style="color:aliceblue; margin-top: 20px;" data-toggle="modal" data-target="#passwordModal">Cambia Password</button>. <!-- data target= id del modal-->
+
+              <!-- Modal per cambio password -->
+              <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="passwordModalLabel">Cambia Password</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Chiudi">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <form method="post" action="/RentalTopGear/User/changePassword">
+                      <div class="modal-body">
+
+                        <div class="form-group">
+                          <label for="currentPassword">Password Corrente</label>
+                          <input type="password" class="form-control" id="currentPassword" name="current" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="newPassword">Nuova Password</label>
+                          <input type="password" class="form-control" id="newPassword" name="new" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="confirmPassword">Conferma Password</label>
+                          <input type="password" class="form-control" id="confirmPassword" name="confirm" required>
+                        </div>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                        <button type="submit" class="btn btn-primary">Conferma</button>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+
+              
             </div>
-          </div> <!-- chiusura col-md-6 per il form -->
-        </div> <!-- chiusura row -->
-      </div> <!-- chiusura container -->
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    
 
 
-  <footer>
+   <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -282,9 +309,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
     <!-- Bootstrap core JavaScript -->
     <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
 
@@ -296,6 +320,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
+
+   
 
   </body>
 

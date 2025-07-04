@@ -46,7 +46,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car Rental <em>Website</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -64,7 +64,46 @@
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
-                <li class="nav-item"> <div id="login-box" ></div> </li>
+              {if $isLogged}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      benvenuto {$username} <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
+                      {if $permission === 'user'} 
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
+                        <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      {/if}
+                      <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
+                    </div>
+                  </li>
+  
+
+
+              {else}
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                          </a>
+                            <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <form method="post" action="/RentalTopGear/User/checkLoginAuto">
+                              <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
+                              <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
+                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <button type="submit" class="btn btn-primary btn-block">Accedi</button>
+                             
+                            </form>
+
+                              <button type="button" onclick='window.location.href="/RentalTopGear/User/showRegistrationForm"' class="btn btn-secondary btn-block mt-2">Registrati</button>
+                              <div id="login-message" class="text-danger mt-2"></div>
+                          
+                          </div>
+                        </li>
+              {/if}          
+            
             </ul>
           </div>
         </div>

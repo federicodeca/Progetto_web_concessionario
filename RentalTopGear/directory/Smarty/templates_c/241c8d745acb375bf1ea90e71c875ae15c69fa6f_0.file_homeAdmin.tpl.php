@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:31:22
-  from 'file:overview.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-04 09:51:06
+  from 'file:homeAdmin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6867834ad5f657_69579192',
+  'unifunc' => 'content_686787ea263957_58977210',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '9902a3443e5bd83bf9b110571cee3108efc51452' => 
+    '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
     array (
-      0 => 'overview.tpl',
-      1 => 1751571970,
+      0 => 'homeAdmin.tpl',
+      1 => 1751568339,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,15 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6867834ad5f657_69579192 (\Smarty\Template $_smarty_tpl) {
+function content_686787ea263957_58977210 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
 
   <head>
 
+  
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -44,13 +46,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-      <!-- Additional icon  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
-
-
-    
-
-         <?php echo '<script'; ?>
+    <!--dati per login-->
+    <?php echo '<script'; ?>
 >
       const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
@@ -62,11 +59,17 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
+      
     <?php echo '</script'; ?>
 >
+
   </head>
+  <input type="hidden" id="actualMethod" value="home">
 
   <body>
+   
+
+ 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -79,27 +82,46 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
+ 
+
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
+          <a class="navbar-brand" href="/RentalTopGear/Admin/home/"><h2>Dashboard<em></em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="RentalTopGear/User/home">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-                </li> 
+              <!-- Spazio riservato al login/user box -->
+              <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
+              </li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
-                
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a></li>
+
+
+              <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
+                    
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Rent">Auto Noleggio</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Sale">Auto Acquisto</a>
+                  
+                    </div>
+                </li>
+
+
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
@@ -142,6 +164,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                         </li>
               <?php }?>          
             
+
             </ul>
           </div>
         </div>
@@ -149,138 +172,29 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     </header>
 
     <!-- Page Content -->
-    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style="width: 75%"></div>
-</div>
- 
-      <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
-        <div class="container">
-
-        <div class="row">
-
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header"><h5><i class="fa-solid fa-info mr-3"></i>Riepilogo ordine</h5></div>
-              <div class="card-body">
-                <h7>Dal: <?php echo $_smarty_tpl->getValue('start');?>
-</h7><br>
-                <h7>Al:   <?php echo $_smarty_tpl->getValue('end');?>
-</h7><br>
-              </div>
-            </div> <!--fine card-->
+    <!-- Banner Starts Here, posso aggiungere testo in h4-->
+    <div class="banner header-text">
+      <div class="owl-banner owl-carousel">
+        <div class="banner-item-01">
+          <div class="text-content">
+            <h4></h4>
           </div>
-
-
-          <div class="col-md-6">
-           <div class="card">
-              <h5 class="card-header"><i class="fa-solid fa-gears mr-3"></i>Dettagli auto</h5>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <ul class="list-group mb-3 p-4"> 
-                      <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Marca:</h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
-</span>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Modello:</h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getModel();?>
-</span>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Colore: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getColor();?>
-</span>
-                          </li>
-                          
-                          <li class="list-group-item d-flex justify-content-between ">
-                              <div>
-                                  <h6 class="my-0">Potenza: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getHorsepower();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Cilindrata: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getDisplacement();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Posti: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getSeats();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                  <h6 class="my-0">Alimentazione: </h6>
-                              </div>
-                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getFuelType();?>
-</span>
-                          </li>
-
-                          <li class="list-group-item d-flex justify-content-between">
-                              <span>Total (EUR)</span>
-                              <strong>Totale: <?php echo $_smarty_tpl->getValue('amount');?>
- </strong>
-                          </li>
-                      </ul>
-                        
-                      <hr class="mb-4">
-                      <a href="/RentalTopGear/User/confirmRent" class="btn btn-primary btn-lg btn-block">Acquista</a>
-                     
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- chiusura col-md-6 per il form -->
-        </div> <!-- chiusura row -->
-      </div> <!-- chiusura container -->
+        </div>
+      </div>
     </div>
-  </div>
-
-
-
-
-  <footer>
+    
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-                    <div class="row ">
-        <div class="col-md-12">
-          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
-          <i class="fa-brands fa-cc-amex fa-2x"></i>
-            
-         </div>
-        </div>
-
-              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
-              <p>Copyright &copy; 2023 TopGear</p>
-              <i class="fa-solid fa-phone"></i><h4> +39 123 456 789</h4>
-
+              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
             </div>
           </div>
         </div>
       </div>
     </footer>
+
 
 
 
@@ -300,9 +214,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
-
+     
   </body>
-
-</html>
-<?php }
+</html><?php }
 }

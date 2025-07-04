@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:46:30
-  from 'file:carSearcher.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-04 09:50:28
+  from 'file:licenseForm.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686786d60f4921_01312780',
+  'unifunc' => 'content_686787c45ee558_36133491',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '098a0acdf48d7aeccb8152d0e09cdf8fb7853665' => 
+    'bf1d259bd195d992d7f3c029b3fdea6cbbc1f772' => 
     array (
-      0 => 'carSearcher.tpl',
-      1 => 1751615069,
+      0 => 'licenseForm.tpl',
+      1 => 1751571819,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686786d60f4921_01312780 (\Smarty\Template $_smarty_tpl) {
+function content_686787c45ee558_36133491 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -31,8 +31,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/Webapp/directory/Smarty/assets/images/favicon.ico">
-
+    <link rel="icon" href="/RentalTopGear/directory/Smarty/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>PHPJabbers.com | Free Car Rental Website Template</title>
@@ -45,34 +44,53 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-          <!-- Additional icon  -->
+    <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
-    <!--dati per login-->
+
     <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"><?php echo '</script'; ?>
 >
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+   <!--dati per login-->
+  <?php echo '<script'; ?>
+>
+    const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
 ;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+    const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+    const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-    <?php echo '</script'; ?>
+  <?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/select-car.js"><?php echo '</script'; ?>
+
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
 >
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/license-calendar.js"><?php echo '</script'; ?>
+>
+  <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/size-image.js"><?php echo '</script'; ?>
+>
+
 
   </head>
+  <input type="hidden" id="actualMethod" value="home">
+
 
   <body>
-
-  <input type="hidden" id="actualMethod" value="carSearcher">
- 
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -85,26 +103,24 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-
-
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Duplex <em>Drive</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/RentalTopGear/User/home">Home
+                    <a class="nav-link" href="RentalTopGear/User/home">Home
                       <span class="sr-only">(current)</span>
                     </a>
                 </li> 
-    
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
-              <li class="nav-item"><a class="nav-link " href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
@@ -133,7 +149,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                            <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
@@ -148,109 +164,71 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           
                           </div>
                         </li>
-              <?php }?>     
+              <?php }?>         
             
-                  
-
             </ul>
           </div>
         </div>
       </nav>
     </header>
 
-     <!-- Page Content -->
-       <div class="page-heading about-heading header-text"  style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);"">
-      <div class="container">
+    <!-- Page Content -->
+
+      <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar" style="width: 50%"></div>
+  </div>
+  
+      <div class="services" style="background-image: url(/RentalTopGear/directory/Smarty/assets/images/other-image-fullscren-1-1920x900.jpg);">
+        <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6 mb-5">
             <div class="custom-license-card">
-              <form method="post" action="/RentalTopGear/User/showCarsForSale/1" >
-                <div class="card-header">
-                  <h4 class=" mb-3" style="color:white">Che auto cerchi?</h4>
-                </div>
-       
-                <div class="row">
-                  <div class="col-md-4 mt-5">
-                    <div class="input-group input-group-sm mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Brand</button>
-                      <ul class="dropdown-menu">
-                        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
-$foreach0DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
-$foreach0DoElse = false;
-?>
-                          <li><a class="dropdown-item" href="#" onclick="selectBrand('<?php echo $_smarty_tpl->getValue('brand');?>
-')"><?php echo $_smarty_tpl->getValue('brand');?>
-</a></li>
-                        <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                      </ul>
-                      <div style="width: 50%;">
-                        <input type="text" class="form-control" name="brand" readonly id="brandInput" placeholder="brand">
+            <div class="card-header">
+            <h2 style="color:white">License</h2>
+            </div>
+            <?php echo '<script'; ?>
+>
+  console.log("licenseInserted =", <?php echo json_encode($_smarty_tpl->getValue('licenseInserted'));?>
+);
+<?php echo '</script'; ?>
+> 
+
+                  <?php if (!$_smarty_tpl->getValue('licenseInserted')) {?>
+                  <form id="uploadForm" method="POST" action="/RentalTopGear/User/uploadLicense" enctype="multipart/form-data">
+                    <div class="col-md-12 my-5">
+                      <div class="mb-5">
+                        <label for="formFile" class="form-label">Carica la patente</label>
+                        <input class="form-control" type="file" id="photo" name="photo" required>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-md-4 mt-5">
-                    <div class="input-group mb-3">
-                      <button class="btn btn-outline-secondary dropdown-toggle" disabled="" id="modelButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">model</button>
-                      <ul class="dropdown-menu"  id="modelDropdown">
-                        <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('models'), 'modelList', false, 'brand');
-$foreach1DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('brand')->value => $_smarty_tpl->getVariable('modelList')->value) {
-$foreach1DoElse = false;
-?>
-                          <?php
-$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('modelList'), 'model');
-$foreach2DoElse = true;
-foreach ($_from ?? [] as $_smarty_tpl->getVariable('model')->value) {
-$foreach2DoElse = false;
-?>
-                            <li class="dropdown-model-item" data-brand="<?php echo $_smarty_tpl->getValue('brand');?>
-">
-                              <a class="dropdown-item" href="#" onclick="selectModel('<?php echo $_smarty_tpl->getValue('model');?>
-')"><?php echo $_smarty_tpl->getValue('model');?>
-</a>
-                            </li>
-                          <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                        <?php
-}
-$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
-                      </ul>
-                      <div style="width: 50%;">
-                      <input type="text" class="form-control" name="model"  id="modelInput" aria-label="Text input with dropdown button" placeholder="model" readonly>
-                      </div>
+
+                    <div class="col-md-12 mb-3">
+                      <input type="text" id="exp" name="exp" placeholder="YYYY-MM-DD" required>
                     </div>
+
+                    <div class="col-md-4">
+                      <button class="btn btn-primary mb-3" style="color:aliceblue" type="submit">Invia</button>
+                    </div>  
+                  </form>
+                <?php } else { ?>
+                  <div class="card-body">
+                  <br>
+                  <h5 style="color:white">Patente già verificata</h5><br>
+                  <h7 style="color:white">Gentile cliente ha gia fornito una patente valida.<br> Torni alla home</h7>
+                  <div class="col-md-12 my-5 ">
+                  <a class="btn btn-primary" href="RentalTopGear/User/home">Vai alla Home</a>
                   </div>
-               
-                  <div class="col-md-4 mt-5">
-                    <div class="form-group">
-                      <label for="formControlRange" class="text-white">Prezzo max: <span id="priceValue">0</span> €</label>
-                      <input type="range" class="form-control-range" id="formControlRange" name="price" min="0" max="100000" step="1000" value="100000" >
-                    </div>
-                  </div>
-                </div>
-                
-                  <div class="row">
-                  <div class="col md-12 mt-5">
-                      <button type="submit" class="btn btn-primary btn-primary-center" style="color:aliceblue">Cerca</button>
-                    </div>
-                  </div>
-                
-              </form>
+                <?php }?>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
+    
 
-   
 
-  <footer>
+   <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -275,18 +253,12 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
           </div>
         </div>
       </div>
-  </footer>
-   
-  
-
+    </footer>
 
 
     <!-- Bootstrap core JavaScript -->
     <?php echo '<script'; ?>
-   src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src= "/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
 
 
@@ -297,23 +269,10 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/login-box.js"><?php echo '</script'; ?>
->
 
-    <!-- Popper.js (necessario per Bootstrap dropdown) -->
-    <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"><?php echo '</script'; ?>
->
-    <!-- Bootstrap JS -->
-    <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"><?php echo '</script'; ?>
->
-
-
+   
 
   </body>
-
 
 </html>
 <?php }

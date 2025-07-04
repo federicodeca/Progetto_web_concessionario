@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:31:07
+/* Smarty version 5.5.1, created on 2025-07-04 09:46:37
   from 'file:carsForRentlist.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6867833b1d5260_04477004',
+  'unifunc' => 'content_686786ddeef4b5_39927958',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a0463d8b30539806e18e20dea8bde74159802287' => 
     array (
       0 => 'carsForRentlist.tpl',
-      1 => 1751572497,
+      1 => 1751615084,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6867833b1d5260_04477004 (\Smarty\Template $_smarty_tpl) {
+function content_686786ddeef4b5_39927958 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -87,7 +87,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand"   href="index.html"><h2>Rental <em>TopGear</em></h2></a>
+          <a class="navbar-brand"   href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
