@@ -223,7 +223,7 @@ class CUser {
     $infout=CUser::getUserStatus();
         
     $offers=FPersistentManager::getInstance()->getOffers(); // Retrieve offers for the home page
-    $reviews=FPersistentManager::getInstance()->getBestReviews(); // Retrieve best reviews for the home page
+    $reviews=FPersistentManager::getInstance()->retrieveAllReviews(); // Retrieve all reviews for the home page
     
     $view = new VUser();
     $view->showHomePage($infout,$offers, $reviews);
