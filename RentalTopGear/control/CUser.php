@@ -3,6 +3,10 @@
 
 class CUser {
 
+    //=================================
+    // --- LOGIN USER MANAGEMENT ---
+    //=================================
+
     /**
      * this method is used to check if the user is logged in, if not it will redirect to the login page
      * @return void
@@ -26,31 +30,6 @@ class CUser {
 
         return $logged;
         
-    }
-
-    /**
-     * this method is used to check if the document is verified, if not it will return false
-     */
-    public static function DocVerified(): bool {
-
-        $idUser = USession::getElementFromSession('user');
-        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
-        $license = FPersistentManager::getInstance()->getObjectByField(ELicense::class, 'user_id', $idUser);
-
-        if ($license === null || $user === null) {
-            return false;
-        }
-
-        if (!$license->checkExpiration()) {
-            $user->setVerified(false);
-            FPersistentManager::getInstance()->caricaObj($user);
-            // Patente scaduta: eliminiamola e resettiamo lo stato dell’utente
-            FPersistentManager::getInstance()->removeObject($license);
-            
-            return false;
-        }
-
-        return $user->getIsVerified();
     }
 
     /**
@@ -117,6 +96,103 @@ class CUser {
         header('Location: /RentalTopGear/User/Home');
     }
 
+
+
+    //========================================
+    // --- USER, ADMIN, OWNER CHECK LOGIN ---
+    //========================================
+
+    /**
+     * this method is used to login the user, if so it will redirect to the actual page
+     */
+    public static function checkLoginAuto() {
+
+
+        $view = new VUser();
+        $redirect= UHTTPMethods::post('actualMethod');
+        $user=UHTTPMethods::post('username');
+        $password=UHTTPMethods::post('password');
+        $user = FPersistentManager::getInstance()->retrivePersonOnUsername($user);
+
+        if($user && password_verify($password, $user->getPassword())) {
+
+            if (USession::getSessionStatus() === PHP_SESSION_NONE) {
+                USession::getInstance();
+            }
+            
+            USession::setElementInSession('username', $user->getUsername());
+
+            if ($user->getEntity()=='EUser') {
+                USession::setElementInSession('user', $user->getId());
+            }
+            if ($user->getEntity()=='EAdmin') {
+                USession::setElementInSession('admin', $user->getId());    
+            }
+            if ($user->getEntity()=='EOwner') {
+                USession::setElementInSession('owner', $user->getId());    
+            }
+  
+            header("Location: " . $redirect);
+            exit;
+
+            } else {
+                
+                $view->loginError(); // Show error message if the login fails
+                   }
+            }
+
+            /**
+     * this method is used to get the user or admin or owner status, it will return an array with the  status, username and permission
+     * different from th getOwnerStatus method,getAdminStatus this method is also used to get the permissions and to modifiy the home dashboard 
+     */
+    public static function getUserStatus(): array {
+
+    if (session_status() === PHP_SESSION_NONE) {
+        USession::getInstance();
+    }
+
+    $isAdmin = USession::isSetSessionElement('admin');
+    $isUser = USession::isSetSessionElement('user');
+    $isOwner = USession::isSetSessionElement('owner'); // Check if the user is an owner
+    $isLogged = $isAdmin || $isUser|| $isOwner; // User is logged in if any of these session elements are set
+
+    if ($isAdmin) {
+        $username = USession::getElementFromSession('username');
+        $permission = 'admin';
+    } elseif ($isUser) {
+        $username = USession::getElementFromSession('username');
+        $permission = 'user';
+
+    } elseif ($isOwner) {
+        $username = USession::getElementFromSession('username');
+        $permission = 'owner'; // Set permission for owner  
+
+    } else {
+        $username = null;
+        $permission = null;
+    }
+
+    return [
+        'isLogged' => $isLogged,
+        'username' => $username,
+        'permission' => $permission,
+    ];
+    }
+
+
+
+
+
+            
+    //=================================
+    // --- REGISTRATION MANAGEMENT ---
+    //=================================
+    
+    public static function showRegistrationForm() {
+        $view = new VUser();
+        $view->showRegistration();
+    }
+
     /**
      * this method is used to register a new user, it will check if the email and username are already in use, if not it will create a new user
      */
@@ -133,6 +209,8 @@ class CUser {
                 $view->registrationError();
             }
     }
+
+    
 
 
     /**
@@ -151,6 +229,15 @@ class CUser {
     $view->showHomePage($infout,$offers, $reviews);
 
     }
+
+
+
+
+
+
+    //=================================
+    // --- CAR FOR RENT MANAGEMENT ---
+    //=================================
 
     /**
      * this method is used to show all the cars for sale in the home page
@@ -349,92 +436,17 @@ class CUser {
                 
             }
         }
-    }
-
-
-    /**
-     * this method is used to get the user or admin or owner status, it will return an array with the  status, username and permission
-     * different from th getOwnerStatus method,getAdminStatus this method is also used to get the permissions and to modifiy the home dashboard 
-     */
-    public static function getUserStatus(): array {
-
-    if (session_status() === PHP_SESSION_NONE) {
-        USession::getInstance();
-    }
-
-    $isAdmin = USession::isSetSessionElement('admin');
-    $isUser = USession::isSetSessionElement('user');
-    $isOwner = USession::isSetSessionElement('owner'); // Check if the user is an owner
-    $isLogged = $isAdmin || $isUser|| $isOwner; // User is logged in if any of these session elements are set
-
-    if ($isAdmin) {
-        $username = USession::getElementFromSession('username');
-        $permission = 'admin';
-    } elseif ($isUser) {
-        $username = USession::getElementFromSession('username');
-        $permission = 'user';
-
-    } elseif ($isOwner) {
-        $username = USession::getElementFromSession('username');
-        $permission = 'owner'; // Set permission for owner  
-
-    } else {
-        $username = null;
-        $permission = null;
-    }
-
-    return [
-        'isLogged' => $isLogged,
-        'username' => $username,
-        'permission' => $permission,
-    ];
-    }
+    } 
     
-    /**
-     * this method is used to login the user, if so it will redirect to the actual page
-     */
-    public static function checkLoginAuto() {
 
 
-        $view = new VUser();
-        $redirect= UHTTPMethods::post('actualMethod');
-        $user=UHTTPMethods::post('username');
-        $password=UHTTPMethods::post('password');
-        $user = FPersistentManager::getInstance()->retrivePersonOnUsername($user);
 
-        if($user && password_verify($password, $user->getPassword())) {
 
-            if (USession::getSessionStatus() === PHP_SESSION_NONE) {
-                USession::getInstance();
-            }
-            
-            USession::setElementInSession('username', $user->getUsername());
 
-            if ($user->getEntity()=='EUser') {
-                USession::setElementInSession('user', $user->getId());
-            }
-            if ($user->getEntity()=='EAdmin') {
-                USession::setElementInSession('admin', $user->getId());    
-            }
-            if ($user->getEntity()=='EOwner') {
-                USession::setElementInSession('owner', $user->getId());    
-            }
 
-                        
-            header("Location: " . $redirect);
-            exit;
-
-            } else {
-                
-                $view->loginError(); // Show error message if the login fails
-                   }
-            }
-    
-    
-    public static function showRegistrationForm() {
-        $view = new VUser();
-        $view->showRegistration();
-    }
+    //=================================
+    // --- LICENSE MANAGEMENT ---
+    //=================================
 
     public static function insertLicense(){
 
@@ -446,7 +458,7 @@ class CUser {
         $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
         
         $licenseInserted=$user->getIsVerified(); // Check if the user has already inserted a license
-// Check if the user is already verified
+        // Check if the user is already verified
         $view =new VUser();
         $view->showLicenseForm($infout,$licenseInserted); // Show the license form if not verified or if the user has not inserted a license yet
 
@@ -478,8 +490,38 @@ class CUser {
         $view->showLicenseConfirm(); // Show success message after uploading the license
     }
 
+    /**
+     * this method is used to check if the document is verified, if not it will return false
+     */
+    public static function DocVerified(): bool {
 
-    //ACQUISTO VEICOLI
+        $idUser = USession::getElementFromSession('user');
+        $user = FPersistentManager::getInstance()->getObjectById(EUser::class, $idUser);
+        $license = FPersistentManager::getInstance()->getObjectByField(ELicense::class, 'user_id', $idUser);
+
+        if ($license === null || $user === null) {
+            return false;
+        }
+
+        if (!$license->checkExpiration()) {
+            $user->setVerified(false);
+            FPersistentManager::getInstance()->caricaObj($user);
+            // Patente scaduta: eliminiamola e resettiamo lo stato dell’utente
+            FPersistentManager::getInstance()->removeObject($license);
+            
+            return false;
+        }
+
+        return $user->getIsVerified();
+    }
+
+
+
+
+
+    //=================================
+    // --- CAR FOR SALE MANAGEMENT ---
+    //=================================
 
     /**     * this method is used to show the car searcher page, where the user can search for cars for sale
      * @return void
@@ -571,41 +613,6 @@ class CUser {
         $view->showCarSaleDetails($car,$infout,$amount);
     } 
 
-    // confirmSale
-
-     public static function loginAndCreditRequirementSale() {
-
-        if (CUser::isLogged()) {
-
-             // Check if the user has a verified document
-
-                $infout=CUser::getUserStatus();
- 
-                $idAuto= USession::getElementFromSession('idAuto');
-           
-                $car=FPersistentManager::getInstance()->getObjectbyId(ECarForSale::class, $idAuto);
-
-                $amount=$car->getPrice();
-                
-
-                USession::setElementInSession('amount', $amount);
-
-                USession::setElementInSession('idAuto', $idAuto);
-
- 
-                $cardList= FPersistentManager::getInstance()->getAllCreditCardsByUser(USession::getElementFromSession('user'));
-                $cards=[]; // Array to store card numbers
-                foreach($cardList as $card) {
-                    $cards[] = $card->getCardNumber();}
-
-
-                $view = new VUser();
-                $view->showCreditCardFormSale($amount,$car,$infout,$cards);
-
-            } 
-
-        }
-
     public static function showOverviewSale() {
 
         if (CUser::isLogged()) {
@@ -695,6 +702,47 @@ class CUser {
 
     }
 
+    public static function loginAndCreditRequirementSale() {
+
+        if (CUser::isLogged()) {
+
+             // Check if the user has a verified document
+
+                $infout=CUser::getUserStatus();
+ 
+                $idAuto= USession::getElementFromSession('idAuto');
+           
+                $car=FPersistentManager::getInstance()->getObjectbyId(ECarForSale::class, $idAuto);
+
+                $amount=$car->getPrice();
+                
+
+                USession::setElementInSession('amount', $amount);
+
+                USession::setElementInSession('idAuto', $idAuto);
+
+ 
+                $cardList= FPersistentManager::getInstance()->getAllCreditCardsByUser(USession::getElementFromSession('user'));
+                $cards=[]; // Array to store card numbers
+                foreach($cardList as $card) {
+                    $cards[] = $card->getCardNumber();}
+
+
+                $view = new VUser();
+                $view->showCreditCardFormSale($amount,$car,$infout,$cards);
+
+            } 
+
+        }
+
+
+
+
+
+    //=================================
+    // --- PROFILE MANAGEMENT ---
+    //=================================
+
     public static function showProfile() {
 
         $infout=CUser::getUserStatus();
@@ -763,7 +811,14 @@ class CUser {
     }
 
 
-    //RECENSIONI
+
+
+
+
+
+    //=================================
+    // --- REVIEW MANAGEMENT ---
+    //=================================
 
     public static function insertReview(){
 
@@ -804,21 +859,21 @@ class CUser {
         
         $view = new VUser();
         $view->showSuccessReview(); 
+        }
+
+
+
     }
 
 
 
+    //=================================
+    // --- ABOUT US ---
+    //=================================
+
+    public static function showAboutUs() {
+        $view = new VUser();
+        $infout = CUser::getUserStatus();
+        $view->showAboutUs($infout);
+    }
 }
-
-public static function showAboutUs() {
-    $view = new VUser();
-    $infout = CUser::getUserStatus();
-    $view->showAboutUs($infout);
-}
-
-
-
-}
-
-
-
