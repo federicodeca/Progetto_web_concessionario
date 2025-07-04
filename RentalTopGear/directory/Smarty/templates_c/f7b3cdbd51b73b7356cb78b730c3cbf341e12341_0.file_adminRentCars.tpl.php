@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 10:05:39
+/* Smarty version 5.5.1, created on 2025-07-04 12:51:37
   from 'file:adminRentCars.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68678b53a03ce9_72911545',
+  'unifunc' => 'content_6867b2393be6a2_14860713',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f7b3cdbd51b73b7356cb78b730c3cbf341e12341' => 
     array (
       0 => 'adminRentCars.tpl',
-      1 => 1751616332,
+      1 => 1751626278,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68678b53a03ce9_72911545 (\Smarty\Template $_smarty_tpl) {
+function content_6867b2393be6a2_14860713 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -46,29 +46,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-    <!--dati per login-->
-    <?php echo '<script'; ?>
->
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
-;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      
-    <?php echo '</script'; ?>
->
 
-    <?php echo '<script'; ?>
- src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"><?php echo '</script'; ?>
->
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
 
   <body>
    
@@ -91,7 +71,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Dashboard<em></em></h2></a>
+          <a class="navbar-brand" href="/RentalTopGear/Admin/home/"><h2>Dashboard<em></em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -106,23 +86,25 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
+          
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
-
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
-
-              <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
+              <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica auto</a>
                     
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Rent">Auto Noleggio</a>
                       <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Sale">Auto Acquisto</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a>
+
                   
                     </div>
                 </li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
+
 
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>

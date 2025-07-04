@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 10:04:48
+/* Smarty version 5.5.1, created on 2025-07-04 12:50:32
   from 'file:homeAdmin.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68678b203de566_93463439',
+  'unifunc' => 'content_6867b1f89daf18_59609096',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
     array (
       0 => 'homeAdmin.tpl',
-      1 => 1751616267,
+      1 => 1751625742,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68678b203de566_93463439 (\Smarty\Template $_smarty_tpl) {
+function content_6867b1f89daf18_59609096 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -46,25 +46,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-    <!--dati per login-->
-    <?php echo '<script'; ?>
->
-      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
-;
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      
-    <?php echo '</script'; ?>
->
 
   </head>
-  <input type="hidden" id="actualMethod" value="home">
 
   <body>
    
@@ -102,24 +85,25 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a></li>
-
+          
 
               <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica auto</a>
                     
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Rent">Auto Noleggio</a>
                       <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Sale">Auto Acquisto</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a>
+                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a>
+
                   
                     </div>
                 </li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
+
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
+
 
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>

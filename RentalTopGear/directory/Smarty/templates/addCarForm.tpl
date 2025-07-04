@@ -39,11 +39,11 @@
               <!-- Spazio riservato al login/user box -->
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
 
           
 

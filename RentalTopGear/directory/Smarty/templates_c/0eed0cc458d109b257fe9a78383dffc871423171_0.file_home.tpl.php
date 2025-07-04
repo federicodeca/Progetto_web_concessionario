@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:46:27
+/* Smarty version 5.5.1, created on 2025-07-04 12:50:30
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_686786d37f8181_06442250',
+  'unifunc' => 'content_6867b1f658ad46_22583185',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0eed0cc458d109b257fe9a78383dffc871423171' => 
     array (
       0 => 'home.tpl',
-      1 => 1751572603,
+      1 => 1751625742,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_686786d37f8181_06442250 (\Smarty\Template $_smarty_tpl) {
+function content_6867b1f658ad46_22583185 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -50,21 +50,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
 
-    <!--dati per login-->
-    <?php echo '<script'; ?>
->
-     
-      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
-						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
-						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
-";
-      
-    <?php echo '</script'; ?>
->
+ 
 
   </head>
 
@@ -393,7 +379,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </div>
 
               <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
-              <p>Copyright &copy; 2023 TopGear</p>
+              <p>Copyright © 2020 Company Name - Template by: PHPJabbers.com</p>
               <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4>
 
             </div>

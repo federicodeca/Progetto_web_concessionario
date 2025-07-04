@@ -56,7 +56,7 @@
               <!-- Spazio riservato al login/user box -->
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
               </li>
 
@@ -64,7 +64,7 @@
 
           
 
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica auto</a>
                     
                     <div class="dropdown-menu">
