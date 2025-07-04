@@ -116,25 +116,37 @@ class COwner {
 
             $start = new DateTime("$year-$month-01");
             $end = (clone $start)->modify('+1 month');
-            
-            $rentsPerPeriod=FPersistentManager::getInstance()->getRentsForPeriod($start, $end);
+            $AllDay = [];
+
+            $period = new DatePeriod($start, new DateInterval('P1D'), $end);
+            foreach ($period as $data) {
+                $AllDay[] = $data->format('Y-m-d');
+            }
+
+            $rentsPerPeriod = FPersistentManager::getInstance()->getRentsForPeriod($start, $end);
             $rentTotalPerDay = [];
+
             foreach ($rentsPerPeriod as $order) {
                 $date = $order->getOrderDate()->format('Y-m-d');
                 if (!isset($rentTotalPerDay[$date])) {
-                    $rentTotalPerDay[$date] = 0;
+                    $rentTotalPerDay[$date] = $order->getTotalPrice();
                 }
-                $rentTotalPerDay[$date] += $order->getTotalPrice();
-             
+                else{$rentTotalPerDay[$date] += $order->getTotalPrice();
+                }
             }
+        
+            foreach ($AllDay as $day) {
+                if (!isset($rentTotalPerDay[$day])) {
+                    $rentTotalPerDay[$day] = 0;
+                }
+            }
+            ksort($rentTotalPerDay);
 
-           
             $infout = COwner::getOwnerStatus();
             $view = new VOwner();
-            $view->showSelectedPeriodStats($infout,$rentTotalPerDay);
+            $view->showSelectedPeriodStats($infout, $rentTotalPerDay);
         }
     }
-
     public static function showSaleStatsForPeriod() {
         if (COwner::isLogged()){
             $infout=COwner::getOwnerStatus();
@@ -143,6 +155,7 @@ class COwner {
         }
     }
 
+    
     public static function getNumberOfSalePerPeriod() {
     
         if (COwner::isLogged()) {

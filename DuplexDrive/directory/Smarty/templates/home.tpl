@@ -253,7 +253,7 @@
             </div>
           </div>
           <div class="col-12">
-        <div class="owl-carousel reviews-carousel">
+        <div class="owl-carousel reviews-carousel" id="reviews-carousel">
           {foreach from=$reviews item=review}
           <div class="service-item mx-2">
             <div class="service-item">
@@ -336,6 +336,8 @@
     <!-- Additional Scripts -->
     <script src="/DuplexDrive/directory/Smarty/assets/js/custom.js"></script>
     <script src="/DuplexDrive/directory/Smarty/assets/js/owl.js"></script>
+    <script src="/DuplexDrive/directory/Smarty/assets/js/owl.carousel.min.js"></script>
+    
      
 
        <script>
