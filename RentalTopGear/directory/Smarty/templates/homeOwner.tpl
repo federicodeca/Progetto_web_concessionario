@@ -297,7 +297,7 @@
         </div>
 
               <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
-              <p>Copyright &copy; 2023 TopGear</p>
+              <p>Copyright © 2020 Company Name - Template by: PHPJabbers.com</p>
               <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
                 
 
