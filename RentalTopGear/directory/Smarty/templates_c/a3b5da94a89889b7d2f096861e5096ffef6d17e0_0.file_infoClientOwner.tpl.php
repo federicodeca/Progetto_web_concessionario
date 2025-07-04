@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 09:57:56
+/* Smarty version 5.5.1, created on 2025-07-04 09:58:55
   from 'file:infoClientOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68678984a2b671_14990323',
+  'unifunc' => 'content_686789bfa79689_50020286',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a3b5da94a89889b7d2f096861e5096ffef6d17e0' => 
     array (
       0 => 'infoClientOwner.tpl',
-      1 => 1751571565,
+      1 => 1751615902,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68678984a2b671_14990323 (\Smarty\Template $_smarty_tpl) {
+function content_686789bfa79689_50020286 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -123,10 +123,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showClientStats/">Clienti</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showClientStats/">Clienti</a></li>
 
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
 
 
 

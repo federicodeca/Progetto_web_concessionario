@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 10:04:48
-  from 'file:homeAdmin.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-04 10:03:22
+  from 'file:adminPriceRent.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68678b203de566_93463439',
+  'unifunc' => 'content_68678aca0b0784_25705096',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
+    'fc8767f2d7efb09abd001ddf532aa3534d435a51' => 
     array (
-      0 => 'homeAdmin.tpl',
-      1 => 1751616267,
+      0 => 'adminPriceRent.tpl',
+      1 => 1751616182,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68678b203de566_93463439 (\Smarty\Template $_smarty_tpl) {
+function content_68678aca0b0784_25705096 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -63,6 +63,10 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <?php echo '</script'; ?>
 >
 
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/alert-data-logic.js"><?php echo '</script'; ?>
+>
+
   </head>
   <input type="hidden" id="actualMethod" value="home">
 
@@ -87,16 +91,16 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/RentalTopGear/Admin/home/"><h2>Dashboard<em></em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Dashboard<em></em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <!-- Spazio riservato al login/user box -->
+              <!-- Spazio riservato al login/user box -->  
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
               </li>
 
@@ -108,8 +112,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a></li>
-
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges">Prezzi</a></li>
 
               <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
@@ -120,7 +123,6 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                   
                     </div>
                 </li>
-
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
@@ -162,7 +164,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                           
                           </div>
                         </li>
-              <?php }?>          
+              <?php }?>                 
             
 
             </ul>
@@ -171,34 +173,106 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       </nav>
     </header>
 
-    <!-- Page Content -->
-    <!-- Banner Starts Here, posso aggiungere testo in h4-->
     <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-          <div class="text-content">
-            <h4></h4>
+    <div class="container my-5">
+      <h2 class="header-text text-center mb-5">inserisci prenotazione</h2>
+      <form  method="post" action="/RentalTopGear/Admin/showSurcharges" enctype="multipart/form-data">
+        <div class="form-group col-md-12">
+          <label for="car">Seleziona auto</label>
+          <select class="form-control form-control-sm mb-5" name="car" id="car">
+            <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('cars'), 'car');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('car')->value) {
+$foreach0DoElse = false;
+?>
+              <option value="<?php echo $_smarty_tpl->getValue('car')->getIdAuto();?>
+"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('car')->getModel();?>
+ <?php echo $_smarty_tpl->getValue('car')->getDescription();?>
+</option>
+            <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+          </select>
+        </div>
+        <div class="btn btn-primary btn-block mx-auto">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">scegli auto </button>
+        </div>
+      </form>
+
+         <?php if ((true && ($_smarty_tpl->hasVariable('surcharges') && null !== ($_smarty_tpl->getValue('surcharges') ?? null)))) {?>
+        <div class="mt-5">
+          <h4 class="header-text text-center my-3">modifiche prezzi</h4>
+          <div style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-sm table-bordered table-striped bg-white">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Inizio</th>
+                  <th>Fine</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('surcharges'), 'price');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('price')->value) {
+$foreach1DoElse = false;
+?>
+                  <tr>
+                    <td><?php echo $_smarty_tpl->getValue('price')->getStart()->format("d-m-y");?>
+</td>
+                    <td><?php echo $_smarty_tpl->getValue('price')->getEnd()->format("d-m-y");?>
+</td>
+                    <td><?php echo $_smarty_tpl->getValue('price')->getPrice();?>
+ €</td>
+                  </tr>
+                <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
-    </div>
-    
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+
+
+        <form method="post" action="/RentalTopGear/Admin/insertSurcharge" enctype="multipart/form-data" class="mt-4">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="start_date">Data inizio</label>
+              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required>
             </div>
+            <div class="form-group col-md-6">
+              <label for="end_date">Data fine</label>
+              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required>      
+            </div>
+            <div class="form-group col-md-6">
+              <label for="price">Prezzo</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Inserisci prezzo" required>
           </div>
-        </div>
+          <input type="hidden" name="idAuto" value="<?php echo $_smarty_tpl->getValue('selectedCar')->getIdAuto();?>
+">
+          <div class="btn btn-primary btn-block mx-auto">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Aggiungi sovrapprezzo</button>
+          </div>
+        </form>
+      <?php }?>
+    </div>
+    </div>
+
+
+    <footer class="tm-footer row tm-mt-small">
+      <div class="col-12 font-weight-light">
+        <p class="text-center text-white mb-0 px-4 small">
+          Copyright &copy; <b>2018</b> All rights reserved. 
+          
+          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link"></a>
+        </p>
       </div>
-    </footer>
+    </footer> 
 
 
-
-
-    <!-- Bootstrap core JavaScript -->
+      <!-- Bootstrap core JavaScript -->
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
 >
@@ -215,6 +289,8 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
      
+
   </body>
-</html><?php }
+</html>
+<?php }
 }

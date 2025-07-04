@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 10:04:48
-  from 'file:homeAdmin.tpl' */
+/* Smarty version 5.5.1, created on 2025-07-04 09:58:57
+  from 'file:infoRentOwner.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_68678b203de566_93463439',
+  'unifunc' => 'content_686789c12a44a8_53758690',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '241c8d745acb375bf1ea90e71c875ae15c69fa6f' => 
+    '3f5d4d5a4aa59ecc312361cad338d11dd8155146' => 
     array (
-      0 => 'homeAdmin.tpl',
-      1 => 1751616267,
+      0 => 'infoRentOwner.tpl',
+      1 => 1751571757,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68678b203de566_93463439 (\Smarty\Template $_smarty_tpl) {
+function content_686789c12a44a8_53758690 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
   
    
@@ -46,6 +46,13 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
+     <!-- Additional icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
     <!--dati per login-->
     <?php echo '<script'; ?>
 >
@@ -59,17 +66,30 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
 						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ";
-      
     <?php echo '</script'; ?>
 >
 
-  </head>
-  <input type="hidden" id="actualMethod" value="home">
+    <!-- dati per il grafico -->
+    <?php echo '<script'; ?>
+>
+      const rentTotalPerDay = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('rentTotalPerDay')) ?? null)===null||$tmp==='' ? '{}' ?? null : $tmp);?>
+;
 
-  <body>
+    <?php echo '</script'; ?>
+>
    
 
- 
+  </head>
+
+<body>
+      <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/date-selector-chart.js"><?php echo '</script'; ?>
+>
+    
+
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -87,7 +107,7 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/RentalTopGear/Admin/home/"><h2>Dashboard<em></em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Duplex <em>Drive</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -96,30 +116,17 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
               <!-- Spazio riservato al login/user box -->
               <li id="user-box" class="nav-item d-flex align-items-center"></li>
 
-              <li class="nav-item active">
-                <a class="nav-link" href="/RentalTopGear/Admin/home/">Home <span class="sr-only">(current)</span></a>
+              <li class="nav-item">
+                <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showCarForm/">Aggiungi auto</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showLicenseNotChecked/">Verifica patente</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/home">Vista cliente</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForUnavailabilities/">Indisponibilità</a></li>
-
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Admin/showAllRentCarsForSurcharges/">Prezzi </a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showClientStats">Clienti</a></li>
 
 
-              <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Modifica</a>
-                    
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Rent">Auto Noleggio</a>
-                      <a class="dropdown-item" href="/RentalTopGear/Admin/showAllCars/Sale">Auto Acquisto</a>
-                  
-                    </div>
-                </li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
+
 
 
               <?php if ($_smarty_tpl->getValue('isLogged')) {?>
@@ -135,6 +142,9 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
+                      <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
+                        <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
                       <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
@@ -171,29 +181,126 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
       </nav>
     </header>
 
-    <!-- Page Content -->
-    <!-- Banner Starts Here, posso aggiungere testo in h4-->
-    <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-          <div class="text-content">
-            <h4></h4>
+    
+
+
+        
+    <div class="services">
+        <div class="container " style="max-height: auto;">
+            <div class="row">
+
+                
+
+
+   
+                <div class="col-md-12">
+                  <div class="section-heading">
+                    <h2>Statistiche Noleggi</h2>
+                    <span>seleziona mese e anno</span>
+                    <div class="row">
+                      <form method="post" action="/RentalTopGear/Owner/getRentStatsForPeriod" >
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="bdaymonth">Periodo</label>
+                            <input type="month" id="month" name="period" class="form-control w-100" required>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <button type="submit" class="btn btn-primary">Visualizza Statistiche</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        
+                <div class="col-12 tm-block-col my-4 text-center">
+       
+                    <h2 class="tm-block-title my-5">Noleggi </h2>
+
+                    <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('rentTotalPerDay')) > 0) {?>      
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                        <canvas id="rentScatterChart" class="graphic-custom"></canvas>
+                    <?php } else { ?>
+                        <div class="alert alert-warning" role="alert">
+                          Nessun dato disponibile per il periodo selezionato.
+                        </div>
+                      <?php }?>
+                  
+                </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+
+
+
+
+
+ 
+      
+      
+             
+
+
     
-    <footer>
+      <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
-              <p>Copyright © 2020 Company Name - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></p>
+                    <div class="row ">
+        <div class="col-md-12">
+          <i class="fa-brands fa-cc-paypal fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-visa fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-diners-club fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-discover fa-2x mr-2"></i>
+          <i class="fa-brands fa-cc-amex fa-2x"></i>
+            
+         </div>
+        </div>
+
+              <p> Duplex Drive  <a href="/RentalTopGear/User/home"></a> </p>
+              <p>Copyright &copy; 2023 TopGear</p>
+              <i class="fa-solid fa-phone mr-2"></i><h4> +39 123 456 789</h4> 
+                
+
             </div>
           </div>
         </div>
       </div>
     </footer>
+
+    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('rentsPerPeriod'), 'rent');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('rent')->value) {
+$foreach0DoElse = false;
+?>
+    <?php echo $_smarty_tpl->getValue('rent')->getOrderdate()->format('y-m-d');?>
+
+    <?php echo $_smarty_tpl->getValue('rent')->getTotalPrice();?>
+
+    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+
+
+
+    <!-- Chart.js scatter chart for Vendite (Data vs Prezzo) -->
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"><?php echo '</script'; ?>
+>
+    
 
 
 
@@ -203,9 +310,18 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
  src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
 
+
+    
+   
 
     <!-- Additional Scripts -->
     <?php echo '<script'; ?>
@@ -214,7 +330,11 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
 >
-     
-  </body>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/calendar.js"><?php echo '</script'; ?>
+>
+ 
+
+</body>
 </html><?php }
 }
