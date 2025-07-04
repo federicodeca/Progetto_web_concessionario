@@ -270,7 +270,7 @@ class CAdmin {
             $car = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId); // Lock the car object
             if($car->checkExistingSurcharges($start, $end)) {
                 $surcharge= new ESurcharge($start, $end, UHTTPMethods::post('price'), $car);
-                FPersistentManager::getInstance()->uploadObject($surcharge); //TRANSACTION
+                FPersistentManager::getInstance()->uploadObj($surcharge); //TRANSACTION
                 $view->showSurchargeInsert();
         
 

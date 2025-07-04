@@ -23,7 +23,7 @@ use Doctrine\Common\Collections\ArrayCollection;
     #[ORM\JoinColumn(name: 'photo_id', referencedColumnName: 'idImage', nullable: true)]
     protected EImage $photo;
 
-    #[ORM\OneToOne(targetEntity: EUSer::class)]
+    #[ORM\OneToOne(targetEntity: EUser::class)]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'idUser', nullable: true)]
     protected EUser $user_id;
 
