@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-04 09:57:52
+  from 'file:infoSaleOwner.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_68678980be8067_53704475',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '702929d86e2668aa98b2dcb37ac515ccb779d515' => 
+    array (
+      0 => 'infoSaleOwner.tpl',
+      1 => 1751571788,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68678980be8067_53704475 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,25 +54,37 @@
 
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
-    </script>
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      
 
-    <!-- dati per il grafico  -->
-    <script>
-      const clientStats = {$clientStats|@json_encode|default:'{}'};
+      const salesPerMonth =<?php echo (($tmp = json_encode($_smarty_tpl->getValue('salesPerMonth')) ?? null)===null||$tmp==='' ? '[]' ?? null : $tmp);?>
+;
+       <?php echo '</script'; ?>
+>
 
-    </script>
-    
    
+
 
   </head>
 
 <body>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script src="/RentalTopGear/directory/Smarty/js/client-chart.js"></script>
+      <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+      <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/sale-chart.js"><?php echo '</script'; ?>
+>
     
 
 
@@ -81,47 +117,49 @@
                 <a class="nav-link" href="RentalTopGear/User/home">Home <span class="sr-only">(current)</span></a>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
+              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showSaleStatsForPeriod">Numero vendite</a></li>
 
-              <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/Owner/showClientStats/">Clienti</a></li>
+              <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showClientStats/">Clienti</a></li>
 
 
               <li class="nav-item"><a class="nav-link" href="/RentalTopGear/Owner/showRentStatsForPeriod/">Statistiche noleggi</a></li>
 
 
 
-              {if $isLogged}
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
-                      {/if}
-                      {if $permission === 'owner'}
+                      <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
                         <a class="dropdown-item" href="/RentalTopGear/Owner/home">Resoconto Azienda</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                           </a>
-                          <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
+                              <div class="dropdown-menu dropdown-menu-right p-2" aria-labelledby="loginDropdown" style="min-width: 250px;">
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
-                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
                               <button type="submit" class="btn btn-primary btn-block">Accedi</button>
                              
                             </form>
@@ -131,7 +169,7 @@
                           
                           </div>
                         </li>
-              {/if}          
+              <?php }?>         
             
 
             </ul>
@@ -145,18 +183,8 @@
 
         
     <div class="services">
-        <div class="container " style="max-height: auto;">
-            <div class="row">
-                <div class="col-md-12">
-                    
-                        <h2 style="font:italic">info</h2>
-                        <br>
-                    
-                      <i class="fa-solid fa-star mr-2"></i><h7> valore medio delle recensioni è: {$averageReview} stelle </h7> <br>
-                      <i class="fa-solid fa-comment mr-2"></i><h7>il numero totale di recensioni è: {$numberReviews}</h7>
-                
-                  </div>
-     
+        <div class="container">
+            <div class="row align-items-center" >
 
                 
 
@@ -164,33 +192,43 @@
    
                 <div class="col-md-12">
                   <div class="section-heading">
-                    <h2>Statistiche Clienti</h2>
-                
-               
-                  
-
+                    <h2>Statistiche Vendite</h2>
+                    
+                    <div class="row">
+                      <form method="post" action="/RentalTopGear/Owner/getNumberOfSalePerPeriod" class="w-50">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="month">Inserire anno:</label>
+                                <input type="text" class="form-control w-25" name="year" pattern="^\d&#123;4&#125;$" placeholder="2000" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <button type="submit" class="btn btn-primary">Visualizza Statistiche</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
           </div>
         
-                <div class="col-12 tm-block-col my-4 text-center">
-       
-                    <h2 class="tm-block-title my-5">Clienti </h2>
-
-                    {if $clientStats|@count > 0}      
-    
-                    <div class="row">
-                        <div class="col-md-12">
-                        <canvas id="clientBarChart" class="graphic-custom"></canvas>
-                    {else}
+                <div class="col-12 my-4 text-center">
+                    <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('salesPerMonth')) > 0) {?>
+                     
+                    <h2 class="tm-block-title" style="padding:10px;">Numero Vendite </h2>
+                    <canvas id="saleChart" class="graphic-custom-big" ></canvas>
+                     
+                      <?php } else { ?>
                         <div class="alert alert-warning" role="alert">
-                          Nessun dato disponibile sui clienti.
+                          Nessun dato disponibile per il periodo selezionato.
                         </div>
-                      {/if}
-                  
+                      <?php }?>
+
+
+                 
+                  </div>
                 </div>
-            </div>
+           
           </div>
         </div>
 
@@ -233,34 +271,56 @@
       </div>
     </footer>
 
-   
+ 
 
 
 
     <!-- Chart.js scatter chart for Vendite (Data vs Prezzo) -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chart.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"><?php echo '</script'; ?>
+>
     
 
 
 
 
+
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     
    
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/js/calendar.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/js/calendar.js"><?php echo '</script'; ?>
+>
  
 
 </body>
-</html>
+</html><?php }
+}
