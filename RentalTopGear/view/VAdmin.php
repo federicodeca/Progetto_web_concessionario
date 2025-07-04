@@ -20,7 +20,10 @@ class VAdmin{
 
     }
 
-    public function showAddCarForm() {
+    public function showAddCarForm($infout) {
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']);
+        $this->smarty->assign('permission', $infout['permission']);
         $this->smarty->display('addCarForm.tpl');
     }
 
@@ -36,8 +39,11 @@ class VAdmin{
         $this->smarty->display('error.tpl');
     }
 
-    public function showLicenseList($licenses) {
+    public function showLicenseList($licenses,$infout) {
         $this->smarty->assign('licenses', $licenses);
+        $this->smarty->assign('isLogged', $infout['isLogged']);
+        $this->smarty->assign('username', $infout['username']); 
+        $this->smarty->assign('permission', $infout['permission']); 
         $this->smarty->display('licenseList.tpl');
     }
 

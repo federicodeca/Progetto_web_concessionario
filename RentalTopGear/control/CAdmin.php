@@ -68,7 +68,7 @@ class CAdmin {
 
     // aggiungere auto nel database
     public static function addCar()
-    {
+    {    
          if (CAdmin::isLogged()) {
         $view = new VAdmin();
 
@@ -101,8 +101,9 @@ class CAdmin {
 
     public static function showCarForm() {
          if (CAdmin::isLogged()) {
+        $infout=CAdmin::getAdminStatus();
         $view = new VAdmin();
-        $view->showAddCarForm();
+        $view->showAddCarForm($infout);
          }
     }
     //CONTROLLO PATENTE(license check)
@@ -113,11 +114,12 @@ class CAdmin {
 
     public static function showLicenseNotChecked () {
          if (CAdmin::isLogged()) {
+        $infout=CAdmin::getAdminStatus();
         $licenseList = [];
         $licenseList= FPersistentManager::getInstance()->getNotCheckedLicense(ELicense::class);
 
         $view = new VAdmin();
-        $view->showLicenseList($licenseList);
+        $view->showLicenseList($licenseList,$infout);
          }
     }
 
