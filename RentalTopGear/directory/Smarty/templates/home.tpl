@@ -252,15 +252,17 @@
 
             </div>
           </div>
+          <div class="col-12">
+        <div class="owl-carousel reviews-carousel">
           {foreach from=$reviews item=review}
-          <div class="col-lg-4 col-md-6">
+          <div class="service-item mx-2">
             <div class="service-item">
               <a href="#" class="services-item-image"><img src="/RentalTopGear/directory/Smarty/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
                 <h4><a href="#">{for $i = 0 to ($review->getRating() - 1)}<i class="fa-solid fa-star mr-2"></i>{/for}</a></h4>
-                <p style = "font-style: italic; font-size: 18px" > {$review->getContent()} </h7>
-                <p style="margin: 0;">{$review->getUser()->getFirstname()} &nbsp {substr($review->getUser()->getLastname(), 0, 1)}.</p>
+                <p style = "font-style: italic; font-size: 18px" > {$review->getUser()->getFirstname()} &nbsp {substr($review->getUser()->getLastname(), 0, 1)}. </h7>
+                <p style="margin: 0;">{$review->getContent()}</p>
               </div>
             </div>
           </div>
@@ -268,6 +270,9 @@
         </div>
       </div>
     </div>
+     </div>
+    </div>
+
 
    
 
@@ -332,6 +337,24 @@
     <!-- Additional Scripts -->
     <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
     <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+
+   <script>
+  $(document).ready(function(){
+    $('.reviews-carousel').owlCarousel({
+      loop: true,
+      margin: 20,
+      nav: true,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      responsive:{
+        0:{ items:1 },
+        768:{ items:2 },
+        992:{ items:3 }
+      }
+    });
+  });
+</script>
      
   </body>
 </html>

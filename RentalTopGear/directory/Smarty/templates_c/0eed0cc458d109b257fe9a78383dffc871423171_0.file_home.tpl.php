@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.1, created on 2025-07-04 12:50:30
+/* Smarty version 5.5.1, created on 2025-07-04 13:20:07
   from 'file:home.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.1',
-  'unifunc' => 'content_6867b1f658ad46_22583185',
+  'unifunc' => 'content_6867b8e754d1c7_56315301',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0eed0cc458d109b257fe9a78383dffc871423171' => 
     array (
       0 => 'home.tpl',
-      1 => 1751625742,
+      1 => 1751628003,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6867b1f658ad46_22583185 (\Smarty\Template $_smarty_tpl) {
+function content_6867b8e754d1c7_56315301 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -302,13 +302,15 @@ $_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_conces
 
             </div>
           </div>
+          <div class="col-12">
+        <div class="owl-carousel reviews-carousel">
           <?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('reviews'), 'review');
 $foreach0DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('review')->value) {
 $foreach0DoElse = false;
 ?>
-          <div class="col-lg-4 col-md-6">
+          <div class="service-item mx-2">
             <div class="service-item">
               <a href="#" class="services-item-image"><img src="/RentalTopGear/directory/Smarty/assets/images/blog-1-370x270.jpg" class="img-fluid" alt=""></a>
 
@@ -320,11 +322,11 @@ for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iterat
 $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?><i class="fa-solid fa-star mr-2"></i><?php }
 }
 ?></a></h4>
-                <p style = "font-style: italic; font-size: 18px" > <?php echo $_smarty_tpl->getValue('review')->getContent();?>
- </h7>
-                <p style="margin: 0;"><?php echo $_smarty_tpl->getValue('review')->getUser()->getFirstname();?>
+                <p style = "font-style: italic; font-size: 18px" > <?php echo $_smarty_tpl->getValue('review')->getUser()->getFirstname();?>
  &nbsp <?php echo substr((string) $_smarty_tpl->getValue('review')->getUser()->getLastname(), (int) 0, (int) 1);?>
-.</p>
+. </h7>
+                <p style="margin: 0;"><?php echo $_smarty_tpl->getValue('review')->getContent();?>
+</p>
               </div>
             </div>
           </div>
@@ -334,6 +336,9 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </div>
       </div>
     </div>
+     </div>
+    </div>
+
 
    
 
@@ -405,6 +410,26 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 >
     <?php echo '<script'; ?>
  src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
+
+   <?php echo '<script'; ?>
+>
+  $(document).ready(function(){
+    $('.reviews-carousel').owlCarousel({
+      loop: true,
+      margin: 20,
+      nav: true,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      responsive:{
+        0:{ items:1 },
+        768:{ items:2 },
+        992:{ items:3 }
+      }
+    });
+  });
+<?php echo '</script'; ?>
 >
      
   </body>
