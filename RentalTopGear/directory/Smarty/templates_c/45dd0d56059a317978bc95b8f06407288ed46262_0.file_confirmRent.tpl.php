@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-04 09:31:27
+  from 'file:confirmRent.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6867834f9ab705_22667083',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '45dd0d56059a317978bc95b8f06407288ed46262' => 
+    array (
+      0 => 'confirmRent.tpl',
+      1 => 1751571113,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6867834f9ab705_22667083 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -24,12 +48,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
 
     <!--dati per login-->
-    <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-      const permission = "{$permission|escape:'javascript'|default:''}";
+    <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
       
-    </script>
+    <?php echo '</script'; ?>
+>
 
   </head>
   <input type="hidden" id="actualMethod" value="home">
@@ -70,26 +103,27 @@
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
-              {if $isLogged}
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
@@ -98,7 +132,8 @@
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
-                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
                               <button type="submit" class="btn btn-primary btn-block">Accedi</button>
                              
                             </form>
@@ -108,7 +143,7 @@
                           
                           </div>
                         </li>
-              {/if}         
+              <?php }?>         
             
             </ul>
           </div>
@@ -162,9 +197,10 @@
                                                 <tr>
                                                     <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                                         <p style="font-weight: 800;">Riferimento</p>
-                                                        <p>ordine numero {$rent->getOrderId()}</p>
+                                                        <p>ordine numero <?php echo $_smarty_tpl->getValue('rent')->getOrderId();?>
+</p>
                                                         <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
-                                                        <p>Concessionario Duplex Drive<br>Via Roma, 10<br>L'Aquila</p>
+                                                        <p>Concessionario boh<br>Via Roma, 10<br>L'Aquila</p>
 
                                                     </td>
                                                 </tr>
@@ -245,16 +281,26 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
    
 
   </body>
 
 </html>
+<?php }
+}

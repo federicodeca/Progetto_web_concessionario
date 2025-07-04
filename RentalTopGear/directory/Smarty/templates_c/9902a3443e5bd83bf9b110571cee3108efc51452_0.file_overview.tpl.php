@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-04 09:31:22
+  from 'file:overview.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_6867834ad5f657_69579192',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '9902a3443e5bd83bf9b110571cee3108efc51452' => 
+    array (
+      0 => 'overview.tpl',
+      1 => 1751571970,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6867834ad5f657_69579192 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Paolo\\Documents\\GitHub\\Progetto_web_concessionario\\RentalTopGear\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -20,22 +44,29 @@
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/RentalTopGear/directory/Smarty/assets/css/owl.css">
 
-    <!-- Additional icon  -->
+      <!-- Additional icon  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /> 
-
 
 
     
 
-         <script>
-      const isLogged = {$isLogged|@json_encode|default:'false'};
-      const username = "{$username|escape:'javascript'|default:''}";
-    </script>
+         <?php echo '<script'; ?>
+>
+      const isLogged = <?php echo (($tmp = json_encode($_smarty_tpl->getValue('isLogged')) ?? null)===null||$tmp==='' ? 'false' ?? null : $tmp);?>
+;
+      const username = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('username'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+      const permission = "<?php echo (($tmp = strtr((string)$_smarty_tpl->getValue('permission'), array("\\" => "\\\\", "'" => "\\'", "\"" => "\\\"", "\r" => "\\r", 
+						"\n" => "\\n", "</" => "<\/", "<!--" => "<\!--", "<s" => "<\s", "<S" => "<\S",
+						"`" => "\\`", "\${" => "\\\$\{")) ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
+";
+    <?php echo '</script'; ?>
+>
   </head>
 
   <body>
-
-   <script src="/RentalTopGear/directory/Smarty/js/login-box.js"></script>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -63,32 +94,33 @@
                     </a>
                 </li> 
 
-                <li class="nav-item"><a class="nav-link active" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
+                <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/carSearcher/">Acquista</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showCarsForRent/">Noleggia</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="/RentalTopGear/User/showAboutUs/">About Us</a></li>
                 
-              {if $isLogged}
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/RentalTopGear/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/RentalTopGear/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/RentalTopGear/User/showProfile">Profilo</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/RentalTopGear/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
@@ -97,7 +129,8 @@
                             <form method="post" action="/RentalTopGear/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
-                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
                               <button type="submit" class="btn btn-primary btn-block">Accedi</button>
                              
                             </form>
@@ -107,7 +140,7 @@
                           
                           </div>
                         </li>
-              {/if}       
+              <?php }?>          
             
             </ul>
           </div>
@@ -127,10 +160,12 @@
 
           <div class="col-md-6">
             <div class="card">
-              <div class="card-header"><h5>Riepilogo ordine</h5></div>
+              <div class="card-header"><h5><i class="fa-solid fa-info mr-3"></i>Riepilogo ordine</h5></div>
               <div class="card-body">
-                <h7>La tua auto sarà pronta entro un mese </h7><br>
-                <h7>dal pagamento</h7><br>
+                <h7>Dal: <?php echo $_smarty_tpl->getValue('start');?>
+</h7><br>
+                <h7>Al:   <?php echo $_smarty_tpl->getValue('end');?>
+</h7><br>
               </div>
             </div> <!--fine card-->
           </div>
@@ -138,7 +173,7 @@
 
           <div class="col-md-6">
            <div class="card">
-              <h5 class="card-header">Dettagli auto</h5>
+              <h5 class="card-header"><i class="fa-solid fa-gears mr-3"></i>Dettagli auto</h5>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
@@ -147,57 +182,65 @@
                               <div>
                                   <h6 class="my-0">Marca:</h6>
                               </div>
-                              <span class="text-muted">{$car->getBrand()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getBrand();?>
+</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                   <h6 class="my-0">Modello:</h6>
                               </div>
-                              <span class="text-muted">{$car->getModel()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getModel();?>
+</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                   <h6 class="my-0">Colore: </h6>
                               </div>
-                              <span class="text-muted">{$car->getColor()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getColor();?>
+</span>
                           </li>
                           
                           <li class="list-group-item d-flex justify-content-between ">
                               <div>
                                   <h6 class="my-0">Potenza: </h6>
                               </div>
-                              <span class="text-muted">{$car->getHorsepower()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getHorsepower();?>
+</span>
                           </li>
 
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                   <h6 class="my-0">Cilindrata: </h6>
                               </div>
-                              <span class="text-muted">{$car->getDisplacement()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getDisplacement();?>
+</span>
                           </li>
 
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                   <h6 class="my-0">Posti: </h6>
                               </div>
-                              <span class="text-muted">{$car->getSeats()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getSeats();?>
+</span>
                           </li>
 
                           <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
                                   <h6 class="my-0">Alimentazione: </h6>
                               </div>
-                              <span class="text-muted">{$car->getFuelType()}</span>
+                              <span class="text-muted"><?php echo $_smarty_tpl->getValue('car')->getFuelType();?>
+</span>
                           </li>
 
                           <li class="list-group-item d-flex justify-content-between">
                               <span>Total (EUR)</span>
-                              <strong>Totale: {$amount} </strong>
+                              <strong>Totale: <?php echo $_smarty_tpl->getValue('amount');?>
+ </strong>
                           </li>
                       </ul>
                         
                       <hr class="mb-4">
-                      <a href="/RentalTopGear/User/confirmSale" class="btn btn-primary btn-lg btn-block">Acquista</a>
+                      <a href="/RentalTopGear/User/confirmRent" class="btn btn-primary btn-lg btn-block">Acquista</a>
                      
                     </div>
                 </div>
@@ -208,6 +251,8 @@
       </div> <!-- chiusura container -->
     </div>
   </div>
+
+
 
 
   <footer>
@@ -238,15 +283,26 @@
     </footer>
 
 
+
     <!-- Bootstrap core JavaScript -->
-    <script src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/RentalTopGear/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/RentalTopGear/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/RentalTopGear/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
   </body>
 
 </html>
+<?php }
+}

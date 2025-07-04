@@ -166,7 +166,7 @@
                                                         <p>ordine numero {$sale->getOrderId()}</p>
 
                                                         <p style="font-weight: 800;">Potrai ritirare la tua auto presso</p>
-                                                        <p>Concessionario <br>Via Roma, 10<br>L'Aquila</p>
+                                                        <p>Concessionario Duplex Drive<br>Via Roma, 10<br>L'Aquila</p>
                                                         
 
                                                     </td>
