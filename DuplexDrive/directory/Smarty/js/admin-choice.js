@@ -1,6 +1,6 @@
 //this file is used to choice between car for rent e car for sale and this block or display the right form
 
-addEventListener('DOMContentLoaded', function() { 
+document.addEventListener('DOMContentLoaded', function() { 
     const carTypeSelect = document.getElementById('car-type');  //for choice of car type
     const conditionSelect = document.getElementById('condition-select'); //for car for sale
     const carDescriptionDiv = document.getElementById('car-description');  //for car for rent
