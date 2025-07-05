@@ -11,7 +11,7 @@ $(document).ready(function() {
       minDate: moment().startOf('day'),
       
     }, function(expiration) {
-      $('#exp').val(expiration.format('YYYY-MM-DD'));
+      $('#exp').val(expiration.format('YYYY-MM-DD')); // Set the value of the hidden input field
     });
   });
 

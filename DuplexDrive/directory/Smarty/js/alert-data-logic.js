@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => { // Ensure the DOM is fully
     if (!start.value || !end.value) return; // If either date is not set, do nothing
     const startDate = new Date(start.value);
     const endDate = new Date(end.value);
-    if (startDate > endDate) resetAndAlert();
+    if (startDate >= endDate) resetAndAlert();
   }
 
   start.addEventListener('change', validate); // Validate when the start date changes

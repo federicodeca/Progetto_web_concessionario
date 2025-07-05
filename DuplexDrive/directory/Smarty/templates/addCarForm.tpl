@@ -28,7 +28,6 @@
 
   <body>
 
-  <script src="/DuplexDrive/directory/Smarty/js/admin-choice.js"></script>
      <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -276,7 +275,10 @@
     <!-- Additional Scripts -->
     <script src="/DuplexDrive/directory/Smarty/assets/js/custom.js"></script>
     <script src="/DuplexDrive/directory/Smarty/assets/js/owl.js"></script>
-     
+    
+    <script src="/DuplexDrive/directory/Smarty/js/admin-choice.js"></script> 
+
+    
   
   </body>
 </html>
