@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-05 15:41:37
+  from 'file:registrationForm.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_68692b91a78016_09552727',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '0ae1cf54a2197c6b7175aa3e35cac12d6def7661' => 
+    array (
+      0 => 'registrationForm.tpl',
+      1 => 1751722890,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68692b91a78016_09552727 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\DuplexDrive\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -120,7 +144,8 @@
             
             <div class="col-md-2" style="margin-top: 20px;" >
               <label for="inputZip" class="form-label" style="color:aliceblue">Zip</label>
-              <input type="text" class="form-control" id="inputZip" name="zip" pattern="\d{5}" maxlength="5" required ="">
+              <input type="text" class="form-control" id="inputZip" name="zip" pattern="\d<?php echo 5;?>
+" maxlength="5" required ="">
             </div>
           </div> 
 
@@ -176,14 +201,24 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/DuplexDrive/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/DuplexDrive/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
   </body>
 
 </html>
+<?php }
+}

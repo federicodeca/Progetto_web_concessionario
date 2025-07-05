@@ -377,4 +377,9 @@ class FPersistentManager {
     $result=FReview::countAllReviews();
     return $result;
     }
+
+    public static function verifyUserEmail($email) {
+        $result = FPerson::verify('email', $email);
+        return $result;
+    }
 }

@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-05 15:24:49
+  from 'file:home.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_686927a1d329b1_53656220',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ceb77e82756225437088e59849a6138a42c2b418' => 
+    array (
+      0 => 'home.tpl',
+      1 => 1751721884,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_686927a1d329b1_53656220 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\DuplexDrive\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -70,29 +94,30 @@
 
               <li class="nav-item"><a class="nav-link" href="/DuplexDrive/User/showAboutUs/">About Us</a></li>
 
-              {if $isLogged}
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/DuplexDrive/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/DuplexDrive/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/DuplexDrive/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/DuplexDrive/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/DuplexDrive/User/showProfile">Profilo</a>
-                      {/if}
-                      {if $permission === 'owner'}
+                      <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'owner') {?>
                         <a class="dropdown-item" href="/DuplexDrive/Owner/home">Resoconto Azienda</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/DuplexDrive/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
@@ -101,7 +126,8 @@
                             <form method="post" action="/DuplexDrive/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
-                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
                               <button type="submit" class="btn btn-primary btn-block">Accedi</button>
                              
                             </form>
@@ -111,7 +137,7 @@
                           
                           </div>
                         </li>
-              {/if}          
+              <?php }?>          
             
 
             </ul>
@@ -158,67 +184,91 @@
             </div>
           </div>
 
-          {if $offers|@count > 2}
+          <?php if ($_smarty_tpl->getSmarty()->getModifierCallback('count')($_smarty_tpl->getValue('offers')) > 2) {?>
    
             <div class="col-md-4">
-                <a href='/DuplexDrive/User/selectCarForSale/{$offers[0]->getIdAuto()}'>
+                <a href='/DuplexDrive/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[0]->getIdAuto();?>
+'>
                   <div class="product-item">
-                    {if $offers[0]->getIcon()}
-                      <img class="product-item-icon" src="data:{$offers[0]->getIcon()->getType()};base64,{$offers[0]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                    {else}
+                    <?php if ($_smarty_tpl->getValue('offers')[0]->getIcon()) {?>
+                      <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('offers')[0]->getIcon()->getType();?>
+;base64,<?php echo $_smarty_tpl->getValue('offers')[0]->getIcon()->getEncodedData();?>
+" loading="lazy" alt="Img">
+                    <?php } else { ?>
                       <img src="/DuplexDrive/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                    {/if}
+                    <?php }?>
                     <div class="down-content">
-                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[0]->getBrand()} {$offers[0]->getModel()}</h4>
-                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[0]->getPrice()}€ <small>prezzo listino</small></h6>
-                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[0]->getKm0OrNew()}</h4>
-                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[0]->getFuelType()} </h4>
+                      <h4><i class="fas fa-gas-pump mr-2"></i><?php echo $_smarty_tpl->getValue('offers')[0]->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('offers')[0]->getModel();?>
+</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> <?php echo $_smarty_tpl->getValue('offers')[0]->getPrice();?>
+€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> <?php echo $_smarty_tpl->getValue('offers')[0]->getKm0OrNew();?>
+</h4>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small><?php echo $_smarty_tpl->getValue('offers')[0]->getFuelType();?>
+ </h4>
                     </div>    
                   </div>
                 </a>
               </div>
 
             <div class="col-md-4">
-                <a href='/DuplexDrive/User/selectCarForSale/{$offers[1]->getIdAuto()}'>
+                <a href='/DuplexDrive/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[1]->getIdAuto();?>
+'>
                   <div class="product-item">
-                    {if $offers[1]->getIcon()}
-                      <img class="product-item-icon" src="data:{$offers[1]->getIcon()->getType()};base64,{$offers[1]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                    {else}
+                    <?php if ($_smarty_tpl->getValue('offers')[1]->getIcon()) {?>
+                      <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('offers')[1]->getIcon()->getType();?>
+;base64,<?php echo $_smarty_tpl->getValue('offers')[1]->getIcon()->getEncodedData();?>
+" loading="lazy" alt="Img">
+                    <?php } else { ?>
                       <img src="/DuplexDrive/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                    {/if}
+                    <?php }?>
                     <div class="down-content">
-                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[1]->getBrand()} {$offers[1]->getModel()}</h4>
-                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[1]->getPrice()}€ <small>prezzo listino</small></h6>
-                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[1]->getKm0OrNew()}</h6>
-                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[1]->getFuelType()} </h6>
+                      <h4><i class="fas fa-gas-pump mr-2"></i><?php echo $_smarty_tpl->getValue('offers')[1]->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('offers')[1]->getModel();?>
+</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> <?php echo $_smarty_tpl->getValue('offers')[1]->getPrice();?>
+€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> <?php echo $_smarty_tpl->getValue('offers')[1]->getKm0OrNew();?>
+</h6>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small><?php echo $_smarty_tpl->getValue('offers')[1]->getFuelType();?>
+ </h6>
                     </div>    
                   </div>
                 </a>
               </div>
 
            <div class="col-md-4">
-                <a href='/DuplexDrive/User/selectCarForSale/{$offers[2]->getIdAuto()}'>
+                <a href='/DuplexDrive/User/selectCarForSale/<?php echo $_smarty_tpl->getValue('offers')[2]->getIdAuto();?>
+'>
                   <div class="product-item">
-                    {if $offers[2]->getIcon()}
-                      <img class="product-item-icon" src="data:{$offers[2]->getIcon()->getType()};base64,{$offers[2]->getIcon()->getEncodedData()}" loading="lazy" alt="Img">
-                    {else}
+                    <?php if ($_smarty_tpl->getValue('offers')[2]->getIcon()) {?>
+                      <img class="product-item-icon" src="data:<?php echo $_smarty_tpl->getValue('offers')[2]->getIcon()->getType();?>
+;base64,<?php echo $_smarty_tpl->getValue('offers')[2]->getIcon()->getEncodedData();?>
+" loading="lazy" alt="Img">
+                    <?php } else { ?>
                       <img src="/DuplexDrive/directory/Smarty/assets/images/default-car.jpg" loading="lazy" alt="Nessuna immagine disponibile">
-                    {/if}
+                    <?php }?>
                     <div class="down-content">
-                      <h4><i class="fas fa-gas-pump mr-2"></i>{$offers[1]->getBrand()} {$offers[2]->getModel()}</h4>
-                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> {$offers[2]->getPrice()}€ <small>prezzo listino</small></h6>
-                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> {$offers[2]->getKm0OrNew()}</h6>
-                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small>{$offers[2]->getFuelType()} </h6>
+                      <h4><i class="fas fa-gas-pump mr-2"></i><?php echo $_smarty_tpl->getValue('offers')[1]->getBrand();?>
+ <?php echo $_smarty_tpl->getValue('offers')[2]->getModel();?>
+</h4>
+                      <h6><i class="fa-solid fa-money-check-dollar mr-2"></i> <small>from:</small> <?php echo $_smarty_tpl->getValue('offers')[2]->getPrice();?>
+€ <small>prezzo listino</small></h6>
+                      <h6><i class="fa-solid fa-hourglass-start mr-2"></i><small>condizione: </small> <?php echo $_smarty_tpl->getValue('offers')[2]->getKm0OrNew();?>
+</h6>
+                      <h6><i class="fa-solid fa-droplet mr-2"></i><small>alimentazione: </small><?php echo $_smarty_tpl->getValue('offers')[2]->getFuelType();?>
+ </h6>
                     </div>    
                   </div>
                 </a>
               </div>
 
-        {else}
+        <?php } else { ?>
           <div class="col-md-12">
             <p class="text-center">Nessuna offerta disponibile al momento.</p>
           </div>
-        {/if}
+        <?php }?>
 
         </div>
       </div>
@@ -254,19 +304,35 @@
           </div>
           <div class="col-12">
         <div class="owl-carousel reviews-carousel" id="reviews-carousel">
-          {foreach from=$reviews item=review}
+          <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('reviews'), 'review');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('review')->value) {
+$foreach0DoElse = false;
+?>
           <div class="service-item mx-2">
             <div class="service-item">
               <a href="#" class="services-item-image"><img src="/DuplexDrive/directory/Smarty/assets/images/reviewbox.jpg" class="img-fluid" alt=""></a>
 
               <div class="down-content">
-                <h4><a href="#">{for $i = 0 to ($review->getRating() - 1)}<i class="fa-solid fa-star mr-2"></i>{/for}</a></h4>
-                <p style = "font-style: italic; font-size: 18px" > {$review->getUser()->getFirstname()} &nbsp {substr($review->getUser()->getLastname(), 0, 1)}. </h7>
-                <p style="margin: 0;">{$review->getContent()}</p>
+                <h4><a href="#"><?php
+$_smarty_tpl->assign('i', null);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? ($_smarty_tpl->getValue('review')->getRating()-1)+1 - (0) : 0-(($_smarty_tpl->getValue('review')->getRating()-1))+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration === $_smarty_tpl->tpl_vars['i']->total;?><i class="fa-solid fa-star mr-2"></i><?php }
+}
+?></a></h4>
+                <p style = "font-style: italic; font-size: 18px" > <?php echo $_smarty_tpl->getValue('review')->getUser()->getFirstname();?>
+ &nbsp <?php echo substr((string) $_smarty_tpl->getValue('review')->getUser()->getLastname(), (int) 0, (int) 1);?>
+. </h7>
+                <p style="margin: 0;"><?php echo $_smarty_tpl->getValue('review')->getContent();?>
+</p>
               </div>
             </div>
           </div>
-          {/foreach}
+          <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </div>
       </div>
     </div>
@@ -329,18 +395,29 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/DuplexDrive/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/DuplexDrive/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/assets/js/owl.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/assets/js/owl.carousel.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/owl.carousel.min.js"><?php echo '</script'; ?>
+>
     
      
 
-       <script>
+       <?php echo '<script'; ?>
+>
   $(document).ready(function(){
     $('.reviews-carousel').owlCarousel({
       loop: true,
@@ -356,6 +433,8 @@
       }
     });
   });
-</script>
+<?php echo '</script'; ?>
+>
   </body>
-</html>
+</html><?php }
+}

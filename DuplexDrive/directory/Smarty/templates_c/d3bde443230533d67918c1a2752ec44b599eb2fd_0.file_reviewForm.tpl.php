@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-07-05 15:44:09
+  from 'file:reviewForm.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_68692c29307ac9_79270967',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd3bde443230533d67918c1a2752ec44b599eb2fd' => 
+    array (
+      0 => 'reviewForm.tpl',
+      1 => 1751723037,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68692c29307ac9_79270967 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\DuplexDrive\\directory\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -59,26 +83,27 @@
 
                 <li class="nav-item"><a class="nav-link" href="/DuplexDrive/User/showAboutUs/">About Us</a></li>
                 
-              {if $isLogged}
+              <?php if ($_smarty_tpl->getValue('isLogged')) {?>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      benvenuto {$username} <span class="caret"></span>
+                      benvenuto <?php echo $_smarty_tpl->getValue('username');?>
+ <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
-                      {if $permission ==='admin'} <a class="dropdown-item" href="/DuplexDrive/Admin/home">admin</a> {/if}
-                      {if $permission === 'user'} 
+                      <?php if ($_smarty_tpl->getValue('permission') === 'admin') {?> <a class="dropdown-item" href="/DuplexDrive/Admin/home">admin</a> <?php }?>
+                      <?php if ($_smarty_tpl->getValue('permission') === 'user') {?> 
                         <a class="dropdown-item" href="/DuplexDrive/User/insertLicense">Patente</a>
                         <a class="dropdown-item" href="/DuplexDrive/User/insertReview">Recensione</a>
                         <a class="dropdown-item" href="/DuplexDrive/User/showProfile">Profilo</a>
-                      {/if}
+                      <?php }?>
                       <a class="dropdown-item" href="/DuplexDrive/User/logout">Esci</a>
                     </div>
                   </li>
   
 
 
-              {else}
+              <?php } else { ?>
                   <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
@@ -87,7 +112,8 @@
                             <form method="post" action="/DuplexDrive/User/checkLoginAuto">
                               <input type="text" name="username" placeholder="Username" class="form-control mb-2" required>
                               <input type="password" name="password" placeholder="Password" class="form-control mb-2" required>
-                              <input type="hidden" name="actualMethod" value="{$smarty.server.REQUEST_URI|escape}">
+                              <input type="hidden" name="actualMethod" value="<?php echo htmlspecialchars((string)$_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8', true);?>
+">
                               <button type="submit" class="btn btn-primary btn-block">Accedi</button>
                              
                             </form>
@@ -97,7 +123,7 @@
                           
                           </div>
                         </li>
-              {/if}          
+              <?php }?>          
             
             </ul>
           </div>
@@ -119,18 +145,19 @@
 
 
               <select class="form-control" id="rating" name="rating" style="width: 200px;" required = "">
-                <option value="" disabled {if $rating == ""}selected{/if}>Seleziona le stelle</option>
-                <option value="5" {if $rating == "5"}selected{/if}>★★★★★ - 5 stelle</option>
-                <option value="4" {if $rating == "4"}selected{/if}>★★★★☆ - 4 stelle</option>
-                <option value="3" {if $rating == "3"}selected{/if}>★★★☆☆ - 3 stelle</option>
-                <option value="2" {if $rating == "2"}selected{/if}>★★☆☆☆ - 2 stelle</option>
-                <option value="1" {if $rating == "1"}selected{/if}>★☆☆☆☆ - 1 stella</option>
+                <option value="" disabled <?php if ($_smarty_tpl->getValue('rating') == '') {?>selected<?php }?>>Seleziona le stelle</option>
+                <option value="5" <?php if ($_smarty_tpl->getValue('rating') == "5") {?>selected<?php }?>>★★★★★ - 5 stelle</option>
+                <option value="4" <?php if ($_smarty_tpl->getValue('rating') == "4") {?>selected<?php }?>>★★★★☆ - 4 stelle</option>
+                <option value="3" <?php if ($_smarty_tpl->getValue('rating') == "3") {?>selected<?php }?>>★★★☆☆ - 3 stelle</option>
+                <option value="2" <?php if ($_smarty_tpl->getValue('rating') == "2") {?>selected<?php }?>>★★☆☆☆ - 2 stelle</option>
+                <option value="1" <?php if ($_smarty_tpl->getValue('rating') == "1") {?>selected<?php }?>>★☆☆☆☆ - 1 stella</option>
               </select>
     </div>
 
              <div class="col-12" style="margin-top: 20px;" >
               <label for="inputReview" class="form-label" style="color:aliceblue"  >Dettagli recensione:</label>
-              <textarea type="text" class="form-control" id="inputReview" rows="4" placeholder="Scrivi la tua recensione qui..." name="inputReview" maxlength= 150>{$content}</textarea>
+              <textarea type="text" class="form-control" id="inputReview" rows="4" placeholder="Scrivi la tua recensione qui..." name="inputReview" maxlength= 150><?php echo $_smarty_tpl->getValue('content');?>
+</textarea>
             </div>
 
 
@@ -157,14 +184,24 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/DuplexDrive/directory/Smarty/vendor/jquery/jquery.min.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/vendor/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
 
 
     <!-- Additional Scripts -->
-    <script src="/DuplexDrive/directory/Smarty/assets/js/custom.js"></script>
-    <script src="/DuplexDrive/directory/Smarty/assets/js/owl.js"></script>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/custom.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="/DuplexDrive/directory/Smarty/assets/js/owl.js"><?php echo '</script'; ?>
+>
 
   </body>
 
 </html>
+<?php }
+}
