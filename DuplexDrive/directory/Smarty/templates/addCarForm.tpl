@@ -22,11 +22,13 @@
     <link rel="stylesheet" href="/DuplexDrive/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/DuplexDrive/directory/Smarty/assets/css/owl.css">
 
-    <script src="/DuplexDrive/directory/Smarty/js/admin-choice.js"></script>
+
 
   </head>
 
   <body>
+
+  <script src="/DuplexDrive/directory/Smarty/js/admin-choice.js"></script>
      <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">

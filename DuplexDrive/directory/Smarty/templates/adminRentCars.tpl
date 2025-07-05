@@ -22,12 +22,13 @@
     <link rel="stylesheet" href="/DuplexDrive/directory/Smarty/assets/css/style.css">
     <link rel="stylesheet" href="/DuplexDrive/directory/Smarty/assets/css/owl.css">
 
-     <script src="/DuplexDrive/directory/Smarty/js/alert-data-logic.js"></script>
+    
 
 
   </head>
 
   <body>
+  <script src="/DuplexDrive/directory/Smarty/js/alert-data-logic.js"></script>
    
 
  
