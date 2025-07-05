@@ -120,7 +120,7 @@
             
             <div class="col-md-2" style="margin-top: 20px;" >
               <label for="inputZip" class="form-label" style="color:aliceblue">Zip</label>
-              <input type="text" class="form-control" id="inputZip" name="zip" pattern="^\d{5}$"  required ="">
+              <input type="text" class="form-control" id="inputZip" name="zip"  pattern="[0-9]{literal}{5}{/literal}"  required ="">
             </div>
           </div> 
 
