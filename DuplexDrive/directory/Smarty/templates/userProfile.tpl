@@ -195,11 +195,11 @@
                         </div>
                         <div class="form-group">
                           <label for="newPassword">Nuova Password</label>
-                          <input type="password" class="form-control" id="newPassword" name="new" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="La password deve contenere almeno 8 caratteri, una lettera maiuscola, una minuscola e un numero.">
+                          <input type="password" class="form-control" id="newPassword" name="new" required minlength="8" {literal} pattern='(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).&#123;8,&#125;'{/literal}  title="La password deve contenere almeno 8 caratteri, una lettera maiuscola, una minuscola e un numero.">
                         </div>
                         <div class="form-group">
                           <label for="confirmPassword">Conferma Password</label>
-                          <input type="password" class="form-control" id="confirmPassword" name="confirm" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Ripeti la password con gli stessi criteri di sicurezza.">
+                          <input type="password" class="form-control" id="confirmPassword" name="confirm" required minlength="8" {literal} pattern='(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).&#123;8,&#125;'{/literal}  title="Ripeti la password con gli stessi criteri di sicurezza.">
                         </div>
                       </div>
 

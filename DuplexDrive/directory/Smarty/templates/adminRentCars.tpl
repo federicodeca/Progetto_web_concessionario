@@ -180,11 +180,11 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="start_date">Data inizio</label>
-              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)\d\d$}">
+              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required {literal} pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)[0-9]&#123;2&#125;$"{/literal} >
             </div>
             <div class="form-group col-md-6">
               <label for="end_date">Data fine</label>
-              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)\d\d$}">      
+              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required {literal} pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)[0-9]&#123;2&#125;$"{/literal} >      
             </div>
           </div>
          

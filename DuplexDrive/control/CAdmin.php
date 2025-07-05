@@ -233,7 +233,9 @@ class CAdmin {
             exit();
             }
         }
-    }    
+    }   
+    
+
     
     public static function showAllRentCarsForSurcharges() {
         if (CAdmin::isLogged()) {
@@ -246,7 +248,13 @@ class CAdmin {
 
         public static function showSurcharges() {
         if (CAdmin::isLogged()) {
-            $carId = UHTTPMethods::post('car');
+            $carId = UHTTPMethods::postOrNull('idAuto');
+            if ($carId === null) {
+                $carId=USession::getElementFromSession('idAuto'); // Retrieve carId from session if not provided
+            }
+            else {
+                USession::setElementInSession('idAuto', $carId); // Clear session if carId is provided
+            }
             $cars= FPersistentManager::getInstance()->retriveAllRentCars();
             $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
             $infout=CAdmin::getAdminStatus();  
@@ -255,7 +263,19 @@ class CAdmin {
             $view->showSurcharges($cars,$infout,$sur, $selectedCar);
         }
     }
-    
+
+    public static function deleteSurcharge($id) {
+    if (CAdmin::isLogged()) {
+        $view = new VAdmin();
+        $surcharge = FPersistentManager::getInstance()->getObjectById(ESurcharge::class, $id);
+        
+        
+        FPersistentManager::getInstance()->removeObject($surcharge);
+        header('location: /DuplexDrive/Admin/showSurcharges');
+        exit();
+        }
+    }
+ 
 
 
 

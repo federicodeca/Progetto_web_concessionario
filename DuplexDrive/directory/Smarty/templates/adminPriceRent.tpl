@@ -138,7 +138,7 @@
       <form  method="post" action="/DuplexDrive/Admin/showSurcharges" enctype="multipart/form-data">
         <div class="form-group col-md-12">
           <label for="car">Seleziona auto</label>
-          <select class="form-control form-control-sm mb-5" name="car" id="car">
+          <select class="form-control form-control-sm mb-5" name="idAuto" id="car">
             {foreach from=$cars item=car}
               <option value="{$car->getIdAuto()}">{$car->getBrand()} {$car->getModel()} {$car->getDescription()}</option>
             {/foreach}
@@ -158,6 +158,8 @@
                 <tr>
                   <th>Inizio</th>
                   <th>Fine</th>
+                  <th>Prezzo</th>
+                  <th>Azioni</th>
                 </tr>
               </thead>
               <tbody>
@@ -166,6 +168,11 @@
                     <td>{$price->getStart()->format("d-m-y")}</td>
                     <td>{$price->getEnd()->format("d-m-y")}</td>
                     <td>{$price->getPrice()} €</td>
+                    <td>
+                      <a href="/DuplexDrive/Admin/deleteSurcharge/{$price->getIdSurcharge()}" class="btn btn-danger btn-sm">
+                        Elimina
+                      </a>
+                    </td>
                   </tr>
                 {/foreach}
               </tbody>
@@ -178,11 +185,11 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="start_date">Data inizio</label>
-              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)\d\d$}">
+              <input type="text" class="form-control" id="start_date" name="start" placeholder="dd-mm-yyyy" required {literal} pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)[0-9]&#123;2&#125;$"{/literal} >
             </div>
             <div class="form-group col-md-6">
               <label for="end_date">Data fine</label>
-              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)\d\d$}">      
+              <input type="text" class="form-control" id="end_date" name="end" placeholder="dd-mm-yyyy" required {literal} pattern="^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19|20)[0-9]&#123;2&#125;$"{/literal} >      
             </div>
             <div class="form-group col-md-6">
               <label for="price">Prezzo</label>
