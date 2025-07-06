@@ -246,23 +246,23 @@ class CAdmin {
         }
     }
 
-        public static function showSurcharges() {
-        if (CAdmin::isLogged()) {
-            $carId = UHTTPMethods::postOrNull('idAuto');
-            if ($carId === null) {
-                $carId=USession::getElementFromSession('idAuto'); // Retrieve carId from session if not provided
-            }
-            else {
-                USession::setElementInSession('idAuto', $carId); // Clear session if carId is provided
-            }
-            $cars= FPersistentManager::getInstance()->retriveAllRentCars();
-            $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
-            $infout=CAdmin::getAdminStatus();  
-            $sur=FPersistentManager::getAllValidSurcharges($carId);
-            $view = new VAdmin();
-            $view->showSurcharges($cars,$infout,$sur, $selectedCar);
+    public static function showSurcharges() {
+    if (CAdmin::isLogged()) {
+        $carId = UHTTPMethods::postOrNull('idAuto');
+        if ($carId === null) {
+            $carId=USession::getElementFromSession('idAuto'); // Retrieve carId from session if not provided
         }
+        else {
+            USession::setElementInSession('idAuto', $carId); // Clear session if carId is provided
+        }
+        $cars= FPersistentManager::getInstance()->retriveAllRentCars();
+        $selectedCar = FPersistentManager::getInstance()->getObjectbyId(ECarForRent::class, $carId);
+        $infout=CAdmin::getAdminStatus();  
+        $sur=FPersistentManager::getAllValidSurcharges($carId);
+        $view = new VAdmin();
+        $view->showSurcharges($cars,$infout,$sur, $selectedCar);
     }
+}
 
     public static function deleteSurcharge($id) {
     if (CAdmin::isLogged()) {
