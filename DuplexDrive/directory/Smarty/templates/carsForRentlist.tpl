@@ -135,7 +135,7 @@
       </div>
     </div>
       {assign var="perPage" value=6}                       <!-- Number of cars per page -->
-      {assign var="page" value=$smarty.get.page|default:1} <!-- Current page, default to 1 if not set reda page=x-->
+      {assign var="page" value=$smarty.get.page|default:1} <!-- Current page, default to 1 if not set reda page=x smarty variable-->
       {assign var="start" value=($page - 1) * $perPage}     <!-- Calculate the starting index for the current page -->
       {assign var="end" value=$start + $perPage}
       {math assign="totalPages" equation="ceil(x / y)" x=$cars|@count y=$perPage}  <!-- Calculate total pages based on the number of cars and perPage -->
@@ -190,7 +190,7 @@
 </div>
 
 <footer>
-   <div class="container">
+   <div class="container align-items-center">
         <div class="row">
           <div class="col-md-12">
             <div class="inner-content">
